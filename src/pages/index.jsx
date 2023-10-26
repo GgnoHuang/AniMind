@@ -1,8 +1,6 @@
-// import "/Users/jyunhongmacbookair/Desktop/奈克斯/go-next/src/styles/globals.css"
-
 import Link from "next/link"
-import "./globals.css"
-function App() {
+
+function Home() {
   return (
     <div className=" p-8 border-red-500 h-full ">
       {/* <h4 className="bg-blue-200 rounded-lg p-2">歡迎使用記帳功能！</h4> */}
@@ -20,4 +18,4 @@ function App() {
   )
 }
 
-export default App
+export default Home
