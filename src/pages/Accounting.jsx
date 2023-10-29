@@ -24,10 +24,10 @@ function Accounting() {
         setTransactionsArr={setTransactionsArr}
       />
       <div
-        class="p-8 flex items-center
-         flex items-center justify-center"
+        className="p-8 flex items-center
+        flex items-center justify-center"
       >
-        <button class="text-white p-2 rounded bg-blue-500 hover:bg-blue-600 ">
+        <button className="text-white p-2 rounded bg-blue-500 hover:bg-blue-600 ">
           <Link href="/">返回首頁</Link>
         </button>
       </div>

@@ -21,10 +21,10 @@ function List({ transactionsArr, setTransactionsArr }) {
       </h5>
       <ul>
         {transactionsArr.map((transaction) => (
-          <li key={transaction.id} class="my-1.5">
+          <li key={transaction.id} className="my-1.5">
             <button
               onClick={() => deleteItem(transaction.id)}
-              class="text-white p-1 rounded bg-blue-500 hover:bg-blue-600"
+              className="text-white p-1 rounded bg-blue-500 hover:bg-blue-600"
             >
               ✕
             </button>

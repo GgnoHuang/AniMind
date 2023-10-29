@@ -63,7 +63,7 @@ function Form({ transactionsArr, setTransactionsArr }) {
         />
         <button
           onClick={handleAddTransaction}
-          class="text-white p-1 rounded bg-blue-500 hover:bg-blue-600"
+          className="text-white p-1 rounded bg-blue-500 hover:bg-blue-600"
         >
           新增
         </button>
