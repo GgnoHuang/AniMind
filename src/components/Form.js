@@ -1,10 +1,57 @@
-import React, { useState } from "react"
 
-function Form({ transactionsArr, setTransactionsArr }) {
+import React, { useState, useEffect } from "react"
+
+import { db } from "../config"
+import { getDatabase, ref, set ,get} from "firebase/database"
+import { auth } from "../config" 
+import { onAuthStateChanged } from "firebase/auth"
+
+function Form({ transactionsArr, setTransactionsArr,systemMessage, setSystemMessage }) {
   const [type, setType] = useState("expense")
   const [amount, setAmount] = useState("")
   const [description, setDescription] = useState("")
-  const [systemMessage, setSystemMessage] = useState("")
+  // const [systemMessage, setSystemMessage] = useState("")
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+      if (authUser) {
+        // setUserAuth(authUser)
+        console.log("有登入")
+  
+        const localUUID = localStorage.getItem("userUUID")
+        if (localUUID) {
+          // const parsedData = JSON.parse(localUUID)
+          // setLocalUuid(localUUID)
+          console.log(localUUID)
+          console.log('抓到資料')
+        }
+      } else {
+        // setUserAuth(null)
+        console.log("沒登入")
+      }
+    })
+    return () => unsubscribe()
+  }, [])
+
+  const saveDataToDatabase = (data,transactionId) => {
+    // const databaseRef = ref(db, "transactions");
+    const localUUID = localStorage.getItem("userUUID")
+    if (localUUID) {
+      const databaseRef = ref(db, `users/${localUUID}/transactions/${transactionId}`);
+
+      set(databaseRef, data)
+      .then(() => {
+        console.log("数据已成功存储到数据库");
+      })
+      .catch((error) => {
+        console.error("存储数据时发生错误：", error);
+      });
+    }else{
+      console.log('沒抓到localstorage的會員id')
+    }
+
+  };
+
 
   const handleAmountChange = (event) => {
     setAmount(event.target.value)
@@ -29,9 +76,15 @@ function Form({ transactionsArr, setTransactionsArr }) {
         description,
         id: crypto.randomUUID(),
       }
+
+      // ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+      saveDataToDatabase(newTransaction,newTransaction.id);
+      // ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+
       setTransactionsArr([...transactionsArr, newTransaction])
       console.log(newTransaction)
 
+      setSystemMessage("新增成功！")
       setAmount("")
       setDescription("")
     } else {
@@ -42,9 +95,7 @@ function Form({ transactionsArr, setTransactionsArr }) {
   return (
     <div>
       <div
-        className="bg-gray-400 rounded-lg p-3  mb-3
-       flex items-center justify-center"
-      >
+        className="rounded-lg p-2   flex items-center justify-center">
         <select value={type} onChange={(e) => setType(e.target.value)}>
           <option value="expense">支出</option>
           <option value="income">收入</option>
@@ -53,24 +104,24 @@ function Form({ transactionsArr, setTransactionsArr }) {
           type="text"
           placeholder="項目"
           value={description}
-          onChange={handleDescriptionChange}
-        />
+          onChange={handleDescriptionChange}/>
+
         <input
           type="text"
           placeholder="金額"
           value={amount}
-          onChange={handleAmountChange}
-        />
+          onChange={handleAmountChange}/>
+
         <button
           onClick={handleAddTransaction}
           className="text-white p-1 rounded bg-blue-500 hover:bg-blue-600"
-        >
-          新增
-        </button>
+        >新增</button>
+        
       </div>
 
       {systemMessage && (
-        <h4 className="my-1.5 text-red-500  mb-3  flex  justify-center">
+        
+        <h4 className=" text-red-500 font-bold mb-3  flex  justify-center">
           {systemMessage}
         </h4>
       )}

@@ -1,16 +1,12 @@
 import React, { useState } from "react"
-import { auth } from "../config" // 请确保正确导入您的 Firebase 相关模块
+
 
 import { createUserWithEmailAndPassword, signOut } from "firebase/auth"
 import { db } from "../config"
-import { getDatabase, ref, set } from "firebase/database"
+import { getDatabase, ref, set ,get} from "firebase/database"
+import { auth } from "../config" 
 
 function Register() {
-  set(ref(db, "okkkkk/" + 555555), {
-    username: "哈囉測試",
-    email: "哈囉測試",
-  })
-
   const [err, setErr] = useState(false)
   const [success, setSuccess] = useState(false)
   const handleSubmit = async (e) => {
@@ -30,8 +26,6 @@ function Register() {
 
       console.log(firebaseRES.user)
       if (firebaseRES.user) {
-        // const db = getDatabase()
-        // const userRef = ref(db, `users/${firebaseRES.user.uid}`);
         console.log(firebaseRES.user.uid)
         set(ref(db, `users/${firebaseRES.user.uid}`), {
           username: username,
@@ -51,13 +45,50 @@ function Register() {
 
   return (
     <div>
-      <h1>註冊會員</h1>
-      <br />
+
+
+
+      <div className="p-2 flex items-center flex items-center justify-center">
+        <p className=" text-white p-2 rounded ">註冊會員</p>
+
+      </div>
+
+
+
+
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="用戶名" />
-        <input type="email" placeholder="email" />
-        <input type="text" placeholder="密碼至少包含6个字符" />
-        <button>sign up</button>
+
+      <div className="input-container-wrapper">
+        <div className="input-container">
+            <div className="cool-input-div">
+              <input className="cool-input" type="text" placeholder="用戶名"/>
+              <span className="bottom cool-span"></span>
+              <span className="right cool-span"></span>
+              <span className="top cool-span"></span>
+              <span className="left cool-span"></span>
+            </div>
+            <div className="cool-input-div">
+              <input className="cool-input" type="text" placeholder="email"/>
+              <span className="bottom cool-span"></span>
+              <span className="right cool-span"></span>
+              <span className="top cool-span"></span>
+              <span className="left cool-span"></span>
+            </div>
+            <div className="cool-input-div">
+              <input className="cool-input" type="text" placeholder="密碼至少包含6個字"/>
+              <span className="bottom cool-span"></span>
+              <span className="right cool-span"></span>
+              <span className="top cool-span"></span>
+              <span className="left cool-span"></span>
+            </div>
+
+
+                   <div className="p-3 flex items-center flex items-center justify-center">
+            <button className=" text-white p-1 rounded bg-blue-500 hover:bg-blue-600 ">註冊</button>
+            </div>
+
+        </div>
+      </div>
         {err && <p>註冊失敗</p>}
         {success && <p>註冊成功</p>}
       </form>

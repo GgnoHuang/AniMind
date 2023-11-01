@@ -21,24 +21,6 @@ console.log(12425)
 const app = initializeApp(firebaseConfig)
 const db = getDatabase(app)
 const auth = getAuth()
-// const getRecommendationListRef = ref(db,'recommendationList')
-// onValue(getRecommendationListRef,snapshot =>{
-//   const data = snapshot.val()
-//   console.log(data)
+
 
 export { db, auth }
-// 為啥要export auth？
-// 不是可以直接import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
-
-// DATABASE_NAME . REGION .firebasedatabase.app （適用於所有其他位置的資料庫）
-
-// const app = initializeApp(firebaseConfig)
-// const db = getDatabase(app)
-
-// function writeUserData(userId, name, email, imageUrl) {
-//   set(ref(db, 'users/' + userId), {
-//     username: name,
-//     email: email,
-//     profile_picture: imageUrl
-//   });
-// }
