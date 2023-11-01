@@ -27,12 +27,13 @@ function List({ transactionsArr, setTransactionsArr, setSystemMessage }) {
           }
         })
         .catch((error) => {
-          console.error("抓資料發生錯誤", error);
+          console.error("獲取資料發生錯誤", error);
         });
     } else {
       console.log("未找到用户 ID");
     }
-  }, [setTransactionsArr]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
 
   function deleteItem(transactionId) {
@@ -40,6 +41,7 @@ function List({ transactionsArr, setTransactionsArr, setSystemMessage }) {
     // 點下去那個項目的id
     setTransactionsArr((currentTodosArr) =>
       currentTodosArr.filter((todoItem) => todoItem.id !== transactionId))
+
        // const databaseRef = ref(db, "transactions");
       const localUUID = localStorage.getItem("userUUID")
       if (localUUID) {
