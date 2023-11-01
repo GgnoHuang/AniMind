@@ -32,7 +32,7 @@ function List({ transactionsArr, setTransactionsArr, setSystemMessage }) {
     } else {
       console.log("未找到用户 ID");
     }
-  }, []);
+  }, [setTransactionsArr]);
 
 
   function deleteItem(transactionId) {

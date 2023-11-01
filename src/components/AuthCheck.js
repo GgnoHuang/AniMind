@@ -23,7 +23,9 @@ const AuthAndUserData = ({ auth,
       }
     })
     return () => unsubscribe()
-  }, [successMsg])
+  // }, [successMsg])
+  }, [auth, setLocalUserData, setUserAuth]);
+
 // 如果successMsg的值改變了就再執行一次，這樣登入成功就可以馬上setLocalUserData
   return null; // 此處不返回任何HTML
 }
