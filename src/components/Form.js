@@ -41,10 +41,10 @@ function Form({ transactionsArr, setTransactionsArr,systemMessage, setSystemMess
 
       set(databaseRef, data)
       .then(() => {
-        console.log("数据已成功存储到数据库");
+        console.log("成功存到資料庫");
       })
       .catch((error) => {
-        console.error("存储数据时发生错误：", error);
+        console.error("儲存發生錯誤：", error);
       });
     }else{
       console.log('沒抓到localstorage的會員id')
