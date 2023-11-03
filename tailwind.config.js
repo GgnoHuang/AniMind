@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  important: true, // 启用!important选项
+
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -13,3 +15,7 @@ module.exports = {
   },
   plugins: [],
 }
+
+// tailwind.config = {
+//   important: true,
+// };

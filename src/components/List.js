@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect,useCallback } from "react"
 
 import { db } from "../config"
 import { getDatabase, ref, set ,get,remove} from "firebase/database"
@@ -67,11 +67,11 @@ function List({ transactionsArr, setTransactionsArr, setSystemMessage }) {
   return (
     <div>
 
-<p className="bg-blue-100 p-3 text-white-700 font-bold text-sm flex justify-center">
+<p className="bg-blue-100 p-3 text-white-700 text-sm flex justify-center">
   記錄
 </p>
 
-        <ul className="bg-blue-50  text-white-700 font-bold text-1xl flex flex-col items-center">
+        <ul className="bg-blue-50  text-white-700  text-1xl flex flex-col items-center">
         {transactionsArr.map((transaction) => (
           <li key={transaction.id} className="my-1.5">
             <button
@@ -95,7 +95,7 @@ function List({ transactionsArr, setTransactionsArr, setSystemMessage }) {
         ))}
       </ul>
 
-      <h5 className="bg-blue-100  p-3 text-white-700 font-bold text-1xl flex  justify-center">
+      <h5 className="bg-blue-100  p-3 text-white-700  text-1xl flex  justify-center">
         你的錢包:<span className="text-blue-500"> {calculateTotal()}</span>元
       </h5>
     </div>

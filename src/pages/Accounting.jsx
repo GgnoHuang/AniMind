@@ -32,13 +32,9 @@ function Accounting() {
   return () => unsubscribe()
 }, [])
 
-
-
   return (
     <div>
-
-
-      <p className="text-blue-500 bg-blue-100 rounded-lg p-2 mb-3 font-bold text-2xl flex items-center justify-center">
+      <p className="text-blue-500 bg-blue-100 rounded-lg p-2 mb-3  text-2xl flex items-center justify-center">
         開始記帳</p>
 
       <Form transactionsArr={transactionsArr}
