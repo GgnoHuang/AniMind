@@ -7,7 +7,7 @@ export default function CustomNode({ id }) {
 
   const isConnecting = !!connectionNodeId;
   const isTarget = connectionNodeId && connectionNodeId !== id;
-  const label = isTarget ? 'Drop here' : 'Drag to connect';
+  const label = isTarget ? 'Drop here！！' : '拖曳';
 
 
 
