@@ -10,6 +10,7 @@ import Register from "@/components/Register"
 import LogoutBtn from "@/components/LogoutBtn"
 import AuthCheck from "@/components/AuthCheck"
 
+
 function MemberPage() {
   const [localUserData, setLocalUserData] = useState(null)
   const [userAuth, setUserAuth] = useState(null)

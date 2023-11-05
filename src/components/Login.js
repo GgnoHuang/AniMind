@@ -63,17 +63,17 @@ function Login({ errMsg, setErrMsg,setSuccessMsg,successMsg }) {
 
             <div className="cool-input-div">
               <input className="cool-input" type="text" placeholder="email"/>
-              <span className="bottom cool-span"></span>
-              <span className="right cool-span"></span>
-              <span className="top cool-span"></span>
-              <span className="left cool-span"></span>
+              <span className="cool-bottom cool-span"></span>
+              <span className="cool-right cool-span"></span>
+              <span className="cool-top cool-span"></span>
+              <span className="cool-left cool-span"></span>
             </div>
             <div className="cool-input-div">
               <input className="cool-input" type="password" placeholder="密碼至少包含6個字"/>
-              <span className="bottom cool-span"></span>
-              <span className="right cool-span"></span>
-              <span className="top cool-span"></span>
-              <span className="left cool-span"></span>
+              <span className="cool-bottom cool-span"></span>
+              <span className="cool-right cool-span"></span>
+              <span className="cool-top cool-span"></span>
+              <span className="cool-left cool-span"></span>
             </div>
             <div className="p-3 flex items-center flex items-center justify-center">
             <button className=" text-white p-1 rounded bg-blue-500 hover:bg-blue-600 ">登入</button>

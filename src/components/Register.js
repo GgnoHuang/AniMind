@@ -62,24 +62,24 @@ function Register() {
         <div className="input-container">
             <div className="cool-input-div">
               <input className="cool-input" type="text" placeholder="用戶名"/>
-              <span className="bottom cool-span"></span>
-              <span className="right cool-span"></span>
-              <span className="top cool-span"></span>
-              <span className="left cool-span"></span>
+              <span className="cool-bottom cool-span"></span>
+              <span className="cool-right cool-span"></span>
+              <span className="cool-top cool-span"></span>
+              <span className="cool-left cool-span"></span>
             </div>
             <div className="cool-input-div">
               <input className="cool-input" type="text" placeholder="email"/>
-              <span className="bottom cool-span"></span>
-              <span className="right cool-span"></span>
-              <span className="top cool-span"></span>
-              <span className="left cool-span"></span>
+              <span className="cool-bottom cool-span"></span>
+              <span className="cool-right cool-span"></span>
+              <span className="cool-top cool-span"></span>
+              <span className="cool-left cool-span"></span>
             </div>
             <div className="cool-input-div">
               <input className="cool-input" type="text" placeholder="密碼至少包含6個字"/>
-              <span className="bottom cool-span"></span>
-              <span className="right cool-span"></span>
-              <span className="top cool-span"></span>
-              <span className="left cool-span"></span>
+              <span className="cool-bottom cool-span"></span>
+              <span className="cool-right cool-span"></span>
+              <span className="cool-top cool-span"></span>
+              <span className="cool-left cool-span"></span>
             </div>
 
 

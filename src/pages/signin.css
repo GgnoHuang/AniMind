@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hello{
+  border: 4px red solid;
+  height: 500px;
+  width: 800px;
+}
+
+
+
+
+@font-face {
+  font-family: '小濑字体';
+  src: url('../NaikaiFont-Regular.ttf') format('truetype');
+}
+body {
+  font-family: '小濑字体';
+
+  background-color: #dfdfdf;
+}
+
+/* html, body, pre, code, kbd, samp {
+  font-family: "font-family you want to use";
+} */
+.react-flow__node-selectorNode {
+  font-size: 12px;
+  background: #ff3333;
+  border: 5px solid #c80707;
+  border-radius: 5px;
+  text-align: center;
+}
+/* ==================== */
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+
+
+/* ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨ */
+
+
+
+
+
+.customNodeBody {
+  width: 150px;
+  height: 80px;
+  border: 3px solid black;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.customNode:before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  height: 20px;
+  width: 40px;
+  transform: translate(-50%, 0);
+  background: #d6d5e6;
+  z-index: 1000;
+  line-height: 1;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 9px;
+  border: 2px solid #222138;
+}
+
+div.customHandle {
+  width: 100%;
+  height: 100%;
+  background: blue;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0;
+  transform: none;
+  border: none;
+  opacity: 0;
+}
+
+
+
+
+
+
+
+
+
+/* ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨ */
+/* ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨ */
+/* ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨ */
+/* ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨ */
+/* ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨ */
+/* ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨ */
+
+
+
+.input-container-wrapper{
+  border: 3px rgba(215, 187, 187, 0) solid;
+  display: flex;
+  justify-content: center;
+}
+.input-container{
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cool-input-div{
+  display: inline-block;
+  position: relative;
+  width: fit-content;
+  
+}
+.cool-input{
+  width:150px;
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  background-color: hsl(0, 0%, 76%);
+  padding: 0.35em 0.45em;
+  border: 1px solid transparent;
+  transition: background-color 0.3s ease-in-out;
+}
+.cool-input:focus {
+  outline: none;
+}
+.cool-input::placeholder {
+  color: hsla(0, 0%, 100%, 0.6);
+}
+.cool-span {
+  position: absolute;
+  background-color: #3680ff;
+  transform-origin: center;
+  transition: transform 0.5s ease;
+} 
+
+
+.cool-input:focus ~ .top, .cool-input:focus ~ .bottom {
+  transform: scaleX(1);
+}
+.cool-input:focus ~ .left, .cool-input:focus ~ .right {
+  transform: scaleY(1);
+}
+
+
+
+.bottom,
+.top {
+  height: 1px;
+  left: 0;
+  right: 0;
+  transform: scaleX(0);
+}
+
+
+.left,
+.right {
+  width: 1px;
+  top: 0;
+  bottom: 0;
+  transform: scaleY(0);
+}
+
+.top {
+  top: 0;
+}
+.bottom {
+  bottom: 0;
+}
+.left {
+  left: 0;
+}
+.right {
+  right: 0;
+}  
+
+
