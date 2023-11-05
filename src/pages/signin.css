@@ -109,6 +109,7 @@ div.customHandle {
 /* ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨ */
 
 
+
 .input-container-wrapper{
   border: 3px rgba(215, 187, 187, 0) solid;
   display: flex;
@@ -149,16 +150,17 @@ div.customHandle {
 } 
 
 
-.cool-input:focus ~ .cool-top, .cool-input:focus ~ .cool-bottom {
+.cool-input:focus ~ .top, .cool-input:focus ~ .bottom {
   transform: scaleX(1);
 }
-.cool-input:focus ~ .cool-left, .cool-input:focus ~ .cool-right {
+.cool-input:focus ~ .left, .cool-input:focus ~ .right {
   transform: scaleY(1);
 }
 
 
-.cool-bottom,
-.cool-top {
+
+.bottom,
+.top {
   height: 1px;
   left: 0;
   right: 0;
@@ -166,24 +168,24 @@ div.customHandle {
 }
 
 
-.cool-left,
-.cool-right {
+.left,
+.right {
   width: 1px;
   top: 0;
   bottom: 0;
   transform: scaleY(0);
 }
 
-.cool-top {
+.top {
   top: 0;
 }
-.cool-bottom {
+.bottom {
   bottom: 0;
 }
-.cool-left {
+.left {
   left: 0;
 }
-.cool-right {
+.right {
   right: 0;
 }  
 

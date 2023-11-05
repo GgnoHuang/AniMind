@@ -127,9 +127,9 @@ import ReactFlow, {
    } from 'reactflow';
 import 'reactflow/dist/style.css';
 // import 'reactflow/dist/base.css';
-import TextUpdaterNode from './FFFlow_components/TextUpdaterNode'
-import OmgNode from './FFFlow_components/OmgNode'
-import Slidebar from './FFFlow_components/Slidebar.js'
+import TextUpdaterNode from '../nodes/TextUpdaterNode'
+import OmgNode from '../nodes/OmgNode'
+import Slidebar from './Slidebar.js'
 
 
 
@@ -328,10 +328,12 @@ const onRestore = useCallback(() => {
     }
   };
   restoreFlow();
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [setNodes, setViewport]);
 
 useEffect(()=>{
   onRestore();
+// eslint-disable-next-line react-hooks/exhaustive-deps
 },[])
 
 const getNodeId = () => `randomnode_${+new Date()}`;
@@ -339,7 +341,7 @@ const getNodeId = () => `randomnode_${+new Date()}`;
 const onAdd = useCallback(() => {
   const newNode = {
     id: getNodeId(),
-    data: { label: 'Added node' },
+    data: { label: '測試' },
     position: {
       x: Math.random() * window.innerWidth - 100,
       y: Math.random() * window.innerHeight,

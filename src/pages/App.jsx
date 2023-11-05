@@ -3,9 +3,9 @@ import React, { useCallback,useState, useEffect } from 'react';
 
 import ReactFlow, { addEdge, useNodesState, useEdgesState, MarkerType } from 'reactflow';
 
-import CustomNode from './App_components/CustomNode.js';
-import FloatingEdge from './App_components/FloatingEdge.js';
-import CustomConnectionLine from './App_components/CustomConnectionLine.js';
+import CustomNode from '../nodes/CustomNode.js';
+import FloatingEdge from '../nodes/FloatingEdge.js';
+import CustomConnectionLine from '../nodes/CustomConnectionLine.js';
 
 import 'reactflow/dist/style.css';
 // import './style.css';
