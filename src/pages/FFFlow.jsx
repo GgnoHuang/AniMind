@@ -129,6 +129,8 @@ import 'reactflow/dist/style.css';
 // import 'reactflow/dist/base.css';
 import TextUpdaterNode from '../nodes/TextUpdaterNode'
 import OmgNode from '../nodes/OmgNode'
+import OmgNode2 from '../nodes/OmgNode2'
+import ColorNote from '../nodes/ColorNote'
 import Slidebar from './Slidebar.js'
 
 
@@ -142,6 +144,9 @@ const rfStyle = {
 // you could also use useMemo inside the component
 const nodeTypes = { textUpdater: TextUpdaterNode,
     gg: OmgNode,
+    gg2: OmgNode2,
+
+    selectorNode: ColorNote,
 };
 
 const initialEdges = [
@@ -154,6 +159,8 @@ const initialEdges = [
 
 
 function Flow() {
+  const [bgColor, setBgColor] = useState('rgb(169, 196, 199)');
+  const [memoColor, setMemoColor] = useState('');
 
 // ~~~~~~~~~~~~dnd的部分
   const onDragStart = (event, nodeType) => {
@@ -169,13 +176,11 @@ function Flow() {
     const getIdd = () => `dndnode_${id++}`;
 
     // －－－－－
-    
     const onDragOver = useCallback((event) => {
       event.preventDefault();
       event.dataTransfer.dropEffect = 'move';
     }, []);
-    // －－－－－
-
+    // －－－－
     const onDrop = useCallback(
       (event) => {
         event.preventDefault();
@@ -205,7 +210,18 @@ function Flow() {
     );
 // ~~~~~~~~~~~~dnd的部分
   
+// ~~~~選擇色彩部分
+// ~~~~選擇色彩部分
+const onSelectColor = (event) => {
+      const color = event.target.value;
+      setBgColor(color);
+};
+const onSelectMemoColor = (event) => {
+  setMemoColor(event.target.value);
+};
 
+// ~~~~選擇色彩部分
+// ~~~~選擇色彩部分
 
 
 
@@ -254,6 +270,7 @@ function Flow() {
   const initialNodes = [
     { id: 'node-1', type: 'textUpdater', position: { x: 150, y: 0 }, data: { value: '預設值',onInpupu:onInpupu } },
     { id: 'node-2', type: 'textUpdater', position: { x: 0, y: 100 }, data: { value: 123 ,onInpupu:onInpupu } },
+    { id: 'node-123', type: 'selectorNode', position: { x: 222, y: 220 }, data: {onSelectColor:onSelectColor,memoColor:memoColor,onSelectMemoColor:onSelectMemoColor } },
     // { id: 'node-88', type: 'ok', position: { x: 120, y: 100 },    data: { imageSrc: './397996464_10221055704697144_9030095458209260534_n.jpg' }, },
     // { id: 'node-2', type: 'textUpdater', position: { x: 50, y: 100 }, data: { value: 123 } },
     {
@@ -263,7 +280,7 @@ function Flow() {
       position: { x: 200, y: 200 },
       data: { label: 'node 3' },
     },
-    { id: 'node-4', type: 'gg', position: { x: 222, y: 100 }, data: {name: '你好測試', job: '哈囉', emoji: '🔥'} },
+    // { id: 'node-4', type: 'gg', position: { x: 222, y: 100 }, data: {name: '你好測試', job: '哈囉', emoji: '🔥'} },
   
   ];
   // const [nodes, setNodes] = useState(initialNodes);
@@ -400,12 +417,9 @@ const onAdd = useCallback(() => {
   const newNode = {
     id: getNodeId(),
     type: 'gg',
-     data: {name: '你好測試', job: '哈囉', emoji: '🔥',
-    //  imgsrc:'https://images.unsplash.com/photo-1572246538688-3f326dca3951?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8c3VtbWVyfHx8fHx8MTY5OTIzODYxMg&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=400'} ,
-     imgsrc:'https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000340.jpg'} ,
-    //  imgsrc:''} ,
-     
-    // data: { imageSrc: './397996464_10221055704697144_9030095458209260534_n.jpg' }, 
+     data: {name: '我彭粉🔥🔥🔥', job: '測試', emoji: '🔥🔥🔥',
+    //  imgsrc:'https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000340.jpg'} ,
+     imgsrc:'./fan.jpeg'} ,
     position: {
       x: Math.random() * window.innerWidth - 100,
       y: Math.random() * window.innerHeight,
@@ -421,6 +435,7 @@ const onAdd = useCallback(() => {
     <div className='flow-wrapper bg-teal-100' style={{ width: '100%', height: '100vh' }}>
  
     <ReactFlow
+    
     ref={reactFlowWrapper}
       nodes={nodes}
       edges={edges}
@@ -429,7 +444,7 @@ const onAdd = useCallback(() => {
       onConnect={onConnect}
       nodeTypes={nodeTypes}
       fitView
-      style={rfStyle}
+      style={{ background: bgColor }}
       onDrop={onDrop}// 拖曳新增用的
       onDragOver={onDragOver}// 拖曳新增用的
 
@@ -446,7 +461,9 @@ const onAdd = useCallback(() => {
     position={'bottom-left'}
     />
     {/* <MiniMap /> */}
-    <MiniMap nodeColor={'#FF5733'} />
+    <MiniMap 
+     style={{ background: memoColor }}
+    nodeColor={'#FF5733'} />
 
     <Panel>
         {/* <div>背景樣式:</div> */}
@@ -483,37 +500,27 @@ const onAdd = useCallback(() => {
           className="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600"
         >add node</button> */}
       </Panel>
+          {/* 這邊是dnd🔥 */}
+          <Panel  className="bg-red-100 text-white font-semibold py-2 px-4 rounded  ml-1 mr-1"
+          style={{ width: '200px', height: '100％'
+          , position: 'absolute', bottom: '0px',left:'50px'}}>
+          <div className="dndnode input
+          bg-blue-300 text-white font-semibold py-2 px-4 rounded hover:bg-blue-400  ml-1 mr-1
+          " onDragStart={(event) => onDragStart(event, 'selectorNode')} draggable>
+            1
+          </div>
+          <div className="dndnode
+            bg-purple-300 text-white font-semibold py-2 px-4 rounded hover:bg-purple-400  ml-1 mr-1
 
-
-      {/* 這邊是dnd🔥 */}
-  <Panel  className="bg-red-100 text-white font-semibold py-2 px-4 rounded  ml-1 mr-1"
-
-style={{ width: '200px', height: '100％'
-, position: 'absolute', bottom: '0px',left:'50px'
-
-}}
-
-  >
-
-  <div className="dndnode input
-  bg-blue-300 text-white font-semibold py-2 px-4 rounded hover:bg-blue-400  ml-1 mr-1
-
-  " onDragStart={(event) => onDragStart(event, 'input')} draggable>
-    1
-  </div>
-  <div className="dndnode
-    bg-purple-300 text-white font-semibold py-2 px-4 rounded hover:bg-purple-400  ml-1 mr-1
-
-  " onDragStart={(event) => onDragStart(event, 'default')} draggable>
-   2
-  </div>
-  <div className="dndnode output
-    bg-pink-300 text-white font-semibold py-2 px-4 rounded hover:bg-pink-400  ml-1 mr-1
-
-  " onDragStart={(event) => onDragStart(event, 'output')} draggable>
-    3
-  </div>
-</Panel>
+          " onDragStart={(event) => onDragStart(event, 'default')} draggable>
+          2
+          </div>
+          <div className="dndnode output
+            bg-pink-300 text-white font-semibold py-2 px-4 rounded hover:bg-pink-400  ml-1 mr-1
+          " onDragStart={(event) => onDragStart(event, 'gg2')} draggable>
+            3
+          </div>
+      </Panel>
   </ReactFlow>
 
 
