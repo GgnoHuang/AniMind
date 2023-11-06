@@ -12,8 +12,10 @@ export default function CustomNode({ data }) {
           <div className="text-lg font-bold">{data.name}</div>
           <div className="text-gray-500">{data.job}</div>
         </div>
+        <img src={data.imgsrc}/>
+
       </div>
- 
+
       <Handle
         type="target"
         position={Position.Top}

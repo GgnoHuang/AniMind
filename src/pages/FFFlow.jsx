@@ -111,7 +111,7 @@ import { onAuthStateChanged } from "firebase/auth"
 import { getDatabase, ref, set ,get} from "firebase/database"
 
 
-import { useCallback, useState,useEffect } from 'react';
+import { useCallback, useState,useEffect,useRef } from 'react';
 import ReactFlow, { 
   ReactFlowProvider,
   useNodesState,
@@ -133,6 +133,7 @@ import Slidebar from './Slidebar.js'
 
 
 
+
 const rfStyle = {
   // backgroundColor: '#B8CEFF',
 };
@@ -140,7 +141,7 @@ const rfStyle = {
 // we define the nodeTypes outside of the component to prevent re-renderings
 // you could also use useMemo inside the component
 const nodeTypes = { textUpdater: TextUpdaterNode,
-    gg: OmgNode, // 假设你有一个名为 GoodNode 的节点组件
+    gg: OmgNode,
 };
 
 const initialEdges = [
@@ -149,13 +150,67 @@ const initialEdges = [
   { id: 'edge-3', source: 'node-1', target: 'node-3', sourceHandle: 'a' },
 ];
 
+
+
+
 function Flow() {
+
+// ~~~~~~~~~~~~dnd的部分
+  const onDragStart = (event, nodeType) => {
+    event.dataTransfer.setData('application/reactflow', nodeType);
+    event.dataTransfer.effectAllowed = 'move';
+  }
+    // －－－－－
+    const reactFlowWrapper = useRef(null);
+  const [reactFlowInstance, setReactFlowInstance] = useState(null);
+
+    // －－－－－
+    let id = 0;
+    const getIdd = () => `dndnode_${id++}`;
+
+    // －－－－－
+    
+    const onDragOver = useCallback((event) => {
+      event.preventDefault();
+      event.dataTransfer.dropEffect = 'move';
+    }, []);
+    // －－－－－
+
+    const onDrop = useCallback(
+      (event) => {
+        event.preventDefault();
+  
+        const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
+        const type = event.dataTransfer.getData('application/reactflow');
+  
+        // check if the dropped element is valid
+        if (typeof type === 'undefined' || !type) {
+          return;
+        }
+  
+        const position = reactFlowInstance.project({
+          x: event.clientX - reactFlowBounds.left,
+          y: event.clientY - reactFlowBounds.top,
+        });
+        const newNode = {
+          id: getIdd(),
+          type,
+          position,
+          data: { label: `${type} node` },
+        };
+  
+        setNodes((nds) => nds.concat(newNode));
+      },
+      [reactFlowInstance]
+    );
+// ~~~~~~~~~~~~dnd的部分
+  
+
+
 
 
 
   const [inpupu, setInpupu] = useState('');
-
-
   const onInpupu = (event) => {
     console.log('當前輸入：', event.target.value);
     setInpupu(event.target.value);
@@ -194,9 +249,12 @@ function Flow() {
     return () => unsubscribe()
   }, [])
 
+
+  
   const initialNodes = [
     { id: 'node-1', type: 'textUpdater', position: { x: 150, y: 0 }, data: { value: '預設值',onInpupu:onInpupu } },
     { id: 'node-2', type: 'textUpdater', position: { x: 0, y: 100 }, data: { value: 123 ,onInpupu:onInpupu } },
+    // { id: 'node-88', type: 'ok', position: { x: 120, y: 100 },    data: { imageSrc: './397996464_10221055704697144_9030095458209260534_n.jpg' }, },
     // { id: 'node-2', type: 'textUpdater', position: { x: 50, y: 100 }, data: { value: 123 } },
     {
       id: 'node-3',
@@ -213,7 +271,7 @@ function Flow() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   // ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨
-  const [rfInstance, setRfInstance] = useState(null);
+  // const [rfInstance, setRfInstance] = useState(null);
   const [variant, setVariant] = useState('cross');
 
 
@@ -260,8 +318,8 @@ function Flow() {
 
 
   const onSave = useCallback(() => {
-    if (rfInstance) {
-          const flow = rfInstance.toObject();
+    if (reactFlowInstance) {
+          const flow = reactFlowInstance.toObject();
           // localStorage.setItem(flowKey, JSON.stringify(flow));
           const localUUID = localStorage.getItem("userUUID")
         if (localUUID) {
@@ -279,7 +337,7 @@ function Flow() {
     }else{
       console.log(22222)
     }
-}, [rfInstance]);
+}, [reactFlowInstance]);
 
 
 
@@ -341,7 +399,13 @@ const getNodeId = () => `randomnode_${+new Date()}`;
 const onAdd = useCallback(() => {
   const newNode = {
     id: getNodeId(),
-    data: { label: '測試' },
+    type: 'gg',
+     data: {name: '你好測試', job: '哈囉', emoji: '🔥',
+    //  imgsrc:'https://images.unsplash.com/photo-1572246538688-3f326dca3951?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8c3VtbWVyfHx8fHx8MTY5OTIzODYxMg&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=400'} ,
+     imgsrc:'https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000340.jpg'} ,
+    //  imgsrc:''} ,
+     
+    // data: { imageSrc: './397996464_10221055704697144_9030095458209260534_n.jpg' }, 
     position: {
       x: Math.random() * window.innerWidth - 100,
       y: Math.random() * window.innerHeight,
@@ -354,10 +418,10 @@ const onAdd = useCallback(() => {
 
   return (
 
-
     <div className='flow-wrapper bg-teal-100' style={{ width: '100%', height: '100vh' }}>
  
     <ReactFlow
+    ref={reactFlowWrapper}
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -366,7 +430,10 @@ const onAdd = useCallback(() => {
       nodeTypes={nodeTypes}
       fitView
       style={rfStyle}
-      onInit={setRfInstance}
+      onDrop={onDrop}// 拖曳新增用的
+      onDragOver={onDragOver}// 拖曳新增用的
+
+      onInit={setReactFlowInstance}
 
     >
       
@@ -382,17 +449,17 @@ const onAdd = useCallback(() => {
     <MiniMap nodeColor={'#FF5733'} />
 
     <Panel>
-        <div>背景樣式:</div>
+        {/* <div>背景樣式:</div> */}
         <button 
-                  className="bg-yellow-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600 ml-1 mr-1"
+                  className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
 
         onClick={() => setVariant('dots')}>點狀</button>
         <button
-                          className="bg-yellow-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600 ml-1 mr-1"
+                          className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
 
          onClick={() => setVariant('lines')}>格紋</button>
         <button
-                          className="bg-yellow-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600 ml-1 mr-1"
+                          className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
 
         onClick={() => setVariant('cross')}>十字</button>
 
@@ -416,6 +483,37 @@ const onAdd = useCallback(() => {
           className="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600"
         >add node</button> */}
       </Panel>
+
+
+      {/* 這邊是dnd🔥 */}
+  <Panel  className="bg-red-100 text-white font-semibold py-2 px-4 rounded  ml-1 mr-1"
+
+style={{ width: '200px', height: '100％'
+, position: 'absolute', bottom: '0px',left:'50px'
+
+}}
+
+  >
+
+  <div className="dndnode input
+  bg-blue-300 text-white font-semibold py-2 px-4 rounded hover:bg-blue-400  ml-1 mr-1
+
+  " onDragStart={(event) => onDragStart(event, 'input')} draggable>
+    1
+  </div>
+  <div className="dndnode
+    bg-purple-300 text-white font-semibold py-2 px-4 rounded hover:bg-purple-400  ml-1 mr-1
+
+  " onDragStart={(event) => onDragStart(event, 'default')} draggable>
+   2
+  </div>
+  <div className="dndnode output
+    bg-pink-300 text-white font-semibold py-2 px-4 rounded hover:bg-pink-400  ml-1 mr-1
+
+  " onDragStart={(event) => onDragStart(event, 'output')} draggable>
+    3
+  </div>
+</Panel>
   </ReactFlow>
 
 
