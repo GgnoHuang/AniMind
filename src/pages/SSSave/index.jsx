@@ -8,7 +8,7 @@ import ReactFlow, {
   Panel,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
-import { auth,db } from "../config" 
+import { auth,db } from "../../config" 
 // import { onAuthStateChanged ,ref,set,get} from "firebase/auth"
 import { onAuthStateChanged } from "firebase/auth"
 import { getDatabase, ref, set ,get} from "firebase/database"

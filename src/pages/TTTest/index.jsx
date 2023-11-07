@@ -3,14 +3,14 @@ import React, { useCallback,useState, useEffect } from 'react';
 
 import ReactFlow, { addEdge, useNodesState, useEdgesState, MarkerType } from 'reactflow';
 
-import CustomNode from '../nodes/CustomNode.js';
-import FloatingEdge from '../nodes/FloatingEdge.js';
-import CustomConnectionLine from '../nodes/CustomConnectionLine.js';
+import CustomNode from '../../nodes/CustomNode.js';
+import FloatingEdge from '../../nodes/FloatingEdge.js';
+import CustomConnectionLine from '../../nodes/CustomConnectionLine.js';
 
 import 'reactflow/dist/style.css';
-// import './style.css';
 
 
+// import styles from './index.module.css';
 
 const initialNodes = [
   { id: '1', type: 'custom',position: { x: 0, y: 0 }, },
@@ -74,22 +74,21 @@ const EasyConnectExample = () => {
 
     <div className='hello'>
 
- 
-    <div className='flow-wrapper bg-yellow-100' style={{ width: '100%', height: '100%' }}>
-      <ReactFlow
-        nodes={nodes}
-        edges={edges}
-        onNodesChange={onNodesChange}
-        onEdgesChange={onEdgesChange}
-        onConnect={onConnect}
-        fitView
-        nodeTypes={nodeTypes}
-        edgeTypes={edgeTypes}
-        defaultEdgeOptions={defaultEdgeOptions}
-        connectionLineComponent={CustomConnectionLine}
-        connectionLineStyle={connectionLineStyle}
-      />
-    </div>
+      <div className='flow-wrapper bg-yellow-100' style={{ width: '100%', height: '100%' }} >
+        <ReactFlow
+          nodes={nodes}
+          edges={edges}
+          onNodesChange={onNodesChange}
+          onEdgesChange={onEdgesChange}
+          onConnect={onConnect}
+          fitView
+          nodeTypes={nodeTypes}
+          edgeTypes={edgeTypes}
+          defaultEdgeOptions={defaultEdgeOptions}
+          connectionLineComponent={CustomConnectionLine}
+          connectionLineStyle={connectionLineStyle}
+        />
+      </div>
     </div>
 
   );

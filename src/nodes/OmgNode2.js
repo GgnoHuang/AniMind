@@ -4,8 +4,8 @@ import { Handle, Position } from 'reactflow';
 export default function CustomNode({ data }) {
   return (
     <div 
-    style={{ width: '100%', height: '100%' }}
-
+    
+    style={{ width: '100px', height: '100px' }}
     className="px-4 py-2 shadow-md rounded-md bg-white border-2 border-stone-400">
       <div className="flex">
         <div className="rounded-full w-12 h-12 flex justify-center items-center bg-gray-100">
@@ -15,8 +15,7 @@ export default function CustomNode({ data }) {
           <div className="text-lg font-bold">{data.name}</div>
           <div className="text-gray-500">{data.job}</div>
         </div>
-        <img src={data.imgsrc}/>
-
+        <img src='./peng.png'/>
 
       </div>
 

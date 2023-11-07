@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 
 import React, { useState, useEffect,useCallback } from "react"
 
@@ -32,7 +33,7 @@ function List({ transactionsArr, setTransactionsArr, setSystemMessage }) {
     } else {
       console.log("未找到用户 ID");
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, []);
 
 

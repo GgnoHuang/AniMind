@@ -9,8 +9,6 @@
 }
 
 
-
-
 @font-face {
   font-family: '小濑字体';
   src: url('../NaikaiFont-Regular.ttf') format('truetype');
@@ -24,13 +22,17 @@ body {
 /* html, body, pre, code, kbd, samp {
   font-family: "font-family you want to use";
 } */
+
+/* flow的一些 預設樣式 */
+
 .react-flow__node-selectorNode {
-  font-size: 12px;
-  background: #ff3333;
-  border: 5px solid #c80707;
+  background: #eee;
+  border: 1px solid #000000;
   border-radius: 5px;
   text-align: center;
 }
+
+
 /* ==================== */
 
 html, body, #root {

@@ -1,10 +1,10 @@
 // ~🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 import React, { useState } from "react"
-import { auth } from "../config"
+import { auth } from "../../config"
 
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { getDatabase, ref, get } from "firebase/database"
-import { db } from "../config"
+import { db } from "../../config"
 
 function Login({ errMsg, setErrMsg,setSuccessMsg,successMsg }) {
   // const [errMsg, setErrMsg] = useState(false)

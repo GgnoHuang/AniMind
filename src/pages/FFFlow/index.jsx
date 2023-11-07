@@ -86,32 +86,24 @@
 // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
 // //     <div style={{ width: '100%', height: '100vh' }}>
 
 // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
-import { auth,db } from "../config" 
+import styles from "./dog.module.css";
+
+
+
+import { auth,db } from "../../config" 
 // import { onAuthStateChanged ,ref,set,get} from "firebase/auth"
 import { onAuthStateChanged } from "firebase/auth"
 import { getDatabase, ref, set ,get} from "firebase/database"
 
 
-import { useCallback, useState,useEffect } from 'react';
+import { useCallback, useState,useEffect,useRef } from 'react';
 import ReactFlow, { 
   ReactFlowProvider,
   useNodesState,
@@ -127,20 +119,18 @@ import ReactFlow, {
    } from 'reactflow';
 import 'reactflow/dist/style.css';
 // import 'reactflow/dist/base.css';
-import TextUpdaterNode from '../nodes/TextUpdaterNode'
-import OmgNode from '../nodes/OmgNode'
+import TextUpdaterNode from '../../nodes/TextUpdaterNode'
+import OmgNode from '../../nodes/OmgNode'
+import OmgNode2 from '../../nodes/OmgNode2'
+import ColorNote from '../../nodes/ColorNote'
 import Slidebar from './Slidebar.js'
-
-
-
-const rfStyle = {
-  // backgroundColor: '#B8CEFF',
-};
 
 // we define the nodeTypes outside of the component to prevent re-renderings
 // you could also use useMemo inside the component
 const nodeTypes = { textUpdater: TextUpdaterNode,
-    gg: OmgNode, // 假设你有一个名为 GoodNode 的节点组件
+    gg: OmgNode,
+    gg2: OmgNode2,
+    selectorNode: ColorNote,
 };
 
 const initialEdges = [
@@ -150,12 +140,78 @@ const initialEdges = [
 ];
 
 function Flow() {
+  // const [bgColor, setBgColor] = useState('rgb(169, 196, 199)');
+  // const [memoColor, setMemoColor] = useState('');
+
+// ~~~~~~~~~~~~dnd的部分
+  const onDragStart = (event, nodeType) => {
+    event.dataTransfer.setData('application/reactflow', nodeType);
+    event.dataTransfer.effectAllowed = 'move';
+  }
+    // －－－－－
+    const reactFlowWrapper = useRef(null);
+  const [reactFlowInstance, setReactFlowInstance] = useState(null);
+
+    // －－－－－
+    let id = 0;
+    const getIdd = () => `dndnode_${id++}`;
+
+    // －－－－－
+    const onDragOver = useCallback((event) => {
+      event.preventDefault();
+      event.dataTransfer.dropEffect = 'move';
+    }, []);
+    // －－－－
+    const onDrop = useCallback(
+      (event) => {
+        event.preventDefault();
+  
+        const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
+        const type = event.dataTransfer.getData('application/reactflow');
+  
+        // check if the dropped element is valid
+        if (typeof type === 'undefined' || !type) {
+          return;
+        }
+  
+        const position = reactFlowInstance.project({
+          x: event.clientX - reactFlowBounds.left,
+          y: event.clientY - reactFlowBounds.top,
+        });
+        const newNode = {
+          id: getIdd(),
+          type,
+          position,
+          data: { label: `${type} node` },
+        };
+  
+        setNodes((nds) => nds.concat(newNode));
+      },
+
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [reactFlowInstance]
+    );
+// ~~~~~~~~~~~~dnd的部分
+  
+// ~~~~選擇色彩部分
+// ~~~~選擇色彩部分
+const onSelectColor = (event) => {
+  return
+      const color = event.target.value;
+      setBgColor(color);
+};
+const onSelectMemoColor = (event) => {
+  return
+  setMemoColor(event.target.value);
+};
+
+// ~~~~選擇色彩部分
+// ~~~~選擇色彩部分
+
 
 
 
   const [inpupu, setInpupu] = useState('');
-
-
   const onInpupu = (event) => {
     console.log('當前輸入：', event.target.value);
     setInpupu(event.target.value);
@@ -194,10 +250,14 @@ function Flow() {
     return () => unsubscribe()
   }, [])
 
+
+  
   const initialNodes = [
     { id: 'node-1', type: 'textUpdater', position: { x: 150, y: 0 }, data: { value: '預設值',onInpupu:onInpupu } },
     { id: 'node-2', type: 'textUpdater', position: { x: 0, y: 100 }, data: { value: 123 ,onInpupu:onInpupu } },
-    // { id: 'node-2', type: 'textUpdater', position: { x: 50, y: 100 }, data: { value: 123 } },
+    { id: 'node-55', type: 'textUpdater', position: { x: 222, y: 100 }, data: { value: 123 ,onInpupu:onInpupu } },
+    // { id: 'node-123', type: 'selectorNode', position: { x: 222, y: 220 }, data: {onSelectColor:onSelectColor,memoColor:memoColor,onSelectMemoColor:onSelectMemoColor } },
+
     {
       id: 'node-3',
       type: 'output',
@@ -205,15 +265,12 @@ function Flow() {
       position: { x: 200, y: 200 },
       data: { label: 'node 3' },
     },
-    { id: 'node-4', type: 'gg', position: { x: 222, y: 100 }, data: {name: '你好測試', job: '哈囉', emoji: '🔥'} },
   
   ];
-  // const [nodes, setNodes] = useState(initialNodes);
-  // const [edges, setEdges] = useState(initialEdges);
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   // ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨
-  const [rfInstance, setRfInstance] = useState(null);
+  // const [rfInstance, setRfInstance] = useState(null);
   const [variant, setVariant] = useState('cross');
 
 
@@ -260,8 +317,8 @@ function Flow() {
 
 
   const onSave = useCallback(() => {
-    if (rfInstance) {
-          const flow = rfInstance.toObject();
+    if (reactFlowInstance) {
+          const flow = reactFlowInstance.toObject();
           // localStorage.setItem(flowKey, JSON.stringify(flow));
           const localUUID = localStorage.getItem("userUUID")
         if (localUUID) {
@@ -279,7 +336,7 @@ function Flow() {
     }else{
       console.log(22222)
     }
-}, [rfInstance]);
+}, [reactFlowInstance]);
 
 
 
@@ -341,7 +398,10 @@ const getNodeId = () => `randomnode_${+new Date()}`;
 const onAdd = useCallback(() => {
   const newNode = {
     id: getNodeId(),
-    data: { label: '測試' },
+    type: 'gg',
+     data: {name: '我彭粉🔥🔥🔥', job: '測試', emoji: '🔥🔥🔥',
+    //  imgsrc:'https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000340.jpg'} ,
+     imgsrc:'./fan.jpeg'} ,
     position: {
       x: Math.random() * window.innerWidth - 100,
       y: Math.random() * window.innerHeight,
@@ -354,10 +414,11 @@ const onAdd = useCallback(() => {
 
   return (
 
-
     <div className='flow-wrapper bg-teal-100' style={{ width: '100%', height: '100vh' }}>
  
     <ReactFlow
+    
+    ref={reactFlowWrapper}
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -365,8 +426,11 @@ const onAdd = useCallback(() => {
       onConnect={onConnect}
       nodeTypes={nodeTypes}
       fitView
-      style={rfStyle}
-      onInit={setRfInstance}
+      // style={{ background: bgColor }}
+      onDrop={onDrop}// 拖曳新增用的
+      onDragOver={onDragOver}// 拖曳新增用的
+
+      onInit={setReactFlowInstance}
 
     >
       
@@ -379,20 +443,23 @@ const onAdd = useCallback(() => {
     position={'bottom-left'}
     />
     {/* <MiniMap /> */}
-    <MiniMap nodeColor={'#FF5733'} />
+    <MiniMap 
+    //  style={{ background: memoColor }}
+    // nodeColor={'#FF5733'}
+     />
 
     <Panel>
-        <div>背景樣式:</div>
+        {/* <div>背景樣式:</div> */}
         <button 
-                  className="bg-yellow-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600 ml-1 mr-1"
+                  className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
 
         onClick={() => setVariant('dots')}>點狀</button>
         <button
-                          className="bg-yellow-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600 ml-1 mr-1"
+                          className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
 
          onClick={() => setVariant('lines')}>格紋</button>
         <button
-                          className="bg-yellow-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600 ml-1 mr-1"
+                          className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
 
         onClick={() => setVariant('cross')}>十字</button>
 
@@ -415,6 +482,27 @@ const onAdd = useCallback(() => {
         {/* <button onClick={onAdd}
           className="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600"
         >add node</button> */}
+      </Panel>
+          {/* 這邊是dnd🔥 */}
+          <Panel  className="bg-red-100 text-white font-semibold py-2 px-4 rounded  ml-1 mr-1"
+          style={{ width: '200px', height: '100％'
+          , position: 'absolute', bottom: '0px',left:'50px'}}>
+          <div className="dndnode input
+          bg-blue-300 text-white font-semibold py-2 px-4 rounded hover:bg-blue-400  ml-1 mr-1
+          " onDragStart={(event) => onDragStart(event, 'selectorNode')} draggable>
+            1
+          </div>
+          <div className="dndnode
+            bg-purple-300 text-white font-semibold py-2 px-4 rounded hover:bg-purple-400  ml-1 mr-1
+
+          " onDragStart={(event) => onDragStart(event, 'default')} draggable>
+          2
+          </div>
+          <div className="dndnode output
+            bg-pink-300 text-white font-semibold py-2 px-4 rounded hover:bg-pink-400  ml-1 mr-1
+          " onDragStart={(event) => onDragStart(event, 'gg2')} draggable>
+            3
+          </div>
       </Panel>
   </ReactFlow>
 

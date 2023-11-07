@@ -7,7 +7,7 @@ export default function CustomNode({ id }) {
 
   const isConnecting = !!connectionNodeId;
   const isTarget = connectionNodeId && connectionNodeId !== id;
-  const label = isTarget ? 'Drop here！！' : '拖曳';
+  const label = isTarget ? '來來來來來' : '拖曳';
 
 
 

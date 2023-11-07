@@ -1,12 +1,12 @@
 import React, { useState , useEffect} from "react"
 import Link from "next/link"
 import { onAuthStateChanged } from "firebase/auth"
-import { auth } from "../config"
+import { auth } from "../../config"
 
 // import "nes.css/css/nes.min.css";
 
-import Form from "../components/Form"
-import List from "../components/List"
+import Form from "./Form"
+import List from "../../components/List"
 
 function Accounting() {
   const [transactionsArr, setTransactionsArr] = useState([])

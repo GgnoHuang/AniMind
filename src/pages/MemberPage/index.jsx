@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react"
 import Link from "next/link"
 
 import "firebase/auth"
-import { auth } from "../config"
+import { auth } from "../../config"
 // 有import { auth } 就不用import getAuth()
 
-import Login from "@/components/Login"
-import Register from "@/components/Register"
+import Login from "@/pages/MemberPage/Login"
+import Register from "@/pages/MemberPage/Register"
 import LogoutBtn from "@/components/LogoutBtn"
 import AuthCheck from "@/components/AuthCheck"
 
