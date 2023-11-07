@@ -93,6 +93,10 @@
 // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
+import styles from "./dog.module.css";
+
+
+
 import { auth,db } from "../../config" 
 // import { onAuthStateChanged ,ref,set,get} from "firebase/auth"
 import { onAuthStateChanged } from "firebase/auth"
