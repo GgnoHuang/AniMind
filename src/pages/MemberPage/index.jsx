@@ -5,10 +5,11 @@ import "firebase/auth"
 import { auth } from "../../config"
 // 有import { auth } 就不用import getAuth()
 
-import Login from "@/pages/MemberPage/Login"
-import Register from "@/pages/MemberPage/Register"
-import LogoutBtn from "@/components/LogoutBtn"
-import AuthCheck from "@/components/AuthCheck"
+
+import Login from "./Login"
+import Register from "./Register"
+import LogoutBtn from "../../components/LogoutBtn"
+import AuthCheck from "../../components/AuthCheck"
 
 
 function MemberPage() {
