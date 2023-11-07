@@ -3,8 +3,9 @@ import React, { useState, useEffect } from "react"
 import { auth } from "../config"
 import { onAuthStateChanged } from "firebase/auth"
 
-import LogoutBtn from "@/components/LogoutBtn"
-import AuthCheck from "@/components/AuthCheck"
+import LogoutBtn from "../components/LogoutBtn"
+
+import AuthCheck from "../components/AuthCheck"
 
 function Home() {
   const [userAuth, setUserAuth] = useState(null)
