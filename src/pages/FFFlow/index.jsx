@@ -86,26 +86,14 @@
 // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
 // //     <div style={{ width: '100%', height: '100vh' }}>
 
 // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
-import { auth,db } from "../config" 
+import { auth,db } from "../../config" 
 // import { onAuthStateChanged ,ref,set,get} from "firebase/auth"
 import { onAuthStateChanged } from "firebase/auth"
 import { getDatabase, ref, set ,get} from "firebase/database"
@@ -127,25 +115,17 @@ import ReactFlow, {
    } from 'reactflow';
 import 'reactflow/dist/style.css';
 // import 'reactflow/dist/base.css';
-import TextUpdaterNode from '../nodes/TextUpdaterNode'
-import OmgNode from '../nodes/OmgNode'
-import OmgNode2 from '../nodes/OmgNode2'
-import ColorNote from '../nodes/ColorNote'
+import TextUpdaterNode from '../../nodes/TextUpdaterNode'
+import OmgNode from '../../nodes/OmgNode'
+import OmgNode2 from '../../nodes/OmgNode2'
+import ColorNote from '../../nodes/ColorNote'
 import Slidebar from './Slidebar.js'
-
-
-
-
-const rfStyle = {
-  // backgroundColor: '#B8CEFF',
-};
 
 // we define the nodeTypes outside of the component to prevent re-renderings
 // you could also use useMemo inside the component
 const nodeTypes = { textUpdater: TextUpdaterNode,
     gg: OmgNode,
     gg2: OmgNode2,
-
     selectorNode: ColorNote,
 };
 
@@ -155,12 +135,9 @@ const initialEdges = [
   { id: 'edge-3', source: 'node-1', target: 'node-3', sourceHandle: 'a' },
 ];
 
-
-
-
 function Flow() {
-  const [bgColor, setBgColor] = useState('rgb(169, 196, 199)');
-  const [memoColor, setMemoColor] = useState('');
+  // const [bgColor, setBgColor] = useState('rgb(169, 196, 199)');
+  // const [memoColor, setMemoColor] = useState('');
 
 // ~~~~~~~~~~~~dnd的部分
   const onDragStart = (event, nodeType) => {
@@ -213,10 +190,12 @@ function Flow() {
 // ~~~~選擇色彩部分
 // ~~~~選擇色彩部分
 const onSelectColor = (event) => {
+  return
       const color = event.target.value;
       setBgColor(color);
 };
 const onSelectMemoColor = (event) => {
+  return
   setMemoColor(event.target.value);
 };
 
@@ -270,9 +249,9 @@ const onSelectMemoColor = (event) => {
   const initialNodes = [
     { id: 'node-1', type: 'textUpdater', position: { x: 150, y: 0 }, data: { value: '預設值',onInpupu:onInpupu } },
     { id: 'node-2', type: 'textUpdater', position: { x: 0, y: 100 }, data: { value: 123 ,onInpupu:onInpupu } },
-    { id: 'node-123', type: 'selectorNode', position: { x: 222, y: 220 }, data: {onSelectColor:onSelectColor,memoColor:memoColor,onSelectMemoColor:onSelectMemoColor } },
-    // { id: 'node-88', type: 'ok', position: { x: 120, y: 100 },    data: { imageSrc: './397996464_10221055704697144_9030095458209260534_n.jpg' }, },
-    // { id: 'node-2', type: 'textUpdater', position: { x: 50, y: 100 }, data: { value: 123 } },
+    { id: 'node-55', type: 'textUpdater', position: { x: 222, y: 100 }, data: { value: 123 ,onInpupu:onInpupu } },
+    // { id: 'node-123', type: 'selectorNode', position: { x: 222, y: 220 }, data: {onSelectColor:onSelectColor,memoColor:memoColor,onSelectMemoColor:onSelectMemoColor } },
+
     {
       id: 'node-3',
       type: 'output',
@@ -280,11 +259,8 @@ const onSelectMemoColor = (event) => {
       position: { x: 200, y: 200 },
       data: { label: 'node 3' },
     },
-    // { id: 'node-4', type: 'gg', position: { x: 222, y: 100 }, data: {name: '你好測試', job: '哈囉', emoji: '🔥'} },
   
   ];
-  // const [nodes, setNodes] = useState(initialNodes);
-  // const [edges, setEdges] = useState(initialEdges);
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   // ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨
@@ -444,7 +420,7 @@ const onAdd = useCallback(() => {
       onConnect={onConnect}
       nodeTypes={nodeTypes}
       fitView
-      style={{ background: bgColor }}
+      // style={{ background: bgColor }}
       onDrop={onDrop}// 拖曳新增用的
       onDragOver={onDragOver}// 拖曳新增用的
 
@@ -462,8 +438,9 @@ const onAdd = useCallback(() => {
     />
     {/* <MiniMap /> */}
     <MiniMap 
-     style={{ background: memoColor }}
-    nodeColor={'#FF5733'} />
+    //  style={{ background: memoColor }}
+    // nodeColor={'#FF5733'}
+     />
 
     <Panel>
         {/* <div>背景樣式:</div> */}

@@ -1,9 +1,9 @@
 
 import React, { useState, useEffect } from "react"
 
-import { db } from "../config"
+import { db } from "../../config"
 import { getDatabase, ref, set ,get} from "firebase/database"
-import { auth } from "../config" 
+import { auth } from "../../config" 
 import { onAuthStateChanged } from "firebase/auth"
 
 function Form({ transactionsArr, setTransactionsArr,systemMessage, setSystemMessage }) {

@@ -2,9 +2,9 @@ import React, { useState } from "react"
 
 
 import { createUserWithEmailAndPassword, signOut } from "firebase/auth"
-import { db } from "../config"
+import { db } from "../../config"
 import { getDatabase, ref, set ,get} from "firebase/database"
-import { auth } from "../config" 
+import { auth } from "../../config" 
 
 function Register() {
   const [err, setErr] = useState(false)
