@@ -183,6 +183,8 @@ function Flow() {
   
         setNodes((nds) => nds.concat(newNode));
       },
+
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       [reactFlowInstance]
     );
 // ~~~~~~~~~~~~dnd的部分

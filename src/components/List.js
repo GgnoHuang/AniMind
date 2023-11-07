@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect,useCallback } from "react"
 
-import { db } from "../../config"
+import { db } from "../config"
 import { getDatabase, ref, set ,get,remove} from "firebase/database"
 
 function List({ transactionsArr, setTransactionsArr, setSystemMessage }) {
