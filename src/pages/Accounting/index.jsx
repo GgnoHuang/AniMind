@@ -6,7 +6,7 @@ import { auth } from "../../config"
 // import "nes.css/css/nes.min.css";
 
 import Form from "./Form"
-import List from "../../components/List"
+import List from "./List"
 
 function Accounting() {
   const [transactionsArr, setTransactionsArr] = useState([])
