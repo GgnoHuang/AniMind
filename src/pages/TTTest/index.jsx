@@ -8,6 +8,7 @@ import FloatingEdge from '../../nodes/FloatingEdge.js';
 import CustomConnectionLine from '../../nodes/CustomConnectionLine.js';
 
 import 'reactflow/dist/style.css';
+import styles from "./test.module.css";
 
 
 // import styles from './index.module.css';
@@ -71,10 +72,26 @@ const EasyConnectExample = () => {
 
 
   return (
+    <div className={styles.hello}>
+    <div  className="flex flex-col gap-3 border-2 border-sky-500 h-screen w-1/4 max-w-150 absolute z-50">
+    {/* <div  className={styles.側邊欄}> */}
 
-    <div className='hello'>
+      <p className='border-2 border-purple-500 flex justify-center items-center hover:bg-blue-500 h-10'>hello</p>
+      <p className='border-2 border-purple-500 flex justify-center items-center hover:bg-blue-500 h-10'>hello</p>
+      <p className='border-2 border-purple-500 flex justify-center items-center hover:bg-blue-500 h-10'>hello</p>
+      <p className='border-2 border-purple-500 flex justify-center items-center hover:bg-blue-500 h-10'>hello</p>
+      <p className='border-2 border-purple-500 flex justify-center items-center hover:bg-blue-500 h-10'>hello</p>
+      <p className='border-2 border-purple-500 flex justify-center items-center hover:bg-blue-500 h-10'>hello</p>
+      <p className='border-2 border-purple-500 flex justify-center items-center hover:bg-blue-500 h-10'>hello</p>
 
-      <div className='flow-wrapper bg-yellow-100' style={{ width: '100%', height: '100%' }} >
+  
+    </div>
+      
+      {/* <div className='flow-wrapper bg-yellow-100' style={{ width: '100%', height: '100%' }} > */}
+
+      <div className='flow-wrapper bg-yellow-100 border-2 border-purple-500 border-solid' style={{ width: '100%', height: '100%' }}>
+
+
         <ReactFlow
           nodes={nodes}
           edges={edges}

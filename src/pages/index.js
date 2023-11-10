@@ -46,6 +46,12 @@ function Home() {
 
       <div className="p-8 flex items-center flex items-center justify-center">
           <button className="text-white p-2 rounded bg-blue-500 hover:bg-blue-600 ">
+          <Link href="/Zus">zustand測試</Link>
+        </button>
+      </div>
+
+      <div className="p-8 flex items-center flex items-center justify-center">
+          <button className="text-white p-2 rounded bg-blue-500 hover:bg-blue-600 ">
           <Link href="/TTTest">專案測試</Link>
         </button>
       </div>

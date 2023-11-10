@@ -2,11 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.hello{
-  border: 4px red solid;
-  height: 500px;
-  width: 800px;
-}
+
 
 
 @font-face {
@@ -24,6 +20,7 @@ body {
 } */
 
 /* flow的一些 預設樣式 */
+
 
 .react-flow__node-selectorNode {
   background: #eee;
