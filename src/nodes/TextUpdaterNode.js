@@ -1,7 +1,9 @@
-import { Handle, Position } from 'reactflow';
+import { Handle, NodeProps,Position, } from 'reactflow';
 import { useCallback, useState,useEffect } from 'react';
 
 const handleStyle = { left: 15 };
+
+// import useStore, { NodeData } from '..//pages/FFFlow/store';
 
 function TextUpdaterNode({ data,isConnectable }) {
 

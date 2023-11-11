@@ -5,10 +5,6 @@ function UserProfile() {
   const { username,  zSetUsername } = useStore();
   const [newUsername, setNewUsername] = useState('');
 
-
-
-
-
   // const handleInputChange = (e) => {
   //   setNewUsername(e.target.value);
   // };

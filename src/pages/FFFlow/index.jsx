@@ -1,16 +1,14 @@
-import styles from "./ffflow.module.css";
+import { useCallback, useState,useEffect,useRef } from 'react';
 import { auth,db } from "../../config" 
-// import { onAuthStateChanged ,ref,set,get} from "firebase/auth"
 import { onAuthStateChanged } from "firebase/auth"
 import { getDatabase, ref, set ,get} from "firebase/database"
 
-
-import { useCallback, useState,useEffect,useRef } from 'react';
 import ReactFlow, { ReactFlowProvider,useNodesState,useEdgesState,useReactFlow,
   Panel,addEdge, applyEdgeChanges,applyNodeChanges,Controls,Background ,
   MiniMap} from 'reactflow';
 import 'reactflow/dist/style.css';
-// import 'reactflow/dist/base.css';
+
+import styles from "./ffflow.module.css";
 
 // node👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻
 import TextUpdaterNode from '../../nodes/TextUpdaterNode'
@@ -21,31 +19,35 @@ import ColorNote from '../../nodes/ColorNote'
 
 import AuthCheck from "./AuthCheck.js"
 
-
 import Sidebar from "./Sidebar.js"
-
 
 // we define the nodeTypes outside of the component to prevent re-renderings
 // you could also use useMemo inside the component
+
+// 🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈
+// 🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈
+import { shallow } from 'zustand/shallow';
+import useStore from '../../store.js';
+
 const nodeTypes = { textUpdater: TextUpdaterNode,
-    gg: OmgNode,
-    gg2: OmgNode2,
-    selectorNode: ColorNote,
+  gg: OmgNode,
+  gg2: OmgNode2,
+  selectorNode: ColorNote,
 };
 
-const initialEdges = [
-  { id: 'edge-1', source: 'node-1', target: 'node-2', sourceHandle: 'a' },
-  { id: 'edge-2', source: 'node-1', target: 'node-3', sourceHandle: 'b' },
-  { id: 'edge-3', source: 'node-1', target: 'node-3', sourceHandle: 'a' },
-];
-
-// 🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈
-// 🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈
-// 🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈
-
 function Flow() {
-  // const [bgColor, setBgColor] = useState('rgb(169, 196, 199)');
-  // const [memoColor, setMemoColor] = useState('');
+
+  // const { nodes, edges, onNodesChange, onEdgesChange, onConnect } = useStore(selector, shallow);
+  const { nodes, edges, onNodesChange, onEdgesChange, onConnect,setNodes,setEdges } = useStore(state => ({
+    nodes: state.nodes,
+    edges: state.edges,
+    onNodesChange: state.onNodesChange,
+    onEdgesChange: state.onEdgesChange,
+    onConnect: state.onConnect,
+    addNewNode: state.addNewNode,
+    setNodes: state.setNodes,
+    setEdges: state.setEdges,
+  }));
 
 // ~~~~~~~~~~~~dnd的部分
   const onDragStart = (event, nodeType) => {
@@ -54,20 +56,51 @@ function Flow() {
   }
     // －－－－－
     const reactFlowWrapper = useRef(null);
-  const [reactFlowInstance, setReactFlowInstance] = useState(null);
-
+    const [reactFlowInstance, setReactFlowInstance] = useState(null);
     // －－－－－
     let id = 0;
     const getIdd = () => `dndnode_${id++}`;
-
     // －－－－－
     const onDragOver = useCallback((event) => {
       event.preventDefault();
       event.dataTransfer.dropEffect = 'move';
     }, []);
     // －－－－
-    const onDrop = useCallback(
-      (event) => {
+    // const onDrop = useCallback(
+    //   (event) => {
+    //     event.preventDefault();
+  
+    //     const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
+    //     const type = event.dataTransfer.getData('application/reactflow');
+  
+    //     // check if the dropped element is valid
+    //     if (typeof type === 'undefined' || !type) {
+    //       return;
+    //     }
+  
+    //     const position = reactFlowInstance.project({
+    //       x: event.clientX - reactFlowBounds.left,
+    //       y: event.clientY - reactFlowBounds.top,
+    //     });
+    //     const newNode = {
+    //       id: getIdd(),
+    //       type,
+    //       position,
+    //       data: { label: `${type} node` },
+    //     };
+    //     // console.log(1)
+    //     setNodes([...nodes, newNode]);
+
+    //   },
+
+    //   // eslint-disable-next-line react-hooks/exhaustive-deps
+    //   [reactFlowInstance]
+    // );
+
+
+
+
+    const onDrop = (event) => {
         event.preventDefault();
   
         const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
@@ -88,88 +121,27 @@ function Flow() {
           position,
           data: { label: `${type} node` },
         };
-  
-        setNodes((nds) => nds.concat(newNode));
-      },
+        // console.log(1)
+        setNodes([...nodes, newNode]);
 
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      [reactFlowInstance]
-    );
+      }
 // ~~~~~~~~~~~~dnd的部分
 
-
-
-
-  // 刪除reactflow字樣
-  useEffect(() => {
-    // 在组件加载后执行的代码
-    // 这里可以添加逻辑来删除元素内的内容
+  useEffect(() => { // 刪除reactflow字樣
     const linkElement = document.querySelector('a[aria-label="React Flow attribution"]');
     if (linkElement) {
-      // 如果找到具有指定属性的链接元素
-      linkElement.innerHTML = ''; // 删除元素内的内容
+      linkElement.innerHTML = ''; 
     }
-  }, []); 
-  // 刪除reactflow字樣
+  }, []); // 刪除reactflow字樣
 
-  const [inpupu, setInpupu] = useState('');
-  // const onInpupu = (event) => {
-  //   console.log('當前輸入：', event.target.value);
-  //   console.log(555555);
-  //   setInpupu(event.target.value);
-  //   console.log('更新後的 inpupu 值：', inpupu);
-  // };
-
-  const initialNodes = [
-    {
-      id: 'node-1',
-      type: 'textUpdater',
-      position: { x: 150, y: 0 },
-      data: { placeholder: '是怎樣啊', hello:666,setInpupu, inpupu },
-    },
-    {
-      id: 'node-2',
-      type: 'textUpdater',
-      position: { x: 0, y: 100 },
-      data: { placeholder:'傻眼', hello:666,setInpupu,inpupu },
-    },
-    {
-      id: 'node-55',
-      type: 'textUpdater',
-      position: { x: 222, y: 100 },
-      data: { placeholder: '喔', hello:666,setInpupu,inpupu },
-    },
-
-    {
-      id: 'node-3',
-      type: 'output',
-      targetPosition: 'left',
-      position: { x: 200, y: 200 },
-      data: { label: 'node 3' },
-    },
-  
-  ];
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   // ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨
   // const [rfInstance, setRfInstance] = useState(null);
   const [variant, setVariant] = useState('cross');
-
-
   const { setViewport } = useReactFlow();
   // 等等解開
-  const onConnect = useCallback(
-    (connection) => setEdges((eds) => addEdge(connection, eds)),
-    [setEdges]
-  );
+
   // ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨
-
-
-
-
-
-
-  const onSave = useCallback(() => {
+  const onSave =() => {
     if (reactFlowInstance) {
           const flow = reactFlowInstance.toObject();
           // localStorage.setItem(flowKey, JSON.stringify(flow));
@@ -187,14 +159,12 @@ function Flow() {
           console.log('沒抓到localstorage的會員id')
         }
     }else{
-      console.log(22222)
+      console.log('')
     }
-}, [reactFlowInstance]);
+}
 
 
-
-
-const onRestore = useCallback(() => {
+const onRestore = () => {
   const restoreFlow = async () => {
   // 關鍵就是存這個💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥
     // const flow = JSON.parse(localStorage.getItem(flowKey));
@@ -207,6 +177,7 @@ const onRestore = useCallback(() => {
     if (localUUID) {
       const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow`);
       try {
+
         const snapshot = await get(databaseRef);
         if (snapshot.exists()) {
         // if (false) {
@@ -215,7 +186,10 @@ const onRestore = useCallback(() => {
           console.log(JSON.parse(data));
           const parsedData = JSON.parse(data);
           if (parsedData) {
+            console.log(parsedData.viewport)
+
             const { x = 0, y = 0, zoom = 1 } = parsedData.viewport;
+
             setNodes(parsedData.nodes || []);
             setEdges(parsedData.edges || []);
             setViewport({ x, y, zoom });
@@ -235,70 +209,48 @@ const onRestore = useCallback(() => {
   };
   restoreFlow();
 // eslint-disable-next-line react-hooks/exhaustive-deps
-}, [setNodes, setViewport]);
+}
 
 useEffect(()=>{
   onRestore();
 // eslint-disable-next-line react-hooks/exhaustive-deps
 },[])
 
-const getNodeId = () => `randomnode_${+new Date()}`;
 
-const onAdd = useCallback(() => {
-  console.log(nodes)
+const getNodeId = () => `randomnode_${+new Date()}`;
+// const [addCount, setAddCount] = useState(0);
+
+const addNewNode = useStore((state) => state.addNewNode);
+const [updateTrigger, setUpdateTrigger] = useState(false);
+
+const onAdd = () => {
   const newNode = {
     id: getNodeId(),
-    // type: 'gg',
     type: 'textUpdater',
-     data: {name: '我彭粉🔥🔥🔥', job: '測試', emoji: '🔥🔥🔥',
-     inpupu:'喔是喔',
-     imgsrc:'./fan.jpeg',
-     placeholder:'預設'} ,
-
-
-
-
+    data: {
+      name: '🔥🔥🔥', 
+      job: '測試', 
+      emoji: '🔥🔥🔥',
+      inpupu: '好',
+      imgsrc: './fan.jpeg',
+      placeholder: '預設'
+    },
     position: {
       x: Math.random() * window.innerWidth - 100,
       y: Math.random() * window.innerHeight,
     },
   };
+  addNewNode(newNode);
+  //🥴🥴🥴🥴🥴 這邊好像可以用看看async await
+  // setAddCount(count => count + 1);  // 增加计数
+  setUpdateTrigger(trigger => !trigger);  // 触发 useEffect
+};
+useEffect(() => {
+    nodes[0].data['placeholder']='！！！！！！！！！！！！！！！！！！！！！！！！！！！！'
 
-
-  // setNodes((prevNodes) => [...prevNodes, newNode]);
-  setNodes((nds) => nds.concat(newNode));
-  // onNodesChange((prevNodes) => [...prevNodes, newNode]);
-
-
-
-
-
-// 
-  // const onNodesChange = useCallback(
-  //   (changes) => 
-  //   setNodes((nodes) => {  
-  //       console.log(changes)
-  //       // changes就是你拖動的那一個node
-  //       console.log(nodes)
-  //       // nodes是所有的nodes
-  //       return  applyNodeChanges(changes, nodes)
-  //     }
-  //   ),[setNodes]
-  // );
-
-  
-  // 当您拖拽或选择一个节点时，
-  // onNodesChange 处理程序会被调用。
-  // 借助 applyNodeChanges 函数，
-  // 您可以将这些变更应用到当前的节点状态。
-  // 将所有内容放在一起，应该如下所示：
-  // const onEdgesChange = useCallback(
-  //   (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-  //   [setEdges]
-  // );
-
-}, [setNodes]);
-
+  // 这里将在 nodes 更新后执行
+  console.log(nodes);
+}, [updateTrigger]); 
 
 
   return (
