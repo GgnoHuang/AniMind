@@ -30,6 +30,7 @@ body {
 }
 
 
+
 /* ==================== */
 
 html, body, #root {
@@ -46,9 +47,6 @@ html, body, #root {
 /* ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨ */
 
 
-
-
-
 .customNodeBody {
   width: 150px;
   height: 80px;
@@ -61,7 +59,6 @@ html, body, #root {
   align-items: center;
   font-weight: bold;
 }
-
 .customNode:before {
   content: '';
   position: absolute;

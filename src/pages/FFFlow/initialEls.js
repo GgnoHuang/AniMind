@@ -6,19 +6,34 @@ export const nodes = [
     id: 'node-1',
     type: 'textUpdater',
     position: { x: 150, y: 0 },
-    data: { placeholder: '哈哈哈哈哈哈', hello: 666 },
+    data: {
+      inpupu: '',
+      imgsrc: './fan.jpeg',
+      placeholder: '預設',
+      backgroundColor: '#f0f0f0' // 默认背景颜色
+    },
   },
   {
     id: 'node-2',
     type: 'textUpdater',
     position: { x: 0, y: 100 },
-    data: { placeholder: '傻眼', hello: 666 },
+    data: {
+      inpupu: '',
+      imgsrc: './fan.jpeg',
+      placeholder: '預設',
+      backgroundColor: '#f0f0f0' // 默认背景颜色
+    },
   },
   {
     id: 'node-55',
     type: 'textUpdater',
     position: { x: 222, y: 100 },
-    data: { placeholder: '喔', hello: 666 },
+    data: {
+      inpupu: '',
+      imgsrc: './fan.jpeg',
+      placeholder: '預設',
+      backgroundColor: '#f0f0f0' // 默认背景颜色
+    },
   },
   {
     id: 'node-3',

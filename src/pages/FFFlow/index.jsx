@@ -1,6 +1,5 @@
 import { useCallback, useState,useEffect,useRef } from 'react';
 import { auth,db } from "../../config" 
-import { onAuthStateChanged } from "firebase/auth"
 import { getDatabase, ref, set ,get} from "firebase/database"
 
 import ReactFlow, { ReactFlowProvider,useNodesState,useEdgesState,useReactFlow,
@@ -21,9 +20,6 @@ import AuthCheck from "./AuthCheck.js"
 
 import Sidebar from "./Sidebar.js"
 
-// we define the nodeTypes outside of the component to prevent re-renderings
-// you could also use useMemo inside the component
-
 // 🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈
 // 🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈
 import { shallow } from 'zustand/shallow';
@@ -36,7 +32,11 @@ const nodeTypes = { textUpdater: TextUpdaterNode,
 };
 
 function Flow() {
+  const [selectedColor, setSelectedColor] = useState('#f0f0f0'); // 默认颜色
 
+  const [updateTrigger, setUpdateTrigger] = useState(false);
+
+  const getNodeId = () => `randomnode_${+new Date()}`;
   // const { nodes, edges, onNodesChange, onEdgesChange, onConnect } = useStore(selector, shallow);
   const { nodes, edges, onNodesChange, onEdgesChange, onConnect,setNodes,setEdges } = useStore(state => ({
     nodes: state.nodes,
@@ -54,51 +54,17 @@ function Flow() {
     event.dataTransfer.setData('application/reactflow', nodeType);
     event.dataTransfer.effectAllowed = 'move';
   }
-    // －－－－－
-    const reactFlowWrapper = useRef(null);
-    const [reactFlowInstance, setReactFlowInstance] = useState(null);
-    // －－－－－
-    let id = 0;
-    const getIdd = () => `dndnode_${id++}`;
-    // －－－－－
-    const onDragOver = useCallback((event) => {
-      event.preventDefault();
-      event.dataTransfer.dropEffect = 'move';
-    }, []);
+  // －－－－－
+  const reactFlowWrapper = useRef(null);
+  const [reactFlowInstance, setReactFlowInstance] = useState(null);
+  // －－－－－
+  // let id = 0;
+  // －－－－－
+  const onDragOver = useCallback((event) => {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'move';
+  }, []);
     // －－－－
-    // const onDrop = useCallback(
-    //   (event) => {
-    //     event.preventDefault();
-  
-    //     const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
-    //     const type = event.dataTransfer.getData('application/reactflow');
-  
-    //     // check if the dropped element is valid
-    //     if (typeof type === 'undefined' || !type) {
-    //       return;
-    //     }
-  
-    //     const position = reactFlowInstance.project({
-    //       x: event.clientX - reactFlowBounds.left,
-    //       y: event.clientY - reactFlowBounds.top,
-    //     });
-    //     const newNode = {
-    //       id: getIdd(),
-    //       type,
-    //       position,
-    //       data: { label: `${type} node` },
-    //     };
-    //     // console.log(1)
-    //     setNodes([...nodes, newNode]);
-
-    //   },
-
-    //   // eslint-disable-next-line react-hooks/exhaustive-deps
-    //   [reactFlowInstance]
-    // );
-
-
-
 
     const onDrop = (event) => {
         event.preventDefault();
@@ -116,13 +82,16 @@ function Flow() {
           y: event.clientY - reactFlowBounds.top,
         });
         const newNode = {
-          id: getIdd(),
+          id: getNodeId(),
           type,
           position,
           data: { label: `${type} node` },
         };
-        // console.log(1)
+        console.log(1)
+        // const currentNodes = useStore.getState().nodes;
+
         setNodes([...nodes, newNode]);
+        setUpdateTrigger(trigger => !trigger);  // 触发 useEffect
 
       }
 // ~~~~~~~~~~~~dnd的部分
@@ -186,8 +155,7 @@ const onRestore = () => {
           console.log(JSON.parse(data));
           const parsedData = JSON.parse(data);
           if (parsedData) {
-            console.log(parsedData.viewport)
-
+            // console.log(parsedData.viewport)
             const { x = 0, y = 0, zoom = 1 } = parsedData.viewport;
 
             setNodes(parsedData.nodes || []);
@@ -217,36 +185,40 @@ useEffect(()=>{
 },[])
 
 
-const getNodeId = () => `randomnode_${+new Date()}`;
 // const [addCount, setAddCount] = useState(0);
 
-const addNewNode = useStore((state) => state.addNewNode);
-const [updateTrigger, setUpdateTrigger] = useState(false);
-
+// const addNewNode = useStore((state) => state.addNewNode);
 const onAdd = () => {
+
+
+  // const { x, y, zoom } = reactFlowInstance.getViewport();
+
   const newNode = {
     id: getNodeId(),
     type: 'textUpdater',
     data: {
-      name: '🔥🔥🔥', 
-      job: '測試', 
-      emoji: '🔥🔥🔥',
       inpupu: '好',
       imgsrc: './fan.jpeg',
-      placeholder: '預設'
+      placeholder: '預設',
+      backgroundColor: selectedColor, // 使用所选颜色
     },
     position: {
-      x: Math.random() * window.innerWidth - 100,
-      y: Math.random() * window.innerHeight,
+      x: Math.random() * window.innerWidth /2,
+      y: Math.random() * window.innerHeight/2,
+      // x: window.innerWidth / 2,
+      // y:  window.innerHeight / 2
     },
   };
-  addNewNode(newNode);
+  // addNewNode(newNode);
+
+  setNodes([...nodes, newNode]);
+
   //🥴🥴🥴🥴🥴 這邊好像可以用看看async await
   // setAddCount(count => count + 1);  // 增加计数
   setUpdateTrigger(trigger => !trigger);  // 触发 useEffect
 };
 useEffect(() => {
-    nodes[0].data['placeholder']='！！！！！！！！！！！！！！！！！！！！！！！！！！！！'
+    // nodes[0].data['placeholder']='！！！！！！！！！！！！！！！！！！！！！！！！！！！！'
 
   // 这里将在 nodes 更新后执行
   console.log(nodes);
@@ -274,16 +246,16 @@ useEffect(() => {
       onConnect={onConnect}
       nodeTypes={nodeTypes}
       fitView
+      // minZoom={1}
+      // maxZoom={7}
       // style={{ background: bgColor }}
       onDrop={onDrop}// 拖曳新增用的
       onDragOver={onDragOver}// 拖曳新增用的
 
       onInit={setReactFlowInstance}
-
-    
     >
       
-      <Background color="#ccc" variant={variant} />
+    <Background color="black" variant={variant} />
     <Controls 
     
     fitViewOptions={{
@@ -295,7 +267,7 @@ useEffect(() => {
     <MiniMap 
     //  style={{ background: memoColor }}
     // nodeColor={'#FF5733'}
-     />
+    />
 
     <Panel>
         {/* <div>背景樣式:</div> */}
@@ -328,9 +300,13 @@ useEffect(() => {
           className="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600"
         >add node</button>
 
-        {/* <button onClick={onAdd}
-          className="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600"
-        >add node</button> */}
+
+<input
+    type="color"
+    value={selectedColor}
+    onChange={(e) => setSelectedColor(e.target.value)}
+    className="color-picker"
+  />
       </Panel>
           {/* 這邊是dnd🔥 */}
           <Panel  className="bg-red-100 text-white font-semibold py-2 px-4 rounded  ml-1 mr-1"
