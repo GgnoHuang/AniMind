@@ -3,11 +3,11 @@ import { useCallback, useState,useEffect } from 'react';
 import useStore from '../store';
 
 
-const handleStyle = { left: 15 };
+// const handleStyle = { left: 15 };
 
 // import useStore, { NodeData } from '..//pages/FFFlow/store';
 
-function TextUpdaterNode({id, data,isConnectable }) {
+function TextUpdaterNode({id, data,isConnectable,selected }) {
 
   const { updateNodeData,updateNodeColor} = useStore(state => ({
     updateNodeData: state.updateNodeData,
@@ -39,32 +39,55 @@ function TextUpdaterNode({id, data,isConnectable }) {
     style={{ 
       backgroundColor: data.backgroundColor || 'defaultColor', // 使用data中的背景颜色，如果没有则使用默认颜色
       border: '1px solid gray',
+      height:'100%',// 100%才能讓resize填滿
     }}
     >
-      <Handle type="target" position={Position.Top} 
-        style={{ backgroundColor: 'blue' ,
-        width: '13px',  // 调整宽度
-        height: '13px', 
-      }} 
-      isConnectable={isConnectable} />
-      {/* handle接受的參數是啥意思 */}
-      <div>
-        <label htmlFor="text" className="block text-gray-700 text-sm">Text:</label>
-        <textarea id="text" name="text" placeholder={data.placeholder}
-        value={data.inpupu}
-        // onChange={onChange}
-        onChange={onInpupu}
-         className="nodrag p-1 rounded" />
-      </div>
+      <NodeResizer
+    handleStyle={{
+      width:'10px',
+      height:'10px',
+      backgroundColor:'red'
+    }}
+    lineStyle={{
+      borderWidth: '5px',  // 設置邊界線寬度
+      borderStyle: 'dashed', // 設置邊界線樣式
+      animation: 'blink 1s linear infinite', // 這會讓邊界線閃爍
+      borderColor: '#FF00FF	',
+    }}
+       isVisible={selected} minWidth={100} minHeight={100} />
 
-       <div style={{ padding: 20 }}>
-        <input
+        <div style={{ height: '100%',
+        // paddingBottom:'55px '
+        display:'flex',
+        flexDirection:'column',
+        gap:'3px'
+        }}> 
+
+          <label htmlFor="text" className="block text-gray-700 text-sm">Text:</label>
+          <input className=" p-1 rounded"></input>
+          <textarea id="text" name="text" placeholder={data.placeholder}
+          value={data.inpupu}
+          // onChange={onChange}
+          onChange={onInpupu}
+          style={{ 
+            resize:'none',
+          // width: '100%',  
+          height:'100%',
+
+
+        }} 
+          className="nodrag p-1 rounded" />
+         
+           <input
           type="color"
           defaultValue={data.color}
           onChange={onSelectColor}
           // className="nodrag"
         />
       </div>
+
+
+
 
       {/* <Handle
         type="source"
@@ -79,7 +102,12 @@ function TextUpdaterNode({id, data,isConnectable }) {
       width: '13px',  // 调整宽度
       height: '13px', 
     }} // 更改背景颜色为蓝色
-
+      isConnectable={isConnectable} />
+         <Handle type="target" position={Position.Top} 
+        style={{ backgroundColor: 'blue' ,
+        width: '13px',  // 调整宽度
+        height: '13px', 
+      }} 
       isConnectable={isConnectable} />
     </div>
   );

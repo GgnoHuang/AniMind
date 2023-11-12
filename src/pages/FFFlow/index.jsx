@@ -14,6 +14,7 @@ import TextUpdaterNode from '../../nodes/TextUpdaterNode'
 import OmgNode from '../../nodes/OmgNode'
 import OmgNode2 from '../../nodes/OmgNode2'
 import ColorNote from '../../nodes/ColorNote'
+import ResizerNode from '../../nodes/ResizerNode.js'
 // node👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻
 
 import AuthCheck from "./AuthCheck.js"
@@ -29,9 +30,13 @@ const nodeTypes = { textUpdater: TextUpdaterNode,
   gg: OmgNode,
   gg2: OmgNode2,
   selectorNode: ColorNote,
+  ResizerNode:ResizerNode
 };
 
 function Flow() {
+  const [saveStation, setSaveStation] = useState(1)
+
+
   const [selectedColor, setSelectedColor] = useState('#f0f0f0'); // 默认颜色
 
   const [updateTrigger, setUpdateTrigger] = useState(false);
@@ -116,7 +121,7 @@ function Flow() {
           // localStorage.setItem(flowKey, JSON.stringify(flow));
           const localUUID = localStorage.getItem("userUUID")
         if (localUUID) {
-              const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow`);
+              const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${saveStation}`);
               set(databaseRef, JSON.stringify(flow))
               .then(() => {
                 console.log("成功存到資料庫");
@@ -132,21 +137,12 @@ function Flow() {
     }
 }
 
-
 const onRestore = () => {
   const restoreFlow = async () => {
-  // 關鍵就是存這個💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥
-    // const flow = JSON.parse(localStorage.getItem(flowKey));
-    // console.log('本地抓到的：')
-    // console.log( flow)
-    // if (flow) {        }
-  // 關鍵就是存這個💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥
-
     const localUUID = localStorage.getItem("userUUID");
     if (localUUID) {
-      const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow`);
+      const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${saveStation}`);
       try {
-
         const snapshot = await get(databaseRef);
         if (snapshot.exists()) {
         // if (false) {
@@ -166,7 +162,7 @@ const onRestore = () => {
             // 如果没有从存储中找到节点数据，它将保持为空数组 []。
           }
         }else{
-          console.log(1111)
+          console.log('無存檔')
         }
       } catch (error) {
         console.error("獲取資料發生錯誤", error);
@@ -189,17 +185,15 @@ useEffect(()=>{
 
 // const addNewNode = useStore((state) => state.addNewNode);
 const onAdd = () => {
-
-
   // const { x, y, zoom } = reactFlowInstance.getViewport();
 
   const newNode = {
     id: getNodeId(),
     type: 'textUpdater',
     data: {
-      inpupu: '好',
+      inpupu: '',
       imgsrc: './fan.jpeg',
-      placeholder: '預設',
+      placeholder: '請輸入...',
       backgroundColor: selectedColor, // 使用所选颜色
     },
     position: {
@@ -235,8 +229,11 @@ useEffect(() => {
       }}>
         
     <AuthCheck/>
-    <Sidebar/>
-    
+    <Sidebar 
+      onRestore={onRestore}
+      saveStation ={saveStation} 
+      setSaveStation={setSaveStation}/>
+        
     <ReactFlow
       ref={reactFlowWrapper}
       nodes={nodes}
@@ -247,7 +244,7 @@ useEffect(() => {
       nodeTypes={nodeTypes}
       fitView
       // minZoom={1}
-      // maxZoom={7}
+      maxZoom={7}
       // style={{ background: bgColor }}
       onDrop={onDrop}// 拖曳新增用的
       onDragOver={onDragOver}// 拖曳新增用的

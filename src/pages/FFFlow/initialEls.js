@@ -7,10 +7,24 @@ export const nodes = [
     type: 'textUpdater',
     position: { x: 150, y: 0 },
     data: {
-      inpupu: '',
+      inpupu: '.',
       imgsrc: './fan.jpeg',
       placeholder: '預設',
       backgroundColor: '#f0f0f0' // 默认背景颜色
+    },
+  },
+  {
+    id: 'ok333',
+    type: 'ResizerNode',
+    data: { label: 'Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon ' },
+    position: { x: 150, y: 50 },
+    style: {
+      background: '#fff',
+      fontSize: 12,
+      border: '1px solid black',
+      padding: 5,
+      borderRadius: 15,
+      height: 100,
     },
   },
   {
@@ -18,7 +32,7 @@ export const nodes = [
     type: 'textUpdater',
     position: { x: 0, y: 100 },
     data: {
-      inpupu: '',
+      inpupu: '.',
       imgsrc: './fan.jpeg',
       placeholder: '預設',
       backgroundColor: '#f0f0f0' // 默认背景颜色
@@ -29,7 +43,7 @@ export const nodes = [
     type: 'textUpdater',
     position: { x: 222, y: 100 },
     data: {
-      inpupu: '',
+      inpupu: '.',
       imgsrc: './fan.jpeg',
       placeholder: '預設',
       backgroundColor: '#f0f0f0' // 默认背景颜色
