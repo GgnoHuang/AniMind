@@ -37,7 +37,7 @@ function Flow() {
   const [saveStation, setSaveStation] = useState(1)
 
 
-  const [selectedColor, setSelectedColor] = useState('#f0f0f0'); // 默认颜色
+  const [selectedColor, setSelectedColor] = useState('#bf5abf'); // 默认颜色
 
   const [updateTrigger, setUpdateTrigger] = useState(false);
 
@@ -107,6 +107,12 @@ function Flow() {
       linkElement.innerHTML = ''; 
     }
   }, []); // 刪除reactflow字樣
+
+
+
+  useEffect(() => { // 刪除reactflow字樣
+    console.log(selectedColor)
+  }, [selectedColor]); // 刪除reactflow字樣
 
   // ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨
   // const [rfInstance, setRfInstance] = useState(null);
@@ -191,7 +197,7 @@ const onAdd = () => {
     id: getNodeId(),
     type: 'textUpdater',
     data: {
-      inpupu: '',
+      inpupu: 'hello',
       imgsrc: './fan.jpeg',
       placeholder: '請輸入...',
       backgroundColor: selectedColor, // 使用所选颜色
@@ -235,6 +241,9 @@ useEffect(() => {
       setSaveStation={setSaveStation}/>
         
     <ReactFlow
+      onNodeClick={(event, node) => {
+    console.log('Node clicked:', node);
+  }}
       ref={reactFlowWrapper}
       nodes={nodes}
       edges={edges}
@@ -298,12 +307,16 @@ useEffect(() => {
         >add node</button>
 
 
-<input
-    type="color"
-    value={selectedColor}
-    onChange={(e) => setSelectedColor(e.target.value)}
-    className="color-picker"
-  />
+      <input
+          type="color"
+          value={selectedColor}
+          onChange={(e) => setSelectedColor(e.target.value)}
+          className="color-picker"
+        />
+
+
+
+
       </Panel>
           {/* 這邊是dnd🔥 */}
           <Panel  className="bg-red-100 text-white font-semibold py-2 px-4 rounded  ml-1 mr-1"
@@ -317,7 +330,7 @@ useEffect(() => {
           <div className="dndnode
             bg-purple-300 text-white font-semibold py-2 px-4 rounded hover:bg-purple-400  ml-1 mr-1
 
-          " onDragStart={(event) => onDragStart(event, 'default')} draggable>
+          " onDragStart={(event) => onDragStart(event, 'gg')} draggable>
           2
           </div>
           <div className="dndnode output

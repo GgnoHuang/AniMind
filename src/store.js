@@ -31,11 +31,11 @@ export const useStore = create((set, get) => ({
 // 在您的 updateNodeData 函数中，
 // set 是 Zustand（一种狀態管理庫）提供的函數，
 // 用於更新 store 中的狀態。
-updateNodeData: (nodeId, newData) => {
-  set((state) => ({
-    nodes: state.nodes.map((node) => 
-      node.id === nodeId ? { ...node, data: { ...node.data, ...newData } } : node
-    ),
+  updateNodeData: (nodeId, newData) => {
+    set((state) => ({
+      nodes: state.nodes.map((node) => 
+        node.id === nodeId ? { ...node, data: { ...node.data, ...newData } } : node
+      ),
 // ====
   // data: { ...node.data, ...newData } 的意思就是
   // 把...node的data換成 data:data

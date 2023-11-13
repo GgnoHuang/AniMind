@@ -40,6 +40,19 @@ export default function Sidebar({onRestore, saveStation,setSaveStation }) {
         </p>
       ))}
     </div>
+    
+    <div>
+<blockquote contentEditable="true">
+  <p>Edit this content to add your own quote</p>
+</blockquote>
+
+<cite contentEditable="true" 
+// onClick={(e) => e.stopPropagation()}
+>
+  -- Write your own name here
+  </cite>
+    </div>
+
     <h1>{saveStation}</h1>
   </>
   )

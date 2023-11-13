@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { Handle, Position } from 'reactflow';
 
+
 export default function Good({ data,isConnectable }) {
   return (
     <div style={{ padding: '15px' ,backgroundColor:data.memoColor}}  >
@@ -20,6 +21,23 @@ export default function Good({ data,isConnectable }) {
       🌈🌈選取小地圖顏色🌈🌈 <strong>{data.color}</strong>
       </div>
       <input className="nodrag" type="color" onChange={data.onSelectMemoColor}  />
+
+
+      <blockquote contentEditable="true" className="nodrag" style={{ outline: 'none' }}>
+        <p className="nodrag">
+          Edit this content to add your own quote
+        </p>
+      </blockquote>
+      <cite contentEditable="true" className="nodrag" style={{ outline: 'none' }}>
+        -- Write your own name here
+      </cite>
+
+
+
+
+
+
+
       <Handle
         type="source"
         position={Position.Right}

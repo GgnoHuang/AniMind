@@ -37,7 +37,8 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
   return (
     <div className="text-updater-node border border-gray-300 p-2 rounded"
     style={{ 
-      backgroundColor: data.backgroundColor || 'defaultColor', // 使用data中的背景颜色，如果没有则使用默认颜色
+      // backgroundColor: data.backgroundColor || 'defaultColor', // 使用data中的背景颜色，如果没有则使用默认颜色
+      backgroundColor: data.backgroundColor || '#FF00FF', // 使用data中的背景颜色，如果没有则使用默认颜色
       border: '1px solid gray',
       height:'100%',// 100%才能讓resize填滿
     }}
@@ -73,12 +74,13 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
             resize:'none',
           // width: '100%',  
           height:'100%',
-
-
         }} 
           className="nodrag p-1 rounded" />
-         
-           <input
+
+
+
+          <input
+          value="#ffffff"//  如果沒給這個value會報錯，color input一定要有value
           type="color"
           defaultValue={data.color}
           onChange={onSelectColor}
@@ -86,7 +88,11 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
         />
       </div>
 
-
+      <div contentEditable="true"
+       className="nodrag"
+      style={{ minHeight: '100px', border: '1px solid #ccc', padding: '8px' }}>
+  請在此處輸入文本...
+</div>
 
 
       {/* <Handle

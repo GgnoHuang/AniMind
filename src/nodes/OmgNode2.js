@@ -35,17 +35,26 @@ export default function CustomNode({ data,selected }) {
             width:'100%',
             height:'100%',// 100%才能讓resize填滿
           }}
-        src='./peng.png'/>
+        // src='./peng.png'/>
+        src={data.pokemonpng ? data.pokemonpng : './gg.jpg'} />
 
       <Handle
         type="target"
         position={Position.Top}
-        className="w-16 !bg-teal-400"
+        className=" !bg-teal-400"
+        style={{
+          width: '18px',  // 调整宽度
+          height: '18px', 
+        }} 
       />
       <Handle
         type="source"
         position={Position.Bottom}
-        className="w-16 !bg-teal-400"
+        className=" !bg-teal-400"
+        style={{
+        width: '18px',  // 调整宽度
+        height: '18px', 
+      }} 
       />
     </div>
   );
