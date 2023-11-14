@@ -23,12 +23,16 @@ export default function Good({ data,isConnectable }) {
       <input className="nodrag" type="color" onChange={data.onSelectMemoColor}  />
 
 
-      <blockquote contentEditable="true" className="nodrag" style={{ outline: 'none' }}>
+      <blockquote
+      //  contentEditable="true" 
+       className="nodrag" style={{ outline: 'none' }}>
         <p className="nodrag">
           Edit this content to add your own quote
         </p>
       </blockquote>
-      <cite contentEditable="true" className="nodrag" style={{ outline: 'none' }}>
+      <cite
+      //  contentEditable="true" 
+      className="nodrag" style={{ outline: 'none' }}>
         -- Write your own name here
       </cite>
 

@@ -1,12 +1,21 @@
 import { useCallback } from 'react';
-import { Handle, Position } from 'reactflow';
 
-export default function CustomNode({ data }) {
+import { Handle, NodeProps,Position, NodeResizer} from 'reactflow';
+
+export default function CustomNode({ data,selected,isConnectable }) {
   return (
     <div 
-    style={{ width: '100%', height: '100%' }}
-
-    className="px-4 py-2 shadow-md rounded-md bg-white border-2 border-stone-400">
+    style={{ 
+      // width: '100%',
+    //  height: '100%' ,
+     width: '100px',
+     height: '100px', 
+    backgroundColor:'white'
+    }}
+    // className="px-4 py-2 shadow-md rounded-md
+    // bg-white border-2 border-stone-400"
+    
+    >
       <div className="flex">
         {/* <div className="rounded-full w-12 h-12 flex justify-center items-center bg-gray-100">
           {data.emoji}
@@ -17,7 +26,14 @@ export default function CustomNode({ data }) {
         </div> */}
         {/* <img src={data.imgsrc}/> */}
 
-
+        <NodeResizer
+          handleStyle={{width:'10px',height:'10px',backgroundColor:'red'}}
+          lineStyle={{borderWidth: '5px', borderStyle: 'dashed', borderColor: '#FF00FF	',
+            animation: 'blink 1s linear infinite',}}
+            isVisible={selected} 
+            minWidth={100}
+            minHeight={100} 
+            />
 
       </div>
 

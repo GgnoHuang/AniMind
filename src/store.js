@@ -9,11 +9,56 @@ import { nodes as initialNodes, edges as initialEdges } from './pages/FFFlow/ini
 export const useStore = create((set, get) => ({
   nodes: initialNodes,
   edges: initialEdges,
+
+  isAnyNodeSelected: false,
+  setIsAnyNodeSelected: (isSelected) => set({ isAnyNodeSelected: isSelected }),
+
+
+  // onNodesChange: (changes) => {
+  //   set({
+  //     nodes: applyNodeChanges(changes, get().nodes),
+  //   });
+  //   // const isAnySelected = changes.some(change => change.type === 'select' && change.selected);
+  //   const isAnySelected = changes.some(change =>  change.type === 'select' );
+  //   if(isAnySelected){
+  //     console.log(changes[0].id,',是否有選取？',changes[0].selected)
+
+  //     get().setIsAnyNodeSelected(changes[0].selected);
+  //     // get()就是store本身，
+  //     // 然後setIsAnyNodeSelected就是使用store裡的setIsAnyNodeSelected函式
+      
+  //     // set((state) => ({
+  //     //   nodes: state.nodes.map((node) =>
+  //     //     node.id === changes[0].id ? { ...node, data: { ...node.data,  ...newColor } } : node
+  //     //   ),
+  //     // }));
+  //     if(changes.length>1){
+  //       console.log(changes[1].id,',是否有選取？',changes[1].selected)
+  //     }
+  //   }
+  // },
+// 上面是失敗的，但有成功抓到changes的select的布林，可以參考
+
+// 屌炸天 🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞
   onNodesChange: (changes) => {
-    set({
-      nodes: applyNodeChanges(changes, get().nodes),
+    set((state) => {
+      const newNodes = state.nodes.map((node) => {
+        const change = changes.find((c) => c.id === node.id && c.type === 'select');
+        if (change) {
+          // 更新节点数据，例如添加 isSelected 属性
+          return {
+            ...node,
+            data: { ...node.data, isSelected: change.selected },
+          };
+        }
+        return node;
+      });
+  
+      return { nodes: applyNodeChanges(changes, newNodes) };
     });
-  },
+  },// 屌炸天 🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞
+
+
   // addNewNode: (newNode) => {
   //   set((state) => ({
   //     nodes: [...state.nodes, newNode],
@@ -27,6 +72,13 @@ export const useStore = create((set, get) => ({
     set({ edges: newEdges });
   },
 
+  updateNodeColor: (nodeId, newColor) => {
+    set((state) => ({
+      nodes: state.nodes.map((node) =>
+        node.id === nodeId ? { ...node, data: { ...node.data,  ...newColor } } : node
+      ),
+    }));
+  },
 // 🧪
 // 在您的 updateNodeData 函数中，
 // set 是 Zustand（一种狀態管理庫）提供的函數，
@@ -61,13 +113,7 @@ export const useStore = create((set, get) => ({
 },
 // 🧪
 
-updateNodeColor: (nodeId, newColor) => {
-  set((state) => ({
-    nodes: state.nodes.map((node) =>
-      node.id === nodeId ? { ...node, data: { ...node.data,  ...newColor } } : node
-    ),
-  }));
-},
+
 
 
 

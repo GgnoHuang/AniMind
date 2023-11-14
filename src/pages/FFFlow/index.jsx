@@ -34,6 +34,8 @@ const nodeTypes = { textUpdater: TextUpdaterNode,
 };
 
 function Flow() {
+
+
   const [saveStation, setSaveStation] = useState(1)
 
 
@@ -192,7 +194,6 @@ useEffect(()=>{
 // const addNewNode = useStore((state) => state.addNewNode);
 const onAdd = () => {
   // const { x, y, zoom } = reactFlowInstance.getViewport();
-
   const newNode = {
     id: getNodeId(),
     type: 'textUpdater',
@@ -201,6 +202,7 @@ const onAdd = () => {
       imgsrc: './fan.jpeg',
       placeholder: '請輸入...',
       backgroundColor: selectedColor, // 使用所选颜色
+
     },
     position: {
       x: Math.random() * window.innerWidth /2,
@@ -242,8 +244,14 @@ useEffect(() => {
         
     <ReactFlow
       onNodeClick={(event, node) => {
-    console.log('Node clicked:', node);
-  }}
+        // console.log('Node clicked:', node);
+        if(node.selected){
+    
+        // setIfSelected((current)=>{
+        //   current=node.selected
+        // })
+          }
+        }}
       ref={reactFlowWrapper}
       nodes={nodes}
       edges={edges}

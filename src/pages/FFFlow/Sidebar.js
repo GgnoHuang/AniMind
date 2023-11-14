@@ -26,31 +26,18 @@ export default function Sidebar({onRestore, saveStation,setSaveStation }) {
     <div className="self-center flex flex-col gap-2 border-2 border-sky-500 h-fit w-200 absolute z-50 left-3">
       {[1, 2, 3, 4, 5, 6, 7, 8].map((number) => (
         <p key={number}
-          className='border-4 border-purple-200 flex justify-center items-center hover:border-sky-500 p-4 cursor-pointer'
+          className='border-4 border-purple-200 flex justify-center items-center hover:border-sky-500 p-2 cursor-pointer'
           onClick={() => handleSaveStationChange(number)}
-
-
           style={{ 
             backgroundColor: saveStation === number ? '#BE77FF' : 'white',
-            transition: 'background-color 0.3s ease'
-
-          }}
-        >
-          存檔{number}
+            transition: 'background-color 0.3s ease'}}>
+              存檔{number}
         </p>
       ))}
     </div>
     
     <div>
-<blockquote contentEditable="true">
-  <p>Edit this content to add your own quote</p>
-</blockquote>
 
-<cite contentEditable="true" 
-// onClick={(e) => e.stopPropagation()}
->
-  -- Write your own name here
-  </cite>
     </div>
 
     <h1>{saveStation}</h1>
