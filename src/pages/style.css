@@ -2,12 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-.hello{
-  border: 4px red solid;
-  height: 500px;
-  width: 800px;
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
+
+.react-flow__controls {
+  display: flex; 
+  flex-direction: row;  
+  /* background-color: rgb(255, 255, 255) !important; */
+}
+.react-flow__controls-button {
+
+  border-radius: 8px;
+  margin-right: 15px; 
+  background-color: rgb(202, 235, 245) !important;
+
+}
+.react-flow__controls-button:last-child {
+  margin-right: 0;
+}
 
 @font-face {
   font-family: '小濑字体';
@@ -19,11 +35,15 @@ body {
   background-color: #dfdfdf;
 }
 
+
 /* html, body, pre, code, kbd, samp {
   font-family: "font-family you want to use";
 } */
 
 /* flow的一些 預設樣式 */
+.adjustButton:hover{
+  background-color: rgba(255, 0, 255, 0.253);
+}
 
 .react-flow__node-selectorNode {
   background: #eee;
@@ -31,6 +51,7 @@ body {
   border-radius: 5px;
   text-align: center;
 }
+
 
 
 /* ==================== */
@@ -49,9 +70,6 @@ html, body, #root {
 /* ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨ */
 
 
-
-
-
 .customNodeBody {
   width: 150px;
   height: 80px;
@@ -64,7 +82,6 @@ html, body, #root {
   align-items: center;
   font-weight: bold;
 }
-
 .customNode:before {
   content: '';
   position: absolute;
@@ -78,7 +95,7 @@ html, body, #root {
   line-height: 1;
   border-radius: 4px;
   color: #fff;
-  font-size: 9px;
+  /* font-size: 9px; */
   border: 2px solid #222138;
 }
 

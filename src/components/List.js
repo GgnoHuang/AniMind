@@ -38,7 +38,7 @@ function List({ transactionsArr, setTransactionsArr, setSystemMessage }) {
 
 
   function deleteItem(transactionId) {
-    console.log(transactionId)
+    // console.log(transactionId)
     // 點下去那個項目的id
     setTransactionsArr((currentTodosArr) =>
       currentTodosArr.filter((todoItem) => todoItem.id !== transactionId))
@@ -51,7 +51,7 @@ function List({ transactionsArr, setTransactionsArr, setSystemMessage }) {
         remove(databaseRef)
         .then(() => {
           console.log("成功刪除一筆資料");
-          console.log(transactionsArr)
+          // console.log(transactionsArr)
           setSystemMessage("成功刪除一筆資料")
 
         })
