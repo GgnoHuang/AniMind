@@ -108,6 +108,8 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
 
             />
  
+
+ 
     <div 
       onClick={handleDoubleClick}
     // className="text-updater-node border border-gray-300 p-2 rounded"
@@ -121,23 +123,6 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
               // height:'fit-content',
         height:'100%',
         // width:'100%',
-        // display: 'flex',
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        borderRadius:'88px',
-        // borderRadius: '50%', // Make it circular
-
-
-
-        // backgroundColor: data.backgroundColor || '#FF00FF',
-        // border: '2px solid gray',
-        // overflow: 'hidden',
-        // padding: '10px',
-        // height:'100%',
-        // borderRadius: '50%', // Make it circular
-        // display: 'flex',
-        // justifyContent: 'center',
-        // alignItems: 'center',
       }}>  
 
   
@@ -222,7 +207,6 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
         suppressContentEditableWarning// 不用這會報錯
             style={{
             pointerEvents: isPointerEventsActive ? 'auto' : 'none',
-            cursor: 'text',
 
             color: data.fontColor || 'black',
             // fontSize:'33px' ,

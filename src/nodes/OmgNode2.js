@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { Handle, NodeProps,Position, NodeResizer} from 'reactflow';
+import { Handle, NodeProps,Position, NodeResizer,NodeToolbar} from 'reactflow';
 
 export default function CustomNode({ data,selected }) {
   return (
@@ -38,6 +38,12 @@ export default function CustomNode({ data,selected }) {
         // src='./peng.png'/>
         src={data.pokemonpng ? data.pokemonpng : './gg.jpg'} />
 
+
+<NodeToolbar >
+        <button>哈哈，</button>
+        <button>copy</button>
+        <button>expand</button>
+      </NodeToolbar>
       <Handle
         type="target"
         position={Position.Top}

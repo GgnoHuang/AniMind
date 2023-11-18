@@ -7,13 +7,13 @@ import { addEdge, applyNodeChanges, applyEdgeChanges } from 'reactflow';
 import { nodes as initialNodes, edges as initialEdges } from './pages/FFFlow/initialEls';
 
 export const useStore = create((set, get) => ({
-  nodes: initialNodes,
+  nodes: initialNodes,// 是一個陣列
   edges: initialEdges,
 
   isAnyNodeSelected: false,
   setIsAnyNodeSelected: (isSelected) => set({ isAnyNodeSelected: isSelected }),
 
-
+  howManyNodes:0,
   // onNodesChange: (changes) => {
   //   set({
   //     nodes: applyNodeChanges(changes, get().nodes),
@@ -39,34 +39,66 @@ export const useStore = create((set, get) => ({
   // },
 // 上面是失敗的，但有成功抓到changes的select的布林，可以參考
 
-// 屌炸天 🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞
-  onNodesChange: (changes) => {
-    set((state) => {
-      const newNodes = state.nodes.map((node) => {
-        const change = changes.find((c) => c.id === node.id && c.type === 'select');
-        if (change) {
-          // 更新节点数据，例如添加 isSelected 属性
-          return {
-            ...node,
-            data: { ...node.data, isSelected: change.selected },
-          };
-        }
-        return node;
-      });
+// 選取後出現功能 🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞
+  // onNodesChange: (changes) => {
+  //   set((state) => {
+  //     // console.log(changes)
+  //     const newNodes = state.nodes.map((node) => {
+  //       const change = changes.find((c) => c.id === node.id && c.type === 'select');
+  //       if (change) {
+  //         // 更新节点数据，例如添加 isSelected 属性
+  //         return {
+  //           ...node,
+  //           data: { ...node.data, isSelected: change.selected },
+  //         };
+  //       }
+  //       return node;
+  //     });
   
-      return { nodes: applyNodeChanges(changes, newNodes) };
-    });
-  },// 屌炸天 🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞
-
-
-  // addNewNode: (newNode) => {
-  //   set((state) => ({
-  //     nodes: [...state.nodes, newNode],
-  //   }));
+  //     return { nodes: applyNodeChanges(changes, newNodes) };
+  //   });
   // },
-  setNodes: (newNodes) => {
-    set({ nodes: newNodes });
-  },
+  // 選取後出現功能 🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞
+
+
+  // store.js
+
+    // 🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞
+onNodesChange: (changes) => {
+  console.log(changes)
+  set((state) => {
+    const newNodes = state.nodes.map((node) => {
+      const change = changes.find((c) => c.id === node.id);
+      if (change && change.type === 'select') {
+        return {
+          ...node,
+          selected: change.selected,
+          data: { ...node.data, isSelected: change.selected },
+        };
+      }
+      return node;
+    });
+    return { nodes: applyNodeChanges(changes, newNodes) };
+  });
+},
+
+selectNode: (nodeId) => {
+  set((state) => ({
+    nodes: state.nodes.map((node) => {
+      return node.id === nodeId
+        ? { ...node, selected: true, data: { ...node.data, isSelected: true } }
+        : { ...node, selected: false, data: { ...node.data, isSelected: false } };
+    }),
+  }));
+},
+  // 🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞
+
+
+  setNodes: (newNodes) => set((state) => ({
+    nodes: newNodes,
+    howManyNodes: newNodes.length,
+  })),
+
 // 調用這個函數之後，nodes將會變成newNodes
   setEdges: (newEdges) => {
     set({ edges: newEdges });
@@ -79,10 +111,7 @@ export const useStore = create((set, get) => ({
       ),
     }));
   },
-// 🧪
-// 在您的 updateNodeData 函数中，
-// set 是 Zustand（一种狀態管理庫）提供的函數，
-// 用於更新 store 中的狀態。
+
   updateNodeData: (nodeId, newData) => {
     set((state) => ({
       nodes: state.nodes.map((node) => 
@@ -112,10 +141,6 @@ export const useStore = create((set, get) => ({
   // 在這個例子中，state 包含了 nodes，這是一個節點數據的數組。
 },
 // 🧪
-
-
-
-
 
 
   onEdgesChange: (changes) => {

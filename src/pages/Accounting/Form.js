@@ -83,6 +83,7 @@ function Form({ transactionsArr, setTransactionsArr,systemMessage, setSystemMess
 
       setTransactionsArr([...transactionsArr, newTransaction])
       console.log(newTransaction)
+      // console.log(transactionsArr)// 因為非同步所以是舊值
 
       setSystemMessage("新增成功！")
       setAmount("")
@@ -92,6 +93,13 @@ function Form({ transactionsArr, setTransactionsArr,systemMessage, setSystemMess
     }
   }
 
+
+
+  useEffect(() => {
+    console.log(transactionsArr); // 这里将打印最新的 transactionsArr
+  }, [transactionsArr]); // 依赖数组中的 transactionsArr 确保仅在其更新时运行
+  
+  
   return (
     <div>
       <div

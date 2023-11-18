@@ -1,12 +1,16 @@
 // ~🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-import React, { useState,useEffect } from "react"
+import React, {useRef, useState,useEffect } from "react"
 
+import ReactFlow, { ReactFlowProvider } from 'reactflow';
+import useStore from '../../store';
 
 export default function Sidebar({onRestore, saveStation,setSaveStation }) {
   // const [errMsg, setErrMsg] = useState(false)
   // const [successMsg, setSuccessMsg] = useState(false)
-
-
+  const { nodes, howManyNodes } = useStore(state => ({
+    nodes: state.nodes,
+    howManyNodes: state.howManyNodes,
+  }));
 
 
   const handleSaveStationChange = (newSaveStation) => {
@@ -27,7 +31,12 @@ export default function Sidebar({onRestore, saveStation,setSaveStation }) {
       {[1, 2, 3, 4, 5, 6, 7, 8].map((number) => (
         <p key={number}
           className='border-4 border-purple-200 flex justify-center items-center hover:border-sky-500 p-2 cursor-pointer'
-          onClick={() => handleSaveStationChange(number)}
+          onClick={() =>
+            
+            {
+              // reactFlowInstance.current.fitView(options);
+              handleSaveStationChange(number)
+            }}
           style={{ 
             backgroundColor: saveStation === number ? '#BE77FF' : 'white',
             transition: 'background-color 0.3s ease'}}>
@@ -39,7 +48,23 @@ export default function Sidebar({onRestore, saveStation,setSaveStation }) {
     <div>
 
     </div>
+{/* ~~~~~~~~~~~~ */}
+<h3>節點數量: {howManyNodes}個</h3>
+      {/* <ul>
+        {nodes.map(node => (
+          <li key={node.id}>{node.data.label}</li>
+        ))}
+      </ul> */}
+      <div className='flex flex-col'>
 
+      {nodes.map(node => (
+        <button key={node.id} 
+        style={{borderColor:'red',borderWidth:'3px'}} >
+          {node.data.label}節點
+        </button>
+      ))}
+      </div>
+{/* ~~~~~~~~~~~~ */}
     <h1>{saveStation}</h1>
   </>
   )

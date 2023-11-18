@@ -3,7 +3,9 @@ import { auth,db } from "../../config"
 import { getDatabase, ref, set ,get} from "firebase/database"
 
 import ReactFlow, { ReactFlowProvider,useNodesState,useEdgesState,useReactFlow,
-  Panel,addEdge, applyEdgeChanges,applyNodeChanges,Controls,Background ,
+  Panel,addEdge, applyEdgeChanges,applyNodeChanges,Controls,
+  ControlButton,
+  Background ,
   MiniMap} from 'reactflow';
 import 'reactflow/dist/style.css';
 
@@ -14,12 +16,15 @@ import TextUpdaterNode from '../../nodes/TextUpdaterNode'
 import OmgNode from '../../nodes/OmgNode'
 import OmgNode2 from '../../nodes/OmgNode2'
 import ColorNote from '../../nodes/ColorNote'
-import ResizerNode from '../../nodes/ResizerNode.js'
+// import ResizerNode from '../../nodes/ResizerNode.js'
 // node👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻
 
 import AuthCheck from "./AuthCheck.js"
 
 import Sidebar from "./Sidebar.js"
+// import NodesList from './Nodelist.js'; 
+import DownloadBtn from './DownloadBtn.js'; 
+
 
 // 🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈
 // 🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈
@@ -30,22 +35,28 @@ const nodeTypes = { textUpdater: TextUpdaterNode,
   gg: OmgNode,
   gg2: OmgNode2,
   selectorNode: ColorNote,
-  ResizerNode:ResizerNode
+  // ResizerNode:ResizerNode
 };
 
 function Flow() {
+  // const initBgColor = '#1A192B';
 
-
+  
+  const [initBgColor,setInitBgColor]= useState( 'rgb(199, 199, 199)')
+  function handleBgColorChange(event) {
+    const newBgColor = event.target.value;
+    setInitBgColor(newBgColor);
+  }
+  
   const [saveStation, setSaveStation] = useState(1)
 
-
-  const [selectedColor, setSelectedColor] = useState('#bf5abf'); // 默认颜色
+  const [selectedColor, setSelectedColor] = useState('#ffffff'); 
 
   const [updateTrigger, setUpdateTrigger] = useState(false);
 
   const getNodeId = () => `randomnode_${+new Date()}`;
   // const { nodes, edges, onNodesChange, onEdgesChange, onConnect } = useStore(selector, shallow);
-  const { nodes, edges, onNodesChange, onEdgesChange, onConnect,setNodes,setEdges } = useStore(state => ({
+  const { nodes, edges, onNodesChange, onEdgesChange, onConnect,setNodes,setEdges,howManyNodes } = useStore(state => ({
     nodes: state.nodes,
     edges: state.edges,
     onNodesChange: state.onNodesChange,
@@ -54,7 +65,10 @@ function Flow() {
     addNewNode: state.addNewNode,
     setNodes: state.setNodes,
     setEdges: state.setEdges,
+    howManyNodes: state.howManyNodes,
   }));
+
+//為了等等使用useeffect偵測node數量變化
 
 // ~~~~~~~~~~~~dnd的部分
   const onDragStart = (event, nodeType) => {
@@ -92,13 +106,20 @@ function Flow() {
           id: getNodeId(),
           type,
           position,
-          data: { label: `${type} node` },
+          data: {
+            
+            inpupu: 'hello',
+            imgsrc: './fan.jpeg',
+            placeholder: '請輸入...',
+            backgroundColor: selectedColor, // 使用所选颜色
+      
+            label: `${type} node` },
         };
         console.log(1)
         // const currentNodes = useStore.getState().nodes;
 
         setNodes([...nodes, newNode]);
-        setUpdateTrigger(trigger => !trigger);  // 触发 useEffect
+        setUpdateTrigger(trigger => !trigger);  // 觸發 useEffect
 
       }
 // ~~~~~~~~~~~~dnd的部分
@@ -112,9 +133,16 @@ function Flow() {
 
 
 
-  useEffect(() => { // 刪除reactflow字樣
+  useEffect(()=>{
+    console.log(initBgColor)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[initBgColor])
+  
+
+
+  useEffect(() => { 
     console.log(selectedColor)
-  }, [selectedColor]); // 刪除reactflow字樣
+  }, [selectedColor]); 
 
   // ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨
   // const [rfInstance, setRfInstance] = useState(null);
@@ -165,18 +193,28 @@ const onRestore = () => {
             setNodes(parsedData.nodes || []);
             setEdges(parsedData.edges || []);
             setViewport({ x, y, zoom });
-           // setNodes(flow.nodes || []) 用于更新节点状态，flow.nodes
-            //  包含了从本地存储中还原的节点数据。
-            // 如果没有从存储中找到节点数据，它将保持为空数组 []。
+           // setNodes(flow.nodes || []) 用於更新節點狀態，flow.nodes
+            // 如果沒有從儲存中找到節點數據，保持為空數組[]
           }
         }else{
           console.log('無存檔')
+          setNodes([]);
+          setEdges([]);
+          setViewport({ x: 0, y: 0, zoom: 1 });
+          // setViewport({ x, y, zoom });
         }
       } catch (error) {
+        setNodes([]);
+        setEdges([]);
+        setViewport({ x: 0, y: 0, zoom: 1 });
+        alert('獲取資料發生錯誤')
         console.error("獲取資料發生錯誤", error);
       }
     } else {
       console.log("未找到用户 ID");
+      setNodes([]);
+      setEdges([]);
+      setViewport({ x: 0, y: 0, zoom: 1 });
     }
   };
   restoreFlow();
@@ -193,6 +231,17 @@ useEffect(()=>{
 
 // const addNewNode = useStore((state) => state.addNewNode);
 const onAdd = () => {
+  const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
+
+  // 計算瀏覽器視窗中心點的座標
+  const centerX = window.innerWidth / 2;
+  const centerY = window.innerHeight / 2;
+
+  // 將視窗座標轉換為 React Flow 的畫布座標
+  const canvasPosition = reactFlowInstance.project({
+    x: centerX - reactFlowBounds.left,
+    y: centerY - reactFlowBounds.top,
+  });
   // const { x, y, zoom } = reactFlowInstance.getViewport();
   const newNode = {
     id: getNodeId(),
@@ -202,14 +251,9 @@ const onAdd = () => {
       imgsrc: './fan.jpeg',
       placeholder: '請輸入...',
       backgroundColor: selectedColor, // 使用所选颜色
+    },
+    position: canvasPosition,
 
-    },
-    position: {
-      x: Math.random() * window.innerWidth /2,
-      y: Math.random() * window.innerHeight/2,
-      // x: window.innerWidth / 2,
-      // y:  window.innerHeight / 2
-    },
   };
   // addNewNode(newNode);
 
@@ -220,11 +264,19 @@ const onAdd = () => {
   setUpdateTrigger(trigger => !trigger);  // 触发 useEffect
 };
 useEffect(() => {
-    // nodes[0].data['placeholder']='！！！！！！！！！！！！！！！！！！！！！！！！！！！！'
+    console.log(nodes);
+    console.log('數量：',howManyNodes);
 
-  // 这里将在 nodes 更新后执行
-  console.log(nodes);
-}, [updateTrigger]); 
+
+    if (reactFlowInstance) {
+      // const flow = reactFlowInstance.toObject();
+      // console.log(7777)
+      // console.log(JSON.stringify(flow))
+      // console.log(flow)
+      // console.log(8888)
+  
+}
+}, [howManyNodes]);
 
 
   return (
@@ -241,17 +293,11 @@ useEffect(() => {
       onRestore={onRestore}
       saveStation ={saveStation} 
       setSaveStation={setSaveStation}/>
+    {/* <NodesList />  */}
         
     <ReactFlow
-      onNodeClick={(event, node) => {
-        // console.log('Node clicked:', node);
-        if(node.selected){
-    
-        // setIfSelected((current)=>{
-        //   current=node.selected
-        // })
-          }
-        }}
+      style={{ background: initBgColor }}
+
       ref={reactFlowWrapper}
       nodes={nodes}
       edges={edges}
@@ -259,8 +305,9 @@ useEffect(() => {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       nodeTypes={nodeTypes}
-      fitView
-      // minZoom={1}
+      fitView={false}// 沒有設定的話會重新載入就fitView導致變很大
+
+      minZoom={0.1}
       maxZoom={7}
       // style={{ background: bgColor }}
       onDrop={onDrop}// 拖曳新增用的
@@ -269,38 +316,62 @@ useEffect(() => {
       onInit={setReactFlowInstance}
     >
       
-    <Background color="black" variant={variant} />
+    <Background variant={variant} />
     <Controls 
     
     fitViewOptions={{
-      duration: 800,
+      duration: 500,padding: 0.3
     }} // 传递自定义的 FitViewOptions
-    position={'bottom-left'}
+    position={'bottom-right'}
+    
     />
+
+
+{/* 
+<Controls
+fitViewOptions={{
+  duration: 500,padding: 0.3
+}} // 传递自定义的 FitViewOptions
+position={'bottom-right'}
+>
+        <ControlButton title="Zoom In">
+          <i className="fa fa-plus"></i>
+        </ControlButton>
+        <ControlButton title="Zoom Out">
+          <i className="fa fa-minus"></i>
+        </ControlButton>
+        <ControlButton title="Fit View">
+          <i className="fa fa-expand"></i>
+        </ControlButton>
+      </Controls> */}
+
+
     {/* <MiniMap /> */}
     <MiniMap 
-    //  style={{ background: memoColor }}
+    pannable={true}
+     style={{ cursor: 'move', }}
     // nodeColor={'#FF5733'}
+    position={'bottom-left'}
+
     />
 
     <Panel>
         {/* <div>背景樣式:</div> */}
-        <button 
-                  className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
-
+        <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
         onClick={() => setVariant('dots')}>點狀</button>
-        <button
-                          className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
-
+        <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
          onClick={() => setVariant('lines')}>格紋</button>
-        <button
-                          className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
-
+        <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
         onClick={() => setVariant('cross')}>十字</button>
+        <input className="nodrag" type="color"
+        onChange={handleBgColorChange}
+      //  defaultValue=
+       />
 
       </Panel>
 
-    <Panel position="top-right">
+    <Panel position="top-right">    
+  
         <button 
         onClick={onSave}
           className="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600  ml-1 mr-1"
@@ -321,13 +392,12 @@ useEffect(() => {
           onChange={(e) => setSelectedColor(e.target.value)}
           className="color-picker"
         />
-
-
-
-
+       <DownloadBtn initBgColor={initBgColor}/>
+             
       </Panel>
+
           {/* 這邊是dnd🔥 */}
-          <Panel  className="bg-red-100 text-white font-semibold py-2 px-4 rounded  ml-1 mr-1"
+      <Panel  className="bg-red-100 text-white font-semibold py-2 px-4 rounded  ml-1 mr-1"
           style={{ width: '200px', height: '100％'
           , position: 'absolute', bottom: '0px',left:'50px'}}>
           <div className="dndnode input
@@ -338,7 +408,7 @@ useEffect(() => {
           <div className="dndnode
             bg-purple-300 text-white font-semibold py-2 px-4 rounded hover:bg-purple-400  ml-1 mr-1
 
-          " onDragStart={(event) => onDragStart(event, 'gg')} draggable>
+          " onDragStart={(event) => onDragStart(event, 'selectorNode')} draggable>
           2
           </div>
           <div className="dndnode output
