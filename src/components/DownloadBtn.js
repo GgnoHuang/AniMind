@@ -54,14 +54,22 @@ export default function DownloadBtn({initBgColor}) {
   return (
  
 
-    <ReactFlowProvider>
 
-      <button className="download-btn" onClick={onClick}>
-        下載
+
+      <button
+      
+      className="download-btn bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600  ml-1 mr-1"
+
+ onClick={onClick}>
+        輸出圖檔
 
       </button>
       
-    </ReactFlowProvider>
+
+
+
+  
+
 
   );
   

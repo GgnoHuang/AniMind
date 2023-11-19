@@ -97,16 +97,7 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
 
 
   return (
-    <>
-        <NodeResizer
-          handleStyle={{width:'15px',height:'15px',backgroundColor:'red'}}
-          lineStyle={{borderWidth: '5px', borderStyle: 'dashed', borderColor: '#FF00FF	',
-            animation: 'blink 1s linear infinite', }}
-            isVisible={selected}
-            minWidth={100}
-            minHeight={100}
 
-            />
  
     <div 
       onClick={handleDoubleClick}
@@ -115,17 +106,18 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
       className=""
       style={{ 
         backgroundColor: data.backgroundColor || '#FF00FF', // 使用data中的背景颜色，如果没有则使用默认颜色
+        // backgroundColor: 'red', // 使用data中的背景颜色，如果没有则使用默认颜色
         border: '2px solid gray',
         overflow:'hidden',
         padding:'10px',
-              // height:'fit-content',
+              // width:'fit-content',
         height:'100%',
         // width:'100%',
-        // display: 'flex',
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        borderRadius:'88px',
-        // borderRadius: '50%', // Make it circular
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+
+        borderRadius: '50%', // Make it circular
 
 
 
@@ -140,7 +132,15 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
         // alignItems: 'center',
       }}>  
 
-  
+        <NodeResizer
+          handleStyle={{width:'15px',height:'15px',backgroundColor:'red'}}
+          lineStyle={{borderWidth: '5px', borderStyle: 'dashed', borderColor: '#FF00FF	',
+            animation: 'blink 1s linear infinite', }}
+            isVisible={selected}
+            minWidth={100}
+            minHeight={50}
+
+            />
 
           {/* 
                   <div style={{ height: '100%',
@@ -252,8 +252,14 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
         />
 
     </div>
-    </>
+
   );
 }
 
 export default TextUpdaterNode;
+
+
+
+
+// {"nodes":[{"width":331,"height":328,"id":"randomnode_1700359526243","type":"circleNode","position":{"x":-1291.5837035902596,"y":1352.8684256449887},"data":{"inpupu":"hello","imgsrc":"./fan.jpeg","placeholder":"請輸入...","backgroundColor":"#f29797","label":"circleNode node","isSelected":false},"selected":false,"dragging":false,"style":{"width":331,"height":328},"resizing":false,"positionAbsolute":{"x":-1291.5837035902596,"y":1352.8684256449887}},{"width":107,"height":100,"id":"randomnode_1700359521759","type":"circleNode","position":{"x":-1342.6267861688327,"y":1391.505286144796},"data":{"inpupu":"hello","imgsrc":"./fan.jpeg","placeholder":"請輸入...","backgroundColor":"#ffffff","label":"circleNode node","isSelected":false},"selected":false,"positionAbsolute":{"x":-1342.6267861688327,"y":1391.505286144796},"dragging":false,"style":{"width":107,"height":100},"resizing":false}],"edges":[],"viewport":{"x":1593.9590620058552,"y":-1134.8209721681478,"zoom":1.042086939519286}}
+// {"nodes":[{"width":107,"height":100,"id":"randomnode_1700359521759","type":"circleNode","position":{"x":-1342.6267861688327,"y":1391.505286144796},"data":{"inpupu":"hello","imgsrc":"./fan.jpeg","placeholder":"請輸入...","backgroundColor":"#ffffff","label":"circleNode node","isSelected":false},"selected":false,"positionAbsolute":{"x":-1342.6267861688327,"y":1391.505286144796},"dragging":false,"style":{"width":107,"height":100},"resizing":false},{"width":331,"height":328,"id":"randomnode_1700359526243","type":"circleNode","position":{"x":-1291.5837035902596,"y":1352.8684256449887},"data":{"inpupu":"hello","imgsrc":"./fan.jpeg","placeholder":"請輸入...","backgroundColor":"#f29797","label":"circleNode node","isSelected":false},"selected":false,"dragging":false,"style":{"width":331,"height":328},"resizing":false,"positionAbsolute":{"x":-1291.5837035902596,"y":1352.8684256449887}}],"edges":[],"viewport":{"x":1593.9590620058552,"y":-1134.8209721681478,"zoom":1.042086939519286}}

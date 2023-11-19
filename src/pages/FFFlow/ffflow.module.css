@@ -1,3 +1,14 @@
 /* .dog{
   color:red;
 } */
+.custom-controls {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.custom-minimap {
+  position: absolute;
+  bottom: 60px; /* 調整為 Controls 的高度加上一些間距 */
+  left: 10px;
+}
