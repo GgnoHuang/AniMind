@@ -13,20 +13,20 @@ export const nodes = [
       backgroundColor: '#f0f0f0' 
     },
   },
-  {
-    id: 'ok333',
-    type: 'ResizerNode',
-    data: { label: 'Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon ' },
-    position: { x: 150, y: 50 },
-    style: {
-      background: '#fff',
-      fontSize: 12,
-      border: '1px solid black',
-      padding: 5,
-      borderRadius: 15,
-      height: 100,
-    },
-  },
+  // {
+  //   id: 'ok333',
+  //   type: '',
+  //   data: { label: 'Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon Custom Resizer Icon ' },
+  //   position: { x: 150, y: 50 },
+  //   style: {
+  //     background: '#fff',
+  //     fontSize: 12,
+  //     border: '1px solid black',
+  //     padding: 5,
+  //     borderRadius: 15,
+  //     height: 100,
+  //   },
+  // },
   // {
   //   id: 'node-2',
   //   type: 'textUpdater',

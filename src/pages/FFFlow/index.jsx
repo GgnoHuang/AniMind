@@ -34,7 +34,7 @@ import useStore from '../../store.js';
 const nodeTypes = { textUpdater: TextUpdaterNode,
   gg: OmgNode,
   ImgNode2: ImgNode2,
-  selectorNode: ColorNote,
+  circleNode: ColorNote,
   // ResizerNode:ResizerNode
 };
 
@@ -180,6 +180,7 @@ const onRestore = () => {
           const data = snapshot.val();
           console.log('成功從資料庫抓到的：');
           console.log(JSON.parse(data));
+
           const parsedData = JSON.parse(data);
           if (parsedData) {
             // console.log(parsedData.viewport)
@@ -242,9 +243,9 @@ const onAdd = () => {
     id: getNodeId(),
     type: 'textUpdater',
     data: {
-      inpupu: 'hello',
-      imgsrc: './fan.jpeg',
-      placeholder: '請輸入...',
+      // inpupu: 'hello',
+      // imgsrc: './fan.jpeg',
+      // placeholder: '請輸入...',
       backgroundColor: selectedColor, // 使用所选颜色
     },
     position: canvasPosition,
@@ -314,7 +315,7 @@ useEffect(() => {
       
     <Background variant={variant} />
     <Controls 
-    
+    className="custom-controls"
     fitViewOptions={{
       duration: 500,padding: 0.3
     }} // 传递自定义的 FitViewOptions
@@ -343,12 +344,18 @@ position={'bottom-right'}
 
 
     <MiniMap 
+    className="custom-minimap"
     pannable={true}
-     style={{ cursor: 'move', }}
+     style={{ cursor: 'move',
+
+    }}
     // nodeColor={'#FF5733'}
-    position={'bottom-left'}
+    position={'bottom-center'}
 
     />
+
+
+
 
     <Panel>
         {/* <div>背景樣式:</div> */}
@@ -376,17 +383,12 @@ position={'bottom-right'}
         onClick={onRestore}
           className="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600  ml-1 mr-1"
         >回到紀錄狀態</button>
-          <button onClick={onAdd}
+          {/* <button onClick={onAdd}
           className="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600"
-        >add node</button>
+        >add node</button> */}
 
 
-      <input
-          type="color"
-          value={selectedColor}
-          onChange={(e) => setSelectedColor(e.target.value)}
-          className="color-picker"
-        />
+  
         
        <DownloadBtn initBgColor={initBgColor}/>
 
@@ -394,23 +396,34 @@ position={'bottom-right'}
 
           {/* 這邊是dnd🔥 */}
       <Panel  className="bg-red-100 text-white font-semibold py-2 px-4 rounded  ml-1 mr-1"
-          style={{ width: '200px', height: '100％'
-          , position: 'absolute', bottom: '0px',left:'50px'}}>
+          style={{ width: '100px', height: '100％'
+          , position: 'absolute', bottom: '40px',right:'0px'}}>
+                <input
+          type="color"
+          value={selectedColor}
+          onChange={(e) => setSelectedColor(e.target.value)}
+          className="color-picker"
+        />
           <div className="dndnode input
-          bg-blue-300 text-white font-semibold py-2 px-4 rounded hover:bg-blue-400  ml-1 mr-1
-          " onDragStart={(event) => onDragStart(event, 'selectorNode')} draggable>
-            1
+            justify-center	
+            flex
+          bg-blue-300 text-white  font-semibold py-2 px-4 rounded hover:bg-blue-400  ml-1 mr-1
+          " onDragStart={(event) => onDragStart(event, 'circleNode')} draggable>
+              ⚪️ 
           </div>
           <div className="dndnode
-            bg-purple-300 text-white font-semibold py-2 px-4 rounded hover:bg-purple-400  ml-1 mr-1
+            bg-purple-300 text-white font-semibold
+            flex
+            justify-center	
+            py-2 px-4 rounded hover:bg-purple-400  ml-1 mr-1
 
-          " onDragStart={(event) => onDragStart(event, 'selectorNode')} draggable>
-          2
+          " onDragStart={(event) => onDragStart(event, 'textUpdater')} draggable>
+              ⬜️
           </div>
           <div className="dndnode output
             bg-pink-300 text-white font-semibold py-2 px-4 rounded hover:bg-pink-400  ml-1 mr-1
           " onDragStart={(event) => onDragStart(event, 'ImgNode2')} draggable>
-            3
+          上傳圖檔(尚未完成)
           </div>
 
         </Panel>

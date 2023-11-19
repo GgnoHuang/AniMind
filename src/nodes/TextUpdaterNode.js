@@ -104,7 +104,7 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
             animation: 'blink 1s linear infinite', }}
             isVisible={selected}
             minWidth={100}
-            minHeight={100}
+            minHeight={50}
 
             />
  
@@ -121,10 +121,12 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
               // height:'fit-content',
         height:'100%',
         // width:'100%',
-        // display: 'flex',
-        // justifyContent: 'center',
-        // alignItems: 'center',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
         borderRadius:'8px',
+
+
         // borderRadius: '50%', // Make it circular
 
 

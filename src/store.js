@@ -65,7 +65,7 @@ export const useStore = create((set, get) => ({
 
     // 🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞
 onNodesChange: (changes) => {
-  console.log(changes)
+  // console.log(changes)
   set((state) => {
     const newNodes = state.nodes.map((node) => {
       const change = changes.find((c) => c.id === node.id);

@@ -1,7 +1,7 @@
 // ~🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 import React, {useRef, useState,useEffect } from "react"
 
-import ReactFlow, { ReactFlowProvider } from 'reactflow';
+import ReactFlow, { ReactFlowProvider,Panel } from 'reactflow';
 import useStore from '../../store';
 
 export default function Sidebar({onRestore, saveStation,setSaveStation }) {
@@ -50,12 +50,10 @@ export default function Sidebar({onRestore, saveStation,setSaveStation }) {
 
     </div>
 {/* ~~~~~~~~~~~~ */}
-<h3>節點數量: {howManyNodes}個</h3>
-      {/* <ul>
-        {nodes.map(node => (
-          <li key={node.id}>{node.data.label}</li>
-        ))}
-      </ul> */}
+
+{/* <Panel>
+<h3>數量: {howManyNodes}個</h3>
+
       <div className='flex flex-col'>
 
       {nodes.map(node => (
@@ -65,8 +63,9 @@ export default function Sidebar({onRestore, saveStation,setSaveStation }) {
         </button>
       ))}
       </div>
-{/* ~~~~~~~~~~~~ */}
-    <h1>{saveStation}</h1>
+      </Panel> */}
+
+    {/* <h1 className="w-64">{saveStation}</h1> */}
   </>
   )
 }
