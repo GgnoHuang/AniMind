@@ -21,6 +21,7 @@ export default function Sidebar({onRestore, saveStation,setSaveStation }) {
   useEffect(() => {
     // 每當 saveStation 更新後，調用 onRestore
     onRestore();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [saveStation]); // 依賴列表包含 saveStation 和 onRestore
 
 

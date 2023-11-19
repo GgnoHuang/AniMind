@@ -44,35 +44,35 @@ function Home() {
         歡迎使用記帳功能
       </p>
 
-      <div className="p-8 flex items-center flex items-center justify-center">
+      {/* <div className="p-8 flex items-center flex items-center justify-center">
           <button className="text-white p-2 rounded bg-blue-500 hover:bg-blue-600 ">
           <Link href="/Zus">zustand測試</Link>
         </button>
-      </div>
+      </div> */}
 
-      <div className="p-8 flex items-center flex items-center justify-center">
+      {/* <div className="p-8 flex items-center flex items-center justify-center">
           <button className="text-white p-2 rounded bg-blue-500 hover:bg-blue-600 ">
           <Link href="/TTTest">專案測試</Link>
         </button>
-      </div>
+      </div> */}
 
       <div className="p-8 flex items-center flex items-center justify-center">
           <button className="text-white p-2 rounded bg-blue-500 hover:bg-blue-600 ">
           <Link href="/FFFlow">Flow</Link>
         </button>
       </div>
-      <div className="p-8 flex items-center flex items-center justify-center">
+      {/* <div className="p-8 flex items-center flex items-center justify-center">
           <button className="text-white p-2 rounded bg-blue-500 hover:bg-blue-600 ">
           <Link href="/SSSave">SSSave</Link>
         </button>
-      </div>
+      </div> */}
 
-      <div className="p-8 flex items-center flex items-center justify-center">
+      {/* <div className="p-8 flex items-center flex items-center justify-center">
         <button className="text-white p-2 rounded bg-blue-500 hover:bg-blue-600 ">
           {userAuth !== null ? (<Link href="/Accounting">開始記帳</Link>)
           : (<Link href="/Accounting">訪客使用(紀錄不保存)</Link>)}
         </button>
-      </div>
+      </div> */}
 
       {userAuth != null ? (
         <div>

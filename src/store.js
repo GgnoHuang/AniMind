@@ -4,7 +4,7 @@ import { addEdge, applyNodeChanges, applyEdgeChanges } from 'reactflow';
 // import initialNodes from './pages/FFFlow/initialNodes';
 // import initialEdges from './pages/FFFlow/initialEdges';
 
-import { nodes as initialNodes, edges as initialEdges } from './pages/FFFlow/initialEls';
+import { nodes as initialNodes, edges as initialEdges } from './components/initialEls';
 
 export const useStore = create((set, get) => ({
   nodes: initialNodes,// 是一個陣列
@@ -155,16 +155,7 @@ selectNode: (nodeId) => {
     });
   },
 
-  // updateNodeColor: (nodeId, color) => {
-  //   set({
-  //     nodes: get().nodes.map((node) => {
-  //       if (node.id === nodeId) {
-  //         node.data = { ...node.data, color };
-  //       }
-  //       return node;
-  //     }),
-  //   });
-  // },
+
 
 }));
 

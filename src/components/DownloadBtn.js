@@ -1,5 +1,5 @@
 import React from 'react';
-import { Panel, useReactFlow, getRectOfNodes } from 'reactflow';
+import { Panel, useReactFlow, getRectOfNodes,ReactFlowProvider } from 'reactflow';
 import { toPng } from 'html-to-image';
 
 function downloadImage(dataUrl) {
@@ -52,13 +52,19 @@ export default function DownloadBtn({initBgColor}) {
   };
 
   return (
-    // <Panel position="top-right">
+ 
+
+    <ReactFlowProvider>
+
       <button className="download-btn" onClick={onClick}>
         下載
 
       </button>
       
-    //  </Panel>
+    </ReactFlowProvider>
+
   );
+  
 }
+
 

@@ -14,7 +14,7 @@ import styles from "./ffflow.module.css";
 // node👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻
 import TextUpdaterNode from '../../nodes/TextUpdaterNode'
 import OmgNode from '../../nodes/OmgNode'
-import OmgNode2 from '../../nodes/OmgNode2'
+import ImgNode2 from '../../nodes/ImgNode2.js'
 import ColorNote from '../../nodes/ColorNote'
 // import ResizerNode from '../../nodes/ResizerNode.js'
 // node👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻
@@ -23,7 +23,7 @@ import AuthCheck from "./AuthCheck.js"
 
 import Sidebar from "./Sidebar.js"
 // import NodesList from './Nodelist.js'; 
-import DownloadBtn from './DownloadBtn.js'; 
+import DownloadBtn from '../../components/DownloadBtn.js'; 
 
 
 // 🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈
@@ -33,7 +33,7 @@ import useStore from '../../store.js';
 
 const nodeTypes = { textUpdater: TextUpdaterNode,
   gg: OmgNode,
-  gg2: OmgNode2,
+  ImgNode2: ImgNode2,
   selectorNode: ColorNote,
   // ResizerNode:ResizerNode
 };
@@ -133,11 +133,6 @@ function Flow() {
 
 
 
-  useEffect(()=>{
-    console.log(initBgColor)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[initBgColor])
-  
 
 
   useEffect(() => { 
@@ -276,6 +271,7 @@ useEffect(() => {
       // console.log(8888)
   
 }
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [howManyNodes]);
 
 
@@ -327,11 +323,11 @@ useEffect(() => {
     />
 
 
-{/* 
-<Controls
+
+{/* <Controls
 fitViewOptions={{
   duration: 500,padding: 0.3
-}} // 传递自定义的 FitViewOptions
+}} 
 position={'bottom-right'}
 >
         <ControlButton title="Zoom In">
@@ -346,7 +342,6 @@ position={'bottom-right'}
       </Controls> */}
 
 
-    {/* <MiniMap /> */}
     <MiniMap 
     pannable={true}
      style={{ cursor: 'move', }}
@@ -392,8 +387,9 @@ position={'bottom-right'}
           onChange={(e) => setSelectedColor(e.target.value)}
           className="color-picker"
         />
+        
        <DownloadBtn initBgColor={initBgColor}/>
-             
+
       </Panel>
 
           {/* 這邊是dnd🔥 */}
@@ -413,7 +409,7 @@ position={'bottom-right'}
           </div>
           <div className="dndnode output
             bg-pink-300 text-white font-semibold py-2 px-4 rounded hover:bg-pink-400  ml-1 mr-1
-          " onDragStart={(event) => onDragStart(event, 'gg2')} draggable>
+          " onDragStart={(event) => onDragStart(event, 'ImgNode2')} draggable>
             3
           </div>
 
