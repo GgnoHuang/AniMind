@@ -41,7 +41,7 @@ function Home() {
      {userAuth != null && (
                <span>{localUserData.username}，</span>
           )}
-        歡迎使用記帳功能
+        歡迎
       </p>
 
       {/* <div className="p-8 flex items-center flex items-center justify-center">
