@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-no-undef */
+import Image from 'next/image'
+
 import { useCallback } from 'react';
 import { Handle, NodeProps,Position, NodeResizer,NodeToolbar} from 'reactflow';
 
@@ -30,14 +33,23 @@ export default function CustomNode({ data,selected }) {
           </div>
           <img src='./peng.png'/>
         </div> */}
-        <img 
+      {/* <img 
           style={{ 
             width:'100%',
             height:'100%',// 100%才能讓resize填滿
           }}
         // src='./peng.png'/>
-        src={data.pokemonpng ? data.pokemonpng : './gg.jpg'} />
-
+        src={data.pokemonpng ? data.pokemonpng : './gg.jpg'} />  */}
+     <Image
+        src={data.pokemonpng ? data.pokemonpng : '/gg.jpg'}
+        width={100}
+        height={100}
+        alt="Picture"
+        style={{
+          width: '100%',  
+          height: '100%', 
+        }} 
+      />
 
 <NodeToolbar >
         <button>哈哈，</button>

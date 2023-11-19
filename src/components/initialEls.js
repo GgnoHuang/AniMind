@@ -1,5 +1,5 @@
-import React from 'react';
-import { MarkerType, Position } from 'reactflow';
+// import React from 'react';
+// import { MarkerType, Position } from 'reactflow';
 
 export const nodes = [
   {
@@ -10,7 +10,7 @@ export const nodes = [
       inpupu: '.',
       imgsrc: './fan.jpeg',
       placeholder: '預設',
-      backgroundColor: '#f0f0f0' // 默认背景颜色
+      backgroundColor: '#f0f0f0' 
     },
   },
   {
@@ -94,3 +94,8 @@ export const edges = [
   { id: 'edge-2', source: 'node-1', target: 'node-3', sourceHandle: 'b' },
   { id: 'edge-3', source: 'node-1', target: 'node-3', sourceHandle: 'a' },
 ];
+
+
+
+
+
