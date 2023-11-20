@@ -22,10 +22,10 @@ import proCircleNode from '../../nodes/circleNode.js'
 
 import AuthCheck from "./AuthCheck.js"
 
-import Sidebar from "./Sidebar.js"
+import Sidebar from "../../components/Sidebar.js"
 // import NodesList from './Nodelist.js'; 
 import DownloadBtn from '../../components/DownloadBtn.js'; 
-import UploadBtn from '../../components/uploadbtn.js'
+import UploadBtn from '../../components/UploadBtn.js'
 
 
 

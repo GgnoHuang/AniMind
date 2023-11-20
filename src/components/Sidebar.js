@@ -2,7 +2,7 @@
 import React, {useRef, useState,useEffect } from "react"
 
 import ReactFlow, { ReactFlowProvider,Panel } from 'reactflow';
-import useStore from '../../store';
+import useStore from '../store';
 
 export default function Sidebar({onRestore, saveStation,setSaveStation }) {
 

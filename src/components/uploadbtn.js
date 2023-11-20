@@ -35,6 +35,7 @@ function ImageUpload( {sayhi,onAdd}) {
         });
       });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [image])
 
 const handleUpload = () => {
