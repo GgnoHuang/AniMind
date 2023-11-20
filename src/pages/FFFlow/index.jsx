@@ -25,7 +25,8 @@ import AuthCheck from "./AuthCheck.js"
 import Sidebar from "../../components/Sidebar.js"
 // import NodesList from './Nodelist.js'; 
 import DownloadBtn from '../../components/DownloadBtn.js'; 
-import UploadBtn from '../../components/UploadBtn.js'
+import ImageUpload from '../../components/ImageUpload.js'; 
+
 
 
 
@@ -423,7 +424,7 @@ useEffect(() => {
           上傳圖檔
      
           </div> */}
-          <UploadBtn onAdd={onAdd}
+          <ImageUpload onAdd={onAdd}
           sayhi={sayhi}
           />
         </Panel>
