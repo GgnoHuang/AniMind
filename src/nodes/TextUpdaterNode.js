@@ -236,10 +236,11 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
           spellCheck="false"
           dangerouslySetInnerHTML={{ __html: blockquoteContent }}
           className='nodrag userRestoreInput' >
-
             {/* <p>Edit this content to add your own quote</p> */}
     
         </blockquote>
+
+
         <Handle type="target" position={Position.Left} id="b" 
             style={{ backgroundColor: 'blue' ,width: '13px',  // 调整宽度
             height: '13px', }} // 更改背景颜色为蓝色

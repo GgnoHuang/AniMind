@@ -355,12 +355,13 @@ useEffect(() => {
     <Panel>
 
         {/* <div>背景樣式:</div> */}
-        <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
-        onClick={() => setVariant('dots')}>點狀</button>
+      
         <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
          onClick={() => setVariant('lines')}>格紋</button>
         <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
         onClick={() => setVariant('cross')}>十字</button>
+          <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
+        onClick={() => setVariant('dots')}>點狀</button>
         <input className="nodrag" type="color"
         onChange={handleBgColorChange}
       //  defaultValue=

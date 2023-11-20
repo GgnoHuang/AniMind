@@ -4,8 +4,7 @@
 const nextConfig = {
   images: {
     domains: ['firebasestorage.googleapis.com'],
-  },
-  // 其他配置...
+  },// 要讓next認得這個圖片的src網址
 };
 
 module.exports = nextConfig
