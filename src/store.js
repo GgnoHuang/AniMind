@@ -13,6 +13,17 @@ export const useStore = create((set, get) => ({
   isAnyNodeSelected: false,
   setIsAnyNodeSelected: (isSelected) => set({ isAnyNodeSelected: isSelected }),
 
+
+// 🔵🔵🔵🔵🔵🔵🔵搭配主程式的onEdgeClick🔵🔵🔵🔵🔵🔵🔵🔵
+  // updateEdgeStyle: (edgeId, newStyle) => {
+  //   set((state) => ({
+  //     edges: state.edges.map((edge) =>
+  //       edge.id === edgeId ? { ...edge, ...newStyle } : edge
+  //     ),
+  //   }));
+  // },
+// 🔵🔵🔵🔵🔵🔵🔵搭配主程式的onEdgeClick🔵🔵🔵🔵🔵🔵🔵🔵
+
   howManyNodes:0,
   // onNodesChange: (changes) => {
   //   set({
@@ -149,13 +160,41 @@ selectNode: (nodeId) => {
     });
   },
 
+  // onConnect: (connection) => {
+  //   set({
+  //     edges: addEdge(connection, get().edges),
+  //   });
+  // },
+
+  // onNodeClick: (nodeId) => {
+  //   set((state) => ({
+  //     nodes: state.nodes.map((node) =>
+  //       node.id === nodeId
+  //         ? {
+  //             ...node,
+  //             style: { ...node.style, background: 'red' }, // 设置节点背景色为红色
+  //           }
+  //         : node
+  //     ),
+  //   }));
+  // },
+
+
   onConnect: (connection) => {
-    set({
-      edges: addEdge(connection, get().edges),
-    });
+    const newEdge = {
+      ...connection,
+      type:'default',
+      animated: true, // 動畫
+      selectable: true, // ？
+      // 可以設定更多 Edge 屬性
+      style: { strokeWidth: 5,stroke: 'grey' }, 
+
+    };
+    set((state) => ({
+      edges: addEdge(newEdge, state.edges),
+    }));
   },
-
-
+  
 
 }));
 

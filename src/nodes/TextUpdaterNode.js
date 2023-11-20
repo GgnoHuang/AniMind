@@ -125,8 +125,6 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius:'8px',
-
-
         // borderRadius: '50%', // Make it circular
 
 
@@ -242,16 +240,17 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
             {/* <p>Edit this content to add your own quote</p> */}
     
         </blockquote>
-        <Handle type="source" position={Position.Bottom} id="b" 
+        <Handle type="target" position={Position.Left} id="b" 
             style={{ backgroundColor: 'blue' ,width: '13px',  // 调整宽度
             height: '13px', }} // 更改背景颜色为蓝色
             isConnectable={isConnectable} 
         />
-        <Handle type="target" position={Position.Top} 
+        <Handle type="source" position={Position.Right} 
           style={{ backgroundColor: 'blue' ,width: '13px',  // 调整宽度
           height: '13px', }} 
           isConnectable={isConnectable} 
         />
+        
 
     </div>
     </>

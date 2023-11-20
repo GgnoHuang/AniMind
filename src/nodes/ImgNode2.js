@@ -6,7 +6,9 @@ import { Handle, NodeProps,Position, NodeResizer,NodeToolbar} from 'reactflow';
 
 export default function CustomNode({ data,selected }) {
   return (
-    <div style={{ width: '100%', height: '100%' }}
+    <div style={{
+     height: '100%'
+       }}
     // className="px-4 py-2 shadow-md rounded-md bg-white border-2 border-stone-400"
     >
       <NodeResizer
@@ -51,10 +53,23 @@ export default function CustomNode({ data,selected }) {
         }} 
       />
 
+      {/* <div 
+       style={{ 
+
+        height:'100%'}}
+      >
+      <svg 
+      width="100%" 
+      height="100%"
+       viewBox="0 0 100 100">
+        <polygon points="50,0 100,100 0,100" fill="blue" />
+      </svg>
+
+      </div> */}
+
 <NodeToolbar >
-        <button>哈哈，</button>
-        <button>copy</button>
-        <button>expand</button>
+        <button>ok</button>
+
       </NodeToolbar>
       <Handle
         type="target"
