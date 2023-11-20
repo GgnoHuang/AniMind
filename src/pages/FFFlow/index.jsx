@@ -244,9 +244,11 @@ useEffect(()=>{
 
 
 // const [addCount, setAddCount] = useState(0);
-
+const sayhi = () => {
+  console.log('hi')
+}
 // const addNewNode = useStore((state) => state.addNewNode);
-const onAdd = () => {
+const onAdd = (imageUrl) => {
   const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
 
   // 計算瀏覽器視窗中心點的座標
@@ -261,13 +263,13 @@ const onAdd = () => {
   // const { x, y, zoom } = reactFlowInstance.getViewport();
   const newNode = {
     id: getNodeId(),
-    type: 'textUpdater',
-    data: {
-      // inpupu: 'hello',
-      // imgsrc: './fan.jpeg',
-      // placeholder: '請輸入...',
-      backgroundColor: selectedColor, // 使用所选颜色
-    },
+    type: 'ImgNode2',
+    data:{
+      pokemonpng:imageUrl
+      // pokemonpng:'/gg.jpg'
+    }
+    ,
+   
     position: canvasPosition,
 
   };
@@ -420,7 +422,9 @@ useEffect(() => {
           上傳圖檔
      
           </div> */}
-          <UploadBtn/>
+          <UploadBtn onAdd={onAdd}
+          sayhi={sayhi}
+          />
         </Panel>
       </ReactFlow>
 

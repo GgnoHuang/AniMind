@@ -25,25 +25,12 @@ export default function CustomNode({ data,selected }) {
         }}
        isVisible={selected} minWidth={100} minHeight={100} />
 
-        {/* <div className="flex">
-          <div className="rounded-full w-12 h-12 flex justify-center items-center bg-gray-100">
-            {data.emoji}
-          </div>
-          <div className="ml-2">
-            <div className="text-lg font-bold">{data.name}</div>
-            <div className="text-gray-500">{data.job}</div>
-          </div>
-          <img src='./peng.png'/>
-        </div> */}
-      {/* <img 
-          style={{ 
-            width:'100%',
-            height:'100%',// 100%才能讓resize填滿
-          }}
-        // src='./peng.png'/>
-        src={data.pokemonpng ? data.pokemonpng : './gg.jpg'} />  */}
+  
+
      <Image
-        src={data.pokemonpng ? data.pokemonpng : '/gg.jpg'}
+        // src={data.pokemonpng ? data.pokemonpng : '/gg.jpg'}
+        src={data.pokemonpng }
+
         width={100}
         height={100}
         alt="Picture"
@@ -68,7 +55,9 @@ export default function CustomNode({ data,selected }) {
       </div> */}
 
 <NodeToolbar >
-        <button>ok</button>
+        <button>
+          
+        </button>
 
       </NodeToolbar>
       <Handle
