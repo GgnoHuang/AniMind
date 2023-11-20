@@ -123,7 +123,6 @@
 
 /* eslint-disable react/jsx-no-undef */
 import Image from 'next/image'
-import useStore from '../store';
 
 import React, { useEffect, useState, useRef } from 'react';
 
@@ -154,39 +153,6 @@ import { Handle, NodeProps,Position,
 
 
 export default function CustomNode({ data,selected }) {
-
-
-  // 從textupdate那邊先貼過來，要再整理到zustand
-  // 從textupdate那邊先貼過來，要再整理到zustand
-  // 從textupdate那邊先貼過來，要再整理到zustand
-  // 從textupdate那邊先貼過來，要再整理到zustand
-    const { updateNodeData,updateNodeColor,isAnyNodeSelected,selectNode} = useStore(state => ({
-    updateNodeData: state.updateNodeData,
-    updateNodeColor: state.updateNodeColor,
-    isAnyNodeSelected: state.isAnyNodeSelected,
-    selectNode: state.selectNode,
-
-  }));
-
-  const [blockquoteContent, setBlockquoteContent] = useState(data.userMemoContent || '');
-
-  const [isPointerEventsActive, setIsPointerEventsActive] = useState(false);
-  const handleDoubleClick = () => {
-    console.log('hi')
-    setIsPointerEventsActive(prev => !prev);
-  };
-  const handleBlockQuoteClick = () => {
-    selectNode(id);
-  };
-  const onEditText = (e) => {
-    // console.log('當前輸入：',e.currentTarget.innerHTML);
-    // console.log('當前節點id:',id)
-    updateNodeData(id, { ...data, userMemoContent: e.currentTarget.innerHTML });
-    // setBlockquoteContent( e.currentTarget.innerHTML); 這邊用set打字又開始有問題
-  };
-  // 從textupdate那邊先貼過來，要再整理到zustand
-
-
 
   // 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
 // 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
@@ -237,21 +203,25 @@ export default function CustomNode({ data,selected }) {
 
     // className="px-4 py-2 shadow-md rounded-md bg-white border-2 border-stone-400"
     >
-<NodeToolbar >
-        
-
-      </NodeToolbar>
-
- <div ref={rotateControlRef}  style={{display: 'block'}}
+ <div
+          ref={rotateControlRef}
+          style={{
+            display: 'block'
+          }}
           className='nodrag rotateHandle'
         />
-
     <div>
-          {data?.label}
-          <div>
-            {/* <label><input/></label> */}
-            {/* <input/> */}
-          </div>
+          {/* {data?.label} */}
+          {/* <div>
+            <label>
+              <input
+                type="checkbox"
+                checked={resizable}
+                onChange={(evt) => setResizable(evt.target.checked)}
+              />
+              resizable
+            </label>
+          </div> */}
           {/* <div>
             <label>
               <input
@@ -286,23 +256,7 @@ export default function CustomNode({ data,selected }) {
         }}
        isVisible={selected} minWidth={100} minHeight={100} />
 
-{/* <blockquote 
-        contentEditable="true"
-        suppressContentEditableWarning// 不用這會報錯
-            style={{
-            pointerEvents: isPointerEventsActive ? 'auto' : 'none',
-            cursor: 'text',
-            color: data.fontColor || 'black',
-            fontSize:data.fontSize||'25px',
-            textAlign: data.textalign ||'center',
-          }}
-          onClick={handleBlockQuoteClick} 
-          onInput={onEditText}
-          spellCheck="false"
-          dangerouslySetInnerHTML={{ __html: blockquoteContent }}
-          className='nodrag userRestoreInput' >
-    
-        </blockquote> */}
+  
 
      <Image
         // src={data.pokemonpng ? data.pokemonpng : '/gg.jpg'}
@@ -331,7 +285,12 @@ export default function CustomNode({ data,selected }) {
 
       </div> */}
 
+<NodeToolbar >
+        <button>
 
+        </button>
+
+      </NodeToolbar>
       {/* <Handle
         type="target"
         position={Position.Top}

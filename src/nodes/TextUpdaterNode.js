@@ -104,10 +104,8 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
             animation: 'blink 1s linear infinite', }}
             isVisible={selected}
             minWidth={100}
-            minHeight={50}
+            minHeight={50}/>
 
-            />
- 
     <div 
       onClick={handleDoubleClick}
     // className="text-updater-node border border-gray-300 p-2 rounded"
@@ -120,41 +118,20 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
         padding:'10px',
               // height:'fit-content',
         height:'100%',
-        // width:'100%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius:'8px',
-        // borderRadius: '50%', // Make it circular
-
-
-
-        // backgroundColor: data.backgroundColor || '#FF00FF',
-        // border: '2px solid gray',
-        // overflow: 'hidden',
-        // padding: '10px',
-        // height:'100%',
-        // borderRadius: '50%', // Make it circular
-        // display: 'flex',
-        // justifyContent: 'center',
-        // alignItems: 'center',
       }}>  
 
-  
-
-          {/* 
-                  <div style={{ height: '100%',
+          {/* <div style={{ height: '100%',
                   // paddingBottom:'55px '
                   display:'flex',
                   flexDirection:'column',
                   gap:'3px'
                   }}>  */}
-
           {/* <label htmlFor="text" className="block text-gray-700 text-sm">Text:</label> */}
-
-          {/* <input className=" p-1 rounded"></input>
-           */}
-
+          {/* <input className=" p-1 rounded"></input>           */}
           {/* <textarea id="text" name="text" placeholder={data.placeholder}
             onChange={onInpupu}
             style={{ 
@@ -162,15 +139,13 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
             height:'40px', 
             width:'240px',}} 
           className="nodrag p-1 rounded" /> */}
-         
-        
         <button    
             className="adjustButton"
           style={{ 
           fontSize:'24px',
           width: '500px',
           position:'absolute',
-          top:'-60px',
+          top:'-80px',
           left: '50%', // 將元素左邊緣對齊父元素的中心
           transform: 'translateX(-50%)', // 然後向左移動自身寬度的50%，以實現完全居中
           display: data.isSelected ? 'block' : 'none'
@@ -199,46 +174,30 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
           <button onClick={decreaseFontSize} style={{  padding:'0px 5px',borderColor:' red',borderWidth:'1px' }}>-</button>
           <button onClick={decreaseFontSizeTen} style={{  padding:'0px 5px',borderColor:' red',borderWidth:'1px'  ,fontSize:'40px'}}>-</button>
 
-      <input
-          value={selectedColor}
+      <input value={selectedColor}
           // 這邊value就是input顯示在畫面上的顏色，就是data.backgroundColor
           type="color"
           // defaultValue={data.color}
-          onChange={onSelectColor}
-          // className="nodrag"
-        />
-          <input
-          value={selectedFontColor}
+            // className="nodrag"
+          onChange={onSelectColor}/>
+          <input value={selectedFontColor}
           type="color"
           onChange={onSelectFontColor}
-        />
-      
-
-        </button>
-      {/* </div> */}
+        />    </button>
 
         <blockquote 
         contentEditable="true"
         suppressContentEditableWarning// 不用這會報錯
-            style={{
-            pointerEvents: isPointerEventsActive ? 'auto' : 'none',
+            style={{pointerEvents: isPointerEventsActive ? 'auto' : 'none',
             cursor: 'text',
-
             color: data.fontColor || 'black',
-            // fontSize:'33px' ,
             // fontSize: selectFontSize+'px' ,
             fontSize:data.fontSize||'25px',
-            textAlign: data.textalign ||'center',
-
-          }}
+            textAlign: data.textalign ||'center',}}
           onClick={handleBlockQuoteClick} 
-          onInput={onEditText}
-          spellCheck="false"
+          onInput={onEditText} spellCheck="false"
           dangerouslySetInnerHTML={{ __html: blockquoteContent }}
-          className='nodrag userRestoreInput' >
-            {/* <p>Edit this content to add your own quote</p> */}
-    
-        </blockquote>
+          className='nodrag userRestoreInput' ></blockquote>
 
 
         <Handle type="target" position={Position.Left} id="b" 
