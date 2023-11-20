@@ -1,4 +1,5 @@
 import "./style.css"
+import "./rotate.css"
 
 // import "nes.css/css/nes.min.css";
 

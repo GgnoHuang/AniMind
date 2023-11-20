@@ -2,11 +2,10 @@
 import React, {useRef, useState,useEffect } from "react"
 
 import ReactFlow, { ReactFlowProvider,Panel } from 'reactflow';
-import useStore from '../../store';
+import useStore from '../store';
 
 export default function Sidebar({onRestore, saveStation,setSaveStation }) {
-  // const [errMsg, setErrMsg] = useState(false)
-  // const [successMsg, setSuccessMsg] = useState(false)
+
   const { nodes, howManyNodes } = useStore(state => ({
     nodes: state.nodes,
     howManyNodes: state.howManyNodes,
@@ -28,7 +27,16 @@ export default function Sidebar({onRestore, saveStation,setSaveStation }) {
 
   return (
   <>
-    <div className="self-center flex flex-col gap-2 border-2 border-sky-500 h-fit w-200 absolute z-50 left-3">
+
+
+<Panel>
+
+    <div 
+      style={{ 
+            position:'relative',
+            top:'100px'
+
+          }} >
       {[1, 2, 3, 4, 5, 6, 7, 8].map((number) => (
         <p key={number}
           className='border-4 border-purple-200 flex justify-center items-center hover:border-sky-500 p-2 cursor-pointer'
@@ -41,15 +49,17 @@ export default function Sidebar({onRestore, saveStation,setSaveStation }) {
           style={{ 
             backgroundColor: saveStation === number ? '#BE77FF' : 'white',
             transition: 'background-color 0.3s ease'}}>
-              存檔{number}
+              紀錄{number}
         </p>
       ))}
     </div>
-    
-    <div>
+      </Panel>
 
-    </div>
-{/* ~~~~~~~~~~~~ */}
+
+
+  
+
+
 
 {/* <Panel>
 <h3>數量: {howManyNodes}個</h3>

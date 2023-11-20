@@ -16,14 +16,17 @@ import TextUpdaterNode from '../../nodes/TextUpdaterNode'
 import OmgNode from '../../nodes/OmgNode'
 import ImgNode2 from '../../nodes/ImgNode2.js'
 import ColorNote from '../../nodes/ColorNote'
+import proCircleNode from '../../nodes/circleNode.js'
 // import ResizerNode from '../../nodes/ResizerNode.js'
 // node👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻
 
 import AuthCheck from "./AuthCheck.js"
 
-import Sidebar from "./Sidebar.js"
+import Sidebar from "../../components/Sidebar.js"
 // import NodesList from './Nodelist.js'; 
 import DownloadBtn from '../../components/DownloadBtn.js'; 
+import UploadBtn from '../../components/UploadBtn.js'
+
 
 
 // 🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈
@@ -35,13 +38,26 @@ const nodeTypes = { textUpdater: TextUpdaterNode,
   gg: OmgNode,
   ImgNode2: ImgNode2,
   circleNode: ColorNote,
+  proCircleNode:proCircleNode
   // ResizerNode:ResizerNode
 };
 
 function Flow() {
   // const initBgColor = '#1A192B';
 
-  
+    // 💞💞💞💞💞💞💞💞💞💞💞💞💞💞重要用法💞💞💞💞💞💞💞💞💞💞💞💞💞💞💞💞💞
+  const onNodeClick = (event, node) => {
+    console.log('Node clicked:', node);
+  };
+  // const onEdgeClick = (event, edge) => {
+  //   console.log('Node clicked:', edge);
+  // };
+  // const onEdgeClick = (event, edge) => {
+  //   // 根据需要更改样式
+  //   updateEdgeStyle(edge.id, { type: 'smoothstep', style: { stroke: 'red' } });
+  // };
+  // 💞💞💞💞💞💞💞💞💞💞💞💞💞💞重要用法💞💞💞💞💞💞💞💞💞💞💞💞💞💞💞💞💞
+
   const [initBgColor,setInitBgColor]= useState( 'rgb(199, 199, 199)')
   function handleBgColorChange(event) {
     const newBgColor = event.target.value;
@@ -56,7 +72,9 @@ function Flow() {
 
   const getNodeId = () => `randomnode_${+new Date()}`;
   // const { nodes, edges, onNodesChange, onEdgesChange, onConnect } = useStore(selector, shallow);
-  const { nodes, edges, onNodesChange, onEdgesChange, onConnect,setNodes,setEdges,howManyNodes } = useStore(state => ({
+  const { nodes, edges, onNodesChange,onEdgesChange, onConnect,setNodes
+     ,setEdges,howManyNodes ,
+     updateEdgeStyle} = useStore(state => ({
     nodes: state.nodes,
     edges: state.edges,
     onNodesChange: state.onNodesChange,
@@ -66,9 +84,11 @@ function Flow() {
     setNodes: state.setNodes,
     setEdges: state.setEdges,
     howManyNodes: state.howManyNodes,
+    updateEdgeStyle: state.updateEdgeStyle,
   }));
 
 //為了等等使用useeffect偵測node數量變化
+
 
 // ~~~~~~~~~~~~dnd的部分
   const onDragStart = (event, nodeType) => {
@@ -224,9 +244,11 @@ useEffect(()=>{
 
 
 // const [addCount, setAddCount] = useState(0);
-
+const sayhi = () => {
+  console.log('hi')
+}
 // const addNewNode = useStore((state) => state.addNewNode);
-const onAdd = () => {
+const onAdd = (imageUrl) => {
   const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
 
   // 計算瀏覽器視窗中心點的座標
@@ -241,13 +263,13 @@ const onAdd = () => {
   // const { x, y, zoom } = reactFlowInstance.getViewport();
   const newNode = {
     id: getNodeId(),
-    type: 'textUpdater',
-    data: {
-      // inpupu: 'hello',
-      // imgsrc: './fan.jpeg',
-      // placeholder: '請輸入...',
-      backgroundColor: selectedColor, // 使用所选颜色
-    },
+    type: 'ImgNode2',
+    data:{
+      pokemonpng:imageUrl
+      // pokemonpng:'/gg.jpg'
+    }
+    ,
+   
     position: canvasPosition,
 
   };
@@ -263,17 +285,9 @@ useEffect(() => {
     console.log(nodes);
     console.log('數量：',howManyNodes);
 
-
-    if (reactFlowInstance) {
-      // const flow = reactFlowInstance.toObject();
-      // console.log(7777)
-      // console.log(JSON.stringify(flow))
-      // console.log(flow)
-      // console.log(8888)
-  
-}
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [howManyNodes]);
+
 
 
   return (
@@ -303,7 +317,8 @@ useEffect(() => {
       onConnect={onConnect}
       nodeTypes={nodeTypes}
       fitView={false}// 沒有設定的話會重新載入就fitView導致變很大
-
+      // onEdgeClick={onEdgeClick}
+      onNodeClick={onNodeClick}
       minZoom={0.1}
       maxZoom={7}
       // style={{ background: bgColor }}
@@ -323,26 +338,6 @@ useEffect(() => {
     
     />
 
-
-
-{/* <Controls
-fitViewOptions={{
-  duration: 500,padding: 0.3
-}} 
-position={'bottom-right'}
->
-        <ControlButton title="Zoom In">
-          <i className="fa fa-plus"></i>
-        </ControlButton>
-        <ControlButton title="Zoom Out">
-          <i className="fa fa-minus"></i>
-        </ControlButton>
-        <ControlButton title="Fit View">
-          <i className="fa fa-expand"></i>
-        </ControlButton>
-      </Controls> */}
-
-
     <MiniMap 
     className="custom-minimap"
     pannable={true}
@@ -350,7 +345,7 @@ position={'bottom-right'}
 
     }}
     // nodeColor={'#FF5733'}
-    position={'bottom-center'}
+    position={'bottom-left'}
 
     />
 
@@ -358,13 +353,15 @@ position={'bottom-right'}
 
 
     <Panel>
+
         {/* <div>背景樣式:</div> */}
-        <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
-        onClick={() => setVariant('dots')}>點狀</button>
+      
         <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
          onClick={() => setVariant('lines')}>格紋</button>
         <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
         onClick={() => setVariant('cross')}>十字</button>
+          <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
+        onClick={() => setVariant('dots')}>點狀</button>
         <input className="nodrag" type="color"
         onChange={handleBgColorChange}
       //  defaultValue=
@@ -420,12 +417,15 @@ position={'bottom-right'}
           " onDragStart={(event) => onDragStart(event, 'textUpdater')} draggable>
               ⬜️
           </div>
-          <div className="dndnode output
+          {/* <div className="dndnode output
             bg-pink-300 text-white font-semibold py-2 px-4 rounded hover:bg-pink-400  ml-1 mr-1
-          " onDragStart={(event) => onDragStart(event, 'ImgNode2')} draggable>
-          上傳圖檔(尚未完成)
-          </div>
-
+          " onDragStart={(event) => onDragStart(event, 'proCircleNode')} draggable>
+          上傳圖檔
+     
+          </div> */}
+          <UploadBtn onAdd={onAdd}
+          sayhi={sayhi}
+          />
         </Panel>
       </ReactFlow>
 
