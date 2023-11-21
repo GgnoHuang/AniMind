@@ -8,7 +8,8 @@ import { db } from "../../config"
 
 function Login({ errMsg, setErrMsg,setSuccessMsg,successMsg }) {
   // const [errMsg, setErrMsg] = useState(false)
-  // const [successMsg, setSuccessMsg] = useState(false)
+  // const [successMsg, setSuccessMsg] = useState(false) 
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault()
