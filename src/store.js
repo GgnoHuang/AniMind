@@ -187,7 +187,7 @@ selectNode: (nodeId) => {
       animated: true, // 動畫
       selectable: true, // ？
       // 可以設定更多 Edge 屬性
-      style: { strokeWidth: 5,stroke: 'grey' }, 
+      style: { strokeWidth: 5,stroke: 'yellowgreen' }, 
 
     };
     set((state) => ({

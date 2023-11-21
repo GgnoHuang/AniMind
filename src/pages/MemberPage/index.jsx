@@ -3,7 +3,7 @@ import Link from "next/link"
 
 import "firebase/auth"
 import { auth } from "../../config"
-// 有import { auth } 就不用import getAuth()
+import styles from "./member.module.css";
 
 
 import Login from "./Login"
@@ -19,7 +19,7 @@ function MemberPage() {
   const [errMsg, setErrMsg] = useState(false)
 
   return (
-    <div>
+    <div className={styles.background}>
       <AuthCheck auth={auth}
         setLocalUserData={setLocalUserData}
         setUserAuth={setUserAuth}
@@ -48,10 +48,6 @@ function MemberPage() {
           <br />
         </div>
       )}
-
-
-
-
 
 
       <div className="p-3 flex items-center flex items-center justify-center">

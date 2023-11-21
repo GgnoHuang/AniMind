@@ -1,0 +1,69 @@
+Date : 2023-11-21 00:08:50
+Directory : /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src
+Total : 33 files,  2101 codes, 866 comments, 724 blanks, all 3691 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| JavaScript     |         24 |      1,512 |        750 |        549 |      2,811 |
+| JavaScript JSX |          4 |        402 |         89 |        114 |        605 |
+| CSS            |          5 |        187 |         27 |         61 |        275 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                      | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                         |         33 |      2,101 |        866 |        724 |      3,691 |
+| . (Files)                                                                                 |          3 |         98 |        190 |         61 |        349 |
+| components                                                                                |          9 |        277 |        180 |        115 |        572 |
+| components (Files)                                                                        |          7 |        277 |        154 |        105 |        536 |
+| components/Zus                                                                            |          2 |          0 |         26 |         10 |         36 |
+| nodes                                                                                     |          8 |        792 |        367 |        282 |      1,441 |
+| pages                                                                                     |         13 |        934 |        129 |        266 |      1,329 |
+| pages (Files)                                                                             |          4 |        248 |         36 |         75 |        359 |
+| pages/Accounting                                                                          |          2 |        151 |         11 |         41 |        203 |
+| pages/FFFlow                                                                              |          3 |        337 |         71 |         99 |        507 |
+| pages/MemberPage                                                                          |          4 |        198 |         11 |         51 |        260 |
++-------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                                                  | language       | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/components/AuthCheck.js            | JavaScript     |         27 |          2 |          5 |         34 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/components/DownloadBtn.js          | JavaScript     |         32 |         16 |         31 |         79 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/components/ImageUpload.js          | JavaScript     |         39 |         36 |         16 |         91 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/components/List.js                 | JavaScript     |         84 |          5 |         18 |        107 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/components/LogoutBtn.js            | JavaScript     |         37 |          0 |          3 |         40 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/components/Sidebar.js              | JavaScript     |         43 |         16 |         24 |         83 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/components/Zus/index.jsx           | JavaScript JSX |          0 |         19 |          6 |         25 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/components/Zus/store.js            | JavaScript     |          0 |          7 |          4 |         11 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/components/initialEls.js           | JavaScript     |         15 |         79 |          8 |        102 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/config.js                          | JavaScript     |         24 |         10 |          9 |         43 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/nodes/ColorNote.js                 | JavaScript     |        155 |         59 |         51 |        265 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/nodes/ImgNode2.js                  | JavaScript     |         83 |        157 |         74 |        314 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/nodes/OmgNode.js                   | JavaScript     |         39 |          7 |          6 |         52 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/nodes/TextUpdaterNode.js           | JavaScript     |        145 |         46 |         48 |        239 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/nodes/TextUpdaterNode2.js          | JavaScript     |        152 |         47 |         45 |        244 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/nodes/circleNode.js                | JavaScript     |         82 |         22 |         25 |        129 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/nodes/example.js                   | JavaScript     |        136 |         29 |         32 |        197 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/nodes/nodestyle.css                | CSS            |          0 |          0 |          1 |          1 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/Accounting/Form.js           | JavaScript     |        104 |          9 |         28 |        141 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/Accounting/index.jsx         | JavaScript JSX |         47 |          2 |         13 |         62 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/FFFlow/AuthCheck.js          | JavaScript     |         22 |          1 |         10 |         33 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/FFFlow/ffflow.module.css     | CSS            |         10 |          3 |          4 |         17 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/FFFlow/index.jsx             | JavaScript JSX |        305 |         67 |         85 |        457 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/MemberPage/Login.js          | JavaScript     |         67 |          8 |         19 |         94 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/MemberPage/Register.js       | JavaScript     |         79 |          0 |         21 |        100 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/MemberPage/index.jsx         | JavaScript JSX |         50 |          1 |         10 |         61 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/MemberPage/member.module.css | CSS            |          2 |          2 |          1 |          5 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/_app.js                      | JavaScript     |          6 |          1 |          4 |         11 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/index.js                     | JavaScript     |         67 |         13 |         16 |         96 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/rotate.css                   | CSS            |         23 |          8 |          9 |         40 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/style.css                    | CSS            |        152 |         14 |         46 |        212 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/store.js                           | JavaScript     |         74 |         95 |         33 |        202 |
+| /Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/utils.js                           | JavaScript     |          0 |         85 |         19 |        104 |
+| Total                                                                                     |                |      2,101 |        866 |        724 |      3,691 |
++-------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+

@@ -34,8 +34,7 @@ export default function Sidebar({onRestore, saveStation,setSaveStation }) {
     <div 
       style={{ 
             position:'relative',
-            top:'100px'
-
+            top:'100px',
           }} >
       {[1, 2, 3, 4, 5, 6, 7, 8].map((number) => (
         <p key={number}
@@ -49,7 +48,7 @@ export default function Sidebar({onRestore, saveStation,setSaveStation }) {
           style={{ 
             backgroundColor: saveStation === number ? '#BE77FF' : 'white',
             transition: 'background-color 0.3s ease'}}>
-              紀錄{number}
+              {number}
         </p>
       ))}
     </div>

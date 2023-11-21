@@ -17,6 +17,7 @@ import OmgNode from '../../nodes/OmgNode'
 import ImgNode2 from '../../nodes/ImgNode2.js'
 import ColorNote from '../../nodes/ColorNote'
 import proCircleNode from '../../nodes/circleNode.js'
+import example from '../../nodes/example.js'
 // import ResizerNode from '../../nodes/ResizerNode.js'
 // node👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻
 
@@ -39,7 +40,8 @@ const nodeTypes = { textUpdater: TextUpdaterNode,
   gg: OmgNode,
   ImgNode2: ImgNode2,
   circleNode: ColorNote,
-  proCircleNode:proCircleNode
+  proCircleNode:proCircleNode,
+  example:example
   // ResizerNode:ResizerNode
 };
 
@@ -169,6 +171,7 @@ function Flow() {
   // ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨
   const onSave =() => {
     if (reactFlowInstance) {
+          console.log(reactFlowInstance.toObject())
           const flow = reactFlowInstance.toObject();
           // localStorage.setItem(flowKey, JSON.stringify(flow));
           const localUUID = localStorage.getItem("userUUID")
@@ -417,6 +420,15 @@ useEffect(() => {
 
           " onDragStart={(event) => onDragStart(event, 'textUpdater')} draggable>
               ⬜️
+          </div>
+          <div className="dndnode
+            bg-purple-300 text-white font-semibold
+            flex
+            justify-center	
+            py-2 px-4 rounded hover:bg-purple-400  ml-1 mr-1
+
+          " onDragStart={(event) => onDragStart(event, 'example')} draggable>
+              🟡
           </div>
           {/* <div className="dndnode output
             bg-pink-300 text-white font-semibold py-2 px-4 rounded hover:bg-pink-400  ml-1 mr-1

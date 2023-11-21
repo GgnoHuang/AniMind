@@ -1,7 +1,6 @@
 import React, {  useState,useEffect } from 'react';
 import {storage } from "../config" 
 
-
 import {  ref as ref_storage, uploadBytes,getDownloadURL } from 'firebase/storage';
 
 
@@ -23,20 +22,7 @@ function ImageUpload( {sayhi,onAdd}) {
       setImage(e.target.files[0]);
     }
   };
-  useEffect(() => {
-    if (image) {
-      const storageRef = ref_storage(storage, 'images/' + image.name);
-      uploadBytes(storageRef, image).then((snapshot) => {
-        // 上傳成功後，獲取並更新圖片的 URL
-        getDownloadURL(snapshot.ref).then((downloadURL) => {
-          setImageUrl(downloadURL); // 更新圖片 URL
-          console.log(downloadURL);
-          onAdd(downloadURL); 
-        });
-      });
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [image])
+
 
 const handleUpload = () => {
   if (image) {

@@ -32,7 +32,9 @@
 body {
   font-family: '小濑字体';
 
-  background-color: #dfdfdf;
+  background-image:url('../../public/patrick-perkins-ETRPjvb0KM0-unsplash.jpg');
+  background-size:cover
+
 }
 
 

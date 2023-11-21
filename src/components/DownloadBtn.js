@@ -1,22 +1,20 @@
 import React from 'react';
 import { Panel, useReactFlow, getRectOfNodes,ReactFlowProvider } from 'reactflow';
-import { toPng } from 'html-to-image';
+import { toPng,toJpeg } from 'html-to-image';
+
 
 function downloadImage(dataUrl) {
   const a = document.createElement('a');
-
   a.setAttribute('download', '未命名.png');
   a.setAttribute('href', dataUrl);
   a.click();
 }
 
-
 export default function DownloadBtn({initBgColor}) {
   const { getNodes } = useReactFlow();
 
   const onClick = () => {
-    
-
+    console.log(getNodes())
     const nodesBounds = getRectOfNodes(getNodes());
     // getNodes返回一個陣列，就是你平常印出的那個一堆nodes的那個
     //  然後用getRectOfNodes去得到這些nodes的邊界
@@ -37,42 +35,27 @@ export default function DownloadBtn({initBgColor}) {
     // const nodesBounds = getRectOfNodes(getNodes());
     // const transform = getTransformForBounds(nodesBounds, imageWidth, imageHeight, 0.5, 2);
 
-    toPng(document.querySelector('.react-flow__viewport'), {
-      // backgroundColor: '#1a365d',
+    // toPng(document.querySelector('.react-flow__pane'), {
+      toJpeg(document.querySelector('.react-flow__viewport'), {
       backgroundColor: initBgColor,
       // width: imageWidth,這不需要
       // height: imageHeight,這不需要
       style: {
         width: imageWidth,
         height: imageHeight,
-        // transform: `translate(${transform[0]}px, ${transform[1]}px) scale(${transform[2]})`,
       },
+      
     })
     .then(downloadImage);
   };
 
   return (
- 
-
-
-
-      <button
-      
-      className="download-btn bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600  ml-1 mr-1"
-
- onClick={onClick}>
+      <button 
+        className="download-btn bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600  ml-1 mr-1"
+        onClick={onClick}>
         輸出圖檔
-
       </button>
-      
-
-
-
-  
-
-
   );
-  
 }
 
 
