@@ -30,6 +30,7 @@
     "styled-components": "^6.1.0",
     "web-vitals": "^3.5.0",
     "y-webrtc": "^10.2.6",
+    "y-websocket": "^1.5.0",
     "yjs": "^13.6.10",
     "zustand": "^4.4.6"
   },
