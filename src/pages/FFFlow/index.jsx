@@ -6,7 +6,17 @@ import ReactFlow, { ReactFlowProvider,useNodesState,useEdgesState,useReactFlow,
   Panel,addEdge, applyEdgeChanges,applyNodeChanges,Controls,
   ControlButton,
   Background ,
-  MiniMap} from 'reactflow';
+  MiniMap,
+
+
+
+  Node,
+  Edge,
+  ConnectionLineType,
+  MarkerType,
+  ConnectionMode,
+
+} from 'reactflow';
 import 'reactflow/dist/style.css';
 
 import styles from "./ffflow.module.css";
@@ -18,18 +28,27 @@ import ImgNode2 from '../../nodes/ImgNode2.js'
 import ColorNote from '../../nodes/ColorNote'
 import proCircleNode from '../../nodes/circleNode.js'
 import example from '../../nodes/example.js'
+import shapeNode from '../../nodes/shapeNode.js'
 // import ResizerNode from '../../nodes/ResizerNode.js'
 // node👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻
 
 import AuthCheck from "./AuthCheck.js"
 
 import Sidebar from "../../components/Sidebar.js"
+import Nav from "../../components/Nav.js"
 // import NodesList from './Nodelist.js'; 
 import DownloadBtn from '../../components/DownloadBtn.js'; 
 import ImageUpload from '../../components/ImageUpload.js'; 
 
 
+// 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
 
+// import useAnimatedNodes from './useAnimatedNodes';
+// import useExpandCollapse from './useExpandCollapse';
+// 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
+
+
+const proOptions = { account: 'paid-pro', hideAttribution: true };
 
 // 🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈
 // 🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈
@@ -41,17 +60,37 @@ const nodeTypes = { textUpdater: TextUpdaterNode,
   ImgNode2: ImgNode2,
   circleNode: ColorNote,
   proCircleNode:proCircleNode,
-  example:example
+  example:example,
+  shapeNode:shapeNode
   // ResizerNode:ResizerNode
 };
 
-function Flow() {
+function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {}) {
   // const initBgColor = '#1A192B';
 
     // 💞💞💞💞💞💞💞💞💞💞💞💞💞💞重要用法💞💞💞💞💞💞💞💞💞💞💞💞💞💞💞💞💞
-  const onNodeClick = (event, node) => {
-    console.log('Node clicked:', node);
-  };
+  // const onNodeClick = (event, node) => {
+  //   console.log('Node clicked:', node);
+  // };
+
+  // const onNodeClick =(_, node) => {
+  //   setNodes((nds) =>
+  //     nds.map((n) => {
+  //       if (n.id === node.id) {
+  //         return {
+  //           ...n,
+  //           data: { ...n.data, expanded: !n.data.expanded },
+  //         };
+  //       }
+  //       return n;
+  //     })
+  //   );
+  // }
+
+
+
+
+
   // const onEdgeClick = (event, edge) => {
   //   console.log('Node clicked:', edge);
   // };
@@ -91,6 +130,42 @@ function Flow() {
   }));
 
 //為了等等使用useeffect偵測node數量變化
+
+
+
+// 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
+// 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
+// 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
+// const { nodes: visibleNodes, edges: visibleEdges } = useExpandCollapse(nodes, edges, { treeWidth, treeHeight });
+// const { nodes: animatedNodes } = useAnimatedNodes(visibleNodes, { animationDuration });
+
+// const onNodeClick =(_, node) => {
+//   if (node.type === 'custom') {
+//     console.log(node.type)
+//     console.log(node)
+//     setNodes((nds) =>
+//     nds.map((n) => {
+//       if (n.id === node.id) {
+//         return {...n,
+//           data: { ...n.data, expanded: !n.data.expanded },
+//         };}return n;}));}
+//     console.log('Node clicked:', node);}
+// 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
+// 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
+// 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // ~~~~~~~~~~~~dnd的部分
@@ -147,12 +222,12 @@ function Flow() {
       }
 // ~~~~~~~~~~~~dnd的部分
 
-  useEffect(() => { // 刪除reactflow字樣
-    const linkElement = document.querySelector('a[aria-label="React Flow attribution"]');
-    if (linkElement) {
-      linkElement.innerHTML = ''; 
-    }
-  }, []); // 刪除reactflow字樣
+  // useEffect(() => { // 刪除reactflow字樣
+  //   const linkElement = document.querySelector('a[aria-label="React Flow attribution"]');
+  //   if (linkElement) {
+  //     linkElement.innerHTML = ''; 
+  //   }
+  // }, []); // 刪除reactflow字樣
 
 
 
@@ -265,18 +340,21 @@ const onAdd = (imageUrl) => {
     y: centerY - reactFlowBounds.top,
   });
   // const { x, y, zoom } = reactFlowInstance.getViewport();
+  
   const newNode = {
     id: getNodeId(),
     type: 'ImgNode2',
     data:{
       pokemonpng:imageUrl
       // pokemonpng:'/gg.jpg'
-    }
-    ,
-   
-    position: canvasPosition,
-
+    },position: canvasPosition,
   };
+  // const newNode =  {
+  //   id: '9',
+  //   type: 'shapeNode',
+  //   position: { x: 200, y: 390 },
+  //   data: { shape: 'parallelogram', width: 150, height: 70, label: 'Parallelogram', color: '#668de3' },
+  // }
   // addNewNode(newNode);
 
   setNodes([...nodes, newNode]);
@@ -297,10 +375,10 @@ useEffect(() => {
   return (
     <div className='bg-teal-100'
       style={{ 
-        border:" 3px red solid",
+        border:" 5px red solid",
         height: "100vh",
         width: "100%",
-        display: "flex"
+
       }}>
         
     <AuthCheck/>
@@ -308,10 +386,15 @@ useEffect(() => {
       onRestore={onRestore}
       saveStation ={saveStation} 
       setSaveStation={setSaveStation}/>
+
+    <Nav/>
     {/* <NodesList />  */}
         
     <ReactFlow
+      proOptions={proOptions}
+
       style={{ background: initBgColor }}
+      zoomOnDoubleClick={false}
 
       ref={reactFlowWrapper}
       nodes={nodes}
@@ -322,7 +405,7 @@ useEffect(() => {
       nodeTypes={nodeTypes}
       fitView={false}// 沒有設定的話會重新載入就fitView導致變很大
       // onEdgeClick={onEdgeClick}
-      onNodeClick={onNodeClick}
+      // onNodeClick={onNodeClick}
       minZoom={0.1}
       maxZoom={7}
       // style={{ background: bgColor }}
@@ -334,22 +417,20 @@ useEffect(() => {
       
     <Background variant={variant} />
     <Controls 
-    className="custom-controls"
-    fitViewOptions={{
-      duration: 500,padding: 0.3
-    }} // 传递自定义的 FitViewOptions
-    position={'bottom-right'}
+      className="custom-controls"
+      fitViewOptions={{
+        duration: 500,padding: 0.3
+      }} // 传递自定义的 FitViewOptions
+      position={'bottom-right'}
     
     />
 
     <MiniMap 
-    className="custom-minimap"
-    pannable={true}
-     style={{ cursor: 'move',
-
-    }}
-    // nodeColor={'#FF5733'}
-    position={'bottom-left'}
+      className="custom-minimap"
+      pannable={true}
+      style={{ cursor: 'move',}}
+      // nodeColor={'#FF5733'}
+      position={'bottom-left'}
 
     />
 
@@ -384,14 +465,14 @@ useEffect(() => {
         onClick={onRestore}
           className="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600  ml-1 mr-1"
         >回到紀錄狀態</button>
-          {/* <button onClick={onAdd}
+          <button onClick={onAdd}
           className="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600"
-        >add node</button> */}
+        >add node</button>
 
 
   
         
-       <DownloadBtn initBgColor={initBgColor}/>
+      <DownloadBtn initBgColor={initBgColor}/>
 
       </Panel>
 

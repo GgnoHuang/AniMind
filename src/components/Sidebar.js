@@ -34,7 +34,7 @@ export default function Sidebar({onRestore, saveStation,setSaveStation }) {
     <div 
       style={{ 
             position:'relative',
-            top:'100px',
+
           }} >
       {[1, 2, 3, 4, 5, 6, 7, 8].map((number) => (
         <p key={number}
@@ -52,6 +52,7 @@ export default function Sidebar({onRestore, saveStation,setSaveStation }) {
         </p>
       ))}
     </div>
+  
       </Panel>
 
 
