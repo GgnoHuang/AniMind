@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 // /* eslint-disable react/jsx-no-undef */
 // import Image from 'next/image'
 
@@ -257,8 +258,19 @@ export default function CustomNode({ data,selected }) {
        isVisible={selected} minWidth={100} minHeight={100} />
 
   
+{/* 
+<img src={data.pokemonpng }   style={{
+          width: '100%',  
+          height: '100%', 
+        }} 
+        alt="Picture"
+        width={100}
+        height={100}
+        /> */}
 
-     <Image
+
+
+{/* <Image
         // src={data.pokemonpng ? data.pokemonpng : '/gg.jpg'}
         src={data.pokemonpng }
 
@@ -269,7 +281,23 @@ export default function CustomNode({ data,selected }) {
           width: '100%',  
           height: '100%', 
         }} 
-      />
+      />  */}
+
+
+  
+
+
+
+     <img
+        // src={data.pokemonpng ? data.pokemonpng : '/gg.jpg'}
+        src={data.pokemonpng}
+        // src={"https://firebasestorage.googleapis.com/v0/b/jyun-hong.appspot.com/o/images%2Fpngegg%20(4).png?alt=media&token=990a3947-fdd0-483a-8d86-e8f661d63bf5        "}
+// crossOrigin='​anonymous​'
+        width={100}
+        height={100}
+        alt="Picture"
+        style={{  width: '100%',  height: '100%', }} 
+      /> 
 
       {/* <div 
        style={{ 

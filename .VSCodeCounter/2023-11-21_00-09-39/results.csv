@@ -1,0 +1,35 @@
+"filename", "language", "JavaScript", "CSS", "JavaScript JSX", "comment", "blank", "total"
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/components/AuthCheck.js", "JavaScript", 27, 0, 0, 2, 5, 34
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/components/DownloadBtn.js", "JavaScript", 32, 0, 0, 16, 31, 79
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/components/ImageUpload.js", "JavaScript", 39, 0, 0, 36, 16, 91
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/components/List.js", "JavaScript", 84, 0, 0, 5, 18, 107
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/components/LogoutBtn.js", "JavaScript", 37, 0, 0, 0, 3, 40
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/components/Sidebar.js", "JavaScript", 43, 0, 0, 16, 24, 83
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/components/Zus/index.jsx", "JavaScript JSX", 0, 0, 0, 19, 6, 25
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/components/Zus/store.js", "JavaScript", 0, 0, 0, 7, 4, 11
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/components/initialEls.js", "JavaScript", 15, 0, 0, 79, 8, 102
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/config.js", "JavaScript", 24, 0, 0, 10, 9, 43
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/nodes/ColorNote.js", "JavaScript", 155, 0, 0, 59, 51, 265
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/nodes/ImgNode2.js", "JavaScript", 83, 0, 0, 157, 74, 314
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/nodes/OmgNode.js", "JavaScript", 39, 0, 0, 7, 6, 52
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/nodes/TextUpdaterNode.js", "JavaScript", 145, 0, 0, 46, 48, 239
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/nodes/TextUpdaterNode2.js", "JavaScript", 152, 0, 0, 47, 45, 244
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/nodes/circleNode.js", "JavaScript", 82, 0, 0, 22, 25, 129
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/nodes/example.js", "JavaScript", 136, 0, 0, 29, 32, 197
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/nodes/nodestyle.css", "CSS", 0, 0, 0, 0, 1, 1
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/Accounting/Form.js", "JavaScript", 104, 0, 0, 9, 28, 141
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/Accounting/index.jsx", "JavaScript JSX", 0, 0, 47, 2, 13, 62
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/FFFlow/AuthCheck.js", "JavaScript", 22, 0, 0, 1, 10, 33
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/FFFlow/ffflow.module.css", "CSS", 0, 10, 0, 3, 4, 17
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/FFFlow/index.jsx", "JavaScript JSX", 0, 0, 305, 67, 85, 457
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/MemberPage/Login.js", "JavaScript", 67, 0, 0, 8, 19, 94
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/MemberPage/Register.js", "JavaScript", 79, 0, 0, 0, 21, 100
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/MemberPage/index.jsx", "JavaScript JSX", 0, 0, 50, 1, 10, 61
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/MemberPage/member.module.css", "CSS", 0, 2, 0, 2, 1, 5
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/_app.js", "JavaScript", 6, 0, 0, 1, 4, 11
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/index.js", "JavaScript", 67, 0, 0, 13, 16, 96
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/rotate.css", "CSS", 0, 23, 0, 8, 9, 40
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/pages/style.css", "CSS", 0, 152, 0, 14, 46, 212
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/store.js", "JavaScript", 74, 0, 0, 95, 33, 202
+"/Users/jyunhongmacbookair/Desktop/三階作業next正式/aaaaa/src/utils.js", "JavaScript", 0, 0, 0, 85, 19, 104
+"Total", "-", 1512, 187, 402, 866, 724, 3691
