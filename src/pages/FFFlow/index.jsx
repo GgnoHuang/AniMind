@@ -41,7 +41,14 @@ import DownloadBtn from '../../components/DownloadBtn.js';
 import ImageUpload from '../../components/ImageUpload.js'; 
 
 
+// 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
 
+// import useAnimatedNodes from './useAnimatedNodes';
+// import useExpandCollapse from './useExpandCollapse';
+// 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
+
+
+const proOptions = { account: 'paid-pro', hideAttribution: true };
 
 // 🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈
 // 🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈
@@ -58,13 +65,30 @@ const nodeTypes = { textUpdater: TextUpdaterNode,
   // ResizerNode:ResizerNode
 };
 
-function Flow() {
+function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {}) {
   // const initBgColor = '#1A192B';
 
     // 💞💞💞💞💞💞💞💞💞💞💞💞💞💞重要用法💞💞💞💞💞💞💞💞💞💞💞💞💞💞💞💞💞
-  const onNodeClick = (event, node) => {
-    console.log('Node clicked:', node);
-  };
+  // const onNodeClick = (event, node) => {
+  //   console.log('Node clicked:', node);
+  // };
+
+  // const onNodeClick =(_, node) => {
+  //   setNodes((nds) =>
+  //     nds.map((n) => {
+  //       if (n.id === node.id) {
+  //         return {
+  //           ...n,
+  //           data: { ...n.data, expanded: !n.data.expanded },
+  //         };
+  //       }
+  //       return n;
+  //     })
+  //   );
+  // }
+
+
+
 
 
   // const onEdgeClick = (event, edge) => {
@@ -106,6 +130,42 @@ function Flow() {
   }));
 
 //為了等等使用useeffect偵測node數量變化
+
+
+
+// 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
+// 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
+// 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
+// const { nodes: visibleNodes, edges: visibleEdges } = useExpandCollapse(nodes, edges, { treeWidth, treeHeight });
+// const { nodes: animatedNodes } = useAnimatedNodes(visibleNodes, { animationDuration });
+
+// const onNodeClick =(_, node) => {
+//   if (node.type === 'custom') {
+//     console.log(node.type)
+//     console.log(node)
+//     setNodes((nds) =>
+//     nds.map((n) => {
+//       if (n.id === node.id) {
+//         return {...n,
+//           data: { ...n.data, expanded: !n.data.expanded },
+//         };}return n;}));}
+//     console.log('Node clicked:', node);}
+// 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
+// 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
+// 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // ~~~~~~~~~~~~dnd的部分
@@ -162,12 +222,12 @@ function Flow() {
       }
 // ~~~~~~~~~~~~dnd的部分
 
-  useEffect(() => { // 刪除reactflow字樣
-    const linkElement = document.querySelector('a[aria-label="React Flow attribution"]');
-    if (linkElement) {
-      linkElement.innerHTML = ''; 
-    }
-  }, []); // 刪除reactflow字樣
+  // useEffect(() => { // 刪除reactflow字樣
+  //   const linkElement = document.querySelector('a[aria-label="React Flow attribution"]');
+  //   if (linkElement) {
+  //     linkElement.innerHTML = ''; 
+  //   }
+  // }, []); // 刪除reactflow字樣
 
 
 
@@ -331,7 +391,10 @@ useEffect(() => {
     {/* <NodesList />  */}
         
     <ReactFlow
+      proOptions={proOptions}
+
       style={{ background: initBgColor }}
+      zoomOnDoubleClick={false}
 
       ref={reactFlowWrapper}
       nodes={nodes}
@@ -342,7 +405,7 @@ useEffect(() => {
       nodeTypes={nodeTypes}
       fitView={false}// 沒有設定的話會重新載入就fitView導致變很大
       // onEdgeClick={onEdgeClick}
-      onNodeClick={onNodeClick}
+      // onNodeClick={onNodeClick}
       minZoom={0.1}
       maxZoom={7}
       // style={{ background: bgColor }}

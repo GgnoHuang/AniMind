@@ -194,8 +194,43 @@ selectNode: (nodeId) => {
       edges: addEdge(newEdge, state.edges),
     }));
   },
-  
 
+// 收合功能
+  // toggleNodeExpansion: (nodeId) => {
+  //   console.log(1)
+  //   set((state) => ({
+  //     nodes: state.nodes.map((node) =>
+  //       node.id === nodeId
+  //         ? { ...node, data: { ...node.data, expanded: !node.data.expanded } }
+  //         : node
+  //     ),
+  //   }));
+  // },
+  
+  toggleNodeExpansion: (nodeId) => {
+    set((state) => {
+    console.log(1)
+    console.log(nodeId)
+
+      const node = state.nodes.find((n) => n.id === nodeId);
+  
+      // 如果找到節點，打印它的詳細資訊
+      if (node) {
+        console.log('Toggling expansion for node:', node);
+      }
+  
+      // 更新節點的狀態
+      return {
+        nodes: state.nodes.map((n) =>
+          n.id === nodeId
+            ? { ...n, data: { ...n.data, expanded: !n.data.expanded } }
+            : n
+        ),
+      };
+    });
+  }
+  
 }));
 
 export default useStore;
+

@@ -49,6 +49,11 @@ function Home() {
           <Link href="/Pro">測試</Link>
         </button>
       </div>
+      <div className="p-8 flex items-center flex items-center justify-center">
+          <button className="text-white p-2 rounded bg-blue-500 hover:bg-blue-600 ">
+          <Link href="/Collaborative">Collaborative</Link>
+        </button>
+      </div>
 
       {/* <div className="p-8 flex items-center flex items-center justify-center">
           <button className="text-white p-2 rounded bg-blue-500 hover:bg-blue-600 ">
