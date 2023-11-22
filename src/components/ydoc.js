@@ -6,7 +6,11 @@ import { WebsocketProvider } from 'y-websocket'
 const ydoc = new Y.Doc()
 // const ydoc = new Doc();
 
-const wsProvider = new WebsocketProvider('ws://localhost:1234', 'my-roomname', ydoc)
+// const wsProvider = new WebsocketProvider('ws://localhost:1234', 'my-roomname', ydoc)
+// const wsProvider = new WebsocketProvider('ws://54.65.60.124:1234', 'my-roomname', ydoc)
+const wsProvider = new WebsocketProvider(
+  'wss://demos.yjs.dev', 'quill-demo-room', ydoc
+  )
 
 wsProvider.on('status', event => {
   console.log(event.status) // logs "connected" or "disconnected"
