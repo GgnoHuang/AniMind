@@ -2,9 +2,11 @@ import React, { useState } from "react"
 
 
 import { createUserWithEmailAndPassword, signOut } from "firebase/auth"
-import { db } from "../../config"
+import { db,auth } from "../../config"
 import { getDatabase, ref, set ,get} from "firebase/database"
-import { auth } from "../../config" 
+// import { auth } from "../../config" 
+
+import styles from "./RegisterForm.module.css";
 
 function Register() {
   const [err, setErr] = useState(false)
@@ -44,49 +46,64 @@ function Register() {
   }
 
   return (
-    <div>
+    <div className={styles.formwrapper}>
 
 
 
-      <div className="p-2 flex items-center flex items-center justify-center">
-        <p className=" text-white p-2 rounded ">註冊會員</p>
-
-      </div>
-
-
-
+    
 
       <form onSubmit={handleSubmit}>
 
       <div className="input-container-wrapper">
+        
         <div className="input-container">
+          
+
+        <div className={styles.inputcontainer}>
+          
+            <div className="p-2 flex items-center flex items-center justify-center">
+              <p className=" text-white p-2 rounded ">
+                
+                Please sign in to continue
+
+                </p>
+
+            </div>
+          <div className={styles.nameinput}>
             <div className="cool-input-div">
-              <input className="cool-input" type="text" placeholder="用戶名"/>
+              <input className="cool-input" type="text" placeholder="Username"/>
               <span className="cool-bottom cool-span"></span>
               <span className="cool-right cool-span"></span>
               <span className="cool-top cool-span"></span>
               <span className="cool-left cool-span"></span>
             </div>
-            <div className="cool-input-div">
-              <input className="cool-input" type="text" placeholder="email"/>
+          </div>
+          <div className={styles.mailinput}>
+              <div className="cool-input-div">
+              <input className="cool-input" type="text" placeholder="Email"/>
               <span className="cool-bottom cool-span"></span>
               <span className="cool-right cool-span"></span>
               <span className="cool-top cool-span"></span>
               <span className="cool-left cool-span"></span>
             </div>
-            <div className="cool-input-div">
-              <input className="cool-input" type="text" placeholder="密碼至少包含6個字"/>
-              <span className="cool-bottom cool-span"></span>
-              <span className="cool-right cool-span"></span>
-              <span className="cool-top cool-span"></span>
-              <span className="cool-left cool-span"></span>
+          </div>
+          <div className={styles.passwordinput}>      
+              <div className="cool-input-div">
+                <input className="cool-input" type="text" placeholder="Password: 6+ chars."/>
+                <span className="cool-bottom cool-span"></span>
+                <span className="cool-right cool-span"></span>
+                <span className="cool-top cool-span"></span>
+                <span className="cool-left cool-span"></span>
+              </div>
+          </div>
+
+              <div className=" flex items-center flex items-center justify-center">
+            <button 
+            className={styles.signupbtn}
+            >
+              Register</button>
             </div>
-
-
-                   <div className="p-3 flex items-center flex items-center justify-center">
-            <button className=" text-white p-1 rounded bg-blue-500 hover:bg-blue-600 ">註冊</button>
-            </div>
-
+          </div>
         </div>
       </div>
         {err && <p>註冊失敗</p>}

@@ -9,7 +9,7 @@ const AuthAndUserData = ({ auth,
     const unsubscribe = onAuthStateChanged(auth, (authUser) => {
       if (authUser) {
         setUserAuth(authUser)
-        console.log("有登入")
+        console.log("當前狀態：已登入")
 
         const savedUserData = localStorage.getItem("userData")
         if (savedUserData) {
@@ -19,7 +19,7 @@ const AuthAndUserData = ({ auth,
         }
       } else {
         setUserAuth(null)
-        console.log("沒登入")
+        console.log("當前狀態：未登入")
       }
     })
     return () => unsubscribe()

@@ -1,0 +1,77 @@
+
+.input-container-wrapper{
+  border: 3px rgba(215, 187, 187, 0) solid;
+  display: flex;
+  justify-content: center;
+}
+/* .input-container{
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+} */
+.cool-input-div{
+  display: inline-block;
+  position: relative;
+  width: fit-content;
+  
+}
+.cool-input{
+  height: 35px;
+  width:200px;
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+  background-color:rgba(0, 0, 0, 0.765);
+  padding: 0.35em 0.45em;
+  border: 1px solid transparent;
+  transition: background-color 0.3s ease-in-out;
+}
+.cool-input:focus {
+  outline: none;
+}
+.cool-input::placeholder {
+  color: rgba(255, 255, 255, 0.736);
+}
+.cool-span {
+  position: absolute;
+  background-color: #3dff36;
+  background-color:  #00ffcd;
+  transform-origin: center;
+  transition: transform 0.5s ease;
+} 
+
+
+.cool-input:focus ~ .cool-top, .cool-input:focus ~ .cool-bottom {
+  transform: scaleX(1);
+}
+.cool-input:focus ~ .cool-left, .cool-input:focus ~ .cool-right {
+  transform: scaleY(1);
+}
+.cool-bottom,
+.cool-top {
+  height: 1px;
+  left: 0;
+  right: 0;
+  transform: scaleX(0);
+}
+.cool-left,
+.cool-right {
+  width: 1px;
+  top: 0;
+  bottom: 0;
+  transform: scaleY(0);
+}
+
+.cool-top {
+  top: 0;
+}
+.cool-bottom {
+  bottom: 0;
+}
+.cool-left {
+  left: 0;
+}
+.cool-right {
+  right: 0;
+}  
+
