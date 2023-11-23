@@ -6,8 +6,8 @@ import { auth } from "../../config"
 import styles from "./member.module.css";
 
 
-import Login from "./Login"
-import Register from "./Register"
+import Login from "../../components/Login"
+import Register from "../../components/Register"
 import LogoutBtn from "../../components/LogoutBtn"
 import AuthCheck from "../../components/AuthCheck"
 
@@ -25,8 +25,9 @@ function MemberPage() {
         setUserAuth={setUserAuth}
         successMsg={successMsg}
       />
-      {userAuth != null ? (
-        <div>
+      {/* {userAuth != null ?  */}
+      {userAuth != null ? 
+      (<div>
           {/* <h1>有抓到userAuth</h1> */}
           {localUserData != null && (
             <div className="p-8 flex items-center flex items-center justify-center">
@@ -37,14 +38,11 @@ function MemberPage() {
           )}
           <br />
           <LogoutBtn  setErrMsg={setErrMsg} setSuccessMsg={setSuccessMsg}  setUserAuth={setUserAuth} setLocalUserData={setLocalUserData}/>
-        </div>
-      ) : (
-        <div>
+        </div>) 
+      : (<div>
           <Register />
           <br />
-          <br />
           <Login  errMsg={errMsg} setErrMsg={setErrMsg} setSuccessMsg={setSuccessMsg} successMsg={successMsg} />
-          <br />
           <br />
         </div>
       )}
@@ -53,6 +51,13 @@ function MemberPage() {
       <div className="p-3 flex items-center flex items-center justify-center">
         <Link className=" text-white p-2 rounded bg-blue-500 hover:bg-blue-600 " href="/">返回首頁</Link>
       </div>
+
+      <div className="p-8 flex items-center flex items-center justify-center">
+          <button className="text-white p-2 rounded bg-blue-500 hover:bg-blue-600 ">
+          <Link href="/FFFlow">Flow</Link>
+        </button>
+      </div>
+
     </div>
   )
 }

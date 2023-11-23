@@ -14,7 +14,7 @@ export default function Sidebar({
 
   return (
     <Panel>
-      <div style={{heigh:'300px',border:'2px blue solid',display:'flex',backgroundColor:'green',
+      {/* <div style={{heigh:'300px',border:'2px blue solid',display:'flex',backgroundColor:'green',
       justifyContent:"space-between" }} >
           <div  style={{
             heigh:'300px',
@@ -32,7 +32,7 @@ export default function Sidebar({
               <div>登出</div>
        
           </div>
-      </div>
+      </div> */}
   
       </Panel>
 

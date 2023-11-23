@@ -6,6 +6,10 @@ import { signInWithEmailAndPassword } from "firebase/auth"
 import { getDatabase, ref, get } from "firebase/database"
 import { db } from "../../config"
 
+import styles from "./LoginForm.module.css";
+import Image from 'next/image'
+
+
 function Login({ errMsg, setErrMsg,setSuccessMsg,successMsg }) {
   // const [errMsg, setErrMsg] = useState(false)
   // const [successMsg, setSuccessMsg] = useState(false) 
@@ -51,14 +55,11 @@ function Login({ errMsg, setErrMsg,setSuccessMsg,successMsg }) {
 
   return (
     <div>
-
       <div className="p-1 flex items-center flex items-center justify-center">
         <p className=" text-white p-2 rounded ">登入</p>
       </div>
 
       <form onSubmit={handleSubmit}>
-
-
       <div className="input-container-wrapper">
         <div className="input-container">
 

@@ -1,0 +1,114 @@
+.formwrapper{
+  /* border: 4px rgb(0, 255, 140) solid; */
+
+  /* height: 200px; */
+}
+
+.nameinput{
+  
+}
+
+.inputcontainer{
+  position: relative;
+  top:50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 0px rgb(234, 171, 171) solid;
+  height: 500px;
+
+  width: 520px;
+  /* border: 2px rgb(239, 239, 239) solid; */
+  /* background-image:url('../../../public//png_flower.png'); */
+  /* background-image:url('../../../public//未命.png'); */
+  /* background-image:url('../../../public//png_1.png'); */
+
+  /* background-position:  -13px -13px;  */
+  background-position:  -10px -122px; 
+  background-size: 105%;
+  background-repeat: no-repeat;
+}
+.inputcontainer:hover{
+  transform: rotate(0deg);
+}
+.inputcontainer:hover > .nameinput{
+  /* transform: rotate(1deg); */
+}
+
+
+.inputcontainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../../../public//未命.png');
+  background-position: -10px -122px;
+  background-size: 105%;
+  background-repeat: no-repeat;
+  z-index: -1;
+  transform: rotate(2deg);
+  transition: transform 0.1s ease; /* 平滑过渡效果 */
+}
+
+.inputcontainer:hover::before {
+  transform: rotate(-5deg); /* 悬停时旋转 */
+}
+
+
+
+
+
+
+
+
+.signupbtn{
+  height: 35px;
+  width:200px;
+  background-color: rgb(111, 111, 111);
+
+  color: #ffffff;
+  border: 2px solid #ff2f00;;
+  border: 2px solid #00ffcd;;
+}
+.signupbtn:hover{
+background-color: #00ffcd;
+
+  color: rgb(255, 255, 255);
+}
+
+
+.nameinput{
+  margin-bottom: 8px;
+}
+.mailinput{
+  margin-bottom: 8px;
+}
+.passwordinput{
+  margin-bottom: 13px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

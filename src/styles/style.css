@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+
+.react-flow__controls {
+  display: flex; 
+  flex-direction: row;  
+  /* background-color: rgb(255, 255, 255) !important; */
+}
+.react-flow__controls-button {
+  border-radius: 8px;
+  margin-right: 15px; 
+  background-color: rgb(202, 235, 245) !important;
+}
+.react-flow__controls-button:last-child {
+  margin-right: 0;
+}
+
+body, html {
+  overflow-x: hidden;
+}
+@font-face {
+  font-family: '小濑字体';
+  src: url('../NaikaiFont-Regular.ttf') format('truetype');
+}
+body {
+  /* font-family: '小濑字体'; */
+  background-image:url('../../public/olga.jpg');
+  background-image:url('../../public/kiwihug.jpg');
+  background-image:url('../../public/blue 2.jpeg');
+  background-image:url('../../public/blue 3.jpeg');
+  background-size:cover;
+  background-position: 20% 30%; 
+    background-size: 1920px 1080px; 
+
+}
+/* flow的一些 預設樣式 */
+.adjustButton:hover{
+  background-color: rgba(255, 0, 255, 0.253);
+}
+
+.react-flow__node-selectorNode {
+  background: #eee;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* ==================== */
+
+html, body, #root {
+  /* width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0; */
+  box-sizing: border-box;
+}
+
+
+
+/* ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨ */
+
+
+.customNodeBody {
+  width: 150px;
+  height: 80px;
+  border: 3px solid black;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+.customNode:before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  height: 20px;
+  width: 40px;
+  transform: translate(-50%, 0);
+  background: #d6d5e6;
+  z-index: 1000;
+  line-height: 1;
+  border-radius: 4px;
+  color: #fff;
+  /* font-size: 9px; */
+  border: 2px solid #222138;
+}
+
+div.customHandle {
+  width: 100%;
+  height: 100%;
+  background: blue;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0;
+  transform: none;
+  border: none;
+  opacity: 0;
+}
+
+
+
+
+

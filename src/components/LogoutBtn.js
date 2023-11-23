@@ -24,14 +24,14 @@ function LogoutBtn({setUserAuth,setLocalUserData,
   }
   return (
     <div>
-      <div className=" flex items-center flex items-center justify-center">
+      {/* <div className=" flex items-center flex items-center justify-center"> */}
         <button 
           onClick={handleSignout}
           className=" text-white p-2 rounded bg-blue-500 hover:bg-blue-600 "
         >
           登出
         </button>
-      </div>
+      {/* </div> */}
     </div>
   )
 }
