@@ -6,7 +6,7 @@ import { db } from "../config"
 import { getDatabase, ref, set ,get} from "firebase/database"
 import { auth } from "../config" 
 
-import styles from "./RegisterForm.module.css";
+// import styles from "./RegisterForm.module.css";
 
 function Register() {
   const [err, setErr] = useState(false)
