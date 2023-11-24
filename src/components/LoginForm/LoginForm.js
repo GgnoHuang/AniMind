@@ -85,10 +85,15 @@ const handleToggleFormClick = () => {
       </div> */}
 
       <form onSubmit={handleSubmit}>
+        
         <div className="input-container-wrapper">
           <div className="input-container">
+
             <div className={styles.inputcontainer}>
-          
+            <img src="/lets.webp" 
+            // className={styles.letsstart}
+            className={showRegisterForm ? styles.letsstart : styles.hiddenletsstart}
+            />
               <div className={styles.signintext}>
                 Sign in or create an account
               </div>
