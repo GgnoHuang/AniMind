@@ -90,7 +90,7 @@ const handleToggleFormClick = () => {
             <div className={styles.inputcontainer}>
           
               <div className={styles.signintext}>
-                Sign in to Medium or create an account
+                Sign in or create an account
               </div>
 
 
@@ -116,7 +116,7 @@ const handleToggleFormClick = () => {
 
             <div className=" flex items-center flex items-center justify-center">
               <button className={styles.registerbtn}>
-              Login</button>
+              Sign in</button>
             </div>
             <p  
             onClick={handleToggleFormClick}

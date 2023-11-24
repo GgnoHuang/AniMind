@@ -35,11 +35,11 @@ transform: translate(-50%, -300%);
   /* border: 2px rgb(239, 239, 239) solid; */
   /* background-image:url('../../../public//png_flower.png'); */
   /* background-image:url('../../../public//未命.png'); */
-  background-image:url('../../../public//png_1.png');
+  background-image:url('../../../public/design-1700824655285.webp');
 
   /* background-position:  -13px -13px;  */
-  background-position:  -10px -122px; 
-  background-size: 105%;
+  background-position:  -10px 42px; 
+  background-size: 98%;
   background-repeat: no-repeat;
 }
 
@@ -99,7 +99,7 @@ background-color: #00ffcd;
 .alreadyhaveaccount{
   cursor: pointer;
   margin-bottom: 8px;
-  color: rgb(255, 255, 255); /* 字体颜色 */
+  color: rgb(0, 0, 0); /* 字体颜色 */
   font-weight: 300;
 }
 .alreadyhaveaccount:hover{
@@ -115,7 +115,7 @@ background-color: #00ffcd;
   align-items: center;
   justify-content: center;
   color: #ffffff; /* or 文字的顏色 */
-  color: #dddddd; /* 字体颜色 */
+  color: #000000; /* 字体颜色 */
 
   position: relative;
 }
@@ -124,7 +124,7 @@ background-color: #00ffcd;
 .or::after {
   content: '';
   background-color: #ffffff; /* 橫線的顏色 */
-  background-color: #dddddd; /* 字体颜色 */
+  background-color: #000000; /* 字体颜色 */
   height: 1px;
   width: 76px;
   position: absolute;
