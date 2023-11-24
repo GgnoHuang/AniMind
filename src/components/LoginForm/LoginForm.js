@@ -55,13 +55,15 @@ function Login({ errMsg, setErrMsg,setSuccessMsg,successMsg }) {
 
   return (
     <div>
-      <div className="p-1 flex items-center flex items-center justify-center">
+      {/* <div className="p-1 flex items-center flex items-center justify-center">
         <p className=" text-white p-2 rounded ">登入</p>
-      </div>
+      </div> */}
 
       <form onSubmit={handleSubmit}>
-      <div className="input-container-wrapper">
+      {/* <div className="input-container-wrapper">
         <div className="input-container">
+
+
 
             <div className="cool-input-div">
               <input className="cool-input" type="text" placeholder="email"/>
@@ -81,6 +83,53 @@ function Login({ errMsg, setErrMsg,setSuccessMsg,successMsg }) {
             <button className=" text-white p-1 rounded bg-blue-500 hover:bg-blue-600 ">登入</button>
             </div>
 
+        </div>
+      </div> */}
+
+<div className="input-container-wrapper">
+        <div className="input-container">
+        <div className={styles.inputcontainer}>
+          
+            <div className={styles.signintext}>
+                Sign in to Medium or create an account
+            </div>
+
+
+            <div className={styles.mailinput}>
+              <div className="cool-input-div">
+              <input className="cool-input" type="text" placeholder="Email"/>
+              <span className="cool-bottom cool-span"></span>
+              <span className="cool-right cool-span"></span>
+              <span className="cool-top cool-span"></span>
+              <span className="cool-left cool-span"></span>
+            </div>
+          </div>
+
+          <div className={styles.passwordinput}>      
+              <div className="cool-input-div">
+                <input className="cool-input" type="text" placeholder="Password: 6+ chars."/>
+                <span className="cool-bottom cool-span"></span>
+                <span className="cool-right cool-span"></span>
+                <span className="cool-top cool-span"></span>
+                <span className="cool-left cool-span"></span>
+              </div>
+          </div>
+
+            <div className=" flex items-center flex items-center justify-center">
+              <button className={styles.registerbtn}>
+              Login</button>
+            </div>
+            <p className={styles.alreadyhaveaccount}>Not a member yet?</p>
+            <p className={styles.or}>
+or 
+</p>
+
+            <div className=" flex items-center flex items-center justify-center">
+              <button type="button" className={styles.registerbtn} onClick={()=>{}}>
+              Continue with Google</button>
+            </div>
+
+          </div>
         </div>
       </div>
 

@@ -11,17 +11,9 @@
   
 }
 
-.newnav{
-  
-  width: 100%;
-  height: 50px;
-  background-color: aqua;
-  background-image:url('../../public/kiwihug.jpg');
 
-  position: absolute;
-  top:0px;
 
-}
+
 .newnavimg{
   max-width: none;
   /* transform: translateY(-500px); */
@@ -56,6 +48,6 @@
 }
 
 .formContainer{
-
-
+border: red 3px solid;
+display: flex;
 }

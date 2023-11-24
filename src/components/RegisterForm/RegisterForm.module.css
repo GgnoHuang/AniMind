@@ -10,15 +10,14 @@
 
 .inputcontainer{
   position: relative;
-  top:50px;
+  top:100px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 0px rgb(234, 171, 171) solid;
-  height: 500px;
-
-  width: 520px;
+  border: 3px rgb(234, 171, 171) solid;
+  height: 600px;
+  width: 550px;
   /* border: 2px rgb(239, 239, 239) solid; */
   /* background-image:url('../../../public//png_flower.png'); */
   /* background-image:url('../../../public//未命.png'); */
@@ -28,6 +27,15 @@
   background-position:  -10px -122px; 
   background-size: 105%;
   background-repeat: no-repeat;
+}
+
+.signintext{
+  font-weight: 200;
+  height: 35px;
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #ffffff;
+  
 }
 .inputcontainer:hover{
   transform: rotate(0deg);
@@ -45,8 +53,8 @@
   right: 0;
   bottom: 0;
   background-image: url('../../../public//未命.png');
-  background-position: -10px -122px;
-  background-size: 105%;
+  background-position: -40px -172px;
+  background-size: 116%;
   background-repeat: no-repeat;
   z-index: -1;
   transform: rotate(2deg);
@@ -54,7 +62,7 @@
 }
 
 .inputcontainer:hover::before {
-  transform: rotate(-5deg); /* 悬停时旋转 */
+  transform: rotate(-3deg); /* 悬停时旋转 */
 }
 
 
@@ -64,16 +72,18 @@
 
 
 
-.signupbtn{
+.registerbtn{
   height: 35px;
   width:200px;
   background-color: rgb(111, 111, 111);
 
   color: #ffffff;
   border: 2px solid #ff2f00;;
-  border: 2px solid #00ffcd;;
+  border: 2px solid #00ffcd;
+  margin-bottom: 8px;
+
 }
-.signupbtn:hover{
+.registerbtn:hover{
 background-color: #00ffcd;
 
   color: rgb(255, 255, 255);
@@ -82,32 +92,55 @@ background-color: #00ffcd;
 
 .nameinput{
   margin-bottom: 8px;
+  font-weight: 200;
 }
 .mailinput{
   margin-bottom: 8px;
+  font-weight: 200;
 }
 .passwordinput{
   margin-bottom: 13px;
+  font-weight: 200;
+}
+.alreadyhaveaccount{
+  margin-bottom: 8px;
+  color: #ffffff; /* 字体颜色 */
+  font-weight: 300;
 }
 
+.or {
+  margin-bottom: 8px;
+  color: #ffffff; /* 字体颜色 */
+}
 
+.or {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff; /* or 文字的顏色 */
 
+  position: relative;
+}
 
+.or::before,
+.or::after {
+  content: '';
+  background-color: #ffffff; /* 橫線的顏色 */
+  height: 1px;
+  width: 76px;
+  position: absolute;
+  top: 50%;
+}
 
+.or::before {
+  right: 100%;
+  margin-right: 15px; /* 橫線與文字的間距 */
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+.or::after {
+  left: 100%;
+  margin-left: 15px; /* 橫線與文字的間距 */
+}
 
 
 

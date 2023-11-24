@@ -32,10 +32,13 @@ body, html {
 }
 body {
   /* font-family: '小濑字体'; */
-  background-image:url('../../public/olga.jpg');
-  background-image:url('../../public/kiwihug.jpg');
-  background-image:url('../../public/blue 2.jpeg');
+
+
   background-image:url('../../public/blue 3.jpeg');
+  /* background-image:url('../../public/dan.jpg'); */
+  /* background-image:url('../../public/kiwihug.jpg'); */
+
+
   background-size:cover;
   background-position: 20% 30%; 
     background-size: 1920px 1080px; 
