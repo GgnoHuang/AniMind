@@ -47,8 +47,6 @@ export default function HomePage() {
         setUserAuth={setUserAuth} 
         setLocalUserData={setLocalUserData}
       />
- 
-
           <img src="/backgood.png"
           className={styles.newnavimg}
           />
@@ -65,13 +63,11 @@ export default function HomePage() {
       {/* {userAuth != null ?  */}
       {userAuth == null && (
 
-        <div className={styles.loginRegisterFormWrapper}>
+
           <div className={styles.formContainer}>
             <RegisterForm />
 
             <LoginForm  errMsg={errMsg} setErrMsg={setErrMsg} setSuccessMsg={setSuccessMsg} successMsg={successMsg} />
-
-          </div>
         </div>
       )}
 

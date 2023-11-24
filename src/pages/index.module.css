@@ -35,7 +35,6 @@
 }
 
 
-.loginRegisterFormWrapper{
   /* height: 80vh; */
   /* width: 100%; */
   /* border: 2px rgb(255, 2, 2) solid; */
@@ -45,9 +44,8 @@
   /* background-size: 500px 500px;  */
   /* background-repeat: no-repeat; */
 
-}
-
 .formContainer{
 border: red 3px solid;
 display: flex;
+justify-content: center;
 }

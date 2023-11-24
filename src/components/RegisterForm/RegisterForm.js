@@ -1,5 +1,7 @@
 import React, { useState } from "react"
-
+ // 👗👗👗👗👗👗zustand
+import useStore from '../../store';
+ // 👗👗👗👗👗👗zustand
 
 import { createUserWithEmailAndPassword, signOut } from "firebase/auth"
 import { db,auth } from "../../config"
@@ -9,6 +11,23 @@ import { getDatabase, ref, set ,get} from "firebase/database"
 import styles from "./RegisterForm.module.css";
 
 function Register() {
+
+
+
+  // 👗👗👗👗👗👗👗👗👗👗👗zustand👗👗👗👗👗👗👗👗👗👗
+  const { showRegisterForm,toggleForm} = useStore(state => ({
+      toggleForm: state.toggleForm,
+      showRegisterForm: state.showRegisterForm,
+ }));
+ // 👗👗👗👗👗👗👗👗👗zustand👗👗👗👗👗👗👗👗👗👗👗👗
+
+ const handleToggleFormClick = () => {
+  toggleForm();
+};
+
+
+
+
   const [err, setErr] = useState(false)
   const [success, setSuccess] = useState(false)
   const handleSubmit = async (e) => {
@@ -46,7 +65,11 @@ function Register() {
   }
 
   return (
-    <div className={styles.formwrapper}>
+    // <div className={showRegisterForm ? 'visible' : 'hidden'}>
+
+    // <div className={styles.formwrapper}>
+
+    <div className={showRegisterForm ? styles.hiddenFormwrapper : styles.visibleFormwrapper}>
 
 
 
@@ -83,7 +106,7 @@ function Register() {
 
           <div className={styles.passwordinput}>      
               <div className="cool-input-div">
-                <input className="cool-input" type="text" placeholder="Password: 6+ chars."/>
+                <input className="cool-input" type="password" placeholder="Password: 6+ chars."/>
                 <span className="cool-bottom cool-span"></span>
                 <span className="cool-right cool-span"></span>
                 <span className="cool-top cool-span"></span>
@@ -95,7 +118,9 @@ function Register() {
               <button className={styles.registerbtn}>
               Register</button>
             </div>
-            <p className={styles.alreadyhaveaccount}>Already have an account?</p>
+            <p 
+                      onClick={handleToggleFormClick}
+            className={styles.alreadyhaveaccount}>Already have an account?</p>
             <p className={styles.or}>
 or 
 </p>
@@ -112,6 +137,7 @@ or
         {success && <p>註冊成功</p>}
       </form>
     </div>
+    // </div>
   )
 }
 

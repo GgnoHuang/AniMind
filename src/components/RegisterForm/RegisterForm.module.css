@@ -1,26 +1,39 @@
-.formwrapper{
-  /* border: 4px rgb(0, 255, 140) solid; */
 
-  /* height: 200px; */
+
+
+
+.visibleFormwrapper{
+  transition: all 0.5s ease;
+position: absolute; /* 或者 position: relative; 根据需求选择 */
+left: 50%;
+top: 40%;
+transform: translate(-50%, -50%);
 }
 
-.nameinput{
-  
+.hiddenFormwrapper{
+  transition: all 0.5s ease;
+position: absolute; /* 或者 position: relative; 根据需求选择 */
+left: 50%;
+top: 40%;
+transform: translate(-50%, -300%);
+
 }
+
 
 .inputcontainer{
+
   position: relative;
   top:100px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 3px rgb(234, 171, 171) solid;
+  border: 1px rgb(11, 255, 51) solid;
   height: 600px;
   width: 550px;
   /* border: 2px rgb(239, 239, 239) solid; */
   /* background-image:url('../../../public//png_flower.png'); */
-  /* background-image:url('../../../public//未命.png'); */
+  background-image:url('../../../public//未命.png');
   /* background-image:url('../../../public//png_1.png'); */
 
   /* background-position:  -13px -13px;  */
@@ -30,22 +43,23 @@
 }
 
 .signintext{
+  color: #ffffff;
   font-weight: 200;
   height: 35px;
   font-size: 26px;
-  margin-bottom: 20px;
-  color: #ffffff;
+  position: relative;
+  top: -120px;
   
 }
-.inputcontainer:hover{
+/* .inputcontainer:hover{
   transform: rotate(0deg);
-}
+} */
 .inputcontainer:hover > .nameinput{
   /* transform: rotate(1deg); */
 }
 
 
-.inputcontainer::before {
+/* .inputcontainer::before {
   content: '';
   position: absolute;
   top: 0;
@@ -58,12 +72,13 @@
   background-repeat: no-repeat;
   z-index: -1;
   transform: rotate(2deg);
-  transition: transform 0.1s ease; /* 平滑过渡效果 */
+  transition: transform 0.1s ease; 
 }
 
 .inputcontainer:hover::before {
-  transform: rotate(-3deg); /* 悬停时旋转 */
-}
+  transform: rotate(-3deg); 
+  
+} */
 
 
 
@@ -106,18 +121,24 @@ background-color: #00ffcd;
   margin-bottom: 8px;
   color: #ffffff; /* 字体颜色 */
   font-weight: 300;
+  cursor: pointer;
 }
+
+.alreadyhaveaccount:hover{
+  color: #00ffcd;
+  
+  }
+
+
 
 .or {
   margin-bottom: 8px;
-  color: #ffffff; /* 字体颜色 */
-}
 
-.or {
   display: flex;
   align-items: center;
   justify-content: center;
   color: #ffffff; /* or 文字的顏色 */
+  color: #dddddd; /* 字体颜色 */
 
   position: relative;
 }
@@ -126,6 +147,7 @@ background-color: #00ffcd;
 .or::after {
   content: '';
   background-color: #ffffff; /* 橫線的顏色 */
+  background-color: #dddddd; /* 字体颜色 */
   height: 1px;
   width: 76px;
   position: absolute;

@@ -7,6 +7,14 @@ import { addEdge, applyNodeChanges, applyEdgeChanges } from 'reactflow';
 import { nodes as initialNodes, edges as initialEdges } from './components/initialEls';
 
 export const useStore = create((set, get) => ({
+
+  showRegisterForm: true, // 初始状态为 true，表示显示登录表单
+  toggleForm: () => set((state) => ({ showRegisterForm: !state.showRegisterForm })),
+
+
+
+
+
   nodes: initialNodes,// 是一個陣列
   edges: initialEdges,
 

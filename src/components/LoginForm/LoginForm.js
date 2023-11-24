@@ -1,13 +1,19 @@
 // ~🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 import React, { useState } from "react"
 import { auth } from "../../config"
+import useStore from '../../store';
+
+
+
 
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { getDatabase, ref, get } from "firebase/database"
 import { db } from "../../config"
 
 import styles from "./LoginForm.module.css";
-import Image from 'next/image'
+import Image from 'next/image';
+
+
 
 
 function Login({ errMsg, setErrMsg,setSuccessMsg,successMsg }) {
@@ -15,6 +21,21 @@ function Login({ errMsg, setErrMsg,setSuccessMsg,successMsg }) {
   // const [successMsg, setSuccessMsg] = useState(false) 
   
 
+
+
+  // 👗👗👗👗👗👗👗👗👗👗👗zustand👗👗👗👗👗👗👗👗👗👗
+  const { showRegisterForm,toggleForm} = useStore(state => ({
+    toggleForm: state.toggleForm,
+    showRegisterForm: state.showRegisterForm,
+}));
+// 👗👗👗👗👗👗👗👗👗zustand👗👗👗👗👗👗👗👗👗👗👗👗
+
+
+const handleToggleFormClick = () => {
+  toggleForm();
+};
+
+  
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -54,45 +75,23 @@ function Login({ errMsg, setErrMsg,setSuccessMsg,successMsg }) {
   }
 
   return (
-    <div>
+
+
+<div className={showRegisterForm ? styles.visibleFormwrapper : styles.hiddenFormwrapper}>
+
+      
       {/* <div className="p-1 flex items-center flex items-center justify-center">
         <p className=" text-white p-2 rounded ">登入</p>
       </div> */}
 
       <form onSubmit={handleSubmit}>
-      {/* <div className="input-container-wrapper">
-        <div className="input-container">
-
-
-
-            <div className="cool-input-div">
-              <input className="cool-input" type="text" placeholder="email"/>
-              <span className="cool-bottom cool-span"></span>
-              <span className="cool-right cool-span"></span>
-              <span className="cool-top cool-span"></span>
-              <span className="cool-left cool-span"></span>
-            </div>
-            <div className="cool-input-div">
-              <input className="cool-input" type="password" placeholder="密碼至少包含6個字"/>
-              <span className="cool-bottom cool-span"></span>
-              <span className="cool-right cool-span"></span>
-              <span className="cool-top cool-span"></span>
-              <span className="cool-left cool-span"></span>
-            </div>
-            <div className="p-3 flex items-center flex items-center justify-center">
-            <button className=" text-white p-1 rounded bg-blue-500 hover:bg-blue-600 ">登入</button>
-            </div>
-
-        </div>
-      </div> */}
-
-<div className="input-container-wrapper">
-        <div className="input-container">
-        <div className={styles.inputcontainer}>
+        <div className="input-container-wrapper">
+          <div className="input-container">
+            <div className={styles.inputcontainer}>
           
-            <div className={styles.signintext}>
+              <div className={styles.signintext}>
                 Sign in to Medium or create an account
-            </div>
+              </div>
 
 
             <div className={styles.mailinput}>
@@ -107,7 +106,7 @@ function Login({ errMsg, setErrMsg,setSuccessMsg,successMsg }) {
 
           <div className={styles.passwordinput}>      
               <div className="cool-input-div">
-                <input className="cool-input" type="text" placeholder="Password: 6+ chars."/>
+                <input className="cool-input" type="password" placeholder="Password: 6+ chars."/>
                 <span className="cool-bottom cool-span"></span>
                 <span className="cool-right cool-span"></span>
                 <span className="cool-top cool-span"></span>
@@ -119,7 +118,9 @@ function Login({ errMsg, setErrMsg,setSuccessMsg,successMsg }) {
               <button className={styles.registerbtn}>
               Login</button>
             </div>
-            <p className={styles.alreadyhaveaccount}>Not a member yet?</p>
+            <p  
+            onClick={handleToggleFormClick}
+            className={styles.alreadyhaveaccount}>Not a member yet?</p>
             <p className={styles.or}>
 or 
 </p>
@@ -138,6 +139,7 @@ or
         {successMsg && <p>登入成功</p>}
       </form>
     </div>
+
   )
 }
 
