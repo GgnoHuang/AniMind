@@ -15,17 +15,25 @@ function Register() {
 
 
   // 👗👗👗👗👗👗👗👗👗👗👗zustand👗👗👗👗👗👗👗👗👗👗
-  const { showRegisterForm,toggleForm} = useStore(state => ({
+  const { showRegisterForm,toggleForm
+    ,showCollage,toggleCollage
+  } = useStore(state => ({
       toggleForm: state.toggleForm,
       showRegisterForm: state.showRegisterForm,
+      showCollage: state.showCollage,
+      toggleCollage: state.toggleCollage,
  }));
- // 👗👗👗👗👗👗👗👗👗zustand👗👗👗👗👗👗👗👗👗👗👗👗
+
+
 
  const handleToggleFormClick = () => {
   toggleForm();
+  toggleCollage();
+
 };
 
 
+ // 👗👗👗👗👗👗👗👗👗zustand👗👗👗👗👗👗👗👗👗👗👗👗
 
 
   const [err, setErr] = useState(false)

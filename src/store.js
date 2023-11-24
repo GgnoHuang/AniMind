@@ -11,6 +11,9 @@ export const useStore = create((set, get) => ({
   showRegisterForm: true, // 初始状态为 true，表示显示登录表单
   toggleForm: () => set((state) => ({ showRegisterForm: !state.showRegisterForm })),
 
+  showCollage: false, 
+  toggleCollage: () => set((state) => ({ showCollage: !state.showCollage })),
+
 
 
 
