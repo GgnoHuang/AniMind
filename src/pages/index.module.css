@@ -7,21 +7,13 @@
     /* background-size:cover; */
   /* background-size: 2320px 1080px;  */
   height: 100vh;
-  border: 2px yellowgreen solid;
+  /* border: 2px yellowgreen solid; */
   
 }
 
-.newnav{
-  
-  width: 100%;
-  height: 50px;
-  background-color: aqua;
-  background-image:url('../../public/kiwihug.jpg');
 
-  position: absolute;
-  top:0px;
 
-}
+
 .newnavimg{
   max-width: none;
   /* transform: translateY(-500px); */
@@ -43,7 +35,6 @@
 }
 
 
-.loginRegisterFormWrapper{
   /* height: 80vh; */
   /* width: 100%; */
   /* border: 2px rgb(255, 2, 2) solid; */
@@ -53,9 +44,8 @@
   /* background-size: 500px 500px;  */
   /* background-repeat: no-repeat; */
 
-}
-
 .formContainer{
-
-
+/* border: red 3px solid; */
+display: flex;
+justify-content: center;
 }

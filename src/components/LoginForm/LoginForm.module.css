@@ -1,0 +1,166 @@
+.letsstart{
+  position: absolute;
+  z-index: 1000;
+  /* top:90px;
+  left: 30px; */
+  width: 220px;
+  transform:rotate(-10deg)translate(-40%, -132%);
+  transition: all 1.2s ease-in;
+
+}
+
+.hiddenletsstart{
+  position: absolute;
+  z-index: 1000;
+  top:90px;
+  left: 30px;
+  width: 220px;
+  transform:rotate(-10deg) translate(-50%, -500%);
+  transition: all 0.8s ease;
+
+}
+
+
+.visibleFormwrapper{
+  transition: all 0.5s ease;
+position: absolute; /* 或者 position: relative; 根据需求选择 */
+left: 50%;
+top: 40%;
+transform: translate(-50%, -50%);
+}
+
+.hiddenFormwrapper{
+  transition: all 0.5s ease;
+position: absolute; /* 或者 position: relative; 根据需求选择 */
+left: 50%;
+top: 40%;
+transform: translate(-50%, -300%);
+
+}
+
+
+
+
+.inputcontainer{
+  position: relative;
+  top:100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 0px rgb(234, 171, 171) solid;
+  height: 600px;
+  width: 550px;
+  /* border: 2px rgb(239, 239, 239) solid; */
+  /* background-image:url('../../../public//png_flower.png'); */
+  /* background-image:url('../../../public//未命.png'); */
+  background-image:url('../../../public/design-1700824655285.webp');
+
+  /* background-position:  -13px -13px;  */
+  background-position:  -10px 42px; 
+  background-size: 98%;
+  background-repeat: no-repeat;
+}
+
+.signintext{
+  color: #ffffff;
+  font-weight: 200;
+  height: 35px;
+  font-size: 26px;
+  position: relative;
+  top: -120px;
+}
+.inputcontainer:hover{
+  transform: rotate(0deg);
+}
+.inputcontainer:hover > .nameinput{
+  /* transform: rotate(1deg); */
+}
+
+
+
+
+
+
+
+
+
+.registerbtn{
+  height: 35px;
+  width:200px;
+  background-color: rgb(111, 111, 111);
+
+  color: #ffffff;
+  border: 2px solid #ff2f00;;
+  border: 2px solid #00ffcd;
+  margin-bottom: 8px;
+
+}
+.registerbtn:hover{
+background-color: #00ffcd;
+
+  color: rgb(255, 255, 255);
+}
+
+
+.nameinput{
+  margin-bottom: 8px;
+  font-weight: 200;
+}
+.mailinput{
+  margin-bottom: 8px;
+  font-weight: 200;
+}
+.passwordinput{
+  margin-bottom: 13px;
+  font-weight: 200;
+}
+.alreadyhaveaccount{
+  cursor: pointer;
+  margin-bottom: 8px;
+  color: rgb(0, 0, 0); /* 字体颜色 */
+  font-weight: 300;
+}
+.alreadyhaveaccount:hover{
+  color: #00ffcd;
+  
+  }
+
+
+.or {
+    margin-bottom: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff; /* or 文字的顏色 */
+  color: #7b7b7b; /* 字体颜色 */
+
+  position: relative;
+}
+
+.or::before,
+.or::after {
+  content: '';
+  background-color: #ffffff; /* 橫線的顏色 */
+  background-color: #7b7b7b; /* 字体颜色 */
+
+  height: 1px;
+  width: 76px;
+  position: absolute;
+  top: 50%;
+}
+
+.or::before {
+  right: 100%;
+  margin-right: 15px; /* 橫線與文字的間距 */
+}
+
+.or::after {
+  left: 100%;
+  margin-left: 15px; /* 橫線與文字的間距 */
+}
+
+
+
+

@@ -1,5 +1,7 @@
 import React, { useState } from "react"
-
+ // 👗👗👗👗👗👗zustand
+import useStore from '../../store';
+ // 👗👗👗👗👗👗zustand
 
 import { createUserWithEmailAndPassword, signOut } from "firebase/auth"
 import { db,auth } from "../../config"
@@ -9,6 +11,23 @@ import { getDatabase, ref, set ,get} from "firebase/database"
 import styles from "./RegisterForm.module.css";
 
 function Register() {
+
+
+
+  // 👗👗👗👗👗👗👗👗👗👗👗zustand👗👗👗👗👗👗👗👗👗👗
+  const { showRegisterForm,toggleForm} = useStore(state => ({
+      toggleForm: state.toggleForm,
+      showRegisterForm: state.showRegisterForm,
+ }));
+ // 👗👗👗👗👗👗👗👗👗zustand👗👗👗👗👗👗👗👗👗👗👗👗
+
+ const handleToggleFormClick = () => {
+  toggleForm();
+};
+
+
+
+
   const [err, setErr] = useState(false)
   const [success, setSuccess] = useState(false)
   const handleSubmit = async (e) => {
@@ -46,29 +65,25 @@ function Register() {
   }
 
   return (
-    <div className={styles.formwrapper}>
+    // <div className={showRegisterForm ? 'visible' : 'hidden'}>
+
+    // <div className={styles.formwrapper}>
+
+    <div className={showRegisterForm ? styles.hiddenFormwrapper : styles.visibleFormwrapper}>
 
 
 
     
 
       <form onSubmit={handleSubmit}>
-
       <div className="input-container-wrapper">
-        
         <div className="input-container">
-          
-
         <div className={styles.inputcontainer}>
           
-            <div className="p-2 flex items-center flex items-center justify-center">
-              <p className=" text-white p-2 rounded ">
-                
-                Please sign in to continue
-
-                </p>
-
+            <div className={styles.signintext}>
+                Sign in or create an account
             </div>
+
           <div className={styles.nameinput}>
             <div className="cool-input-div">
               <input className="cool-input" type="text" placeholder="Username"/>
@@ -78,7 +93,8 @@ function Register() {
               <span className="cool-left cool-span"></span>
             </div>
           </div>
-          <div className={styles.mailinput}>
+
+            <div className={styles.mailinput}>
               <div className="cool-input-div">
               <input className="cool-input" type="text" placeholder="Email"/>
               <span className="cool-bottom cool-span"></span>
@@ -87,9 +103,10 @@ function Register() {
               <span className="cool-left cool-span"></span>
             </div>
           </div>
+
           <div className={styles.passwordinput}>      
               <div className="cool-input-div">
-                <input className="cool-input" type="text" placeholder="Password: 6+ chars."/>
+                <input className="cool-input" type="password" placeholder="Password: 6+ chars."/>
                 <span className="cool-bottom cool-span"></span>
                 <span className="cool-right cool-span"></span>
                 <span className="cool-top cool-span"></span>
@@ -97,12 +114,22 @@ function Register() {
               </div>
           </div>
 
-              <div className=" flex items-center flex items-center justify-center">
-            <button 
-            className={styles.signupbtn}
-            >
+            <div className=" flex items-center flex items-center justify-center">
+              <button className={styles.registerbtn}>
               Register</button>
             </div>
+            <p 
+                      onClick={handleToggleFormClick}
+            className={styles.alreadyhaveaccount}>Already have an account?</p>
+            <p className={styles.or}>
+or 
+</p>
+
+            <div className=" flex items-center flex items-center justify-center">
+              <button type="button" className={styles.registerbtn} onClick={()=>{}}>
+              Continue with Google</button>
+            </div>
+
           </div>
         </div>
       </div>
@@ -110,6 +137,7 @@ function Register() {
         {success && <p>註冊成功</p>}
       </form>
     </div>
+    // </div>
   )
 }
 

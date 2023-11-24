@@ -1,9 +1,10 @@
-.navbody{
-  height: 50px;
-  background-color: rgb(214, 214, 214);
-  /* background-image: ; */
-  background-image:url('../../../public//backgood.png');
 
+
+.navbody{
+  height: 150px;
+  /* background-color: rgb(214, 214, 214); */
+  /* background-image: ; */
+  /* background-image:url('../../../public//backgood.png'); */
 }
 
 .nav{
@@ -20,6 +21,3 @@
 
 }
 
-.navpng{
-
-}

@@ -1,13 +1,19 @@
 // ~🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 import React, { useState } from "react"
 import { auth } from "../../config"
+import useStore from '../../store';
+
+
+
 
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { getDatabase, ref, get } from "firebase/database"
 import { db } from "../../config"
 
 import styles from "./LoginForm.module.css";
-import Image from 'next/image'
+import Image from 'next/image';
+
+
 
 
 function Login({ errMsg, setErrMsg,setSuccessMsg,successMsg }) {
@@ -15,6 +21,21 @@ function Login({ errMsg, setErrMsg,setSuccessMsg,successMsg }) {
   // const [successMsg, setSuccessMsg] = useState(false) 
   
 
+
+
+  // 👗👗👗👗👗👗👗👗👗👗👗zustand👗👗👗👗👗👗👗👗👗👗
+  const { showRegisterForm,toggleForm} = useStore(state => ({
+    toggleForm: state.toggleForm,
+    showRegisterForm: state.showRegisterForm,
+}));
+// 👗👗👗👗👗👗👗👗👗zustand👗👗👗👗👗👗👗👗👗👗👗👗
+
+
+const handleToggleFormClick = () => {
+  toggleForm();
+};
+
+  
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -54,33 +75,67 @@ function Login({ errMsg, setErrMsg,setSuccessMsg,successMsg }) {
   }
 
   return (
-    <div>
-      <div className="p-1 flex items-center flex items-center justify-center">
+
+
+<div className={showRegisterForm ? styles.visibleFormwrapper : styles.hiddenFormwrapper}>
+
+      
+      {/* <div className="p-1 flex items-center flex items-center justify-center">
         <p className=" text-white p-2 rounded ">登入</p>
-      </div>
+      </div> */}
 
       <form onSubmit={handleSubmit}>
-      <div className="input-container-wrapper">
-        <div className="input-container">
+        
+        <div className="input-container-wrapper">
+          <div className="input-container">
 
-            <div className="cool-input-div">
-              <input className="cool-input" type="text" placeholder="email"/>
+            <div className={styles.inputcontainer}>
+            <img src="/lets.webp" 
+            // className={styles.letsstart}
+            className={showRegisterForm ? styles.letsstart : styles.hiddenletsstart}
+            />
+              <div className={styles.signintext}>
+                Sign in or create an account
+              </div>
+
+
+            <div className={styles.mailinput}>
+              <div className="cool-input-div">
+              <input className="cool-input" type="text" placeholder="Email"/>
               <span className="cool-bottom cool-span"></span>
               <span className="cool-right cool-span"></span>
               <span className="cool-top cool-span"></span>
               <span className="cool-left cool-span"></span>
             </div>
-            <div className="cool-input-div">
-              <input className="cool-input" type="password" placeholder="密碼至少包含6個字"/>
-              <span className="cool-bottom cool-span"></span>
-              <span className="cool-right cool-span"></span>
-              <span className="cool-top cool-span"></span>
-              <span className="cool-left cool-span"></span>
+          </div>
+
+          <div className={styles.passwordinput}>      
+              <div className="cool-input-div">
+                <input className="cool-input" type="password" placeholder="Password: 6+ chars."/>
+                <span className="cool-bottom cool-span"></span>
+                <span className="cool-right cool-span"></span>
+                <span className="cool-top cool-span"></span>
+                <span className="cool-left cool-span"></span>
+              </div>
+          </div>
+
+            <div className=" flex items-center flex items-center justify-center">
+              <button className={styles.registerbtn}>
+              Sign in</button>
             </div>
-            <div className="p-3 flex items-center flex items-center justify-center">
-            <button className=" text-white p-1 rounded bg-blue-500 hover:bg-blue-600 ">登入</button>
+            <p  
+            onClick={handleToggleFormClick}
+            className={styles.alreadyhaveaccount}>Not a member yet?</p>
+            <p className={styles.or}>
+or 
+</p>
+
+            <div className=" flex items-center flex items-center justify-center">
+              <button type="button" className={styles.registerbtn} onClick={()=>{}}>
+              Continue with Google</button>
             </div>
 
+          </div>
         </div>
       </div>
 
@@ -89,6 +144,7 @@ function Login({ errMsg, setErrMsg,setSuccessMsg,successMsg }) {
         {successMsg && <p>登入成功</p>}
       </form>
     </div>
+
   )
 }
 

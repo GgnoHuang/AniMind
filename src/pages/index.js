@@ -47,18 +47,13 @@ export default function HomePage() {
         setUserAuth={setUserAuth} 
         setLocalUserData={setLocalUserData}
       />
-      <div
-          className={styles.newnav}
-          >
-      </div>
-      <img src="/backgood.png"
-       className={styles.newnavimg}
-      />
-      <img src="/backgood.png"
-       className={styles.newnavimg2}
-      />
+          <img src="/backgood.png"
+          className={styles.newnavimg}
+          />
+          <img src="/backgood.png"
+          className={styles.newnavimg2}
+          />
       
-
 
       <AuthCheck auth={auth}
         setLocalUserData={setLocalUserData}
@@ -68,13 +63,11 @@ export default function HomePage() {
       {/* {userAuth != null ?  */}
       {userAuth == null && (
 
-        <div className={styles.loginRegisterFormWrapper}>
+
           <div className={styles.formContainer}>
             <RegisterForm />
-            <br />
+
             <LoginForm  errMsg={errMsg} setErrMsg={setErrMsg} setSuccessMsg={setSuccessMsg} successMsg={successMsg} />
-            <br />
-          </div>
         </div>
       )}
 
