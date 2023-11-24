@@ -7,7 +7,7 @@
     /* background-size:cover; */
   /* background-size: 2320px 1080px;  */
   height: 100vh;
-  border: 2px yellowgreen solid;
+  /* border: 2px yellowgreen solid; */
   
 }
 
@@ -45,7 +45,7 @@
   /* background-repeat: no-repeat; */
 
 .formContainer{
-border: red 3px solid;
+/* border: red 3px solid; */
 display: flex;
 justify-content: center;
 }
