@@ -1,5 +1,5 @@
 // ~🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-import React, { useState } from "react"
+import React, { useState,useEffect } from "react"
 import { auth } from "../../config"
 import useStore from '../../store';
 
@@ -24,16 +24,31 @@ function Login({ errMsg, setErrMsg,setSuccessMsg,successMsg }) {
 
 
   // 👗👗👗👗👗👗👗👗👗👗👗zustand👗👗👗👗👗👗👗👗👗👗
-  const { showRegisterForm,toggleForm} = useStore(state => ({
+  const { showRegisterForm,toggleForm,
+    showCollage,toggleCollage,
+  } = useStore(state => ({
     toggleForm: state.toggleForm,
     showRegisterForm: state.showRegisterForm,
+    showCollage: state.showCollage,
+    toggleCollage: state.toggleCollage,
 }));
-// 👗👗👗👗👗👗👗👗👗zustand👗👗👗👗👗👗👗👗👗👗👗👗
 
+
+useEffect(() => {
+  const timer = setTimeout(() => {
+      toggleCollage();
+  }, 100);
+
+  return () => clearTimeout(timer); 
+}, []);
 
 const handleToggleFormClick = () => {
   toggleForm();
+  toggleCollage();
+
+
 };
+// 👗👗👗👗👗👗👗👗👗zustand👗👗👗👗👗👗👗👗👗👗👗👗
 
   
   const handleSubmit = async (e) => {
@@ -74,6 +89,10 @@ const handleToggleFormClick = () => {
     }
   }
 
+
+
+
+
   return (
 
 
@@ -92,7 +111,7 @@ const handleToggleFormClick = () => {
             <div className={styles.inputcontainer}>
             <img src="/lets.webp" 
             // className={styles.letsstart}
-            className={showRegisterForm ? styles.letsstart : styles.hiddenletsstart}
+            className={showCollage ? styles.letsstart : styles.hiddenletsstart}
             />
               <div className={styles.signintext}>
                 Sign in or create an account
@@ -131,7 +150,7 @@ or
 </p>
 
             <div className=" flex items-center flex items-center justify-center">
-              <button type="button" className={styles.registerbtn} onClick={()=>{}}>
+              <button type="button" className={styles.registerbtn} onClick={toggleCollage}>
               Continue with Google</button>
             </div>
 
