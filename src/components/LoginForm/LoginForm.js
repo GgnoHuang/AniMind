@@ -114,7 +114,7 @@ const handleToggleFormClick = () => {
             className={showCollage ? styles.letsstart : styles.hiddenletsstart}
             />
               <div className={styles.signintext}>
-                Sign in or create an account
+                Log In 
               </div>
 
 

@@ -1,13 +1,30 @@
 import React, { useState } from "react"
 import { auth } from "../config"
 import { signOut } from "firebase/auth"
+import useStore from '../store';
 
 function LogoutBtn({setUserAuth,setLocalUserData,
   errMsg,setErrMsg, setSuccessMsg, successMsg
 }) {
+
+// 👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗
+  const { 
+  toggleCollage,
+  } = useStore(state => ({
+    toggleCollage: state.toggleCollage,
+}));
+const handleToggleFormClick = () => {
+console.log(1)
+  toggleCollage();
+  console.log('他狗')
+};
+// 👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗
+
+  
   function handleSignout() {
     signOut(auth)
       .then(() => {
+        handleToggleFormClick()
         localStorage.clear("userData") // 移除userData
         setUserAuth(null)
         setLocalUserData(null)
@@ -15,6 +32,8 @@ function LogoutBtn({setUserAuth,setLocalUserData,
         setErrMsg(false)
         console.log("登出成功")
         alert("登出成功")
+        // window.location.reload()
+       
       })
       .catch((error) => {
         console.log("登出發生錯誤")

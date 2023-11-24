@@ -1,5 +1,21 @@
+.letsstart{
+  position: absolute;
+  /* top:90px;
+  left: 30px; */
+  width: 200px;
+  transform:translate(-45%, -125%);
+  transition: all 1.5s ease-in-out;
+}
+
+.hiddenletsstart{
+  position: absolute;
+  width: 200px;
+  /* transform:translate(-125%, 15%); */
+  transform:translate(-165%, -35%);
 
 
+  /* transition: all 1.5s ease; */
+}
 
 
 .visibleFormwrapper{
@@ -44,13 +60,13 @@ transform: translate(-50%, -300%);
 
 .signintext{
   color: #ffffff;
-  font-weight: 200;
+  font-weight: 300;
   height: 35px;
-  font-size: 26px;
+  font-size: 28px;
   position: relative;
-  top: -120px;
-  
+  top: -28px;
 }
+
 /* .inputcontainer:hover{
   transform: rotate(0deg);
 } */
