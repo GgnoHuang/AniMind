@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState,useEffect } from "react"
  // 👗👗👗👗👗👗zustand
 import useStore from '../../store';
  // 👗👗👗👗👗👗zustand
@@ -24,12 +24,18 @@ function Register() {
       toggleCollage: state.toggleCollage,
  }));
 
+//  useEffect(() => {
+//   const timer = setTimeout(() => {
+//       toggleCollage();
+//   }, 100);
+
+//   return () => clearTimeout(timer); 
+// }, []);
 
 
  const handleToggleFormClick = () => {
   toggleForm();
   toggleCollage();
-
 };
 
 
@@ -88,8 +94,14 @@ function Register() {
         <div className="input-container">
         <div className={styles.inputcontainer}>
           
+        <img src="/smallflowerr.webp" 
+            // className={styles.letsstart}
+            className={showCollage ? styles.hiddenletsstart : styles.letsstart}
+            />
+
+
             <div className={styles.signintext}>
-                Sign in or create an account
+                Sign up
             </div>
 
           <div className={styles.nameinput}>
