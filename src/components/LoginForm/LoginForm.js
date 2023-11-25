@@ -34,13 +34,7 @@ function Login({ errMsg, setErrMsg,setSuccessMsg,successMsg }) {
 }));
 
 
-useEffect(() => {
-  const timer = setTimeout(() => {
-      toggleCollage();
-  }, 100);
 
-  return () => clearTimeout(timer); 
-}, []);
 
 const handleToggleFormClick = () => {
   toggleForm();
@@ -75,6 +69,7 @@ const handleToggleFormClick = () => {
         localStorage.setItem("userData", JSON.stringify(userData))
         localStorage.setItem("userUUID", userUUID)
         setSuccessMsg(true)
+        
 
       // 一登入沒辦法渲染會員資料是正常，因為這裡做的動作只有 localStorage.setItem而已
 // 所以要再setLocalUserData(parsedData)
@@ -97,8 +92,6 @@ const handleToggleFormClick = () => {
 
 
 <div className={showRegisterForm ? styles.visibleFormwrapper : styles.hiddenFormwrapper}>
-
-      
       {/* <div className="p-1 flex items-center flex items-center justify-center">
         <p className=" text-white p-2 rounded ">登入</p>
       </div> */}
@@ -120,7 +113,7 @@ const handleToggleFormClick = () => {
 
             <div className={styles.mailinput}>
               <div className="cool-input-div">
-              <input className="cool-input" type="text" placeholder="Email"/>
+              <input defaultValue="test@test.com"  className="cool-input" type="text" placeholder="Email"/>
               <span className="cool-bottom cool-span"></span>
               <span className="cool-right cool-span"></span>
               <span className="cool-top cool-span"></span>
@@ -130,7 +123,7 @@ const handleToggleFormClick = () => {
 
           <div className={styles.passwordinput}>      
               <div className="cool-input-div">
-                <input className="cool-input" type="password" placeholder="Password: 6+ chars."/>
+                <input  defaultValue="123456"  className="cool-input" type="password" placeholder="Password: 6+ chars."/>
                 <span className="cool-bottom cool-span"></span>
                 <span className="cool-right cool-span"></span>
                 <span className="cool-top cool-span"></span>

@@ -1,3 +1,7 @@
+import Link from "next/link"
+import { useRouter } from 'next/router';
+
+
 import { useCallback, useState,useEffect,useRef } from 'react';
 import { auth,db } from "../../config" 
 import { getDatabase, ref, set ,get} from "firebase/database"
@@ -66,6 +70,10 @@ const nodeTypes = { textUpdater: TextUpdaterNode,
 };
 
 function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {}) {
+
+  const router = useRouter();
+  console.log('查詢參數:', router.query); // 獲取 URL 的查詢參數
+
   // const initBgColor = '#1A192B';
 
     // 💞💞💞💞💞💞💞💞💞💞💞💞💞💞重要用法💞💞💞💞💞💞💞💞💞💞💞💞💞💞💞💞💞
@@ -317,7 +325,9 @@ const onRestore = () => {
 }
 
 useEffect(()=>{
+
   onRestore();
+
 // eslint-disable-next-line react-hooks/exhaustive-deps
 },[])
 
@@ -454,8 +464,13 @@ useEffect(() => {
 
       </Panel>
 
+
+
     <Panel position="top-right">    
-  
+        <button className="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600  ml-1 mr-1">
+          <Link href="/">回到首頁</Link>
+        </button>
+
         <button 
         onClick={onSave}
           className="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600  ml-1 mr-1"

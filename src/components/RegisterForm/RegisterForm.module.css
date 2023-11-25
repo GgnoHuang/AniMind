@@ -50,7 +50,7 @@ transform: translate(-50%, -300%);
   /* border: 2px rgb(239, 239, 239) solid; */
   /* background-image:url('../../../public//png_flower.png'); */
   background-image:url('../../../public//未命.png');
-  /* background-image:url('../../../public//png_1.png'); */
+
 
   /* background-position:  -13px -13px;  */
   background-position:  -10px -122px; 
@@ -67,39 +67,6 @@ transform: translate(-50%, -300%);
   top: -28px;
 }
 
-/* .inputcontainer:hover{
-  transform: rotate(0deg);
-} */
-.inputcontainer:hover > .nameinput{
-  /* transform: rotate(1deg); */
-}
-
-
-/* .inputcontainer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('../../../public//未命.png');
-  background-position: -40px -172px;
-  background-size: 116%;
-  background-repeat: no-repeat;
-  z-index: -1;
-  transform: rotate(2deg);
-  transition: transform 0.1s ease; 
-}
-
-.inputcontainer:hover::before {
-  transform: rotate(-3deg); 
-  
-} */
-
-
-
-
-
 
 
 
@@ -109,7 +76,7 @@ transform: translate(-50%, -300%);
   background-color: rgb(111, 111, 111);
 
   color: #ffffff;
-  /* border: 2px solid #ff2f00;; */
+
   /* border: 2px solid #00ffcd; */
   margin-bottom: 8px;
 

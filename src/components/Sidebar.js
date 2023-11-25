@@ -41,10 +41,7 @@ export default function Sidebar({onRestore, saveStation,setSaveStation }) {
           className='border-4 border-purple-200 flex justify-center items-center hover:border-sky-500 p-2 cursor-pointer'
           onClick={() =>
             
-            {
-              // reactFlowInstance.current.fitView(options);
-              handleSaveStationChange(number)
-            }}
+            { handleSaveStationChange(number)}}
           style={{ 
             backgroundColor: saveStation === number ? '#BE77FF' : 'white',
             transition: 'background-color 0.3s ease'}}>
@@ -54,28 +51,6 @@ export default function Sidebar({onRestore, saveStation,setSaveStation }) {
     </div>
   
       </Panel>
-
-
-
-  
-
-
-
-{/* <Panel>
-<h3>數量: {howManyNodes}個</h3>
-
-      <div className='flex flex-col'>
-
-      {nodes.map(node => (
-        <button key={node.id} 
-        style={{borderColor:'red',borderWidth:'3px'}} >
-          {node.data.label}節點
-        </button>
-      ))}
-      </div>
-      </Panel> */}
-
-    {/* <h1 className="w-64">{saveStation}</h1> */}
   </>
   )
 }
