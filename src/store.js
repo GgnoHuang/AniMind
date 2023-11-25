@@ -13,6 +13,7 @@ export const useStore = create((set, get) => ({
 
   showCollage: false, 
   toggleCollage: () => set((state) => ({ showCollage: !state.showCollage })),
+  toggleCollageToTrue: (value) => set(() => ({ showCollage: value })),
 
   // showRegisterForm: true,
   // toggleForm: () => set((state) => ({ showRegisterForm: !state.showRegisterForm })),

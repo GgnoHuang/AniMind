@@ -31,12 +31,12 @@ import useStore from '../store';
 export default function HomePage() {
 
   
-  const { toggleCollage,} = useStore(state => ({
-    toggleCollage: state.toggleCollage,
+  const { toggleCollageToTrue,} = useStore(state => ({
+    toggleCollageToTrue: state.toggleCollageToTrue,
 }));
   useEffect(() => {
     const timer = setTimeout(() => {
-        toggleCollage();
+      toggleCollageToTrue(true)
     }, 10);
   
     return () => clearTimeout(timer); 
@@ -73,7 +73,6 @@ export default function HomePage() {
 //不要用上面這個用for就好
 
     const countFFFlowData = async () => {
-      console.log('哈囉')
       // const databaseRef = ref(db, 'FFFlow');
       const localUUID = localStorage.getItem("userUUID");
       const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/`);
@@ -84,11 +83,7 @@ export default function HomePage() {
           console.log('所有資料的key：')
           console.log(Object.keys(data))
           setKeysCount(Object.keys(data).length)
-          // const keysCount =
-          // console.log('FFFlow 路徑底下的資料筆數：', keysCount);
-          // setKeysCount(keysCount)
-
-          // return keysCount;
+      
           return ;
         } else {
           console.log('FFFlow 路徑底下沒有資料');
@@ -102,21 +97,23 @@ export default function HomePage() {
       }
     };
     useEffect(() => {
-      countFFFlowData();
-    }, []);
+      if(userAuth!==null){    
+        countFFFlowData();
+        }
+
+    }, [userAuth]);
 
     useEffect(() => {
-      const newBtnsArr = [];
-      for (let i = 0; i < keysCount; i++) {
-        newBtnsArr.push(`存檔點 ${i + 1}`);
+      if(userAuth!==null){  
+        const newBtnsArr = [];
+        for (let i = 0; i < keysCount; i++) {
+          newBtnsArr.push(`存檔點 ${i + 1}`);
+        }
+        setBtnsArr(newBtnsArr);
+        console.log('新的btnarr',newBtnsArr)
       }
-      setBtnsArr(newBtnsArr);
-      console.log('新的btnarr',newBtnsArr)
-      console.log('FFFlow 路徑底下的資料筆數：', keysCount);
-
-
-  
-    }, [keysCount]);
+        // console.log('FFFlow 路徑底下的資料筆數：', keysCount);
+    }, [keysCount,userAuth]);
     // 🐳🐳🐳🐳🐳 取得存檔數量 🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳
   
 

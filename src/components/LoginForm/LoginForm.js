@@ -17,10 +17,6 @@ import Image from 'next/image';
 
 
 function Login({ errMsg, setErrMsg,setSuccessMsg,successMsg }) {
-  // const [errMsg, setErrMsg] = useState(false)
-  // const [successMsg, setSuccessMsg] = useState(false) 
-  
-
 
 
   // 👗👗👗👗👗👗👗👗👗👗👗zustand👗👗👗👗👗👗👗👗👗👗
@@ -32,19 +28,14 @@ function Login({ errMsg, setErrMsg,setSuccessMsg,successMsg }) {
     showCollage: state.showCollage,
     toggleCollage: state.toggleCollage,
 }));
-
-
-
-
 const handleToggleFormClick = () => {
   toggleForm();
   toggleCollage();
-
-
 };
 // 👗👗👗👗👗👗👗👗👗zustand👗👗👗👗👗👗👗👗👗👗👗👗
 
   
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -65,11 +56,12 @@ const handleToggleFormClick = () => {
 
       if (snapshot.exists()) {
         const userData = snapshot.val()
-        console.log("成功從資料庫抓到會員資料，並放入local:", userData)
+        // console.log("成功從資料庫抓到會員資料，並放入local:", userData)
         localStorage.setItem("userData", JSON.stringify(userData))
         localStorage.setItem("userUUID", userUUID)
         setSuccessMsg(true)
         
+        console.log('好')
 
       // 一登入沒辦法渲染會員資料是正常，因為這裡做的動作只有 localStorage.setItem而已
 // 所以要再setLocalUserData(parsedData)
@@ -113,7 +105,9 @@ const handleToggleFormClick = () => {
 
             <div className={styles.mailinput}>
               <div className="cool-input-div">
-              <input defaultValue="test@test.com"  className="cool-input" type="text" placeholder="Email"/>
+              <input 
+                autoComplete="Email"
+              defaultValue="test@test.com"  className="cool-input" type="text" placeholder="Email"/>
               <span className="cool-bottom cool-span"></span>
               <span className="cool-right cool-span"></span>
               <span className="cool-top cool-span"></span>
@@ -123,7 +117,11 @@ const handleToggleFormClick = () => {
 
           <div className={styles.passwordinput}>      
               <div className="cool-input-div">
-                <input  defaultValue="123456"  className="cool-input" type="password" placeholder="Password: 6+ chars."/>
+                <input  
+                
+                defaultValue="123456" 
+                autoComplete="current-password"
+                className="cool-input" type="password" placeholder="Password: 6+ chars."/>
                 <span className="cool-bottom cool-span"></span>
                 <span className="cool-right cool-span"></span>
                 <span className="cool-top cool-span"></span>

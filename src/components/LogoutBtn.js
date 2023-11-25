@@ -16,10 +16,7 @@ function LogoutBtn({setUserAuth,setLocalUserData,
     toggleCollage: state.toggleCollage,
 }));
 const handleToggleFormClick = () => {
-
 };
-
-
 // 👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗
 
   

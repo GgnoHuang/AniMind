@@ -13,8 +13,8 @@ const AuthCheck = () => {
         const localUUID = localStorage.getItem("userUUID")
         if (localUUID) {
 
-          console.log('這是UUID:')
-          console.log(localUUID)
+          // console.log('這是UUID:')
+          // console.log(localUUID)
         }
       } else {
 
