@@ -26,11 +26,11 @@ import useStore from '../store';
 
 
 
-
-
 export default function HomePage() {
+  // 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
+  console.log(1)
+  // 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
 
-  
   const { toggleCollageToTrue,} = useStore(state => ({
     toggleCollageToTrue: state.toggleCollageToTrue,
 }));
@@ -41,6 +41,7 @@ export default function HomePage() {
   
     return () => clearTimeout(timer); 
   }, []);
+
 
 
 
@@ -73,21 +74,25 @@ export default function HomePage() {
 //不要用上面這個用for就好
 
     const countFFFlowData = async () => {
+      // 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
+        console.log(2)
+  // 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
       // const databaseRef = ref(db, 'FFFlow');
       const localUUID = localStorage.getItem("userUUID");
       const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/`);
       try {
+        console.log(3)
         const snapshot = await get(databaseRef);
         if (snapshot.exists()) {
+          console.log(4)
           const data = snapshot.val();
           console.log('所有資料的key：')
           console.log(Object.keys(data))
-          setKeysCount(Object.keys(data).length)
-      
+          setKeysCount(Object.keys(data).length) 
           return ;
         } else {
+
           console.log('FFFlow 路徑底下沒有資料');
-          // return 0;
           return;
         }
       } catch (error) {
@@ -97,14 +102,25 @@ export default function HomePage() {
       }
     };
     useEffect(() => {
-      if(userAuth!==null){    
+      // countFFFlowData();
+
+      if(localStorage.getItem("userUUID")){    
+        console.log('有執行countFFFlowData')
+        console.log(1)
         countFFFlowData();
         }
+    }, [successMsg]);
 
-    }, [userAuth]);
+
+    // if(userAuth){    
+    //   console.log('有執行countFFFlowData')
+    //   console.log(1)
+    //   countFFFlowData();
+    //   }
 
     useEffect(() => {
-      if(userAuth!==null){  
+      if(localStorage.getItem("userUUID")){    
+      // if(userAuth!==null){  
         const newBtnsArr = [];
         for (let i = 0; i < keysCount; i++) {
           newBtnsArr.push(`存檔點 ${i + 1}`);
@@ -112,27 +128,29 @@ export default function HomePage() {
         setBtnsArr(newBtnsArr);
         console.log('新的btnarr',newBtnsArr)
       }
+
         // console.log('FFFlow 路徑底下的資料筆數：', keysCount);
-    }, [keysCount,userAuth]);
+    // }, [keysCount,userAuth]);
+    }, [keysCount]);
     // 🐳🐳🐳🐳🐳 取得存檔數量 🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳
   
 
 
 
-  
-
   const onSave =() => {
     if (true) {
           const localUUID = localStorage.getItem("userUUID")
         if (localUUID) {
-          console.log('onsave喔')
-              const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${keysCount+1}`);
-              set(databaseRef,'哈ㄋㄡ')
+            const timestamp = Date.now(); // 获取当前时间的时间戳
+
+              const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${timestamp}`);
+              set(databaseRef,'{"nodes":[],"edges":[],"viewport":{"x":0,"y":0,"zoom":1}}')
+
               .then(() => {
-                console.log("成功存到資料庫");
+                console.log("成功存到資料庫哈ㄋㄡ");
 
 
-                router.push(`/FFFlow/${keysCount+1}`);  // 這裡放你想要跳轉的路徑
+                router.push(`/FFFlow/${timestamp}`);  // 這裡放你想要跳轉的路徑
 
               })
               .catch((error) => {
@@ -153,11 +171,29 @@ export default function HomePage() {
     
     className={styles.homepagebody}
     >
+
+
+
+
+
+
+
+
+
+        <AuthCheck auth={auth}
+        setLocalUserData={setLocalUserData}
+        setUserAuth={setUserAuth}
+        successMsg={successMsg}
+      />
+
       <HomeNav localUserData={localUserData}
         setErrMsg={setErrMsg} 
         setSuccessMsg={setSuccessMsg} 
         setUserAuth={setUserAuth} 
         setLocalUserData={setLocalUserData}
+        setKeysCount={setKeysCount}
+        setBtnsArr={setBtnsArr}
+
       />
 
           {/* <img src="/backgood.png"
@@ -168,11 +204,7 @@ export default function HomePage() {
           />
        */}
 
-      <AuthCheck auth={auth}
-        setLocalUserData={setLocalUserData}
-        setUserAuth={setUserAuth}
-        successMsg={successMsg}
-      />
+   
       {/* {userAuth != null ?  */}
       {userAuth == null && (
 
@@ -185,12 +217,9 @@ export default function HomePage() {
 
     {userAuth !== null && (
         <div className={styles.savePointContainer}>
-          <button className={styles.savePoint} onClick={
-
-            onSave
-          }
-          style={{backgroundColor:'red'}}
-          >
+          <button className={styles.savePoint}
+            onClick={onSave}
+            style={{backgroundColor:'red'}}>
             新增
           </button>
           {/* {savePoints.map((savePoint, index) => (

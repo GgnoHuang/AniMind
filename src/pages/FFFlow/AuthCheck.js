@@ -8,11 +8,10 @@ const AuthCheck = () => {
     const unsubscribe = onAuthStateChanged(auth, (authUser) => {
       if (authUser) {
 
-        console.log("有登入")
+        console.log("有登入！")
 
         const localUUID = localStorage.getItem("userUUID")
         if (localUUID) {
-
           // console.log('這是UUID:')
           // console.log(localUUID)
         }

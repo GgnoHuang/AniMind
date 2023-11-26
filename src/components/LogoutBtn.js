@@ -5,9 +5,10 @@ import useStore from '../store';
 
 function LogoutBtn({setUserAuth,setLocalUserData,
   errMsg,setErrMsg, setSuccessMsg, successMsg
+  ,setKeysCount,setBtnsArr
 }) {
 
-  
+
 
 // 👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗
   const { 
@@ -29,6 +30,8 @@ const handleToggleFormClick = () => {
         setLocalUserData(null)
         setSuccessMsg(false)
         setErrMsg(false)
+        setKeysCount(0)
+        setBtnsArr([])
 
 
 

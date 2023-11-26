@@ -5,7 +5,12 @@ import styles from "./HomeNav.module.css";
 
 import LogoutBtn from "../LogoutBtn"
 
-export default function HomeNav({localUserData,setErrMsg,setSuccessMsg,setUserAuth,setLocalUserData}) {
+export default function HomeNav({localUserData,
+  setErrMsg,setSuccessMsg,
+  setUserAuth,setLocalUserData
+  ,setKeysCount
+  ,setBtnsArr
+}) {
 
   return (
     <div >
@@ -29,7 +34,12 @@ export default function HomeNav({localUserData,setErrMsg,setSuccessMsg,setUserAu
               </p>
 
 
-                <LogoutBtn  setErrMsg={setErrMsg} setSuccessMsg={setSuccessMsg}  setUserAuth={setUserAuth} setLocalUserData={setLocalUserData}/>
+                <LogoutBtn  setErrMsg={setErrMsg} setSuccessMsg={setSuccessMsg} 
+                 setUserAuth={setUserAuth}
+                  setLocalUserData={setLocalUserData}
+                  setKeysCount={setKeysCount}
+                  setBtnsArr={setBtnsArr}
+                  />
               </div>
           </div>
           )}

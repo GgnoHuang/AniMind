@@ -6,29 +6,24 @@
   transform:translate(-45%, -125%);
   transition: all 1.5s ease-in-out;
 }
-
 .hiddenletsstart{
   position: absolute;
   width: 200px;
   /* transform:translate(-125%, 15%); */
   transform:translate(-165%, -35%);
-
-
   /* transition: all 1.5s ease; */
 }
 
-
 .visibleFormwrapper{
   transition: all 0.5s ease;
-position: absolute; /* 或者 position: relative; 根据需求选择 */
+position: absolute; 
 left: 50%;
 top: 40%;
 transform: translate(-50%, -50%);
 }
-
 .hiddenFormwrapper{
   transition: all 0.5s ease;
-position: absolute; /* 或者 position: relative; 根据需求选择 */
+position: absolute; 
 left: 50%;
 top: 40%;
 transform: translate(-50%, -300%);
@@ -37,20 +32,16 @@ transform: translate(-50%, -300%);
 
 
 .inputcontainer{
-
   position: relative;
   top:100px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* border: 1px rgb(11, 255, 51) solid; */
   height: 600px;
   width: 550px;
   /* border: 2px rgb(239, 239, 239) solid; */
-  /* background-image:url('../../../public//png_flower.png'); */
   background-image:url('../../../public//未命.png');
-
 
   /* background-position:  -13px -13px;  */
   background-position:  -10px -122px; 

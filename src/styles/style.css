@@ -38,22 +38,10 @@ body {
   /* font-family: '小濑字体'; */
 
 backdrop-filter: blur(7px);
-/* backdrop-filter: blur(2px); */
-  background-image:url('../../public/goi.jpg');
-  background-image:url('../../public/de.png');
-  background-image:url('../../public/超讚.jpg');
-  background-image:url('../../public/讚.jpg');
   background-image:url('../../public/讚嘿.jpg');
-  /* background-image:url('../../public/材質.jpg'); */
-  /* background-image:url('../../public/材質2.jpg'); */
-  /* background-image:url('../../public/材質3.jpg'); */
-  /* background-image:url('../../public/讚花2.jpg'); */
-  /* background-image:url('../../public/讚花3.jpg'); */
 
-  /* background-image:url('../../public/超讚2.jpg'); */
   background-size:cover;
   /* background-position: 0% 90%;  */
-
 
 }
 /* flow的一些 預設樣式 */
