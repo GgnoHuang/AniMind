@@ -1,59 +1,37 @@
 import Link from "next/link"
+
 import { useRouter } from 'next/router';
 
-
 import { useCallback, useState,useEffect,useRef } from 'react';
-import { auth,db } from "../../config" 
-import { getDatabase, ref, set ,get} from "firebase/database"
+import { db } from "../../../config" 
+import { ref, set ,get} from "firebase/database"
 
-import ReactFlow, { ReactFlowProvider,useNodesState,useEdgesState,useReactFlow,
-  Panel,addEdge, applyEdgeChanges,applyNodeChanges,Controls,
-  ControlButton,
-  Background ,
-  MiniMap,
-  Node,
-  Edge,
-  ConnectionLineType,
-  MarkerType,
-  ConnectionMode,
-
-}from 'reactflow';
+import ReactFlow, { ReactFlowProvider,useReactFlow,
+  Panel,Controls,Background ,MiniMap,
+} from 'reactflow';
 import 'reactflow/dist/style.css';
 
-import styles from "./ffflow.module.css";
 
 // node👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻
-import TextUpdaterNode from '../../nodes/TextUpdaterNode'
-import OmgNode from '../../nodes/OmgNode'
-import ImgNode2 from '../../nodes/ImgNode2.js'
-import ColorNote from '../../nodes/ColorNote'
-import proCircleNode from '../../nodes/circleNode.js'
-import example from '../../nodes/example.js'
-import shapeNode from '../../nodes/shapeNode.js'
-// import ResizerNode from '../../nodes/ResizerNode.js'
+import TextUpdaterNode from '../../../nodes/TextUpdaterNode'
+import OmgNode from '../../../nodes/OmgNode'
+import ImgNode2 from '../../../nodes/ImgNode2.js'
+import ColorNote from '../../../nodes/ColorNote'
+import proCircleNode from '../../../nodes/circleNode.js'
+import example from '../../../nodes/example.js'
+import shapeNode from '../../../nodes/shapeNode.js'
 // node👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻
 
-import AuthCheck from "./AuthCheck.js"
+import AuthCheck from "../AuthCheck.js"
 
-import Sidebar from "../../components/Sidebar.js"
-// import Nav from "../../components/Nav.js"
-// import NodesList from './Nodelist.js'; 
-import DownloadBtn from '../../components/DownloadBtn.js'; 
-import ImageUpload from '../../components/ImageUpload.js'; 
-
-
-// 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
-
-// import useAnimatedNodes from './useAnimatedNodes';
-// import useExpandCollapse from './useExpandCollapse';
-// 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
-
+// import Nav from "../../../components/Nav可刪.js"
+import DownloadBtn from '../../../components/DownloadBtn.js'; 
+import ImageUpload from '../../../components/ImageUpload.js'; 
 
 const proOptions = { account: 'paid-pro', hideAttribution: true };
 
-// 🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈
 import { shallow } from 'zustand/shallow';
-import useStore from '../../store.js';
+import useStore from '../../../store.js';
 
 const nodeTypes = { textUpdater: TextUpdaterNode,
   gg: OmgNode,
@@ -62,48 +40,22 @@ const nodeTypes = { textUpdater: TextUpdaterNode,
   proCircleNode:proCircleNode,
   example:example,
   shapeNode:shapeNode
-  // ResizerNode:ResizerNode
+
 };
 
 function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {}) {
-
+  console.log('組件炫染')
   const router = useRouter();
-  const queryString=router.query
-  console.log('查詢參數:', router.query); 
+  const queryNum =router.query['savePointNum']
+  console.log('查詢參數～～:', queryNum); // 獲取 URL 的查詢參數
+  useEffect(() => {
+    if (router.isReady) {
+      const queryNum = router.query['savePointNum'];
+      onRestore(queryNum);
+    }
+  }, [router.isReady, router.query]);
+  
 
-  // const initBgColor = '#1A192B';
-
-    // 💞💞💞💞💞💞💞💞💞💞💞💞💞💞重要用法💞💞💞💞💞💞💞💞💞💞💞💞💞💞💞💞💞
-  // const onNodeClick = (event, node) => {
-  //   console.log('Node clicked:', node);
-  // };
-
-  // const onNodeClick =(_, node) => {
-  //   setNodes((nds) =>
-  //     nds.map((n) => {
-  //       if (n.id === node.id) {
-  //         return {
-  //           ...n,
-  //           data: { ...n.data, expanded: !n.data.expanded },
-  //         };
-  //       }
-  //       return n;
-  //     })
-  //   );
-  // }
-
-
-
-
-
-  // const onEdgeClick = (event, edge) => {
-  //   console.log('Node clicked:', edge);
-  // };
-  // const onEdgeClick = (event, edge) => {
-  //   // 根据需要更改样式
-  //   updateEdgeStyle(edge.id, { type: 'smoothstep', style: { stroke: 'red' } });
-
-  // 💞💞💞💞💞💞💞💞💞💞💞💞💞💞重要用法💞💞💞💞💞💞💞💞💞💞💞💞💞💞💞💞💞
 
   const [initBgColor,setInitBgColor]= useState( 'rgb(199, 199, 199)')
   function handleBgColorChange(event) {
@@ -111,7 +63,7 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
     setInitBgColor(newBgColor);
   }
   
-  const [saveStation, setSaveStation] = useState(1)
+  // const [saveStation, setSaveStation] = useState(1)
 
   const [selectedColor, setSelectedColor] = useState('#ffffff'); 
 
@@ -120,8 +72,8 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
   const getNodeId = () => `randomnode_${+new Date()}`;
   // const { nodes, edges, onNodesChange, onEdgesChange, onConnect } = useStore(selector, shallow);
   const { nodes, edges, onNodesChange,onEdgesChange, onConnect,setNodes
-     ,setEdges,howManyNodes ,
-     updateEdgeStyle} = useStore(state => ({
+    ,setEdges,howManyNodes ,
+    updateEdgeStyle} = useStore(state => ({
     nodes: state.nodes,
     edges: state.edges,
     onNodesChange: state.onNodesChange,
@@ -133,44 +85,8 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
     howManyNodes: state.howManyNodes,
     updateEdgeStyle: state.updateEdgeStyle,
   }));
-
+ 
 //為了等等使用useeffect偵測node數量變化
-
-
-
-// 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
-// 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
-// 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
-// const { nodes: visibleNodes, edges: visibleEdges } = useExpandCollapse(nodes, edges, { treeWidth, treeHeight });
-// const { nodes: animatedNodes } = useAnimatedNodes(visibleNodes, { animationDuration });
-
-// const onNodeClick =(_, node) => {
-//   if (node.type === 'custom') {
-//     console.log(node.type)
-//     console.log(node)
-//     setNodes((nds) =>
-//     nds.map((n) => {
-//       if (n.id === node.id) {
-//         return {...n,
-//           data: { ...n.data, expanded: !n.data.expanded },
-//         };}return n;}));}
-//     console.log('Node clicked:', node);}
-// 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
-// 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
-// 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // ~~~~~~~~~~~~dnd的部分
@@ -181,9 +97,7 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
   // －－－－－
   const reactFlowWrapper = useRef(null);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
-  // －－－－－
-  // let id = 0;
-  // －－－－－
+
   const onDragOver = useCallback((event) => {
     event.preventDefault();
     event.dataTransfer.dropEffect = 'move';
@@ -223,18 +137,8 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
 
         setNodes([...nodes, newNode]);
         setUpdateTrigger(trigger => !trigger);  // 觸發 useEffect
-
       }
 // ~~~~~~~~~~~~dnd的部分
-
-  // useEffect(() => { // 刪除reactflow字樣
-  //   const linkElement = document.querySelector('a[aria-label="React Flow attribution"]');
-  //   if (linkElement) {
-  //     linkElement.innerHTML = ''; 
-  //   }
-  // }, []); // 刪除reactflow字樣
-
-
 
 
 
@@ -249,18 +153,17 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
   // 等等解開
 
   // ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨
-  const onSave =() => {
+  const onSave =(query) => {
     if (reactFlowInstance) {
           console.log(reactFlowInstance.toObject())
           const flow = reactFlowInstance.toObject();
           // localStorage.setItem(flowKey, JSON.stringify(flow));
           const localUUID = localStorage.getItem("userUUID")
         if (localUUID) {
-              const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${queryString}`);
-
-
+              const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${query}`);
               set(databaseRef, JSON.stringify(flow))
               .then(() => {
+
                 console.log("成功存到資料庫");
               })
               .catch((error) => {
@@ -274,18 +177,20 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
     }
 }
 
-const onRestore = () => {
+const onRestore = (query) => {
   const restoreFlow = async () => {
     const localUUID = localStorage.getItem("userUUID");
     if (localUUID) {
-      // const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${saveStation}`);
-      const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${queryString}`);
-
+      const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${query}`);
       try {
         const snapshot = await get(databaseRef);
-        if (snapshot.exists()) {
+        console.log(1111)
+        if (snapshot.exists()){
         // if (false) {
+          console.log(2222)
+  
           const data = snapshot.val();
+          console.log(3333)
           console.log('成功從資料庫抓到的：');
           console.log(JSON.parse(data));
 
@@ -301,7 +206,9 @@ const onRestore = () => {
             // 如果沒有從儲存中找到節點數據，保持為空數組[]
           }
         }else{
+          console.log(query)
           console.log('無存檔')
+
           setNodes([]);
           setEdges([]);
           setViewport({ x: 0, y: 0, zoom: 1 });
@@ -311,7 +218,7 @@ const onRestore = () => {
         setNodes([]);
         setEdges([]);
         setViewport({ x: 0, y: 0, zoom: 1 });
-        alert('獲取資料發生錯誤')
+        console.log('獲取資料發生錯誤!')
         console.error("獲取資料發生錯誤", error);
       }
     } else {
@@ -325,17 +232,11 @@ const onRestore = () => {
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }
 
-useEffect(()=>{
-
-  onRestore();
-
-// eslint-disable-next-line react-hooks/exhaustive-deps
-},[])
 
 
 // const [addCount, setAddCount] = useState(0);
 const sayhi = () => {
-  console.log('hi')
+  // console.log('hi')
 }
 // const addNewNode = useStore((state) => state.addNewNode);
 const onAdd = (imageUrl) => {
@@ -393,10 +294,10 @@ useEffect(() => {
       }}>
         
     <AuthCheck/>
-    <Sidebar 
+    {/* <Sidebar 
       onRestore={onRestore}
       saveStation ={saveStation} 
-      setSaveStation={setSaveStation}/>
+      setSaveStation={setSaveStation}/> */}
 
     {/* <Nav/> */}
     {/* <NodesList />  */}
@@ -473,7 +374,15 @@ useEffect(() => {
         </button>
 
         <button 
-        onClick={onSave}
+        onClick={
+        
+        ()=>{
+          onSave(queryNum)
+        }
+        }
+
+
+
           className="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600  ml-1 mr-1"
         >保存</button>
 

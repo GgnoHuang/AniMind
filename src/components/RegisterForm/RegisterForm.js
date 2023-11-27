@@ -106,7 +106,9 @@ function Register() {
 
           <div className={styles.nameinput}>
             <div className="cool-input-div">
-              <input className="cool-input" type="text" placeholder="Username"/>
+              <input 
+              autoComplete="username"
+              className="cool-input" type="text" placeholder="Username"/>
               <span className="cool-bottom cool-span"></span>
               <span className="cool-right cool-span"></span>
               <span className="cool-top cool-span"></span>
@@ -116,7 +118,10 @@ function Register() {
 
             <div className={styles.mailinput}>
               <div className="cool-input-div">
-              <input className="cool-input" type="text" placeholder="Email"/>
+              <input
+                              autoComplete="Email"
+
+              className="cool-input" type="text" placeholder="Email"/>
               <span className="cool-bottom cool-span"></span>
               <span className="cool-right cool-span"></span>
               <span className="cool-top cool-span"></span>
@@ -126,7 +131,9 @@ function Register() {
 
           <div className={styles.passwordinput}>      
               <div className="cool-input-div">
-                <input className="cool-input" type="password" placeholder="Password: 6+ chars."/>
+                <input
+                                autoComplete="current-password"
+                className="cool-input" type="password" placeholder="Password: 6+ chars."/>
                 <span className="cool-bottom cool-span"></span>
                 <span className="cool-right cool-span"></span>
                 <span className="cool-top cool-span"></span>

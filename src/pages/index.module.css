@@ -7,6 +7,7 @@
     /* background-size:cover; */
   /* background-size: 2320px 1080px;  */
   height: 100vh;
+  width: 100%;
   /* border: 2px yellowgreen solid; */
   
 }
@@ -15,6 +16,7 @@
 
 
 .newnavimg{
+  border: 4px rgb(6, 250, 47) solid;
   max-width: none;
   /* transform: translateY(-500px); */
   transform: translateX(-400px);
@@ -48,4 +50,33 @@
 /* border: red 3px solid; */
 display: flex;
 justify-content: center;
+}
+
+
+
+.savePointContainerwWapper{
+  display: flex;
+  justify-content: center;
+  border: rgb(0, 21, 255) 3px solid;
+
+}
+
+.savePointContainer{
+  width: 100%;
+  border: rgb(0, 21, 255) 3px solid;
+  background-color: aliceblue;
+  display: flex;
+  flex-wrap: wrap;
+  height: fit-content;
+  padding: 20px;
+  justify-content: flex-start; /* 使元素從容器的左側開始排列 */
+  gap: 10px; /* 設定元素之間的間距 */
+
+  }
+
+.savePoint{
+  border: rgb(0, 21, 255) 3px solid;
+  background-color: rgb(28, 124, 207);
+
+  width: 100px;
 }

@@ -1,9 +1,9 @@
 import Link from "next/link"
+
 import { useRouter } from 'next/router';
 
-
 import { useCallback, useState,useEffect,useRef } from 'react';
-import { auth,db } from "../../config" 
+import { auth,db } from "../../../config" 
 import { getDatabase, ref, set ,get} from "firebase/database"
 
 import ReactFlow, { ReactFlowProvider,useNodesState,useEdgesState,useReactFlow,
@@ -11,35 +11,38 @@ import ReactFlow, { ReactFlowProvider,useNodesState,useEdgesState,useReactFlow,
   ControlButton,
   Background ,
   MiniMap,
+
+
+
   Node,
   Edge,
   ConnectionLineType,
   MarkerType,
   ConnectionMode,
 
-}from 'reactflow';
+} from 'reactflow';
 import 'reactflow/dist/style.css';
 
-import styles from "./ffflow.module.css";
+import styles from "../ffflow.module.css";
 
 // node👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻
-import TextUpdaterNode from '../../nodes/TextUpdaterNode'
-import OmgNode from '../../nodes/OmgNode'
-import ImgNode2 from '../../nodes/ImgNode2.js'
-import ColorNote from '../../nodes/ColorNote'
-import proCircleNode from '../../nodes/circleNode.js'
-import example from '../../nodes/example.js'
-import shapeNode from '../../nodes/shapeNode.js'
+import TextUpdaterNode from '../../../nodes/TextUpdaterNode'
+import OmgNode from '../../../nodes/OmgNode'
+import ImgNode2 from '../../../nodes/ImgNode2.js'
+import ColorNote from '../../../nodes/ColorNote'
+import proCircleNode from '../../../nodes/circleNode.js'
+import example from '../../../nodes/example.js'
+import shapeNode from '../../../nodes/shapeNode.js'
 // import ResizerNode from '../../nodes/ResizerNode.js'
 // node👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻
 
-import AuthCheck from "./AuthCheck.js"
+import AuthCheck from "../AuthCheck.js"
 
-import Sidebar from "../../components/Sidebar.js"
-// import Nav from "../../components/Nav.js"
+// import Sidebar from "../../../components/Sidebar.js"
+import Nav from "../../../components/Nav可刪.js"
 // import NodesList from './Nodelist.js'; 
-import DownloadBtn from '../../components/DownloadBtn.js'; 
-import ImageUpload from '../../components/ImageUpload.js'; 
+import DownloadBtn from '../../../components/DownloadBtn.js'; 
+import ImageUpload from '../../../components/ImageUpload.js'; 
 
 
 // 👗👗👗👗👗👗👗樹狀圖👗👗👗👗👗👗👗👗👗👗👗
@@ -52,8 +55,9 @@ import ImageUpload from '../../components/ImageUpload.js';
 const proOptions = { account: 'paid-pro', hideAttribution: true };
 
 // 🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈
+// 🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈
 import { shallow } from 'zustand/shallow';
-import useStore from '../../store.js';
+import useStore from '../../../store.js';
 
 const nodeTypes = { textUpdater: TextUpdaterNode,
   gg: OmgNode,
@@ -66,12 +70,16 @@ const nodeTypes = { textUpdater: TextUpdaterNode,
 };
 
 function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {}) {
-
+  
   const router = useRouter();
-  const queryString=router.query
-  console.log('查詢參數:', router.query); 
+  console.log('查詢參數～～:', router.query); // 獲取 URL 的查詢參數
 
+  
+  
   // const initBgColor = '#1A192B';
+
+
+
 
     // 💞💞💞💞💞💞💞💞💞💞💞💞💞💞重要用法💞💞💞💞💞💞💞💞💞💞💞💞💞💞💞💞💞
   // const onNodeClick = (event, node) => {
@@ -256,9 +264,7 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
           // localStorage.setItem(flowKey, JSON.stringify(flow));
           const localUUID = localStorage.getItem("userUUID")
         if (localUUID) {
-              const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${queryString}`);
-
-
+              const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${saveStation}`);
               set(databaseRef, JSON.stringify(flow))
               .then(() => {
                 console.log("成功存到資料庫");
@@ -278,9 +284,7 @@ const onRestore = () => {
   const restoreFlow = async () => {
     const localUUID = localStorage.getItem("userUUID");
     if (localUUID) {
-      // const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${saveStation}`);
-      const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${queryString}`);
-
+      const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${saveStation}`);
       try {
         const snapshot = await get(databaseRef);
         if (snapshot.exists()) {
@@ -311,7 +315,7 @@ const onRestore = () => {
         setNodes([]);
         setEdges([]);
         setViewport({ x: 0, y: 0, zoom: 1 });
-        alert('獲取資料發生錯誤')
+        console.log('獲取資料發生錯誤!')
         console.error("獲取資料發生錯誤", error);
       }
     } else {
@@ -326,9 +330,7 @@ const onRestore = () => {
 }
 
 useEffect(()=>{
-
   onRestore();
-
 // eslint-disable-next-line react-hooks/exhaustive-deps
 },[])
 
@@ -393,12 +395,12 @@ useEffect(() => {
       }}>
         
     <AuthCheck/>
-    <Sidebar 
+    {/* <Sidebar 
       onRestore={onRestore}
       saveStation ={saveStation} 
-      setSaveStation={setSaveStation}/>
+      setSaveStation={setSaveStation}/> */}
 
-    {/* <Nav/> */}
+    <Nav/>
     {/* <NodesList />  */}
         
     <ReactFlow

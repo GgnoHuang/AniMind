@@ -5,7 +5,10 @@ import useStore from '../store';
 
 function LogoutBtn({setUserAuth,setLocalUserData,
   errMsg,setErrMsg, setSuccessMsg, successMsg
+  ,setKeysCount,setBtnsArr
 }) {
+
+
 
 // 👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗
   const { 
@@ -14,9 +17,6 @@ function LogoutBtn({setUserAuth,setLocalUserData,
     toggleCollage: state.toggleCollage,
 }));
 const handleToggleFormClick = () => {
-console.log(1)
-  toggleCollage();
-  console.log('他狗')
 };
 // 👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗
 
@@ -24,12 +24,17 @@ console.log(1)
   function handleSignout() {
     signOut(auth)
       .then(() => {
-        handleToggleFormClick()
+
         localStorage.clear("userData") // 移除userData
         setUserAuth(null)
         setLocalUserData(null)
         setSuccessMsg(false)
         setErrMsg(false)
+        setKeysCount(0)
+        setBtnsArr([])
+
+
+
         console.log("登出成功")
         alert("登出成功")
         // window.location.reload()
