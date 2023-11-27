@@ -55,7 +55,7 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
     }
   }, [router.isReady, router.query]);
   
-  
+
 
   const [initBgColor,setInitBgColor]= useState( 'rgb(199, 199, 199)')
   function handleBgColorChange(event) {
@@ -85,7 +85,7 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
     howManyNodes: state.howManyNodes,
     updateEdgeStyle: state.updateEdgeStyle,
   }));
-
+ 
 //為了等等使用useeffect偵測node數量變化
 
 
