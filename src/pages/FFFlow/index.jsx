@@ -11,16 +11,13 @@ import ReactFlow, { ReactFlowProvider,useNodesState,useEdgesState,useReactFlow,
   ControlButton,
   Background ,
   MiniMap,
-
-
-
   Node,
   Edge,
   ConnectionLineType,
   MarkerType,
   ConnectionMode,
 
-} from 'reactflow';
+}from 'reactflow';
 import 'reactflow/dist/style.css';
 
 import styles from "./ffflow.module.css";
@@ -39,7 +36,7 @@ import shapeNode from '../../nodes/shapeNode.js'
 import AuthCheck from "./AuthCheck.js"
 
 import Sidebar from "../../components/Sidebar.js"
-import Nav from "../../components/Nav.js"
+// import Nav from "../../components/Nav.js"
 // import NodesList from './Nodelist.js'; 
 import DownloadBtn from '../../components/DownloadBtn.js'; 
 import ImageUpload from '../../components/ImageUpload.js'; 
@@ -54,7 +51,6 @@ import ImageUpload from '../../components/ImageUpload.js';
 
 const proOptions = { account: 'paid-pro', hideAttribution: true };
 
-// 🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈
 // 🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈
 import { shallow } from 'zustand/shallow';
 import useStore from '../../store.js';
@@ -72,7 +68,8 @@ const nodeTypes = { textUpdater: TextUpdaterNode,
 function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {}) {
 
   const router = useRouter();
-  console.log('查詢參數:', router.query); // 獲取 URL 的查詢參數
+  const queryString=router.query
+  console.log('查詢參數:', router.query); 
 
   // const initBgColor = '#1A192B';
 
@@ -259,7 +256,9 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
           // localStorage.setItem(flowKey, JSON.stringify(flow));
           const localUUID = localStorage.getItem("userUUID")
         if (localUUID) {
-              const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${saveStation}`);
+              const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${queryString}`);
+
+
               set(databaseRef, JSON.stringify(flow))
               .then(() => {
                 console.log("成功存到資料庫");
@@ -279,7 +278,9 @@ const onRestore = () => {
   const restoreFlow = async () => {
     const localUUID = localStorage.getItem("userUUID");
     if (localUUID) {
-      const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${saveStation}`);
+      // const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${saveStation}`);
+      const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${queryString}`);
+
       try {
         const snapshot = await get(databaseRef);
         if (snapshot.exists()) {
@@ -397,7 +398,7 @@ useEffect(() => {
       saveStation ={saveStation} 
       setSaveStation={setSaveStation}/>
 
-    <Nav/>
+    {/* <Nav/> */}
     {/* <NodesList />  */}
         
     <ReactFlow

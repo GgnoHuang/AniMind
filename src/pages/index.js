@@ -11,10 +11,8 @@ import styles from "./index.module.css";
 
 import Image from 'next/image'
 
-// import Login from "../components/Login"
 import LoginForm from "../components/LoginForm/LoginForm"
 import RegisterForm from "../components/RegisterForm/RegisterForm"
-// import Register from "../components/Register"
 
 import LogoutBtn from "../components/LogoutBtn"
 import AuthCheck from "../components/AuthCheck"
@@ -28,7 +26,7 @@ import useStore from '../store';
 
 export default function HomePage() {
   // 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
-  console.log(1)
+
   // 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
 
   const { toggleCollageToTrue,} = useStore(state => ({
@@ -47,23 +45,10 @@ export default function HomePage() {
 
   const router = useRouter();
 
-
-
   const [localUserData, setLocalUserData] = useState(null)
   const [userAuth, setUserAuth] = useState(null)
   const [successMsg, setSuccessMsg] = useState(false)
   const [errMsg, setErrMsg] = useState(false)
-
-
-
-
-  // 🎃🎃🎃🎃🎃   存檔   🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃
-
-  // 🎃🎃🎃🎃🎃🎃🎃  存檔  🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃
-
-
-
-
 
 
     // 🐳🐳🐳🐳 取得存檔數量 🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳
@@ -75,7 +60,7 @@ export default function HomePage() {
 
     const countFFFlowData = async () => {
       // 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
-        console.log(2)
+
   // 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
       // const databaseRef = ref(db, 'FFFlow');
       const localUUID = localStorage.getItem("userUUID");
@@ -86,9 +71,13 @@ export default function HomePage() {
         if (snapshot.exists()) {
           console.log(4)
           const data = snapshot.val();
-          console.log('所有資料的key：')
+          console.log('所有資料的key⬇️⬇️⬇️⬇️⬇️⬇️')
           console.log(Object.keys(data))
+          console.log('所有資料的key⬆️⬆️⬆️⬆️⬆️⬆️')
           setKeysCount(Object.keys(data).length) 
+
+          setBtnsArr(Object.keys(data));
+
           return ;
         } else {
 
@@ -102,8 +91,6 @@ export default function HomePage() {
       }
     };
     useEffect(() => {
-      // countFFFlowData();
-
       if(localStorage.getItem("userUUID")){    
         console.log('有執行countFFFlowData')
         console.log(1)
@@ -111,27 +98,19 @@ export default function HomePage() {
         }
     }, [successMsg]);
 
+    // useEffect(() => {
+    //   if(localStorage.getItem("userUUID")){    
+    //   // if(userAuth!==null){  
+    //     const newBtnsArr = [];
 
-    // if(userAuth){    
-    //   console.log('有執行countFFFlowData')
-    //   console.log(1)
-    //   countFFFlowData();
+    //     for (let i = 0; i < keysCount; i++) {
+    //       newBtnsArr.push(`存檔點 ${i + 1}`);
+    //     }
+    //     console.log('新的btnarr',newBtnsArr)
+    //     setBtnsArr(newBtnsArr);
     //   }
 
-    useEffect(() => {
-      if(localStorage.getItem("userUUID")){    
-      // if(userAuth!==null){  
-        const newBtnsArr = [];
-        for (let i = 0; i < keysCount; i++) {
-          newBtnsArr.push(`存檔點 ${i + 1}`);
-        }
-        setBtnsArr(newBtnsArr);
-        console.log('新的btnarr',newBtnsArr)
-      }
-
-        // console.log('FFFlow 路徑底下的資料筆數：', keysCount);
-    // }, [keysCount,userAuth]);
-    }, [keysCount]);
+    // }, [keysCount]);
     // 🐳🐳🐳🐳🐳 取得存檔數量 🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳
   
 
@@ -147,11 +126,8 @@ export default function HomePage() {
               set(databaseRef,'{"nodes":[],"edges":[],"viewport":{"x":0,"y":0,"zoom":1}}')
 
               .then(() => {
-                console.log("成功存到資料庫哈ㄋㄡ");
-
-
+                console.log("---成功存到資料庫---");
                 router.push(`/FFFlow/${timestamp}`);  // 這裡放你想要跳轉的路徑
-
               })
               .catch((error) => {
                 console.error("儲存發生錯誤：", error);
@@ -166,18 +142,24 @@ export default function HomePage() {
 
 
 
+
+const reDirect =(query) => {
+        const localUUID = localStorage.getItem("userUUID")
+      if (localUUID) {
+        router.push(`/FFFlow/${query}`);  // 這裡放你想要跳轉的路徑
+      }else{
+        console.log('沒抓到localstorage的會員id')
+      }
+    }
+
+
+
+
   return (
     <div 
     
     className={styles.homepagebody}
     >
-
-
-
-
-
-
-
 
 
         <AuthCheck auth={auth}
@@ -222,17 +204,15 @@ export default function HomePage() {
             style={{backgroundColor:'red'}}>
             新增
           </button>
-          {/* {savePoints.map((savePoint, index) => (
-            <div key={index} className={styles.savePoint}>
-              {savePoint}
-              <button onClick={() => removeSavePoint(index)}>刪除</button>
+       
 
-            </div>
-          ))} */}
+
+
           {btnsArr.map((savePoint, index) => (
-            <div key={index} className={styles.savePoint}>
+            <div 
+            onClick={()=>{reDirect(savePoint)}}
+            key={index} className={styles.savePoint}>
               {savePoint}
-              {/* <button onClick={() => removeSavePoint(index)}>刪除</button> */}
 
             </div>
           ))}

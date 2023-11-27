@@ -44,12 +44,18 @@ const nodeTypes = { textUpdater: TextUpdaterNode,
 };
 
 function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {}) {
-  
+  console.log('組件炫染')
   const router = useRouter();
   const queryNum =router.query['savePointNum']
   console.log('查詢參數～～:', queryNum); // 獲取 URL 的查詢參數
-
-
+  useEffect(() => {
+    if (router.isReady) {
+      const queryNum = router.query['savePointNum'];
+      onRestore(queryNum);
+    }
+  }, [router.isReady, router.query]);
+  
+  
 
   const [initBgColor,setInitBgColor]= useState( 'rgb(199, 199, 199)')
   function handleBgColorChange(event) {
@@ -178,13 +184,13 @@ const onRestore = (query) => {
       const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${query}`);
       try {
         const snapshot = await get(databaseRef);
-        console.log(1)
-        if (snapshot.exists()) {
+        console.log(1111)
+        if (snapshot.exists()){
         // if (false) {
-          console.log(2)
+          console.log(2222)
   
           const data = snapshot.val();
-          console.log(3)
+          console.log(3333)
           console.log('成功從資料庫抓到的：');
           console.log(JSON.parse(data));
 
@@ -200,7 +206,9 @@ const onRestore = (query) => {
             // 如果沒有從儲存中找到節點數據，保持為空數組[]
           }
         }else{
+          console.log(query)
           console.log('無存檔')
+
           setNodes([]);
           setEdges([]);
           setViewport({ x: 0, y: 0, zoom: 1 });
@@ -224,15 +232,11 @@ const onRestore = (query) => {
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }
 
-useEffect(()=>{
-  onRestore(queryNum);
-// eslint-disable-next-line react-hooks/exhaustive-deps
-},[])
 
 
 // const [addCount, setAddCount] = useState(0);
 const sayhi = () => {
-  console.log('hi')
+  // console.log('hi')
 }
 // const addNewNode = useStore((state) => state.addNewNode);
 const onAdd = (imageUrl) => {
