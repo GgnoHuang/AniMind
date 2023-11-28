@@ -55,28 +55,119 @@ justify-content: center;
 
 
 .savePointContainerwWapper{
+  margin-top: 50px;
   display: flex;
   justify-content: center;
-  border: rgb(0, 21, 255) 3px solid;
-
+  border:2px rgb(0, 255, 132) 3px solid;
 }
 
 .savePointContainer{
-  width: 100%;
-  border: rgb(0, 21, 255) 3px solid;
-  background-color: aliceblue;
+  width: 1200px;
+  border: rgb(0, 21, 255) 0px solid;
   display: flex;
   flex-wrap: wrap;
   height: fit-content;
-  padding: 20px;
+
   justify-content: flex-start; /* 使元素從容器的左側開始排列 */
-  gap: 10px; /* 設定元素之間的間距 */
+
+
+  grid-gap: 16px; /* 如果需要，可以设置列与列之间的间隙 */
 
   }
 
-.savePoint{
-  border: rgb(0, 21, 255) 3px solid;
-  background-color: rgb(28, 124, 207);
 
-  width: 100px;
+.addbtn{
+  /* background-image:url('../../public/ggs.png'); */
+  background-size: 210%;
+  background-repeat: no-repeat;
+  background-position: 35% -63px;
+  /* background-size: cover; */
+  /* border: rgb(255, 255, 255) 3px solid; */
+
+  width: 227.2px;
+  height: 100px;
+
+  align-self: center;
+  position: relative;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.addbtnn{
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+
+  cursor: pointer;
+  background-color:  #00ffccb7;
+  width: 100px;
+  height: 50px;
+  border: rgb(255, 255, 255) 2px solid;
+}
+
+.addbtnn:hover{
+  scale:105%;
+  transition: all 0.2s ease;
+  z-index: 999;
+  /* border: #00ffcd 2px solid; */
+  color: aliceblue;
+  background-color:   #00ffcc;
+  }
+
+
+
+
+.savePoint{
+    background-image:url('../../public/aacc.jpg');
+background-size: 300%;
+background-repeat: no-repeat;
+opacity: 0.8;
+/* background-size: contain; */
+
+
+  border-radius: 10px;
+  border: rgba(255, 255, 255, 0.747) 2px solid;
+  background-color: rgb(67, 67, 67);
+  cursor: pointer;
+  width: 227.2px;
+  color: rgb(255, 255, 255);
+
+  height: 100px;
+  position: relative;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.savePoint:hover{
+scale:105%;
+transition: all 0.2s ease;
+z-index: 999;
+border: #00ffcd 2px solid;
+
+
+}
+
+
+.deletebtn{
+
+  height:25px;
+  width: 25px;
+  padding: 5px;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: -10px;
+  right: -6px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  /* border: 3px solid salmon; */
+
+}
+.deletebtn:hover{
+  scale: 120%;
+  background-color: rgb(255, 87, 87);
+
+}
+

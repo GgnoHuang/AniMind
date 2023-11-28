@@ -43,7 +43,7 @@ transform: translate(-50%, -300%);
 
 .inputcontainer{
   position: relative;
-  top:100px;
+  top:60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,13 +91,15 @@ transform: translate(-50%, -300%);
   background-color: rgb(111, 111, 111);
 
   color: #ffffff;
-
-  border: 0px solid #00ffcd;
+  border: #00ffcd 1px solid;
+  /* border: 1.5px solid #00ffcd; */
   margin-bottom: 8px;
+  border-radius: 7px;
+
 
 }
 .registerbtn:hover{
-background-color: #00ffcd;
+background-color: #00ffccb2;
 
   color: rgb(255, 255, 255);
 }
@@ -106,6 +108,7 @@ background-color: #00ffcd;
 .nameinput{
   margin-bottom: 8px;
   font-weight: 200;
+  
 }
 .mailinput{
   margin-bottom: 8px;
@@ -118,12 +121,14 @@ background-color: #00ffcd;
 .alreadyhaveaccount{
   cursor: pointer;
   margin-bottom: 8px;
-  color: rgb(0, 0, 0); /* 字体颜色 */
-  font-weight: 300;
+  color: rgb(47, 47, 47); /* 字体颜色 */
+
+  font-weight: 400;
+
 }
 .alreadyhaveaccount:hover{
   color: #00ffcd;
-  
+
   }
 
 

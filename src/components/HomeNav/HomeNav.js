@@ -3,7 +3,7 @@ import Link from "next/link"
 
 import styles from "./HomeNav.module.css";
 
-import LogoutBtn from "../LogoutBtn"
+import LogoutBtn from "../LogoutBtn/LogoutBtn"
 
 export default function HomeNav({localUserData,
   setErrMsg,setSuccessMsg,
@@ -16,21 +16,22 @@ export default function HomeNav({localUserData,
     <div >
       <div className={styles.navbody}>
       {/* <img src="/nav.png" className={styles.navpng}/> */}
-      {localUserData != null && (
+
           <div className={styles.nav}>
               <p className="text-white p-2 rounded"
                 style={{zIndex:'1999'}}>
                 LOGO
               </p>
-
+      {localUserData != null && (
               <div className={styles.btnswrapper}
                 style={{zIndex:'1999'}}>
-                <p className="text-white p-2 rounded"
+                <p
+                className="text-white p-2 rounded"
                   style={{zIndex:'1999'}}>
-                  歡迎登入，<span 
+                  Welcome！<span 
                 
                 style={{zIndex:'1999'}}
-                className="text-blue-500">{localUserData.username}</span>！
+                className={styles.usernametext}>{localUserData.username}</span>
               </p>
 
 
@@ -41,8 +42,9 @@ export default function HomeNav({localUserData,
                   setBtnsArr={setBtnsArr}
                   />
               </div>
+                     )}
           </div>
-          )}
+
       </div>
     </div>
   )

@@ -4,6 +4,10 @@
 
 
 *{
+  font-family: Helvetica, sans-serif;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
   box-sizing: border-box;
 }
 
@@ -31,17 +35,26 @@ body, html {
   overflow-x: hidden;
 }
 @font-face {
+  
   font-family: '小濑字体';
   src: url('../NaikaiFont-Regular.ttf') format('truetype');
 }
 body {
   /* font-family: '小濑字体'; */
+  backdrop-filter: blur(2px);
 
-backdrop-filter: blur(7px);
   background-image:url('../../public/讚嘿.jpg');
+  /* background-image:url('../../public/ddark.jpg'); */
+  /* background-image:url('../../public/ddd.jpg'); */
+  /* background-image:url('../../public/aacc.jpg'); */
+  /* background-image:url('../../public/bbaaa.jpg'); */
+  /* background-image:url('../../public/ppc.jpg'); */
+  /* background-color: #54545b; */
 
+  background-repeat:no-repeat;
   background-size:cover;
-  /* background-position: 0% 90%;  */
+  
+  background-position: 10% 1%; 
 
 }
 /* flow的一些 預設樣式 */

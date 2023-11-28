@@ -1,22 +1,35 @@
 
 
 .navbody{
-  height: 100px;
-  /* background-color: rgb(214, 214, 214); */
+  height: 60px;
+  /* background-color: rgba(214, 214, 214, 0); */
   /* background-image: ; */
-  /* background-image:url('../../../public//backgood.png'); */
+  /* background-image:url('../../../public//oos.jpg'); */
+
 }
 
 .nav{
+  padding: 0px 20px;
+    /* background-image:url('../../../public/ddd.jpg'); */
+    background-color: #5a5a5ad6;
+    /* background-color: #00ffcc60; */
+
   height: 100%;
-  border:2px red solid;
+  border:2px rgba(255, 0, 0, 0) solid;
+
+
+  border-bottom: 3px #00ffcc64 solid;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.usernametext{
+  margin-right: 15px;
+}
+
 .btnswrapper{
-  border:1px red solid;
+
   display: flex;
 
 }
