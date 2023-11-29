@@ -1,7 +1,7 @@
 import React from 'react';
 import { Panel, useReactFlow, getRectOfNodes,ReactFlowProvider } from 'reactflow';
 import { toPng,toJpeg } from 'html-to-image';
-
+import styles from './DownloadBtn.module.css'
 
 function downloadImage(dataUrl) {
   const a = document.createElement('a');
@@ -50,11 +50,15 @@ export default function DownloadBtn({initBgColor}) {
   };
 
   return (
+
       <button 
-        className="download-btn bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600  ml-1 mr-1"
+      className={styles.dwBtn}
+
+
         onClick={onClick}>
-        輸出圖檔
+        Download
       </button>
+
   );
 }
 

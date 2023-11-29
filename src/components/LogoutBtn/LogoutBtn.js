@@ -39,7 +39,7 @@ const handleToggleFormClick = () => {
         console.log("登出成功")
         alert("登出成功")
         // window.location.reload()
-       
+
       })
       .catch((error) => {
         console.log("登出發生錯誤")

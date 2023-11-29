@@ -22,29 +22,24 @@ export default function HomeNav({localUserData,
                 style={{zIndex:'1999'}}>
                 LOGO
               </p>
-      {localUserData != null && (
+              {localUserData != null && (
               <div className={styles.btnswrapper}
                 style={{zIndex:'1999'}}>
-                <p
-                className="text-white p-2 rounded"
+                <p className={styles.welcome}
                   style={{zIndex:'1999'}}>
                   Welcome！<span 
-                
-                style={{zIndex:'1999'}}
-                className={styles.usernametext}>{localUserData.username}</span>
-              </p>
-
+                  style={{zIndex:'1999'}}
+                  className={styles.usernametext}>{localUserData.username}</span>
+                </p>
 
                 <LogoutBtn  setErrMsg={setErrMsg} setSuccessMsg={setSuccessMsg} 
-                 setUserAuth={setUserAuth}
+                  setUserAuth={setUserAuth}
                   setLocalUserData={setLocalUserData}
                   setKeysCount={setKeysCount}
                   setBtnsArr={setBtnsArr}
                   />
-              </div>
-                     )}
+              </div>)}
           </div>
-
       </div>
     </div>
   )
