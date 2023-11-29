@@ -1,0 +1,38 @@
+/* .logoutbtn{
+  width: 150px;
+  height: 50px;
+  background-color: aqua;
+  border-radius: 15px;
+} */
+
+
+.logoutbtnw{
+
+  display: flex;
+  align-items: center;
+
+}
+.logoutbtn{
+  line-height: 80%;
+  color: rgb(255, 255, 255) ;
+  border-radius: 10px;
+  height: 100%;
+  cursor: pointer;
+  background-color:  #6a6a6aa7;
+  width: 70px;
+
+  font-size: 13px;
+  border: #00ffcc9e  1.5px solid;
+}
+
+.logoutbtn:hover{
+
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+
+  cursor: pointer;
+  background-color: #00ffccab ;
+
+  font-size: 13px;
+  border: rgb(255, 255, 255) 1px solid;
+}

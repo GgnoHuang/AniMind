@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 
 import "firebase/auth"
 import { auth,db } from "../config"
-import { getDatabase, ref, set ,get} from "firebase/database"
+import { getDatabase, ref, set ,get,remove} from "firebase/database"
 
 import styles from "./index.module.css";
 
@@ -14,7 +14,7 @@ import Image from 'next/image'
 import LoginForm from "../components/LoginForm/LoginForm"
 import RegisterForm from "../components/RegisterForm/RegisterForm"
 
-import LogoutBtn from "../components/LogoutBtn"
+import LogoutBtn from "../components/LogoutBtn/LogoutBtn"
 import AuthCheck from "../components/AuthCheck"
 
 import HomeNav from "../components/HomeNav/HomeNav"
@@ -25,7 +25,10 @@ import useStore from '../store';
 
 
 export default function HomePage() {
+
+
   // 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
+  const [isLoading, setIsLoading] = useState(true); // 初始时设置为 true
 
   // 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
 
@@ -76,11 +79,17 @@ export default function HomePage() {
           console.log('所有資料的key⬆️⬆️⬆️⬆️⬆️⬆️')
           setKeysCount(Object.keys(data).length) 
 
-          setBtnsArr(Object.keys(data));
+
+          const snapshotDataKeys = Object.keys(data);
+          const sortedDataKeys = snapshotDataKeys.sort((a, b) => b - a);
+          setBtnsArr(sortedDataKeys);
+
+
+          // setBtnsArr(Object.keys(data));
 
           return ;
         } else {
-
+          setBtnsArr([]);
           console.log('FFFlow 路徑底下沒有資料');
           return;
         }
@@ -98,47 +107,61 @@ export default function HomePage() {
         }
     }, [successMsg]);
 
-    // useEffect(() => {
-    //   if(localStorage.getItem("userUUID")){    
-    //   // if(userAuth!==null){  
-    //     const newBtnsArr = [];
+    useEffect(() => {
+      if(btnsArr.length!==0){
+        setIsLoading(false);
+        console.log('▶️🟨載入完畢')
+      }
+    }, [btnsArr]);
 
-    //     for (let i = 0; i < keysCount; i++) {
-    //       newBtnsArr.push(`存檔點 ${i + 1}`);
-    //     }
-    //     console.log('新的btnarr',newBtnsArr)
-    //     setBtnsArr(newBtnsArr);
-    //   }
+ 
 
-    // }, [keysCount]);
-    // 🐳🐳🐳🐳🐳 取得存檔數量 🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳
   
 
 
 
   const onSave =() => {
-    if (true) {
           const localUUID = localStorage.getItem("userUUID")
         if (localUUID) {
             const timestamp = Date.now(); // 获取当前时间的时间戳
 
               const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${timestamp}`);
-              set(databaseRef,'{"nodes":[],"edges":[],"viewport":{"x":0,"y":0,"zoom":1}}')
-
+              const flowDataName = ref(db, `users/${localUUID}/reactflow/flowDataName/${timestamp}`);
+              Promise.all([
+                set(databaseRef, '{"nodes":[],"edges":[],"viewport":{"x":0,"y":0,"zoom":1}}'),
+                set(flowDataName, timestamp)
+              ])
               .then(() => {
                 console.log("---成功存到資料庫---");
-                router.push(`/FFFlow/${timestamp}`);  // 這裡放你想要跳轉的路徑
+                router.push(`/FFFlow/${timestamp}`); // 這裡放你想要跳轉的路徑
               })
               .catch((error) => {
                 console.error("儲存發生錯誤：", error);
               });
+
         }else{
           console.log('沒抓到localstorage的會員id')
         }
-    }else{
-      console.log('')
-    }
 }
+
+
+const onDelete = (timestamp) => {
+  const localUUID = localStorage.getItem("userUUID");
+  if (localUUID && timestamp) {
+    const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${timestamp}`);
+
+    remove(databaseRef)
+      .then(() => {
+        console.log("---成功删除---");
+        countFFFlowData()
+      })
+      .catch((error) => {
+        console.error("删除发生错误：", error);
+      });
+  } else {
+    console.log('缺少必要的用户ID或时间戳');
+  }
+};
 
 
 
@@ -153,76 +176,74 @@ const reDirect =(query) => {
     }
 
 
-
-
-  return (
-    <div 
+  
+        return (
+          <div className={styles.homepagebody}>
+              <AuthCheck auth={auth}
+              setLocalUserData={setLocalUserData}
+              setUserAuth={setUserAuth}
+              successMsg={successMsg}
+            />
+      
+            <HomeNav localUserData={localUserData}
+              setErrMsg={setErrMsg} 
+              setSuccessMsg={setSuccessMsg} 
+              setUserAuth={setUserAuth} 
+              setLocalUserData={setLocalUserData}
+              setKeysCount={setKeysCount}
+              setBtnsArr={setBtnsArr}
+      
+            />
     
-    className={styles.homepagebody}
-    >
+      
+            {userAuth !== null && (
+              <div className={styles.savePointContainerwWapper}>
+              <div className={styles.savePointContainer}>
+                <div className={styles.addbtn}>
+                <button className={styles.addbtnn} onClick={onSave}>
+                  Add
+                </button>
+                </div>
 
+      
+                {btnsArr.map((savePoint, index) => (
+                  <div 
+                  onClick={()=>{reDirect(savePoint)}}
+                  key={index} className={styles.savePoint}>
+                        {new Date(Number(savePoint)).toLocaleString('zh-TW', { 
+                            year: 'numeric', month: 'numeric', day: 'numeric'
+                        })}
+                        <br/>
+                        {new Date(Number(savePoint)).toLocaleString('zh-TW', { 
+                          hour: 'numeric', minute: 'numeric' 
+                        })}
+                    <div onClick={
+                      
+                      (e)=>{
+                        e.stopPropagation(); // 阻止事件冒泡
+                
+                        onDelete(savePoint)
+      
+                      }} 
+                      className={styles.deletebtn}>
+                      <img src="/delete.png" />
 
-        <AuthCheck auth={auth}
-        setLocalUserData={setLocalUserData}
-        setUserAuth={setUserAuth}
-        successMsg={successMsg}
-      />
+                      </div>
+                  </div>
+                ))}
+              </div>
+              </div>
+            )}
 
-      <HomeNav localUserData={localUserData}
-        setErrMsg={setErrMsg} 
-        setSuccessMsg={setSuccessMsg} 
-        setUserAuth={setUserAuth} 
-        setLocalUserData={setLocalUserData}
-        setKeysCount={setKeysCount}
-        setBtnsArr={setBtnsArr}
-
-      />
-
-          {/* <img src="/backgood.png"
-          className={styles.newnavimg}
-          />
-          <img src="/backgood.png"
-          className={styles.newnavimg2}
-          />
-       */}
-
-   
-      {/* {userAuth != null ?  */}
-      {userAuth == null && (
-
-
-          <div className={styles.formContainer}>
-            <RegisterForm />
-            <LoginForm  errMsg={errMsg} setErrMsg={setErrMsg} setSuccessMsg={setSuccessMsg} successMsg={successMsg} />
-        </div>
-      )}
-
-    {userAuth !== null && (
-        <div className={styles.savePointContainer}>
-          <button className={styles.savePoint}
-            onClick={onSave}
-            style={{backgroundColor:'red'}}>
-            新增
-          </button>
-       
-
-
-
-          {btnsArr.map((savePoint, index) => (
-            <div 
-            onClick={()=>{reDirect(savePoint)}}
-            key={index} className={styles.savePoint}>
-              {savePoint}
-
-            </div>
-          ))}
-        </div>
-
-      )}
-
-
-    </div>
-  )
+            {userAuth == null && (
+              <div className={styles.formContainer}>
+                <RegisterForm />
+                <LoginForm  errMsg={errMsg} setErrMsg={setErrMsg} setSuccessMsg={setSuccessMsg} successMsg={successMsg} />
+              </div>
+            )}
+      
+          </div>
+        )
 }
 
 

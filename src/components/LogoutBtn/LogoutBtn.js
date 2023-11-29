@@ -1,7 +1,8 @@
 import React, { useState } from "react"
-import { auth } from "../config"
+import { auth } from "../../config"
 import { signOut } from "firebase/auth"
-import useStore from '../store';
+import useStore from '../../store';
+import styles from "./LogoutBtn.module.css";
 
 function LogoutBtn({setUserAuth,setLocalUserData,
   errMsg,setErrMsg, setSuccessMsg, successMsg
@@ -38,7 +39,7 @@ const handleToggleFormClick = () => {
         console.log("登出成功")
         alert("登出成功")
         // window.location.reload()
-       
+
       })
       .catch((error) => {
         console.log("登出發生錯誤")
@@ -47,13 +48,13 @@ const handleToggleFormClick = () => {
       })
   }
   return (
-    <div>
+    <div  className={styles.logoutbtnw}>
       {/* <div className=" flex items-center flex items-center justify-center"> */}
         <button 
           onClick={handleSignout}
-          className=" text-white p-2 rounded bg-blue-500 hover:bg-blue-600 "
+          className={styles.logoutbtn}
         >
-          登出
+          Logout
         </button>
       {/* </div> */}
     </div>

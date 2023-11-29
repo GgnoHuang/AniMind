@@ -10,6 +10,7 @@ import ReactFlow, { ReactFlowProvider,useReactFlow,
   Panel,Controls,Background ,MiniMap,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
+import styles from "../ffflow.module.css";
 
 
 // node👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻
@@ -25,7 +26,7 @@ import shapeNode from '../../../nodes/shapeNode.js'
 import AuthCheck from "../AuthCheck.js"
 
 // import Nav from "../../../components/Nav可刪.js"
-import DownloadBtn from '../../../components/DownloadBtn.js'; 
+import DownloadBtn from '../../../components/DownloadBtn/DownloadBtn.js'; 
 import ImageUpload from '../../../components/ImageUpload.js'; 
 
 const proOptions = { account: 'paid-pro', hideAttribution: true };
@@ -287,11 +288,43 @@ useEffect(() => {
   return (
     <div className='bg-teal-100'
       style={{ 
-        border:" 5px red solid",
         height: "100vh",
         width: "100%",
 
       }}>
+
+      <div className={styles.navbody}>
+        <div className={styles.nav}>
+          <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
+          onClick={() => setVariant('lines')}>格紋</button>
+          <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
+          onClick={() => setVariant('cross')}>十字</button>
+          <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
+          onClick={() => setVariant('dots')}>點狀</button>
+          <input className="nodrag" type="color"
+          onChange={handleBgColorChange}
+          //  defaultValue=
+          />
+
+          <button 
+            onClick={()=>{onSave(queryNum)}}
+            className={styles.dwBtn}>Save
+          </button>
+
+          <button onClick={onRestore} 
+          className={styles.dwBtn}
+        
+            >Restore</button>
+            {/* <button onClick={onAdd}
+            className="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600"
+          >add node</button> */}
+            <button 
+            className={styles.dwBtn}>
+            <Link href="/">Files</Link>
+          </button>
+          <DownloadBtn initBgColor={initBgColor}/>
+        </div>
+      </div>
         
     <AuthCheck/>
     {/* <Sidebar 
@@ -333,7 +366,7 @@ useEffect(() => {
       fitViewOptions={{
         duration: 500,padding: 0.3
       }} // 传递自定义的 FitViewOptions
-      position={'bottom-right'}
+      position={'bottom-left'}
     
     />
 
@@ -342,64 +375,24 @@ useEffect(() => {
       pannable={true}
       style={{ cursor: 'move',}}
       // nodeColor={'#FF5733'}
-      position={'bottom-left'}
-
+      position={'bottom-right'}
     />
 
 
-
-
-    <Panel>
-
-        {/* <div>背景樣式:</div> */}
-      
+    {/* <Panel>      
         <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
          onClick={() => setVariant('lines')}>格紋</button>
         <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
         onClick={() => setVariant('cross')}>十字</button>
-          <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
+        <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
         onClick={() => setVariant('dots')}>點狀</button>
         <input className="nodrag" type="color"
-        onChange={handleBgColorChange}
-      //  defaultValue=
-       />
-
-      </Panel>
+        onChange={handleBgColorChange}     />
+      </Panel> */}
+        {/* defaultValue=     */}
 
 
 
-    <Panel position="top-right">    
-        <button className="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600  ml-1 mr-1">
-          <Link href="/">回到首頁</Link>
-        </button>
-
-        <button 
-        onClick={
-        
-        ()=>{
-          onSave(queryNum)
-        }
-        }
-
-
-
-          className="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600  ml-1 mr-1"
-        >保存</button>
-
-        <button 
-        onClick={onRestore}
-          className="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600  ml-1 mr-1"
-        >回到紀錄狀態</button>
-          <button onClick={onAdd}
-          className="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600"
-        >add node</button>
-
-
-  
-        
-      <DownloadBtn initBgColor={initBgColor}/>
-
-      </Panel>
 
           {/* 這邊是dnd🔥 */}
       <Panel  className="bg-red-100 text-white font-semibold py-2 px-4 rounded  ml-1 mr-1"

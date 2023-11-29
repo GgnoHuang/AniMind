@@ -17,11 +17,12 @@
   
 }
 .cool-input{
+  border-radius: 7px;
   height: 35px;
   width:200px;
   color: rgb(255, 255, 255);
   font-size: 15px;
-  background-color:rgba(0, 0, 0, 0.765);
+  background-color:rgba(35, 35, 35, 0.765);
   padding: 0.35em 0.45em;
   border: 1px solid transparent;
   transition: background-color 0.3s ease-in-out;

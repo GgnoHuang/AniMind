@@ -1,3 +1,36 @@
+
+
+
+.navbody{
+  font-family:'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  position: absolute;
+  z-index: 9999;
+  width: 100%;
+  height: 60px;
+
+  /* background-color: rgba(214, 214, 214, 0); */
+  /* background-image: ; */
+  /* background-image:url('../../../public//oos.jpg'); */
+}
+
+.nav{
+  padding: 0px 20px;
+    /* background-image:url('../../../public/ddd.jpg'); */
+    background-color: #5a5a5ad6;
+    /* background-color: #00ffcc60; */
+
+  height: 100%;
+  border:2px rgba(255, 0, 0, 0) solid;
+
+
+  border-bottom: 3px #00ffcc64 solid;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+
+
 /* .dog{
   color:red;
 } */
@@ -14,3 +47,34 @@
 }
 
 
+
+
+
+
+
+/* 🟥🟥🟥按鈕們🟥🟥🟥🟥🟥🟥🟥🟥🟥*/
+.dwBtn{
+  margin-right: 8px;
+  height: 32px;
+  border: 1px red solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 80%;
+  color: rgb(255, 255, 255) ;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color:  #6a6a6aa7;
+  width: 65px;
+  font-size: 13px;
+  border: #00ffcc9e  1.5px solid;
+}
+.dwBtn:hover{
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #00ffccab ;
+  font-size: 13px;
+  border: rgb(255, 255, 255) 1px solid;
+}
+/* 🟥🟥🟥按鈕們🟥🟥🟥🟥🟥🟥🟥🟥🟥*/

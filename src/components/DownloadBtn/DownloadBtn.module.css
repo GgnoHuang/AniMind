@@ -1,0 +1,32 @@
+
+
+
+.dwBtn{
+  height: 32px;
+  border: 1px red solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 80%;
+  color: rgb(255, 255, 255) ;
+  border-radius: 10px;
+
+  cursor: pointer;
+  background-color:  #6a6a6aa7;
+  width: 70px;
+
+  font-size: 13px;
+  border: #00ffcc9e  1.5px solid;
+}
+
+.dwBtn:hover{
+
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+
+  cursor: pointer;
+  background-color: #00ffccab ;
+
+  font-size: 13px;
+  border: rgb(255, 255, 255) 1px solid;
+}
