@@ -18,9 +18,12 @@ export default function HomeNav({localUserData,
       {/* <img src="/nav.png" className={styles.navpng}/> */}
 
           <div className={styles.nav}>
-              <p className="text-white p-2 rounded"
+
+
+              <p className={styles.logo}
                 style={{zIndex:'1999'}}>
-                LOGO
+                <img src="/logogo.png" className={styles.logopng}/>
+                <span className={styles.logospan}>Organic</span>
               </p>
               {localUserData != null && (
               <div className={styles.btnswrapper}

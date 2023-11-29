@@ -3,7 +3,7 @@
 
 .dwBtn{
   height: 32px;
-  border: 1px red solid;
+  /* border: 1px red solid; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,7 +25,8 @@
   border-radius: 10px;
 
   cursor: pointer;
-  background-color: #00ffccab ;
+  background-color: #00ffcc9e ;
+  /* background-color: aquamarine ; */
 
   font-size: 13px;
   border: rgb(255, 255, 255) 1px solid;

@@ -294,6 +294,14 @@ useEffect(() => {
       }}>
 
       <div className={styles.navbody}>
+      <Link href="/">
+        <div className={styles.logo}   style={{zIndex:'1999'}}>
+            <img src="/logogo.png" className={styles.logopng}/>
+            <span className={styles.logospan}>Organic</span>
+
+        </div>
+</Link>
+
         <div className={styles.nav}>
           <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
           onClick={() => setVariant('lines')}>格紋</button>

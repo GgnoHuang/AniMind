@@ -15,14 +15,46 @@
     /* background-color: #00ffcc60; */
 
   height: 100%;
-  border:2px rgba(255, 0, 0, 0.941) solid;
+  /* border:2px rgba(255, 0, 0, 0.941) solid; */
 
 
-  border-bottom: 3px #00ffcc64 solid;
+
+  border-bottom: 3px #00ffcc9e solid;
+  /* border-bottom: 3px #7fffd4 solid; */
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+
 }
+
+.logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+
+  /* border:1px red solid; */
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+   /* background-image:url('../../../public/logo.png'); */
+z-index: 9999;
+}
+.logopng{
+  height: 40px;
+  width: 40px;
+  margin-right: 6px;
+}
+.logospan{
+  color: #00ffcc9e;
+}
+.logo:hover{
+  scale:calc(108%)
+}
+
+
+
 
 .usernametext{
   margin-right: 15px;
@@ -35,7 +67,7 @@
 
 .btnswrapper{
   height: 32px;
-border: 1px red solid;
+/* border: 1px red solid; */
   display: flex;
 
 }
