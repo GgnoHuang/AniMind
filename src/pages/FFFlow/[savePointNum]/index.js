@@ -1,3 +1,14 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { faWindowMinimize } from '@fortawesome/free-solid-svg-icons';
+import { faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons';
+
+
+
+
+
+
 import Link from "next/link"
 
 import { useRouter } from 'next/router';
@@ -45,10 +56,10 @@ const nodeTypes = { textUpdater: TextUpdaterNode,
 };
 
 function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {}) {
-  console.log('組件炫染')
+  // console.log('組件炫染')
   const router = useRouter();
   const queryNum =router.query['savePointNum']
-  console.log('查詢參數～～:', queryNum); // 獲取 URL 的查詢參數
+  // console.log('查詢參數～～:', queryNum); 
   useEffect(() => {
     if (router.isReady) {
       const queryNum = router.query['savePointNum'];
@@ -58,7 +69,7 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
   
 
 
-  const [initBgColor,setInitBgColor]= useState( 'rgb(199, 199, 199)')
+  const [initBgColor,setInitBgColor]= useState( '#373737')
   function handleBgColorChange(event) {
     const newBgColor = event.target.value;
     setInitBgColor(newBgColor);
@@ -74,7 +85,9 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
   // const { nodes, edges, onNodesChange, onEdgesChange, onConnect } = useStore(selector, shallow);
   const { nodes, edges, onNodesChange,onEdgesChange, onConnect,setNodes
     ,setEdges,howManyNodes ,
-    updateEdgeStyle} = useStore(state => ({
+    updateEdgeStyle,
+    hideToolbar,toggleToolbar
+  } = useStore(state => ({
     nodes: state.nodes,
     edges: state.edges,
     onNodesChange: state.onNodesChange,
@@ -85,8 +98,9 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
     setEdges: state.setEdges,
     howManyNodes: state.howManyNodes,
     updateEdgeStyle: state.updateEdgeStyle,
+    toggleToolbar: state.toggleToolbar,
+    hideToolbar: state.hideToolbar,
   }));
- 
 //為了等等使用useeffect偵測node數量變化
 
 
@@ -149,7 +163,7 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
 
   // ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨
   // const [rfInstance, setRfInstance] = useState(null);
-  const [variant, setVariant] = useState('cross');
+  const [variant, setVariant] = useState('dots');
   const { setViewport } = useReactFlow();
   // 等等解開
 
@@ -294,15 +308,19 @@ useEffect(() => {
       }}>
 
       <div className={styles.navbody}>
-      <Link href="/">
-        <div className={styles.logo}   style={{zIndex:'1999'}}>
-            <img src="/logogo.png" className={styles.logopng}/>
-            <span className={styles.logospan}>Organic</span>
-
-        </div>
-</Link>
+          <Link href="/">
+              <div className={styles.logo}   style={{zIndex:'1999'}}>
+                  <img src="/logogo.png" className={styles.logopng}/>
+                  <span className={styles.logospan}>Organic</span>
+              </div>
+          </Link>
 
         <div className={styles.nav}>
+
+  
+        {/* <FontAwesomeIcon icon={faCircleRight} style={{ color: 'red',height:'200px',width:'200px' }} /> */}
+
+
           <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
           onClick={() => setVariant('lines')}>格紋</button>
           <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
@@ -387,61 +405,67 @@ useEffect(() => {
     />
 
 
-    {/* <Panel>      
-        <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
-         onClick={() => setVariant('lines')}>格紋</button>
-        <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
-        onClick={() => setVariant('cross')}>十字</button>
-        <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
-        onClick={() => setVariant('dots')}>點狀</button>
-        <input className="nodrag" type="color"
-        onChange={handleBgColorChange}     />
-      </Panel> */}
-        {/* defaultValue=     */}
 
 
 
 
           {/* 這邊是dnd🔥 */}
-      <Panel  className="bg-red-100 text-white font-semibold py-2 px-4 rounded  ml-1 mr-1"
-          style={{ width: '100px', height: '100％'
+
+        <div className={`${styles.toolbarBody}  ${hideToolbar ? styles.toolbarBodyHidden : ''}`}>
+            {/* <div className={styles.toolbarBody}> */}
+              <div className={styles.toggleBtn} onClick={toggleToolbar}>
+                <FontAwesomeIcon icon={faCircleChevronLeft} className={styles.iconToggle} />
+                <FontAwesomeIcon icon={faWindowMinimize} className={styles.iconLine}/>
+                <FontAwesomeIcon icon={faCircleChevronRight} className={styles.iconShowToggle}/>
+
+
+
+              </div>
+
+              <div className={styles.toolBtns}>哈</div>
+              <div className={styles.toolBtns}>恩</div>
+              <div className={styles.toolBtns}>喔喔</div>
+
+        </div>
+
+        <Panel 
+        className="bg-red-100 text-white font-semibold py-2 px-4 rounded  ml-1 mr-1"
+          style={{ width: '150px', height: '100％'
           , position: 'absolute', bottom: '40px',right:'0px'}}>
-                <input
-          type="color"
-          value={selectedColor}
-          onChange={(e) => setSelectedColor(e.target.value)}
-          className="color-picker"
-        />
-          <div className="dndnode input
-            justify-center	
-            flex
-          bg-blue-300 text-white  font-semibold py-2 px-4 rounded hover:bg-blue-400  ml-1 mr-1
-          " onDragStart={(event) => onDragStart(event, 'circleNode')} draggable>
-              ⚪️ 
-          </div>
-          <div className="dndnode
-            bg-purple-300 text-white font-semibold
-            flex
-            justify-center	
-            py-2 px-4 rounded hover:bg-purple-400  ml-1 mr-1
+                <input type="color"
+                    value={selectedColor}
+                    onChange={(e) => setSelectedColor(e.target.value)}
+                    className="color-picker"
+                />
+              <div className="dndnode input
+                justify-center	
+                flex
+              bg-blue-300 text-white  font-semibold py-2 px-4 rounded hover:bg-blue-400  ml-1 mr-1
+              " onDragStart={(event) => onDragStart(event, 'circleNode')} draggable>
+                  ⚪️ 
+              </div>
+              <div className="dndnode
+                bg-purple-300 text-white font-semibold
+                flex
+                justify-center	
+                py-2 px-4 rounded hover:bg-purple-400  ml-1 mr-1
 
-          " onDragStart={(event) => onDragStart(event, 'textUpdater')} draggable>
-              ⬜️
-          </div>
-          <div className="dndnode
-            bg-purple-300 text-white font-semibold
-            flex
-            justify-center	
-            py-2 px-4 rounded hover:bg-purple-400  ml-1 mr-1
+              "onDragStart={(event) => onDragStart(event, 'textUpdater')} draggable>
+                  ⬜️
+              </div>
+                <div className="dndnode
+                  bg-purple-300 text-white font-semibold
+                  flex
+                  justify-center	
+                  py-2 px-4 rounded hover:bg-purple-400  ml-1 mr-1
 
-          " onDragStart={(event) => onDragStart(event, 'example')} draggable>
-              🟡
-          </div>
+                " onDragStart={(event) => onDragStart(event, 'example')} draggable>
+                    🟡
+                </div>
           {/* <div className="dndnode output
             bg-pink-300 text-white font-semibold py-2 px-4 rounded hover:bg-pink-400  ml-1 mr-1
           " onDragStart={(event) => onDragStart(event, 'proCircleNode')} draggable>
           上傳圖檔
-     
           </div> */}
           <ImageUpload onAdd={onAdd}
           sayhi={sayhi}
