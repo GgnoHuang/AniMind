@@ -123,6 +123,9 @@
 
 
 /* eslint-disable react/jsx-no-undef */
+
+import styles from './ImgNode2.module.css';
+
 import Image from 'next/image'
 
 import React, { useEffect, useState, useRef } from 'react';
@@ -204,13 +207,7 @@ export default function CustomNode({ data,selected }) {
 
     // className="px-4 py-2 shadow-md rounded-md bg-white border-2 border-stone-400"
     >
- <div
-          ref={rotateControlRef}
-          style={{
-            display: 'block'
-          }}
-          className='nodrag rotateHandle'
-        />
+    <div ref={rotateControlRef} style={{display: 'block'}} className='nodrag rotateHandle'/>
     <div>
           {/* {data?.label} */}
           {/* <div>
@@ -250,12 +247,12 @@ export default function CustomNode({ data,selected }) {
           backgroundColor:'red'
         }}
         lineStyle={{
-          borderWidth: '5px',  // 設置邊界線寬度
+          borderWidth: '2px',  // 設置邊界線寬度
           borderStyle: 'dashed', // 設置邊界線樣式
           animation: 'blink 1s linear infinite', // 這會讓邊界線閃爍
           borderColor: 'yellow	',
         }}
-       isVisible={selected} minWidth={100} minHeight={100} />
+      isVisible={selected} minWidth={100} minHeight={100} />
 
   
 {/* 
@@ -288,7 +285,8 @@ export default function CustomNode({ data,selected }) {
 
 
 
-     <img
+
+    <img
         // src={data.pokemonpng ? data.pokemonpng : '/gg.jpg'}
         src={data.pokemonpng}
         // src={"https://firebasestorage.googleapis.com/v0/b/jyun-hong.appspot.com/o/images%2Fpngegg%20(4).png?alt=media&token=990a3947-fdd0-483a-8d86-e8f661d63bf5        "}
@@ -298,6 +296,8 @@ export default function CustomNode({ data,selected }) {
         alt="Picture"
         style={{  width: '100%',  height: '100%', }} 
       /> 
+
+
 
       {/* <div 
        style={{ 

@@ -9,7 +9,7 @@
   /* background-image:url('../../../public//oos.jpg'); */
   justify-content: space-between;
   background-color: #5a5a5ad6;
-  border-bottom: 3px #00ffcc9e solid;
+  border-bottom: 2.5px #00ffcc9e solid;
   align-items: center;
   padding: 0px 20px;
 }
@@ -54,7 +54,7 @@ transition: all 0.3s ease;
   width: 50px;
   height: 280px;
   background-color: rgb(102, 102, 102);
-  border: 1.5px #00ffcc9e solid;
+  /* border: 1px #00ffcc9e solid; */
   transform: translate(-50%, -50%);
   top: 50%;
   border-radius: 15px;
@@ -66,10 +66,20 @@ transition: all 0.3s ease;
   padding: 15px 0px;
   gap: 10px;
 }
-.toolBtns{border: 1px red solid;}
+.toolBtns{
+  cursor:grab;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  border-radius: 4px;
+  /* border: 1px #00ffcc9e  solid; */
+}
 
 .SidebarIconBtnS{
   color: aliceblue;
+  
   transition: all 0.2s ease;
 }
 .SidebarIconBtnS:hover{
@@ -132,9 +142,11 @@ transition: all 0.3s ease;
   color: rgba(136, 136, 136, 0.621);
 }
 .iconShowToggle{
+  transition: all 0.3s linear;
   display: none;
   font-size: 22px;
   color: #00ffccab;
+  color: rgb(185, 185, 185);
 }
 
 
@@ -147,6 +159,7 @@ transition: all 0.3s ease;
     }
     .iconShowToggle{
       display: block;
+      color: #00ffccab;
     }
   }
 }

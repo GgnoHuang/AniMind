@@ -1,3 +1,5 @@
+
+
 import { Handle, NodeProps,Position, NodeResizer} from 'reactflow';
 import { useCallback, useState,useEffect ,useRef} from 'react';
 import useStore from '../store';
@@ -124,6 +126,8 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
         borderRadius:'8px',
       }}>  
 
+
+
           {/* <div style={{ height: '100%',
                   // paddingBottom:'55px '
                   display:'flex',
@@ -219,13 +223,18 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
 
 
         <Handle type="target" position={Position.Left} id="b" 
-            style={{ backgroundColor: 'blue' ,width: '13px',  // 调整宽度
-            height: '13px', }} // 更改背景颜色为蓝色
+            style={{ backgroundColor: '#00ffcc9e' ,width: '10px',
+            transform:' translate(-8px, -50%)',
+            // 调整宽度
+            border:'none',
+            height: '10px', }} // 更改背景颜色为蓝色
             isConnectable={isConnectable} 
         />
         <Handle type="source" position={Position.Right} 
-          style={{ backgroundColor: 'blue' ,width: '13px',  // 调整宽度
-          height: '13px', }} 
+          style={{ backgroundColor: '#00ffcc9e' ,width: '10px',  // 调整宽度
+          transform:' translate(8px, -50%)',
+          border:'none',
+          height: '10px', }} 
           isConnectable={isConnectable} 
         />
         
