@@ -22,7 +22,7 @@ export default function HomeNav({localUserData,
 
               <p className={styles.logo}
                 style={{zIndex:'1999'}}>
-                <img src="/logogo.png" className={styles.logopng}/>
+                <img src="/oklogo.png" className={styles.logopng}/>
                 <span className={styles.logospan}>Organic</span>
               </p>
               {localUserData != null && (

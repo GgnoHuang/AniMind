@@ -1,3 +1,10 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
+
+
+
 import React from 'react';
 import { Panel, useReactFlow, getRectOfNodes,ReactFlowProvider } from 'reactflow';
 import { toPng,toJpeg } from 'html-to-image';
@@ -56,7 +63,8 @@ export default function DownloadBtn({initBgColor}) {
 
 
         onClick={onClick}>
-        Download
+  <FontAwesomeIcon icon={faDownload} className={styles.AwesomeDownloadIcon}/>
+
       </button>
 
   );

@@ -91,12 +91,12 @@ transform: translate(-50%, -300%);
   background-color: rgb(111, 111, 111);
 
   color: #ffffff;
-  border: #00ffcd 1.5px solid;
+  border: #00ffcd 1px solid;
   /* border: #7fffd4 1.5px solid; */
   /* border: #ffdf7f 1.5px solid; */
   /* border: 1.5px solid #00ffcd; */
   margin-bottom: 8px;
-  border-radius: 7px;
+  border-radius: 50px;
 
 
 }

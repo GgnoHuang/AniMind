@@ -35,10 +35,11 @@ transition: all 0.3s ease;
 .logopng{
   height: 40px;
   width: 40px;
-  margin-right: 6px;
+  margin-right: 7px;
 }
 .logospan{
-  color: #00ffcc9e;
+  color: #00ffccbf;
+  font-size: 20px;
 }
 .logo:hover{
   scale:calc(108%)
@@ -54,11 +55,9 @@ transition: all 0.3s ease;
   height: 280px;
   background-color: rgb(102, 102, 102);
   border: 1.5px #00ffcc9e solid;
-
   transform: translate(-50%, -50%);
   top: 50%;
-  border-radius: 20px;
-
+  border-radius: 15px;
   left: 38px;
   transition: all 0.2s ease-in-out;
   display: flex;
@@ -67,18 +66,30 @@ transition: all 0.3s ease;
   padding: 15px 0px;
   gap: 10px;
 }
-
 .toolBtns{border: 1px red solid;}
 
-
-
-.toolbarBodyHidden{
-    left:-26px;
+.SidebarIconBtnS{
+  color: aliceblue;
+  transition: all 0.2s ease;
+}
+.SidebarIconBtnS:hover{
+  color: greenyellow;
+  transform: scale(1.5);
 
 }
 
 
 
+.toolbarBodyHidden{
+  /* 縮小狀態會跑出箭頭，然後直線消失 */
+    left:-26px;
+    .iconShowToggle{
+      display: block;
+    }
+    .iconLine{
+      display: none;
+    }
+}
 
 .toggleBtn{
   width: 35px;
@@ -114,9 +125,11 @@ transition: all 0.3s ease;
   color: rgb(185, 185, 185);
 }
 .iconLine{
+  position: absolute;
+  right: 13px;
   transform: rotate(90deg) translateY(-39%);
-  font-size: 25px;
-  color: rgb(136, 136, 136);
+  font-size: 22px;
+  color: rgba(136, 136, 136, 0.621);
 }
 .iconShowToggle{
   display: none;
@@ -175,19 +188,18 @@ transition: all 0.3s ease;
   align-items: center;
   line-height: 80%;
   color: rgb(255, 255, 255) ;
-  border-radius: 10px;
+  border-radius: 80px;
   cursor: pointer;
   background-color:  #6a6a6aa7;
   width: 65px;
-  font-size: 13px;
+  font-size: 15px;
   border: #00ffcc9e  1.5px solid;
+  transition: all 0.5s ease;
+
 }
 .dwBtn:hover{
   color: rgb(255, 255, 255);
-  border-radius: 10px;
-  cursor: pointer;
   background-color: #00ffccab ;
-  font-size: 13px;
-  border: rgb(255, 255, 255) 1px solid;
+  border: rgb(255, 255, 255) 1.5px solid;
 }
 /* 🟥🟥🟥按鈕們🟥🟥🟥🟥🟥🟥🟥🟥🟥*/

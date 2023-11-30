@@ -15,7 +15,7 @@
 .logoutbtn{
   line-height: 80%;
   color: rgb(255, 255, 255) ;
-  border-radius: 10px;
+  border-radius: 90px;
   height: 100%;
   cursor: pointer;
   background-color:  #6a6a6aa7;
@@ -30,7 +30,7 @@
 .logoutbtn:hover{
 
   color: rgb(255, 255, 255);
-  border-radius: 10px;
+
 
   cursor: pointer;
   background-color: #00ffccab ;

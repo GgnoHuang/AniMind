@@ -1,5 +1,8 @@
 
 
+.AwesomeDownloadIcon{
+  font-size: 15px;
+}
 
 .dwBtn{
   height: 32px;
@@ -13,7 +16,8 @@
 
   cursor: pointer;
   background-color:  #6a6a6aa7;
-  width: 70px;
+  width: 65px;
+  border-radius: 70px;
 
   font-size: 13px;
   border: #00ffcc9e  1.5px solid;
@@ -22,7 +26,7 @@
 .dwBtn:hover{
 
   color: rgb(255, 255, 255);
-  border-radius: 10px;
+
 
   cursor: pointer;
   background-color: #00ffcc9e ;
@@ -31,3 +35,5 @@
   font-size: 13px;
   border: rgb(255, 255, 255) 1px solid;
 }
+
+
