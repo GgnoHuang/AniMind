@@ -44,10 +44,11 @@ z-index: 9999;
 .logopng{
   height: 40px;
   width: 40px;
-  margin-right: 6px;
+  margin-right: 7px;
 }
 .logospan{
-  color: #00ffcc9e;
+  color: #00ffccbf;
+  font-size: 20px;
 }
 .logo:hover{
   scale:calc(108%)

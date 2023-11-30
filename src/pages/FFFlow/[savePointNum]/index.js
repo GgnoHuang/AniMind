@@ -3,6 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWindowMinimize } from '@fortawesome/free-solid-svg-icons';
 import { faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { faClockRotateLeft } from '@fortawesome/free-solid-svg-icons';
+import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
+import { faFolderOpen } from '@fortawesome/free-solid-svg-icons';
+import { faCircle } from '@fortawesome/free-solid-svg-icons';
+import { faSquareFull } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -38,7 +43,7 @@ import AuthCheck from "../AuthCheck.js"
 
 // import Nav from "../../../components/Nav可刪.js"
 import DownloadBtn from '../../../components/DownloadBtn/DownloadBtn.js'; 
-import ImageUpload from '../../../components/ImageUpload.js'; 
+import ImageUpload from '../../../components/ImageUpload/ImageUpload.js'; 
 
 const proOptions = { account: 'paid-pro', hideAttribution: true };
 
@@ -310,7 +315,7 @@ useEffect(() => {
       <div className={styles.navbody}>
           <Link href="/">
               <div className={styles.logo}   style={{zIndex:'1999'}}>
-                  <img src="/logogo.png" className={styles.logopng}/>
+                  <img src="/oklogo.png" className={styles.logopng}/>
                   <span className={styles.logospan}>Organic</span>
               </div>
           </Link>
@@ -334,19 +339,23 @@ useEffect(() => {
 
           <button 
             onClick={()=>{onSave(queryNum)}}
-            className={styles.dwBtn}>Save
+            className={styles.dwBtn}>
+            <FontAwesomeIcon icon={faFloppyDisk} className={styles.awesomeNavIconBtnS}/>
+
           </button>
 
           <button onClick={onRestore} 
-          className={styles.dwBtn}
-        
-            >Restore</button>
+          className={styles.dwBtn}> 
+            <FontAwesomeIcon icon={faClockRotateLeft} className={styles.awesomeNavIconBtnS}/>
+              </button>
             {/* <button onClick={onAdd}
             className="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600"
           >add node</button> */}
             <button 
             className={styles.dwBtn}>
-            <Link href="/">Files</Link>
+            <Link href="/">
+            <FontAwesomeIcon icon={faFolderOpen} className={styles.awesomeNavIconBtnS}/>
+              </Link>
           </button>
           <DownloadBtn initBgColor={initBgColor}/>
         </div>
@@ -422,54 +431,49 @@ useEffect(() => {
 
               </div>
 
-              <div className={styles.toolBtns}>哈</div>
-              <div className={styles.toolBtns}>恩</div>
-              <div className={styles.toolBtns}>喔喔</div>
+
+              <div className={styles.toolBtns}>
+                  <div className="dndnode
+                  "onDragStart={(event) => onDragStart(event, 'textUpdater')} draggable>
+                      <FontAwesomeIcon icon={faSquareFull} className={styles.SidebarIconBtnS} />
+                  </div>
+              </div>
+
+              <div className={styles.toolBtns}>
+                <div className="dndnode input
+                " onDragStart={(event) => onDragStart(event, 'circleNode')} draggable>
+                    <FontAwesomeIcon icon={faCircle} className={styles.SidebarIconBtnS} />
+                </div>
+              </div>
+              {/* <div className={styles.toolBtns}>喔喔</div> */}
+              <div className={styles.toolBtns}> <ImageUpload onAdd={onAdd}
+
+          /></div>
 
         </div>
 
         <Panel 
-        className="bg-red-100 text-white font-semibold py-2 px-4 rounded  ml-1 mr-1"
-          style={{ width: '150px', height: '100％'
+        className=
+        "bg-red-100  font-semibold py-2 px-4 rounded "
+          style={{ width: '80px', height: '100％'
           , position: 'absolute', bottom: '40px',right:'0px'}}>
                 <input type="color"
                     value={selectedColor}
                     onChange={(e) => setSelectedColor(e.target.value)}
-                    className="color-picker"
-                />
-              <div className="dndnode input
-                justify-center	
-                flex
+                    className="color-picker"/>
+              {/* <div className="dndnode input justify-center	 flex
               bg-blue-300 text-white  font-semibold py-2 px-4 rounded hover:bg-blue-400  ml-1 mr-1
               " onDragStart={(event) => onDragStart(event, 'circleNode')} draggable>
-                  ⚪️ 
-              </div>
-              <div className="dndnode
-                bg-purple-300 text-white font-semibold
-                flex
-                justify-center	
-                py-2 px-4 rounded hover:bg-purple-400  ml-1 mr-1
-
-              "onDragStart={(event) => onDragStart(event, 'textUpdater')} draggable>
-                  ⬜️
-              </div>
-                <div className="dndnode
-                  bg-purple-300 text-white font-semibold
-                  flex
-                  justify-center	
+                  ⚪️ </div>
+              <div className="dndnode bg-purple-300 text-white font-semibold flex
+                justify-center	 py-2 px-4 rounded hover:bg-purple-400  ml-1 mr-1
+                "onDragStart={(event) => onDragStart(event, 'textUpdater')} draggable>
+                  ⬜️</div>
+                <div className="dndnode bg-purple-300 text-white font-semibold
+                  flex justify-center	
                   py-2 px-4 rounded hover:bg-purple-400  ml-1 mr-1
-
-                " onDragStart={(event) => onDragStart(event, 'example')} draggable>
-                    🟡
-                </div>
-          {/* <div className="dndnode output
-            bg-pink-300 text-white font-semibold py-2 px-4 rounded hover:bg-pink-400  ml-1 mr-1
-          " onDragStart={(event) => onDragStart(event, 'proCircleNode')} draggable>
-          上傳圖檔
-          </div> */}
-          <ImageUpload onAdd={onAdd}
-          sayhi={sayhi}
-          />
+                  " onDragStart={(event) => onDragStart(event, 'example')} draggable>
+                    🟡</div> */}
         </Panel>
       </ReactFlow>
 

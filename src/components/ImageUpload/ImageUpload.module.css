@@ -1,0 +1,39 @@
+.uploadBtnContainer{
+  border: 1px red solid;
+  position: relative;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.uploadfileInput{
+  width: 30px;
+  height: 30px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.uploadBtnContainer:hover .AwesomeIconBtn{
+  color: aquamarine;
+}
+
+.AwesomeIconBtn{
+  color: aliceblue;
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
+
+}
+
+.progress{ 
+  border: 1px white solid;
+  border-radius: 12px;
+  padding: 4px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  right: -185px;
+  color: greenyellow;
+}

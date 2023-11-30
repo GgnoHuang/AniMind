@@ -97,12 +97,12 @@ justify-content: center;
 
 .addbtnn{
   color: rgb(255, 255, 255);
-  border-radius: 10px;
+  border-radius: 50px;
 
   cursor: pointer;
   background-color:  #00ffccb7;
-  width: 100px;
-  height: 50px;
+  width: 130px;
+  height:60px;
   border: rgb(255, 255, 255) 2px solid;
 }
 
