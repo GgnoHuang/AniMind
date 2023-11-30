@@ -1,9 +1,13 @@
-/* eslint-disable @next/next/no-img-element */
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+
+import { faDiamond } from '@fortawesome/free-solid-svg-icons';
+
+
 import { Handle, NodeProps,Position, NodeResizer} from 'reactflow';
 import { useCallback, useState,useEffect ,useRef} from 'react';
 import useStore from '../store';
 
-import Image from 'next/image'
 
 // const handleStyle = { left: 15 };
 
@@ -17,7 +21,7 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
   const [selectFontSize, setSelectFontSize] = useState(data.fontSize ||'25px');
   // const [minSize, setMinSize] = useState({ minWidth: 100, minHeight: 100 });
 
-  const [isPointerEventsActive, setIsPointerEventsActive] = useState(true);
+  const [isPointerEventsActive, setIsPointerEventsActive] = useState(false);
 
   const handleDoubleClick = () => {
     console.log('hi')
@@ -100,31 +104,49 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
 
   return (
     <>
-      <NodeResizer
-        handleStyle={{width:'15px',height:'15px',backgroundColor:'red'}}
-        lineStyle={{borderWidth: '5px', borderStyle: 'dashed', borderColor: '#FF00FF	',
-          animation: 'blink 1s linear infinite', }}
-          isVisible={selected}
-          minWidth={100}
-          minHeight={50}/>
+        <NodeResizer
+          handleStyle={{width:'15px',height:'15px',backgroundColor:'red'}}
+          lineStyle={{borderWidth: '5px', borderStyle: 'dashed', borderColor: '#FF00FF	',
+            animation: 'blink 1s linear infinite', }}
+            isVisible={selected}
+            minWidth={100}
+            minHeight={50}/>
 
-    <div  
+    <div 
       onClick={handleDoubleClick}
-                                                                               // 🟡
+    // className="text-updater-node border border-gray-300 p-2 rounded"
+      // 出bug再把text-updater-node ，我現在不知道他是做啥用的
       className=""
       style={{ 
         backgroundColor: data.backgroundColor || '#FF00FF', // 使用data中的背景颜色，如果没有则使用默认颜色
         border: '2px solid gray',
         overflow:'hidden',
+        // padding:'10px',
+              // height:'fit-content',
         height:'100%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius:'8px',
-                                                                                // 🟡
-        // padding:"30px"
       }}>  
+      <FontAwesomeIcon icon={faDiamond}  />
 
+
+          {/* <div style={{ height: '100%',
+                  // paddingBottom:'55px '
+                  display:'flex',
+                  flexDirection:'column',
+                  gap:'3px'
+                  }}>  */}
+          {/* <label htmlFor="text" className="block text-gray-700 text-sm">Text:</label> */}
+          {/* <input className=" p-1 rounded"></input>           */}
+          {/* <textarea id="text" name="text" placeholder={data.placeholder}
+            onChange={onInpupu}
+            style={{ 
+              resize:'none', 
+            height:'40px', 
+            width:'240px',}} 
+          className="nodrag p-1 rounded" /> */}
         <button    
             className="adjustButton"
           style={{ 
@@ -135,6 +157,7 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
           left: '50%', // 將元素左邊緣對齊父元素的中心
           transform: 'translateX(-50%)', // 然後向左移動自身寬度的50%，以實現完全居中
           display: data.isSelected ? 'block' : 'none'
+          // display: isAnyNodeSelected ? 'block' : 'none'
         }}>
 
           <span  style={{fontSize:' 35px',borderWidth:'1px'}}>⠿</span>
@@ -145,6 +168,15 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
           <button onClick={()=>onChangeTextAlign('right')}
           style={{borderColor:' red',borderWidth:'1px'}}>靠右</button>
 
+          {/* <input
+            type="range"
+            className='nodrag'
+            min="10" // 最小字体大小
+            max="100" // 最大字体大小
+            // value='25'
+            onChange={onFontSizeChange}
+          /> */}
+          {/* <span>{selectFontSize}</span> */}
           <button onClick={increaseFontSizeTen} style={{ padding:'0px 5px',borderColor:' red',borderWidth:'1px' ,fontSize:'40px'}}>＋</button>
           <button onClick={increaseFontSize} style={{ padding:'0px 5px',borderColor:' red',borderWidth:'1px' }}>+</button>
           <button onClick={decreaseFontSize} style={{  padding:'0px 5px',borderColor:' red',borderWidth:'1px' }}>-</button>
@@ -161,66 +193,56 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
           onChange={onSelectFontColor}
         />    </button>
 
-        {/* <blockquote 
+
+
+
+
+
+
+      <blockquote 
         contentEditable="true"
         suppressContentEditableWarning
-          style={{
-            pointerEvents: isPointerEventsActive ? 'auto' : 'none',
-                                                                            // 🟡
-            // pointerEvents:'none',
-  
+            style={{pointerEvents: isPointerEventsActive ? 'auto' : 'none',
             cursor: 'text',
             color: data.fontColor || 'black',
+            // fontSize: selectFontSize+'px' ,
             fontSize:data.fontSize||'25px',
             textAlign: data.textalign ||'center',}}
-          onClick={handleBlockQuoteClick} 
-          onInput={onEditText} spellCheck="false"
+          // onClick={handleBlockQuoteClick} 
+          onInput={onEditText} 
+          spellCheck="false"
           dangerouslySetInnerHTML={{ __html: blockquoteContent }}
-          className='nodrag userRestoreInput' ></blockquote> */}
+          className='nodrag userRestoreInput' >
+        </blockquote>
 
 
-{/* <Image
-        // src={data.pokemonpng ? data.pokemonpng : '/gg.jpg'}
-        src={'/patrick-perkins-ETRPjvb0KM0-unsplash.jpg'}
-
-        width={100}
-        height={100}
-        alt="Picture"
-        style={{
-          width: '100%',  
-          height: '100%', 
-        }} 
-      /> */}
-
-{/* 🔮🔮🔮🔮🔮 用Image輸出圖檔會錯🔮 */}
-{/* 還是改用為img */}
-
-<img
-        // src={data.pokemonpng ? data.pokemonpng : '/gg.jpg'}
-        src={'/patrick-perkins-ETRPjvb0KM0-unsplash.jpg'}
-
-        width={100}
-        height={100}
-        alt="Picture"
-        style={{
-          width: '100%',  
-          height: '100%', 
-        }} 
-      />
 
 
-        {/* <textarea/> */}
+
+
+
+
+
+
 
 
         <Handle type="target" position={Position.Left} id="b" 
-            style={{ backgroundColor: 'blue' ,width: '13px',  // 调整宽度
-            height: '13px', }} // 更改背景颜色为蓝色
-            isConnectable={isConnectable} />
+            style={{ backgroundColor: '#00ffcc9e' ,width: '10px',
+            transform:' translate(-8px, -50%)',
+            // 调整宽度
+            border:'none',
+            height: '10px', }} // 更改背景颜色为蓝色
+            isConnectable={isConnectable} 
+        />
         <Handle type="source" position={Position.Right} 
-          style={{ backgroundColor: 'blue' ,width: '13px',  // 调整宽度
-          height: '13px', }} 
+          style={{ backgroundColor: '#00ffcc9e' ,width: '10px',  // 调整宽度
+          transform:' translate(8px, -50%)',
+          border:'none',
+          height: '10px', }} 
           isConnectable={isConnectable} 
         />
+        
+
     </div>
     </>
   );

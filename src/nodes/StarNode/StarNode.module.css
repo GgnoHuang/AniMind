@@ -1,0 +1,19 @@
+
+.starMask{
+
+  width: 100%; 
+  /* 設置適當的寬度 */
+  height: 100%; /* 設置適當的高度 */
+  /* -webkit-mask: url('path/to/your/star-shaped-mask.png') no-repeat center / contain; */
+  /* mask: url('path/to/your/star-shaped-mask.png') no-repeat center / contain; */
+
+
+  -webkit-mask: url('/goodgod.png') no-repeat center/100% 100%;
+  mask: url('/goodgod.png') no-repeat center/100% 100%;
+
+  background-color: rgb(188, 188, 255); /* 這裡設置您想要的顏色 */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

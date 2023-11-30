@@ -35,7 +35,8 @@ import OmgNode from '../../../nodes/OmgNode'
 import ImgNode2 from '../../../nodes/ImgNode2.js'
 import ColorNote from '../../../nodes/ColorNote'
 import proCircleNode from '../../../nodes/circleNode.js'
-import example from '../../../nodes/example.js'
+
+import StarNode from '../../../nodes/StarNode/StarNode.js'
 import shapeNode from '../../../nodes/shapeNode.js'
 // node👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻
 
@@ -55,9 +56,10 @@ const nodeTypes = { textUpdater: TextUpdaterNode,
   ImgNode2: ImgNode2,
   circleNode: ColorNote,
   proCircleNode:proCircleNode,
-  example:example,
-  shapeNode:shapeNode
 
+  StarNode:StarNode,
+  shapeNode:shapeNode
+  
 };
 
 function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {}) {
@@ -432,24 +434,26 @@ useEffect(() => {
               </div>
 
 
-              <div className={styles.toolBtns}>
-                  <div className="dndnode
-                  "onDragStart={(event) => onDragStart(event, 'textUpdater')} draggable>
+
+                  <div className={styles.toolBtns}
+                     // className="dndnode" 
+                  onDragStart={(event) => onDragStart(event, 'textUpdater')} draggable>
                       <FontAwesomeIcon icon={faSquareFull} className={styles.SidebarIconBtnS} />
                   </div>
-              </div>
 
-              <div className={styles.toolBtns}>
-                <div className="dndnode input
-                " onDragStart={(event) => onDragStart(event, 'circleNode')} draggable>
+                <div className={styles.toolBtns}
+                // className="dndnode input" 
+                onDragStart={(event) => onDragStart(event, 'circleNode')} draggable>
                     <FontAwesomeIcon icon={faCircle} className={styles.SidebarIconBtnS} />
                 </div>
-              </div>
+
               {/* <div className={styles.toolBtns}>喔喔</div> */}
-              <div className={styles.toolBtns}> <ImageUpload onAdd={onAdd}
-
-          /></div>
-
+              <div className={styles.toolBtns}> <ImageUpload onAdd={onAdd}/></div>
+              <div className={styles.toolBtns}
+                // className="dndnode input" 
+                onDragStart={(event) => onDragStart(event, 'StarNode')} draggable>
+                    <FontAwesomeIcon icon={faCircle} className={styles.SidebarIconBtnS} />
+                </div>
         </div>
 
         <Panel 
@@ -461,19 +465,7 @@ useEffect(() => {
                     value={selectedColor}
                     onChange={(e) => setSelectedColor(e.target.value)}
                     className="color-picker"/>
-              {/* <div className="dndnode input justify-center	 flex
-              bg-blue-300 text-white  font-semibold py-2 px-4 rounded hover:bg-blue-400  ml-1 mr-1
-              " onDragStart={(event) => onDragStart(event, 'circleNode')} draggable>
-                  ⚪️ </div>
-              <div className="dndnode bg-purple-300 text-white font-semibold flex
-                justify-center	 py-2 px-4 rounded hover:bg-purple-400  ml-1 mr-1
-                "onDragStart={(event) => onDragStart(event, 'textUpdater')} draggable>
-                  ⬜️</div>
-                <div className="dndnode bg-purple-300 text-white font-semibold
-                  flex justify-center	
-                  py-2 px-4 rounded hover:bg-purple-400  ml-1 mr-1
-                  " onDragStart={(event) => onDragStart(event, 'example')} draggable>
-                    🟡</div> */}
+            
         </Panel>
       </ReactFlow>
 
