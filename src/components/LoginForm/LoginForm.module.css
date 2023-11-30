@@ -23,15 +23,15 @@
 
 .visibleFormwrapper{
   transition: all 0.5s ease;
-position: absolute; /* 或者 position: relative; 根据需求选择 */
-left: 50%;
-top: 40%;
-transform: translate(-50%, -50%);
+  position: absolute; 
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
 }
 
 .hiddenFormwrapper{
   transition: all 0.5s ease;
-position: absolute; /* 或者 position: relative; 根据需求选择 */
+position: absolute; 
 left: 50%;
 top: 40%;
 transform: translate(-50%, -300%);

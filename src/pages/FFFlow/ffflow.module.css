@@ -1,6 +1,3 @@
-
-
-
 .navbody{
   font-family:'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   position: absolute;
@@ -9,8 +6,6 @@
   height: 60px;
   display: flex;
   /* border:5px rgb(34, 0, 255) solid; */
-  /* background-color: rgba(214, 214, 214, 0); */
-  /* background-image: ; */
   /* background-image:url('../../../public//oos.jpg'); */
   justify-content: space-between;
   background-color: #5a5a5ad6;
@@ -18,22 +13,13 @@
   align-items: center;
   padding: 0px 20px;
 }
-
 .nav{
-
     /* background-image:url('../../../public/ddd.jpg'); */
-
-    /* background-color: #00ffcc60; */
-
   height: 100%;
   /* border:2px rgb(255, 0, 0) solid; */
-
-
   display: flex;
-
   align-items:center;
 }
-
 
 .logo{
   cursor: pointer;
@@ -54,10 +40,108 @@ transition: all 0.3s ease;
 .logospan{
   color: #00ffcc9e;
 }
-
 .logo:hover{
   scale:calc(108%)
 }
+
+
+
+
+.toolbarBody{
+  position: absolute;
+  z-index: 9999;
+  width: 50px;
+  height: 280px;
+  background-color: rgb(102, 102, 102);
+  border: 1.5px #00ffcc9e solid;
+
+  transform: translate(-50%, -50%);
+  top: 50%;
+  border-radius: 20px;
+
+  left: 38px;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 0px;
+  gap: 10px;
+}
+
+.toolBtns{border: 1px red solid;}
+
+
+
+.toolbarBodyHidden{
+    left:-26px;
+
+}
+
+
+
+
+.toggleBtn{
+  width: 35px;
+  height: 54px;
+  border-radius: 40px;
+  /* border: 2px rgb(215, 215, 215) solid; */
+  background-color: rgba(255, 4, 0, 0);
+  position: absolute;
+  right: -52px;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.toggleBtn:hover{
+  /* border: 2px rgb(215, 215, 215) solid; */
+
+  .iconToggle{
+    font-size: 22px;
+    color: #00ffccab;
+    display: block; 
+  }
+  .iconLine{
+    display: none;
+  }
+
+  
+}
+.iconToggle{
+  display: none; 
+  color: rgb(185, 185, 185);
+}
+.iconLine{
+  transform: rotate(90deg) translateY(-39%);
+  font-size: 25px;
+  color: rgb(136, 136, 136);
+}
+.iconShowToggle{
+  display: none;
+  font-size: 22px;
+  color: #00ffccab;
+}
+
+
+/* 🟧 這段很猛🟧 */
+/* 🟧 這段很猛🟧 */
+.toolbarBodyHidden:hover{
+  .toggleBtn:hover{
+    .iconToggle{
+      display: none;
+    }
+    .iconShowToggle{
+      display: block;
+    }
+  }
+}
+/* 🟧 這段很猛🟧 */
+/* 🟧 這段很猛🟧 */
+
+
+
 
 
 /* .dog{

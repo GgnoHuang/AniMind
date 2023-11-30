@@ -20,9 +20,25 @@ function ImageUpload( {sayhi,onAdd}) {
   const handleChange = (e) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
+  
     }
+
   };
 
+
+  useEffect(() => {
+    if (image) {
+      const storageRef = ref_storage(storage, 'images/' + image.name);
+      uploadBytes(storageRef, image).then((snapshot) => {
+        // 上傳成功後，獲取並更新圖片的 URL
+        getDownloadURL(snapshot.ref).then((downloadURL) => {
+          setImageUrl(downloadURL); // 更新圖片 URL
+          console.log(downloadURL)
+          onAdd(downloadURL); 
+        });
+      });
+    }
+  }, [image]);
 
 const handleUpload = () => {
   if (image) {
@@ -37,6 +53,9 @@ const handleUpload = () => {
     });
   }
 };
+
+
+
 
 
   return (

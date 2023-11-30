@@ -15,11 +15,12 @@ export const useStore = create((set, get) => ({
   toggleCollage: () => set((state) => ({ showCollage: !state.showCollage })),
   toggleCollageToTrue: (value) => set(() => ({ showCollage: value })),
 
-  // showRegisterForm: true,
-  // toggleForm: () => set((state) => ({ showRegisterForm: !state.showRegisterForm })),
+// ==============================================
+// ==============================================
+// ==============================================
 
-  // showCollage: false, 
-  // toggleCollage: () => set((state) => ({ showCollage: !state.showCollage })),
+  hideToolbar: false, // 初始状态为 true，表示显示登录表单
+  toggleToolbar: () => set((state) => ({ hideToolbar: !state.hideToolbar })),
 
 
 

@@ -32,6 +32,7 @@ export default function HomePage() {
 
   // 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
 
+  
   const { toggleCollageToTrue,} = useStore(state => ({
     toggleCollageToTrue: state.toggleCollageToTrue,
 }));
