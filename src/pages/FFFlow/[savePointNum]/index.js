@@ -1,14 +1,30 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { faWindowMinimize } from '@fortawesome/free-solid-svg-icons';
-import { faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons';
-import { faClockRotateLeft } from '@fortawesome/free-solid-svg-icons';
-import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
-import { faFolderOpen } from '@fortawesome/free-solid-svg-icons';
-import { faCircle } from '@fortawesome/free-solid-svg-icons';
-import { faSquareFull } from '@fortawesome/free-solid-svg-icons';
+// import { faWindowMinimize } from '@fortawesome/free-solid-svg-icons';
+// import { faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
+// import { faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons';
+// import { faClockRotateLeft } from '@fortawesome/free-solid-svg-icons';
+// import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
+// import { faFolderOpen } from '@fortawesome/free-solid-svg-icons';
+// import { faCircle } from '@fortawesome/free-solid-svg-icons';
+// import { faCertificate } from '@fortawesome/free-solid-svg-icons';
+// import { faSquareFull } from '@fortawesome/free-solid-svg-icons';
+// import { faDiamond } from '@fortawesome/free-solid-svg-icons';
+// import { faStar } from '@fortawesome/free-solid-svg-icons';
+// import { faSquare } from '@fortawesome/free-solid-svg-icons';
 
+import { faWindowMinimize,
+        faCircleChevronRight,
+        faCircleChevronLeft,
+        faClockRotateLeft,
+        faFloppyDisk,
+        faFolderOpen,
+        faCircle,
+        faSquare,
+        faStar,
+        faDiamond,
+        faCertificate 
+  } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -327,8 +343,9 @@ useEffect(() => {
   
         {/* <FontAwesomeIcon icon={faCircleRight} style={{ color: 'red',height:'200px',width:'200px' }} /> */}
 
-
-          <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
+        {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
+        {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
+          {/* <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
           onClick={() => setVariant('lines')}>格紋</button>
           <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
           onClick={() => setVariant('cross')}>十字</button>
@@ -336,8 +353,11 @@ useEffect(() => {
           onClick={() => setVariant('dots')}>點狀</button>
           <input className="nodrag" type="color"
           onChange={handleBgColorChange}
-          //  defaultValue=
-          />
+          /> */}
+            {/* defaultValue= */}
+        {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
+        {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
+
 
           <button 
             onClick={()=>{onSave(queryNum)}}
@@ -438,7 +458,7 @@ useEffect(() => {
                   <div className={styles.toolBtns}
                      // className="dndnode" 
                   onDragStart={(event) => onDragStart(event, 'textUpdater')} draggable>
-                      <FontAwesomeIcon icon={faSquareFull} className={styles.SidebarIconBtnS} />
+                      <FontAwesomeIcon icon={faSquare} className={styles.SidebarIconBtnS} />
                   </div>
 
                 <div className={styles.toolBtns}
@@ -448,15 +468,29 @@ useEffect(() => {
                 </div>
 
               {/* <div className={styles.toolBtns}>喔喔</div> */}
-              <div className={styles.toolBtns}> <ImageUpload onAdd={onAdd}/></div>
+
               <div className={styles.toolBtns}
-                // className="dndnode input" 
                 onDragStart={(event) => onDragStart(event, 'StarNode')} draggable>
-                    <FontAwesomeIcon icon={faCircle} className={styles.SidebarIconBtnS} />
-                </div>
+                    <FontAwesomeIcon icon={faCertificate} className={styles.SidebarIconBtnS} />
+              </div>
+              <div className={styles.toolBtns}
+                onDragStart={(event) => onDragStart(event, 'StarNode')} draggable>
+                    <FontAwesomeIcon icon={faDiamond} className={styles.SidebarIconBtnS} />
+              </div>
+              <div className={styles.toolBtns}
+                onDragStart={(event) => onDragStart(event, 'StarNode')} draggable>
+                    <FontAwesomeIcon icon={faStar} className={styles.SidebarIconBtnS} />
+              </div>
+              
+              <div className={styles.toolBtns}> <ImageUpload onAdd={onAdd}/></div>
         </div>
 
-        <Panel 
+
+
+
+        {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
+        {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
+        {/* <Panel 
         className=
         "bg-red-100  font-semibold py-2 px-4 rounded "
           style={{ width: '80px', height: '100％'
@@ -466,7 +500,12 @@ useEffect(() => {
                     onChange={(e) => setSelectedColor(e.target.value)}
                     className="color-picker"/>
             
-        </Panel>
+        </Panel> */}
+                {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
+        {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
+
+
+
       </ReactFlow>
 
     </div>
