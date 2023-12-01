@@ -156,7 +156,7 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
           // display: isAnyNodeSelected ? 'block' : 'none'
         }}>
 
-          <span  style={{fontSize:' 35px',borderWidth:'1px'}}>⠿</span>
+
           <button onClick={()=>onChangeTextAlign('left')}
           style={{borderColor:' red',borderWidth:'1px'}}>靠左</button>
           <button onClick={()=>onChangeTextAlign('center')}
@@ -229,6 +229,7 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
             border:'none',
             height: '10px', }} // 更改背景颜色为蓝色
             isConnectable={isConnectable} 
+            
         />
         <Handle type="source" position={Position.Right} 
           style={{ backgroundColor: '#00ffcc9e' ,width: '10px',  // 调整宽度
