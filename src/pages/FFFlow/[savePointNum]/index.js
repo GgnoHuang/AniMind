@@ -1,18 +1,4 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-// import { faWindowMinimize } from '@fortawesome/free-solid-svg-icons';
-// import { faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
-// import { faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons';
-// import { faClockRotateLeft } from '@fortawesome/free-solid-svg-icons';
-// import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
-// import { faFolderOpen } from '@fortawesome/free-solid-svg-icons';
-// import { faCircle } from '@fortawesome/free-solid-svg-icons';
-// import { faCertificate } from '@fortawesome/free-solid-svg-icons';
-// import { faSquareFull } from '@fortawesome/free-solid-svg-icons';
-// import { faDiamond } from '@fortawesome/free-solid-svg-icons';
-// import { faStar } from '@fortawesome/free-solid-svg-icons';
-// import { faSquare } from '@fortawesome/free-solid-svg-icons';
-
 import { faWindowMinimize,
         faCircleChevronRight,
         faCircleChevronLeft,
@@ -26,14 +12,8 @@ import { faWindowMinimize,
         faCertificate 
   } from '@fortawesome/free-solid-svg-icons';
 
-
-
-
-
 import Link from "next/link"
-
 import { useRouter } from 'next/router';
-
 import { useCallback, useState,useEffect,useRef } from 'react';
 import { db } from "../../../config" 
 import { ref, set ,get} from "firebase/database"
@@ -43,7 +23,6 @@ import ReactFlow, { ReactFlowProvider,useReactFlow,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import styles from "../ffflow.module.css";
-
 
 // node👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻
 import TextUpdaterNode from '../../../nodes/TextUpdaterNode'
@@ -89,7 +68,6 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
       onRestore(queryNum);
     }
   }, [router.isReady, router.query]);
-  
 
 
   const [initBgColor,setInitBgColor]= useState( '#373737')
@@ -97,8 +75,6 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
     const newBgColor = event.target.value;
     setInitBgColor(newBgColor);
   }
-  
-  // const [saveStation, setSaveStation] = useState(1)
 
   const [selectedColor, setSelectedColor] = useState('#ffffff'); 
 
@@ -435,11 +411,6 @@ useEffect(() => {
       position={'bottom-right'}
     />
 
-
-
-
-
-
           {/* 這邊是dnd🔥 */}
 
         <div className={`${styles.toolbarBody}  ${hideToolbar ? styles.toolbarBodyHidden : ''}`}>
@@ -503,13 +474,8 @@ useEffect(() => {
         </Panel> */}
                 {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
         {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
-
-
-
       </ReactFlow>
-
     </div>
-
   );
 }
 
