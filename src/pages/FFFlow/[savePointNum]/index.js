@@ -1,3 +1,48 @@
+// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
+// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
+// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
+import dagre from 'dagre';
+const dagreGraph = new dagre.graphlib.Graph();
+dagreGraph.setDefaultEdgeLabel(() => ({}));
+const nodeWidth = 232;
+const nodeHeight = 76;
+const getLayoutedElements = (nodes, edges, direction = 'TB') => {
+  const isHorizontal = direction === 'LR';
+  dagreGraph.setGraph({ rankdir: direction });
+
+  nodes.forEach((node) => {
+    dagreGraph.setNode(node.id, { width: nodeWidth, height: nodeHeight });
+  });
+
+  edges.forEach((edge) => {
+    dagreGraph.setEdge(edge.source, edge.target);
+  });
+
+  dagre.layout(dagreGraph);
+
+  nodes.forEach((node) => {
+    const nodeWithPosition = dagreGraph.node(node.id);
+    node.targetPosition = isHorizontal ? 'left' : 'top';
+    node.sourcePosition = isHorizontal ? 'right' : 'bottom';
+
+    // We are shifting the dagre node position (anchor=center center) to the top left
+    // so it matches the React Flow node anchor point (top left).
+    node.position = {
+      x: nodeWithPosition.x - nodeWidth / 2,
+      y: nodeWithPosition.y - nodeHeight / 2,
+    };
+
+    return node;
+  });
+
+  return { nodes, edges };
+};
+// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
+// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
+// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
+
+
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWindowMinimize,
         faCircleChevronRight,
@@ -101,6 +146,24 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
     hideToolbar: state.hideToolbar,
   }));
 //為了等等使用useeffect偵測node數量變化
+
+
+// ⚪️
+// ⚪️
+// ⚪️
+const handleLayoutChange = (direction) => {
+  console.log('有')
+  const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
+    nodes, edges, direction
+  );
+  console.log(layoutedNodes)
+  setNodes(layoutedNodes);
+  setEdges(layoutedEdges);
+};
+// ⚪️
+// ⚪️
+// ⚪️
+
 
 
 // ~~~~~~~~~~~~dnd的部分
@@ -356,6 +419,8 @@ useEffect(() => {
               </Link>
           </button>
           <DownloadBtn initBgColor={initBgColor}/>
+           <button onClick={() => handleLayoutChange('TB')}>Vertical Layout</button>
+    <button onClick={() => handleLayoutChange('LR')}>Horizontal Layout</button>
         </div>
       </div>
         
