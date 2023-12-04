@@ -1,7 +1,17 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+  faAlignRight,
+  faAlignJustify,
+  faAlignLeft,
+  faFont,faMinus,faPlus
+} from '@fortawesome/free-solid-svg-icons';
+
+
 import { Handle, NodeProps,Position, NodeResizer} from 'reactflow';
 import { useCallback, useState,useEffect ,useRef} from 'react';
-import useStore from '../store';
+import useStore from '../../store';
 
+import styles from './CircleNode.module.css';
 
 // const handleStyle = { left: 15 };
 
@@ -162,59 +172,89 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
             height:'40px', 
             width:'240px',}} 
           className="nodrag p-1 rounded" /> */}
-         
-        
-        <button    
-            className="adjustButton"
-          style={{ 
-          fontSize:'24px',
-          width: '500px',
-          position:'absolute',
-          top:'-60px',
-          left: '50%', // 將元素左邊緣對齊父元素的中心
-          transform: 'translateX(-50%)', // 然後向左移動自身寬度的50%，以實現完全居中
-          display: data.isSelected ? 'block' : 'none'
-          // display: isAnyNodeSelected ? 'block' : 'none'
-        }}>
 
-          <span  style={{fontSize:' 35px',borderWidth:'1px'}}>⠿</span>
-          <button onClick={()=>onChangeTextAlign('left')}
-          style={{borderColor:' red',borderWidth:'1px'}}>靠左</button>
-          <button onClick={()=>onChangeTextAlign('center')}
-          style={{borderColor:' red',borderWidth:'1px'}}>靠中</button>
-          <button onClick={()=>onChangeTextAlign('right')}
-          style={{borderColor:' red',borderWidth:'1px'}}>靠右</button>
+         {/* ====✌️💚💚💚💚💚💚💚💚💚💚💚💚💚======= */}
+         {/* ====✌️💚💚💚💚💚💚💚💚💚💚💚💚💚======= */}
+         <div  className={styles.TetxtoolBar}
+            style={{ display: data.isSelected ? 'flex' : 'none'
+          }}>
+            <div onClick={()=>onChangeTextAlign('left')}
+              className={styles.tetxTools}>
+                  <FontAwesomeIcon icon={faAlignLeft}
+                  className={styles.awesomeNavIconBtnS}/>
+            </div>
 
-          {/* <input
-            type="range"
-            className='nodrag'
-            min="10" // 最小字体大小
-            max="100" // 最大字体大小
-            // value='25'
-            onChange={onFontSizeChange}
-          /> */}
-          {/* <span>{selectFontSize}</span> */}
-          <button onClick={increaseFontSizeTen} style={{ padding:'0px 5px',borderColor:' red',borderWidth:'1px' ,fontSize:'40px'}}>＋</button>
-          <button onClick={increaseFontSize} style={{ padding:'0px 5px',borderColor:' red',borderWidth:'1px' }}>+</button>
-          <button onClick={decreaseFontSize} style={{  padding:'0px 5px',borderColor:' red',borderWidth:'1px' }}>-</button>
-          <button onClick={decreaseFontSizeTen} style={{  padding:'0px 5px',borderColor:' red',borderWidth:'1px'  ,fontSize:'40px'}}>-</button>
+            <div onClick={()=>onChangeTextAlign('center')}
+                  className={styles.tetxTools}>
+                  <FontAwesomeIcon icon={faAlignJustify}
+                  className={styles.awesomeNavIconBtnS}/>
+            </div>
 
-      <input
-          value={selectedColor}
-          // 這邊value就是input顯示在畫面上的顏色，就是data.backgroundColor
-          type="color"
-          // defaultValue={data.color}
-          onChange={onSelectColor}
-          // className="nodrag"
-        />
-          <input
-          value={selectedFontColor}
-          type="color"
-          onChange={onSelectFontColor}
-        />
-      
+            <div onClick={()=>onChangeTextAlign('right')}
+                  className={styles.tetxTools}>
+                  <FontAwesomeIcon icon={faAlignRight}
+                  className={styles.awesomeNavIconBtnS}/>
+            </div>
+{/* ============================================================ */}
+            <div onClick={increaseFontSizeTen}
+                  className={styles.tetxToolsBig}>
+                  {/* <FontAwesomeIcon icon={faFont} 
+                    className={styles.Aicon}/>
+                  <FontAwesomeIcon icon={faMinus} 
+                    className={styles.minusIcon}/> */}
+                          <FontAwesomeIcon icon={faFont}
+                    className={
+                      `${styles.Aicon} ${styles.ok}`
+                      } />
+                  <FontAwesomeIcon icon={faPlus}
+                    className={styles.BigPlusIcon} />
+            </div>
 
-        </button>
+            <div onClick={increaseFontSize} 
+                    className={styles.tetxTools}>   
+                  <FontAwesomeIcon icon={faFont}
+                    className={styles.Aicon} />
+                  <FontAwesomeIcon icon={faPlus}
+                    className={styles.plusIcon} />
+            </div>
+
+            <div onClick={decreaseFontSize} 
+              className={styles.tetxTools}>   
+                  {/* <FontAwesomeIcon icon={faFont}
+                    className={styles.Aicon} />
+                  <FontAwesomeIcon icon={faPlus}
+                    className={styles.BigminusIcon} /> */}
+                  <FontAwesomeIcon icon={faFont} 
+                    className={styles.Aicon}/>
+                  <FontAwesomeIcon icon={faMinus} 
+                    className={styles.minusIcon}/>
+            </div>
+
+            <div onClick={decreaseFontSizeTen} className={styles.tetxToolsBig}>  
+                  <FontAwesomeIcon icon={faFont}
+                    className={
+                    `${styles.Aicon} ${styles.ok}`
+                    } />
+                  <FontAwesomeIcon icon={faMinus}
+                    className={styles.BigminusIcon} />
+            </div>
+
+            <input value={selectedColor}
+                // 這邊value就是input顯示在畫面上的顏色，就是data.backgroundColor
+                type="color"
+                // defaultValue={data.color}
+                  // className="nodrag"
+                onChange={onSelectColor}/>
+            <input value={selectedFontColor}
+                type="color"
+                onChange={onSelectFontColor}/>    
+        </div>
+         {/* ====✌️💚💚💚💚💚💚💚💚💚💚💚💚💚======= */}
+         {/* ====✌️💚💚💚💚💚💚💚💚💚💚💚💚💚======= */}
+         {/* ====✌️💚💚💚💚💚💚💚💚💚💚💚💚💚======= */}
+
+
+
       {/* </div> */}
 
         <blockquote 
