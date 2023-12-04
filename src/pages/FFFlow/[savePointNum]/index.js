@@ -6,12 +6,12 @@ const dagreGraph = new dagre.graphlib.Graph();
 dagreGraph.setDefaultEdgeLabel(() => ({}));
 const nodeWidth = 232;
 const nodeHeight = 76;
-const getLayoutedElements = (nodes, edges, direction = 'TB') => {
+const getLayoutedElements = (w,h,nodes, edges, direction = 'TB') => {
   const isHorizontal = direction === 'LR';
   dagreGraph.setGraph({ rankdir: direction });
 
   nodes.forEach((node) => {
-    dagreGraph.setNode(node.id, { width: nodeWidth, height: nodeHeight });
+    dagreGraph.setNode(node.id, { width: w, height: h });
   });
 
   edges.forEach((edge) => {
@@ -42,9 +42,9 @@ const getLayoutedElements = (nodes, edges, direction = 'TB') => {
 // ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
 
 
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWindowMinimize,
+  faSitemap,
         faCircleChevronRight,
         faCircleChevronLeft,
         faClockRotateLeft,
@@ -121,6 +121,8 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
     setInitBgColor(newBgColor);
   }
 
+  const [good, setGood] = useState(null); 
+
   const [selectedColor, setSelectedColor] = useState('#ffffff'); 
 
   const [updateTrigger, setUpdateTrigger] = useState(false);
@@ -148,21 +150,7 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
 //為了等等使用useeffect偵測node數量變化
 
 
-// ⚪️
-// ⚪️
-// ⚪️
-const handleLayoutChange = (direction) => {
-  console.log('有')
-  const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
-    nodes, edges, direction
-  );
-  console.log(layoutedNodes)
-  setNodes(layoutedNodes);
-  setEdges(layoutedEdges);
-};
-// ⚪️
-// ⚪️
-// ⚪️
+
 
 
 
@@ -269,7 +257,9 @@ const onRestore = (query) => {
           const data = snapshot.val();
           console.log(3333)
           console.log('成功從資料庫抓到的：');
-          console.log(JSON.parse(data));
+          // console.log(JSON.parse(data));
+          console.log(JSON.parse(data).nodes);
+          setGood(JSON.parse(data).nodes)
 
           const parsedData = JSON.parse(data);
           if (parsedData) {
@@ -359,7 +349,61 @@ useEffect(() => {
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [howManyNodes]);
 
+// ⚪️
+// ⚪️
+// ⚪️
+// const handleLayoutChange = (direction) => {
+  // const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
+    // nodes, edges, direction
+  // );
+  // console.log(Array.isArray(layoutedNodes)); 
+  // 如果layoutedNodes是一个数组，则返回true；否则返回false
 
+    // console.log(layoutedNodes)
+  // setEdges(layoutedEdges);
+  // setGood(layoutedNodes)
+  // setNodes(good);
+
+  // console.log(good)
+  // console.log(layoutedNodes)
+
+  // const layoutedNodesString = layoutedNodes.toString();
+  // const goodString = good.toString();
+  // console.log(layoutedNodesString==goodString)
+// };
+
+const handleLayoutChangeV = useCallback((direction) => {
+  const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
+    120,180,nodes, edges, direction
+  );
+  // setEdges(layoutedEdges);
+  // setNodes(layoutedNodes);不會馬上更新，因為沒有創建一個新的arr
+    setNodes([...layoutedNodes]);//會馬上更新，因為這邊已經是一個新的arr，就算內容一樣
+    setEdges([...layoutedEdges]);
+
+}, [nodes, edges, setGood, setEdges, getLayoutedElements]);
+
+const handleLayoutChangeH = useCallback((direction) => {
+  const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
+    180,120,nodes, edges, direction
+  );
+  // setEdges(layoutedEdges);
+  // setNodes(layoutedNodes);不會馬上更新，因為沒有創建一個新的arr
+    setNodes([...layoutedNodes]);//會馬上更新，因為這邊已經是一個新的arr，就算內容一樣
+    setEdges([...layoutedEdges]);
+
+}, [nodes, edges, setGood, setEdges, getLayoutedElements]);
+
+// ⚪️
+// useEffect(() => {
+//   console.log(good)
+//   if(good){
+//     console.log(11)
+//   setNodes(good);
+//   }
+// }, [good]);
+// ⚪️
+// ⚪️
 
   return (
     <div className='bg-teal-100'
@@ -396,6 +440,22 @@ useEffect(() => {
             {/* defaultValue= */}
         {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
         {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
+        <div onClick={() => handleLayoutChangeV('TB')}  className={styles.dwBtn}>
+           <FontAwesomeIcon icon={faSitemap} className={styles.awesomeNavIconBtnS}/>
+           </div>
+
+            <div onClick={() => handleLayoutChangeH('LR')} className={styles.dwBtn}>
+                <FontAwesomeIcon icon={faSitemap} className=
+                {
+                  `${ styles.awesomeNavIconBtnS} ${ styles.sitemapRotate}`
+
+                }
+                
+
+                />
+            
+            </div>
+
 
 
           <button 
@@ -419,8 +479,8 @@ useEffect(() => {
               </Link>
           </button>
           <DownloadBtn initBgColor={initBgColor}/>
-           <button onClick={() => handleLayoutChange('TB')}>Vertical Layout</button>
-    <button onClick={() => handleLayoutChange('LR')}>Horizontal Layout</button>
+
+
         </div>
       </div>
         
