@@ -63,7 +63,9 @@ import { faWindowMinimize,
         faSquare,
         faStar,
         faDiamond,
-        faCertificate 
+        faCertificate ,
+        faHeart
+        
   } from '@fortawesome/free-solid-svg-icons';
 
 import Link from "next/link"
@@ -80,14 +82,17 @@ import 'reactflow/dist/style.css';
 import styles from "../ffflow.module.css";
 
 // node👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻
-import TextUpdaterNode from '../../../nodes/TextUpdaterNode'
-import OmgNode from '../../../nodes/OmgNode'
+import TextUpdaterNode from '../../../nodes/TextUpdaterNode/TextUpdaterNode.js'
+import CircleNode from '../../../nodes/CircleNode/CircleNode.js'
+import CertificateNode from '../../../nodes/CertificateNode/CertificateNode.js'
+// import OmgNode from '../../../nodes/OmgNode'
 import ImgNode2 from '../../../nodes/ImgNode2.js'
-import ColorNote from '../../../nodes/ColorNote'
-import proCircleNode from '../../../nodes/circleNode.js'
+// import proCircleNode from '../../../nodes/沒用到circleNode.js'
 
-import StarNode from '../../../nodes/StarNode/StarNode.js'
 import shapeNode from '../../../nodes/shapeNode.js'
+import Diamond from '../../../nodes/Diamond/Diamond.js'
+import Heart from '../../../nodes/Heart/Heart.js'
+import Star from '../../../nodes/Star/Star.js'
 // node👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻
 
 import AuthCheck from "../AuthCheck.js"
@@ -101,15 +106,18 @@ const proOptions = { account: 'paid-pro', hideAttribution: true };
 import { shallow } from 'zustand/shallow';
 import useStore from '../../../store.js';
 
-const nodeTypes = { textUpdater: TextUpdaterNode,
-  gg: OmgNode,
-  ImgNode2: ImgNode2,
-  circleNode: ColorNote,
-  proCircleNode:proCircleNode,
+const nodeTypes = { 
+  textUpdater: TextUpdaterNode,
+  // gg: OmgNode,
+  CertificateNode:CertificateNode,
+  circleNode: CircleNode,
+  // proCircleNode:proCircleNode,
 
-  StarNode:StarNode,
-  shapeNode:shapeNode
-  
+  ImgNode2: ImgNode2,
+  shapeNode:shapeNode,
+  Diamond:Diamond,
+  Heart:Heart,
+  Star:Star,
 };
 
 function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {}) {
@@ -125,6 +133,7 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
       const queryNum = router.query['savePointNum'];
       onRestore(queryNum);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady, router.query]);
 
 
@@ -262,11 +271,8 @@ const onRestore = (query) => {
       const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${query}`);
       try {
         const snapshot = await get(databaseRef);
-        console.log(1111)
         if (snapshot.exists()){
         // if (false) {
-          console.log(2222)
-  
           const data = snapshot.val();
           console.log(3333)
           console.log('成功從資料庫抓到的：');
@@ -275,9 +281,7 @@ const onRestore = (query) => {
 
           const parsedData = JSON.parse(data);
           if (parsedData) {
-
             // const { x = 0, y = 0, zoom = 1 } = parsedData.viewport;
-
             setNodes(parsedData.nodes || []);
             setEdges(parsedData.edges || []);
 
@@ -314,15 +318,15 @@ const onRestore = (query) => {
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }
 
-
 useEffect(() => {
   if (setAlreadyRestore&&reactFlowInstance) {
+    // 要有reactFlowInstance才能用fitView
     reactFlowInstance.fitView({
       padding: 1
     });
-
     setAlreadyRestore(false)
   }
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [alreadyRestore]);
 
 
@@ -391,9 +395,8 @@ const handleLayoutChangeV = useCallback((direction) => {
     setEdges([...layoutedEdges]);
     setLayoutUpdated(true)
     // setViewport({ x: 150, y: 150, zoom: 0.7 });
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [nodes, edges, setEdges, getLayoutedElements]);
-
-
 
 const handleLayoutChangeH = useCallback((direction) => {
   const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
@@ -406,10 +409,8 @@ const handleLayoutChangeH = useCallback((direction) => {
     setEdges([...layoutedEdges]);
     // setViewport({ x: 150, y: 150, zoom: 0.7 });
     setLayoutUpdated(true)
-
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [nodes, edges, setEdges, getLayoutedElements]);
-
 
 useEffect(() => {
   if (layoutUpdated) {
@@ -450,7 +451,7 @@ useEffect(() => {
 
         {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
         {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
-          {/* <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
+          <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
           onClick={() => setVariant('lines')}>格紋</button>
           <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
           onClick={() => setVariant('cross')}>十字</button>
@@ -458,7 +459,7 @@ useEffect(() => {
           onClick={() => setVariant('dots')}>點狀</button>
           <input className="nodrag" type="color"
           onChange={handleBgColorChange}
-          /> */}
+          />
             {/* defaultValue= */}
         {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
         {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
@@ -589,16 +590,21 @@ useEffect(() => {
               {/* <div className={styles.toolBtns}>喔喔</div> */}
 
               <div className={styles.toolBtns}
-                onDragStart={(event) => onDragStart(event, 'StarNode')} draggable>
+                onDragStart={(event) => onDragStart(event, 'CertificateNode')} draggable>
                     <FontAwesomeIcon icon={faCertificate} className={styles.SidebarIconBtnS} />
               </div>
               <div className={styles.toolBtns}
-                onDragStart={(event) => onDragStart(event, 'StarNode')} draggable>
+                onDragStart={(event) => onDragStart(event, 'Diamond')} draggable>
                     <FontAwesomeIcon icon={faDiamond} className={styles.SidebarIconBtnS} />
               </div>
               <div className={styles.toolBtns}
-                onDragStart={(event) => onDragStart(event, 'StarNode')} draggable>
+                onDragStart={(event) => onDragStart(event, 'Star')} draggable>
                     <FontAwesomeIcon icon={faStar} className={styles.SidebarIconBtnS} />
+              </div>
+
+              <div className={styles.toolBtns}
+                onDragStart={(event) => onDragStart(event, 'Heart')} draggable>
+                    <FontAwesomeIcon icon={faHeart} className={styles.SidebarIconBtnS} />
               </div>
               
               <div className={styles.toolBtns}> <ImageUpload onAdd={onAdd}/></div>
