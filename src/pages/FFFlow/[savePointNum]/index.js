@@ -552,13 +552,24 @@ useEffect(() => {
     
     />
 
-    <MiniMap 
-      className="custom-minimap"
-      pannable={true}
-      style={{ cursor: 'move',}}
-      // nodeColor={'#FF5733'}
-      position={'bottom-right'}
-    />
+ 
+
+<MiniMap
+  className="custom-minimap"
+  pannable={true}
+  style={{ cursor: 'move',}}
+  position={'bottom-right'}
+
+  // nodeColor='yellowgreen'
+  // nodeStrokeColor="green"
+
+  nodeBorderRadius={10}
+  // nodeStrokeWidth={30}
+  maskColor='#5a5a5ad6'
+  // maskStrokeColor="blue"
+
+/>
+
 
           {/* 這邊是dnd🔥 */}
 
