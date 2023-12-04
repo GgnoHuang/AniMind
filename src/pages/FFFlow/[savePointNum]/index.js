@@ -4,14 +4,20 @@
 import dagre from 'dagre';
 const dagreGraph = new dagre.graphlib.Graph();
 dagreGraph.setDefaultEdgeLabel(() => ({}));
-const nodeWidth = 232;
-const nodeHeight = 76;
-const getLayoutedElements = (w,h,nodes, edges, direction = 'TB') => {
+// const nodeWidth = 232;
+// const nodeHeight = 76;
+// const getLayoutedElements = (w,h,nodes, edges, direction = 'TB') => {
+const getLayoutedElements = (nodes, edges, direction = 'TB') => {
   const isHorizontal = direction === 'LR';
   dagreGraph.setGraph({ rankdir: direction });
 
   nodes.forEach((node) => {
-    dagreGraph.setNode(node.id, { width: w, height: h });
+    // dagreGraph.setNode(node.id, { width: w, height: h });
+    // 🤣🤣🤣🤣🤣🤣🤣🤣結果用node.width這樣就解決了是怎樣 = =a
+    // 🤣🤣🤣🤣🤣🤣🤣🤣結果用node.width這樣就解決了是怎樣 = =a
+    dagreGraph.setNode(node.id, { width: node.width, height: node.height });
+    // 🤣🤣🤣🤣🤣🤣🤣🤣結果用node.width這樣就解決了是怎樣 = =a
+    // 🤣🤣🤣🤣🤣🤣🤣🤣結果用node.width這樣就解決了是怎樣 = =a
   });
 
   edges.forEach((edge) => {
@@ -28,8 +34,10 @@ const getLayoutedElements = (w,h,nodes, edges, direction = 'TB') => {
     // We are shifting the dagre node position (anchor=center center) to the top left
     // so it matches the React Flow node anchor point (top left).
     node.position = {
-      x: nodeWithPosition.x - nodeWidth / 2,
-      y: nodeWithPosition.y - nodeHeight / 2,
+      // x: nodeWithPosition.x - nodeWidth / 2,
+      // y: nodeWithPosition.y - nodeHeight / 2,
+      x: nodeWithPosition.x - node.width / 2,
+      y: nodeWithPosition.y - node.height / 2,
     };
 
     return node;
@@ -374,7 +382,8 @@ useEffect(() => {
 
 const handleLayoutChangeV = useCallback((direction) => {
   const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
-    120,180,nodes, edges, direction
+    // 120,180,nodes, edges, direction
+    nodes, edges, direction
   );
   // setEdges(layoutedEdges);
   // setNodes(layoutedNodes);不會馬上更新，因為沒有創建一個新的arr
@@ -385,7 +394,8 @@ const handleLayoutChangeV = useCallback((direction) => {
 
 const handleLayoutChangeH = useCallback((direction) => {
   const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
-    180,120,nodes, edges, direction
+    // 180,120,nodes, edges, direction
+    nodes, edges, direction
   );
   // setEdges(layoutedEdges);
   // setNodes(layoutedNodes);不會馬上更新，因為沒有創建一個新的arr
