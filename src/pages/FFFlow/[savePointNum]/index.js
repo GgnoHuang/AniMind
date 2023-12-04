@@ -1,6 +1,7 @@
-// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
-// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
-// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
+// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
+// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️   layout  ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
+// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
+
 import dagre from 'dagre';
 const dagreGraph = new dagre.graphlib.Graph();
 dagreGraph.setDefaultEdgeLabel(() => ({}));
@@ -45,9 +46,9 @@ const getLayoutedElements = (nodes, edges, direction = 'TB') => {
 
   return { nodes, edges };
 };
-// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
-// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
-// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
+// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
+// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️   layout  ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
+// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -70,6 +71,7 @@ import { useRouter } from 'next/router';
 import { useCallback, useState,useEffect,useRef } from 'react';
 import { db } from "../../../config" 
 import { ref, set ,get} from "firebase/database"
+
 
 import ReactFlow, { ReactFlowProvider,useReactFlow,
   Panel,Controls,Background ,MiniMap,
@@ -111,6 +113,9 @@ const nodeTypes = { textUpdater: TextUpdaterNode,
 };
 
 function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {}) {
+  const [reactFlowInstance, setReactFlowInstance] = useState(null);
+
+
   // console.log('組件炫染')
   const router = useRouter();
   const queryNum =router.query['savePointNum']
@@ -129,7 +134,7 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
     setInitBgColor(newBgColor);
   }
 
-  const [good, setGood] = useState(null); 
+
 
   const [selectedColor, setSelectedColor] = useState('#ffffff'); 
 
@@ -160,8 +165,6 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
 
 
 
-
-
 // ~~~~~~~~~~~~dnd的部分
   const onDragStart = (event, nodeType) => {
     event.dataTransfer.setData('application/reactflow', nodeType);
@@ -169,7 +172,8 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
   }
   // －－－－－
   const reactFlowWrapper = useRef(null);
-  const [reactFlowInstance, setReactFlowInstance] = useState(null);
+  // const [reactFlowInstance, setReactFlowInstance] = useState(null);
+  // 這段往上移了
 
   const onDragOver = useCallback((event) => {
     event.preventDefault();
@@ -250,6 +254,7 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
     }
 }
 
+const [alreadyRestore,setAlreadyRestore]=useState(false)
 const onRestore = (query) => {
   const restoreFlow = async () => {
     const localUUID = localStorage.getItem("userUUID");
@@ -267,16 +272,18 @@ const onRestore = (query) => {
           console.log('成功從資料庫抓到的：');
           // console.log(JSON.parse(data));
           console.log(JSON.parse(data).nodes);
-          setGood(JSON.parse(data).nodes)
 
           const parsedData = JSON.parse(data);
           if (parsedData) {
-            // console.log(parsedData.viewport)
-            const { x = 0, y = 0, zoom = 1 } = parsedData.viewport;
+
+            // const { x = 0, y = 0, zoom = 1 } = parsedData.viewport;
 
             setNodes(parsedData.nodes || []);
             setEdges(parsedData.edges || []);
-            setViewport({ x, y, zoom });
+
+            setAlreadyRestore(true)
+            // setViewport({ x, y, zoom });
+
            // setNodes(flow.nodes || []) 用於更新節點狀態，flow.nodes
             // 如果沒有從儲存中找到節點數據，保持為空數組[]
           }
@@ -308,11 +315,20 @@ const onRestore = (query) => {
 }
 
 
+useEffect(() => {
+  if (setAlreadyRestore&&reactFlowInstance) {
+    reactFlowInstance.fitView({
+      padding: 1
+    });
+
+    setAlreadyRestore(false)
+  }
+}, [alreadyRestore]);
+
+
+
 
 // const [addCount, setAddCount] = useState(0);
-const sayhi = () => {
-  // console.log('hi')
-}
 // const addNewNode = useStore((state) => state.addNewNode);
 const onAdd = (imageUrl) => {
   const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
@@ -360,25 +376,9 @@ useEffect(() => {
 // ⚪️
 // ⚪️
 // ⚪️
-// const handleLayoutChange = (direction) => {
-  // const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
-    // nodes, edges, direction
-  // );
-  // console.log(Array.isArray(layoutedNodes)); 
-  // 如果layoutedNodes是一个数组，则返回true；否则返回false
 
-    // console.log(layoutedNodes)
-  // setEdges(layoutedEdges);
-  // setGood(layoutedNodes)
-  // setNodes(good);
 
-  // console.log(good)
-  // console.log(layoutedNodes)
-
-  // const layoutedNodesString = layoutedNodes.toString();
-  // const goodString = good.toString();
-  // console.log(layoutedNodesString==goodString)
-// };
+const [layoutUpdated, setLayoutUpdated] = useState(false);
 
 const handleLayoutChangeV = useCallback((direction) => {
   const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
@@ -389,8 +389,11 @@ const handleLayoutChangeV = useCallback((direction) => {
   // setNodes(layoutedNodes);不會馬上更新，因為沒有創建一個新的arr
     setNodes([...layoutedNodes]);//會馬上更新，因為這邊已經是一個新的arr，就算內容一樣
     setEdges([...layoutedEdges]);
+    setLayoutUpdated(true)
+    // setViewport({ x: 150, y: 150, zoom: 0.7 });
+}, [nodes, edges, setEdges, getLayoutedElements]);
 
-}, [nodes, edges, setGood, setEdges, getLayoutedElements]);
+
 
 const handleLayoutChangeH = useCallback((direction) => {
   const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
@@ -401,17 +404,26 @@ const handleLayoutChangeH = useCallback((direction) => {
   // setNodes(layoutedNodes);不會馬上更新，因為沒有創建一個新的arr
     setNodes([...layoutedNodes]);//會馬上更新，因為這邊已經是一個新的arr，就算內容一樣
     setEdges([...layoutedEdges]);
+    // setViewport({ x: 150, y: 150, zoom: 0.7 });
+    setLayoutUpdated(true)
 
-}, [nodes, edges, setGood, setEdges, getLayoutedElements]);
+
+}, [nodes, edges, setEdges, getLayoutedElements]);
+
+
+useEffect(() => {
+  if (layoutUpdated) {
+    reactFlowInstance.fitView({
+      padding: 1
+    });
+    setLayoutUpdated(false); // 重置标志
+  }
+}, [layoutUpdated, reactFlowInstance]);
+
+
 
 // ⚪️
-// useEffect(() => {
-//   console.log(good)
-//   if(good){
-//     console.log(11)
-//   setNodes(good);
-//   }
-// }, [good]);
+
 // ⚪️
 // ⚪️
 
@@ -475,7 +487,8 @@ const handleLayoutChangeH = useCallback((direction) => {
 
           </button>
 
-          <button onClick={onRestore} 
+          {/* <button onClick={onRestore}  */}
+          <button onClick={()=>{onRestore(queryNum);}} 
           className={styles.dwBtn}> 
             <FontAwesomeIcon icon={faClockRotateLeft} className={styles.awesomeNavIconBtnS}/>
               </button>
@@ -532,7 +545,7 @@ const handleLayoutChangeH = useCallback((direction) => {
     <Controls 
       className="custom-controls"
       fitViewOptions={{
-        duration: 500,padding: 0.3
+        duration: 100,padding: 1
       }} // 传递自定义的 FitViewOptions
       position={'bottom-left'}
     
