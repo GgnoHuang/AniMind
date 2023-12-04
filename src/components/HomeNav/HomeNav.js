@@ -29,11 +29,11 @@ export default function HomeNav({localUserData,
               <div className={styles.btnswrapper}
                 style={{zIndex:'1999'}}>
 
-    <div className="p-8 flex items-center flex items-center justify-center">
+    {/* <div className="p-8 flex items-center flex items-center justify-center">
         <button className="text-white p-2 rounded bg-blue-500 hover:bg-blue-600 ">
         <Link href="/Collaborative">Collaborative</Link>
       </button>
-    </div>
+    </div> */}
 
                 <p className={styles.welcome}
                   style={{zIndex:'1999'}}>

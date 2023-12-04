@@ -1,19 +1,50 @@
+// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
+// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
+// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
+import dagre from 'dagre';
+const dagreGraph = new dagre.graphlib.Graph();
+dagreGraph.setDefaultEdgeLabel(() => ({}));
+const nodeWidth = 232;
+const nodeHeight = 76;
+const getLayoutedElements = (w,h,nodes, edges, direction = 'TB') => {
+  const isHorizontal = direction === 'LR';
+  dagreGraph.setGraph({ rankdir: direction });
+
+  nodes.forEach((node) => {
+    dagreGraph.setNode(node.id, { width: w, height: h });
+  });
+
+  edges.forEach((edge) => {
+    dagreGraph.setEdge(edge.source, edge.target);
+  });
+
+  dagre.layout(dagreGraph);
+
+  nodes.forEach((node) => {
+    const nodeWithPosition = dagreGraph.node(node.id);
+    node.targetPosition = isHorizontal ? 'left' : 'top';
+    node.sourcePosition = isHorizontal ? 'right' : 'bottom';
+
+    // We are shifting the dagre node position (anchor=center center) to the top left
+    // so it matches the React Flow node anchor point (top left).
+    node.position = {
+      x: nodeWithPosition.x - nodeWidth / 2,
+      y: nodeWithPosition.y - nodeHeight / 2,
+    };
+
+    return node;
+  });
+
+  return { nodes, edges };
+};
+// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
+// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
+// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
+
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-// import { faWindowMinimize } from '@fortawesome/free-solid-svg-icons';
-// import { faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
-// import { faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons';
-// import { faClockRotateLeft } from '@fortawesome/free-solid-svg-icons';
-// import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
-// import { faFolderOpen } from '@fortawesome/free-solid-svg-icons';
-// import { faCircle } from '@fortawesome/free-solid-svg-icons';
-// import { faCertificate } from '@fortawesome/free-solid-svg-icons';
-// import { faSquareFull } from '@fortawesome/free-solid-svg-icons';
-// import { faDiamond } from '@fortawesome/free-solid-svg-icons';
-// import { faStar } from '@fortawesome/free-solid-svg-icons';
-// import { faSquare } from '@fortawesome/free-solid-svg-icons';
-
 import { faWindowMinimize,
+  faSitemap,
         faCircleChevronRight,
         faCircleChevronLeft,
         faClockRotateLeft,
@@ -26,14 +57,8 @@ import { faWindowMinimize,
         faCertificate 
   } from '@fortawesome/free-solid-svg-icons';
 
-
-
-
-
 import Link from "next/link"
-
 import { useRouter } from 'next/router';
-
 import { useCallback, useState,useEffect,useRef } from 'react';
 import { db } from "../../../config" 
 import { ref, set ,get} from "firebase/database"
@@ -43,7 +68,6 @@ import ReactFlow, { ReactFlowProvider,useReactFlow,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import styles from "../ffflow.module.css";
-
 
 // node👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻
 import TextUpdaterNode from '../../../nodes/TextUpdaterNode'
@@ -89,7 +113,6 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
       onRestore(queryNum);
     }
   }, [router.isReady, router.query]);
-  
 
 
   const [initBgColor,setInitBgColor]= useState( '#373737')
@@ -97,8 +120,8 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
     const newBgColor = event.target.value;
     setInitBgColor(newBgColor);
   }
-  
-  // const [saveStation, setSaveStation] = useState(1)
+
+  const [good, setGood] = useState(null); 
 
   const [selectedColor, setSelectedColor] = useState('#ffffff'); 
 
@@ -125,6 +148,10 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
     hideToolbar: state.hideToolbar,
   }));
 //為了等等使用useeffect偵測node數量變化
+
+
+
+
 
 
 // ~~~~~~~~~~~~dnd的部分
@@ -230,7 +257,9 @@ const onRestore = (query) => {
           const data = snapshot.val();
           console.log(3333)
           console.log('成功從資料庫抓到的：');
-          console.log(JSON.parse(data));
+          // console.log(JSON.parse(data));
+          console.log(JSON.parse(data).nodes);
+          setGood(JSON.parse(data).nodes)
 
           const parsedData = JSON.parse(data);
           if (parsedData) {
@@ -320,7 +349,61 @@ useEffect(() => {
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [howManyNodes]);
 
+// ⚪️
+// ⚪️
+// ⚪️
+// const handleLayoutChange = (direction) => {
+  // const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
+    // nodes, edges, direction
+  // );
+  // console.log(Array.isArray(layoutedNodes)); 
+  // 如果layoutedNodes是一个数组，则返回true；否则返回false
 
+    // console.log(layoutedNodes)
+  // setEdges(layoutedEdges);
+  // setGood(layoutedNodes)
+  // setNodes(good);
+
+  // console.log(good)
+  // console.log(layoutedNodes)
+
+  // const layoutedNodesString = layoutedNodes.toString();
+  // const goodString = good.toString();
+  // console.log(layoutedNodesString==goodString)
+// };
+
+const handleLayoutChangeV = useCallback((direction) => {
+  const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
+    120,180,nodes, edges, direction
+  );
+  // setEdges(layoutedEdges);
+  // setNodes(layoutedNodes);不會馬上更新，因為沒有創建一個新的arr
+    setNodes([...layoutedNodes]);//會馬上更新，因為這邊已經是一個新的arr，就算內容一樣
+    setEdges([...layoutedEdges]);
+
+}, [nodes, edges, setGood, setEdges, getLayoutedElements]);
+
+const handleLayoutChangeH = useCallback((direction) => {
+  const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
+    180,120,nodes, edges, direction
+  );
+  // setEdges(layoutedEdges);
+  // setNodes(layoutedNodes);不會馬上更新，因為沒有創建一個新的arr
+    setNodes([...layoutedNodes]);//會馬上更新，因為這邊已經是一個新的arr，就算內容一樣
+    setEdges([...layoutedEdges]);
+
+}, [nodes, edges, setGood, setEdges, getLayoutedElements]);
+
+// ⚪️
+// useEffect(() => {
+//   console.log(good)
+//   if(good){
+//     console.log(11)
+//   setNodes(good);
+//   }
+// }, [good]);
+// ⚪️
+// ⚪️
 
   return (
     <div className='bg-teal-100'
@@ -357,6 +440,22 @@ useEffect(() => {
             {/* defaultValue= */}
         {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
         {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
+        <div onClick={() => handleLayoutChangeV('TB')}  className={styles.dwBtn}>
+           <FontAwesomeIcon icon={faSitemap} className={styles.awesomeNavIconBtnS}/>
+           </div>
+
+            <div onClick={() => handleLayoutChangeH('LR')} className={styles.dwBtn}>
+                <FontAwesomeIcon icon={faSitemap} className=
+                {
+                  `${ styles.awesomeNavIconBtnS} ${ styles.sitemapRotate}`
+
+                }
+                
+
+                />
+            
+            </div>
+
 
 
           <button 
@@ -380,6 +479,8 @@ useEffect(() => {
               </Link>
           </button>
           <DownloadBtn initBgColor={initBgColor}/>
+
+
         </div>
       </div>
         
@@ -434,11 +535,6 @@ useEffect(() => {
       // nodeColor={'#FF5733'}
       position={'bottom-right'}
     />
-
-
-
-
-
 
           {/* 這邊是dnd🔥 */}
 
@@ -503,13 +599,8 @@ useEffect(() => {
         </Panel> */}
                 {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
         {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
-
-
-
       </ReactFlow>
-
     </div>
-
   );
 }
 

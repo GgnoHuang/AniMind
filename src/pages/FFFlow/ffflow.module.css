@@ -47,6 +47,10 @@ transition: all 0.3s ease;
 
 
 
+.sitemapRotate{
+  transform: rotate(-90deg);
+}
+
 
 .toolbarBody{
   position: absolute;
