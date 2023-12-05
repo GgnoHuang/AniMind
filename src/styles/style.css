@@ -16,25 +16,105 @@ font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   50% { opacity: 0; }
 }
 
+/* ======================== */
+/* ======================== */
+
+
+
+/* ======================== */
+/* ======================== */
+
+.custom-minimap{
+
+
+}
+.custom-minimap svg{
+
+  background-color: #a8a6a6;
+  background-color: #373737;
+  position: absolute!important;
+  right: -2px !important;
+  bottom: -2px  !important;
+  border-radius: 10px  !important;
+}
+
 
 .react-flow__controls {
   display: flex;
-  /* background-color: #c5c5c5b7 !important; */
-  padding:10px 14px;
+  /* background-color: #c5c5c5b7; */
   border-radius: 10px;
+  position: absolute!important;
+  left: 119px !important;
+  bottom: 1px  !important;
 }
 .react-flow__controls-button {
-  border-radius: 10px;
-  margin-right: 10px; 
-  background-color: rgb(210, 210, 210)
-  !important;
-  width: 101px;
-  height: 111px;
-  padding: 0px 12px;
+  /* box-shadow: 0 0 2px 1px greenyellow; */
+  box-shadow:none!important;
+  border-bottom: 0px solid #ff000000!important; /* 消除本來預設的 */
+
+  color: aliceblue !important;
+  border-radius: 22px;
+  margin-right: 8px; 
+  /* background-color: #5a5a5ad6 !important; */
+  background-color: #666666 !important;
+  box-sizing: border-box !important;
+  height: 29px  !important;
+  width: 50px !important;
+  transition: all 0.1s linear;
+  /* padding: 0px 12px ; */
+  /* opacity: 0; */
 }
+
+.react-flow__controls-button:hover{
+  /* box-shadow: 0 0 2px 1px greenyellow; */
+
+  background-color:#00ffccab  !important;
+  /* transform: scale(1.1); */
+}
+
+
+.react-flow__controls-button path{
+  fill: rgb(255, 255, 255) !important;
+}
+.react-flow__controls-button svg{
+  /* transform: scale(1.2); */
+}
+
 .react-flow__controls-button:last-child {
   margin-right: 0;
 }
+svg {
+  /* transform: scale(1.5); */
+  /* color: aliceblue  !important; */
+
+}
+
+.react-flow__controls-zoom-in {
+  /* 定制的放大按钮样式 */
+  /* width: 101px !important;
+  height: 111px !important;
+  background-color: rgb(255, 0, 0)  !important; */
+
+}
+
+.react-flow__controls-zoom-out {
+  
+}
+
+.react-flow__controls-fitview {
+  /* width: 101px !important;
+  height: 111px !important;
+  background-color: rgb(255, 0, 0)  !important; */
+}
+/* ============================================================ */
+
+
+/* ============================================================ */
+/* ============================================================ */
+/* ============================================================ */
+/* ============================================================ */
+/* ============================================================ */
+/* ============================================================ */
 
 body, html {
   overflow-x: hidden;
