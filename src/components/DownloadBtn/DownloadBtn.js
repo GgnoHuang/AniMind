@@ -64,7 +64,7 @@ export default function DownloadBtn({initBgColor}) {
 
         onClick={onClick}>
   <FontAwesomeIcon icon={faDownload} className={styles.AwesomeDownloadIcon}/>
-
+  <div className={styles.NavBtnHint}>Download</div>
       </button>
 
   );

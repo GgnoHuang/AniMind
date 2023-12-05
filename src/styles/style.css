@@ -48,6 +48,8 @@ font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   bottom: 1px  !important;
 }
 .react-flow__controls-button {
+  position: relative; /* 确保 button 为相对定位 */
+
   /* box-shadow: 0 0 2px 1px greenyellow; */
   box-shadow:none!important;
   border-bottom: 0px solid #ff000000!important; /* 消除本來預設的 */
@@ -68,11 +70,9 @@ font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 .react-flow__controls-button:hover{
   /* box-shadow: 0 0 2px 1px greenyellow; */
-
   background-color:#00ffccab  !important;
   /* transform: scale(1.1); */
 }
-
 
 .react-flow__controls-button path{
   fill: rgb(255, 255, 255) !important;
@@ -80,33 +80,58 @@ font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 .react-flow__controls-button svg{
   /* transform: scale(1.2); */
 }
-
 .react-flow__controls-button:last-child {
   margin-right: 0;
 }
 svg {
-  /* transform: scale(1.5); */
-  /* color: aliceblue  !important; */
 
 }
 
-.react-flow__controls-zoom-in {
-  /* 定制的放大按钮样式 */
-  /* width: 101px !important;
-  height: 111px !important;
-  background-color: rgb(255, 0, 0)  !important; */
+
+
+/* 💜💜💜💜💜💜💜💜💜💜💜💜💜💜💜💜💜💜💜 */
+.react-flow__controls-button::before {
+  position: absolute;
+  bottom: 120%; /* 定位到按钮的上方 */
+  left: 50%; /* 水平居中 */
+  transform: translateX(-50%); /* 校正由于 left: 50% 导致的偏移 */
+  white-space: nowrap; /* 防止換行 */
+
+  color: rgb(255, 255, 255); 
+
+
+  opacity: 0; 
+  visibility: hidden;
+
+
+  font-size: 14px;
+  /* border: 1px red solid; */
+  padding: 5px 18px;
+  background-color: #ffffff;
+  background-color: #000000;
 
 }
-
-.react-flow__controls-zoom-out {
-  
+.react-flow__controls-button:hover::before {
+  opacity: 1; 
+  visibility: visible; 
 }
-
-.react-flow__controls-fitview {
-  /* width: 101px !important;
-  height: 111px !important;
-  background-color: rgb(255, 0, 0)  !important; */
+.react-flow__controls-zoomin::before {
+  content: 'Zoom In'; /* 使用 data-hint 属性作为内容 */
 }
+.react-flow__controls-zoomout::before {
+  content: 'Zoom Out'; /* 使用 data-hint 属性作为内容 */
+}
+.react-flow__controls-fitview::before {
+  content: 'Zoom to Content'; /* 使用 data-hint 属性作为内容 */
+}
+.react-flow__controls-interactive::before {
+  content: 'Lock'; /* 使用 data-hint 属性作为内容 */
+}
+/* 💜💜💜💜💜💜💜💜💜💜💜💜💜💜💜💜💜💜💜 */
+
+
+
+
 /* ============================================================ */
 
 
