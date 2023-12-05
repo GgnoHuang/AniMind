@@ -1,3 +1,6 @@
+
+
+
 .patternStylePanel{
   display: flex;
   position: absolute!important;;
@@ -15,7 +18,8 @@
 }
 
 
-
+/* 🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪 */
+/* 🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪 */
 .layoutPanel{
   display: flex;
   position: absolute!important;;
@@ -23,15 +27,12 @@
   left: -2px !important;
   bottom: -2px  !important;
   height: 39px  !important;
-  border: 1px rgba(255, 255, 255, 0.671) solid;
-  border: 1px white solid;
 
+  border: 1.5px white solid;
   width: fit-content;
   border-radius:10px;
   background-color: #666666 !important;
   background-color: #5e0fde !important;
-
-  
 }
 .TBlayoutBtnsW{
   cursor: pointer;
@@ -43,10 +44,11 @@
 
   width: 50px !important;
   transition: all 0.1s linear;
-  border-radius: 10px 0px 0px 10px;
+  border-radius: 9px 0px 0px 9px;
+  border-right: 1px white solid;
 }
 .LRlayoutBtnsW{
-  border-left: 1px #00ffccab solid;
+  border-left: 2px #00ffccab solid;
   border-left: 1px white solid;
   cursor: pointer;
     /* opacity: 0.6; */
@@ -57,16 +59,15 @@
 
   width: 50px !important;
   transition: all 0.1s linear;
-  border-radius: 0px 10px 10px 0px;
+  border-radius: 0px 9px 9px 0px;
 }
 
 .layoutBtns{
   color:  #00ffccd7 ;
-
-
   transform: scale(1.2);
   position: relative;
   right: -1px;
+  transition: all 0.1s linear;
 
    /* 分别是左上、右上、右下、左下 */
   /* border: 1px red solid; */
@@ -83,10 +84,36 @@
   background-color:#ffffff  !important;
   .layoutBtns{
     color:  #5e0fde ;
+    transform: scale(1.5);
+  }
+  .sitemapRotate{
+    transform: rotate(-90deg)scale(1.5);
+  }
+  .layoutBtnHint{
+    opacity: 1; 
+    visibility: visible; 
   }
 }
 
 
+.layoutBtnHint{
+  position: absolute;
+  bottom:130%;
+
+  left: 0px;
+
+  color: #ffffff;
+  background-color: #000000;
+
+  font-size: 10px;
+  padding: 3px 12px;
+  opacity: 0; 
+  visibility: hidden;
+  white-space: nowrap;
+}
+
+/* 🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪 */
+/* 🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪 */
 
 
 
@@ -102,15 +129,10 @@
   justify-content: space-between;
 
   background-color: #5a5a5ad6;
-  border-bottom: 2px #00ffcc9e solid;
-  border-bottom: 2.5px #7628f3 solid;
-  border-bottom: 1.5px #7628f3 solid;
+  /* border-bottom: 2px #00ffcc9e solid; */
+  /* border-bottom: 2.5px #7628f3 solid; */
+  border-bottom: 1px #5e0fde solid;
 
-
-  /* border-bottom: 4px #6200bde6 solid; */
-
-
-  
 
   align-items: center;
   padding: 0px 20px;
@@ -131,8 +153,9 @@
   height: 40px;
   /* border:1px red solid; */
    /* background-image:url('../../../public/logo.png'); */
-z-index: 9999;
-transition: all 0.3s ease;
+  z-index: 9999;
+  transition: all 0.3s ease;
+
 }
 .logopng{
   height: 40px;
@@ -143,8 +166,7 @@ transition: all 0.3s ease;
   color: #00ffccbf;
   color: #00ffccbf;
   color:white;
-  
-  font-size: 20px;
+  font-size: 22px;
 }
 .logo:hover{
   scale:calc(108%)
@@ -154,7 +176,8 @@ transition: all 0.3s ease;
 
 
 
-/* ------------------------------ */
+/* 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥 */
+/* 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥 */
 .toolbarBody{
   position: absolute;
   z-index: 9999;
@@ -163,6 +186,7 @@ transition: all 0.3s ease;
 
   background-color: green;
   background-color: rgb(102, 102, 102);
+
   /* border: 1px #7f0fcf solid; */
   /* border: 1px #00ffcc9e solid; */
   transform: translate(-50%, -50%);
@@ -173,8 +197,8 @@ transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 15px 0px;
-  gap: 1px;
+  padding: 10px 0px;
+
 }
 .toolBtns{
   cursor:grab;
@@ -184,20 +208,48 @@ transition: all 0.3s ease;
   height: 30px;
   width: 30px;
   border-radius: 4px;
+  padding: 16px 23px;
   /* border: 1px #00ffcc9e  solid; */
+}
+.toolBtns:hover{
+  background-color: #ffffff;
+
+  background-color: #00ffccab ;
+  /* background-color: #7628f3 ; */
+
+  .SidebarIconBtnS{
+    transform: scale(1.8);
+      /* color:#00ffccab; */
+  }
+  .toolBtnHint{
+    opacity: 1; 
+    visibility: visible;
+  }
 }
 
 .SidebarIconBtnS{
   color: rgb(255, 255, 255);
-  /* border: 2px white solid; */
   transition: all 0.1s ease;
   transform: scale(1.1);
 }
-.SidebarIconBtnS:hover{
-  color: #00ffccab;
-  transform: scale(1.3);
+
+.toolBtnHint{
+  position: absolute;
+
+  left:58px;
+  color: #ffffff;
+  background-color: #000000;
+  font-size: 10px;
+  padding: 3px 12px;
+  opacity: 0; 
+  visibility: hidden;
+  white-space: nowrap;
 
 }
+/* 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥 */
+/* 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥 */
+
+
 
 .toolbarBodyHidden{
   /* 縮小狀態會跑出箭頭，然後直線消失 */
@@ -249,6 +301,8 @@ transition: all 0.3s ease;
   transform: rotate(90deg) translateY(-39%);
   font-size: 22px;
   color: rgba(136, 136, 136, 0.621);
+  color: #00ffccab;
+  
 }
 .iconShowToggle{
   transition: all 0.3s linear;
@@ -297,28 +351,42 @@ transition: all 0.3s ease;
   display: flex;
   justify-content: center;
   align-items: center;
-  line-height: 80%;
   color: rgb(255, 255, 255) ;
   border-radius: 80px;
   cursor: pointer;
-  background-color:  #6a6a6aa7;
-  background-color:  #6a6a6aa7;
   width: 68px;
   font-size: 17px;
-  border: #00ffcc9e  1px solid;
+  /* border-bottom: white 2px solid; */
   transition: all 0.1s ease;
   color:#7628f3;
   background-color: #00ffccab ;
+  /* box-sizing:content-box; */
 
 }
 .dwBtn:hover{
-
-
   background-color: #ffffff ;
-  border: rgb(255, 255, 255) 1.5px solid;
+  /* border-bottom: #00ffccab 2px solid; */
   color:#00ffccab;
+  .NavBtnHint{
+    opacity: 1; 
+    visibility: visible;
+  }
+}
+
+.NavBtnHint{
+  /* line-height: 151%; */
+  position: absolute;
+  top:55px;
+  font-size: 10px;
+  padding: 3px 12px;
+  color: #ffffff;
+  background-color: #000000;
+
+  opacity: 0; 
+  visibility: hidden;
 
 }
+
 /* 🟥🟥🟥按鈕們🟥🟥🟥🟥🟥🟥🟥🟥🟥*/
 
 

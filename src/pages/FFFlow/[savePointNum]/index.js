@@ -64,9 +64,14 @@ import { faWindowMinimize,
         faStar,
         faDiamond,
         faCertificate ,
-        faHeart
+        faHeart,
+
+
+
+        faT
         
   } from '@fortawesome/free-solid-svg-icons';
+
 
 import Link from "next/link"
 import { useRouter } from 'next/router';
@@ -465,24 +470,31 @@ useEffect(() => {
             onClick={()=>{onSave(queryNum)}}
             className={styles.dwBtn}>
             <FontAwesomeIcon icon={faFloppyDisk} className={styles.awesomeNavIconBtnS}/>
-
+            <div className={styles.NavBtnHint}>Save</div>
           </button>
 
           {/* <button onClick={onRestore}  */}
           <button onClick={()=>{onRestore(queryNum);}} 
           className={styles.dwBtn}> 
             <FontAwesomeIcon icon={faClockRotateLeft} className={styles.awesomeNavIconBtnS}/>
+            <div className={styles.NavBtnHint}>Restore</div>
               </button>
+              
             {/* <button onClick={onAdd}
             className="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600"
           >add node</button> */}
             <button 
             className={styles.dwBtn}>
-            <Link href="/">
+            <Link href="/" style={{display:'flex',}}>
             <FontAwesomeIcon icon={faFolderOpen} className={styles.awesomeNavIconBtnS}/>
               </Link>
+              <div className={styles.NavBtnHint}>Folder</div>
           </button>
+          
           <DownloadBtn initBgColor={initBgColor}/>
+
+     
+
           <p className={styles.welcome}
                   style={{zIndex:'1999'}}>
                     Welcome!
@@ -533,23 +545,31 @@ useEffect(() => {
       
     <Background variant={variant} />
 
+    <Controls 
 
-    <Controls className={styles.myCustomControls} 
       fitViewOptions={{
         duration: 100,padding: 0.3
       }} // 传递自定义的 FitViewOptions
       // position={'bottom-right'}
       position={'bottom-left'}
-    />
+    >
+  
+    </Controls>
+
+
 
         <Panel  className={styles.layoutPanel} position={'bottom-left'}>
             <div onClick={() => handleLayoutChangeV('TB')}  className={styles.TBlayoutBtnsW}>
                 <FontAwesomeIcon icon={faSitemap} className={styles.layoutBtns}/>
+                <div className={styles.layoutBtnHint}>Horizontal Auto Layout</div>
               </div>
               <div onClick={() => handleLayoutChangeH('LR')} className={styles.LRlayoutBtnsW}>
                 <FontAwesomeIcon icon={faSitemap} className=
                 {`${ styles.layoutBtns}  ${ styles.sitemapRotate}`}/>
+
                 {/* {`${ styles.awesomeNavIconBtnS} ${ styles.sitemapRotate}`}/> */}
+                <div className={styles.layoutBtnHint}>Vertical Auto Layout</div>
+
               </div>
         </Panel>
 
@@ -608,7 +628,6 @@ useEffect(() => {
                 <FontAwesomeIcon icon={faCircleChevronRight} className={styles.iconShowToggle}/>
 
 
-
               </div>
 
 
@@ -617,12 +636,14 @@ useEffect(() => {
                      // className="dndnode" 
                   onDragStart={(event) => onDragStart(event, 'textUpdater')} draggable>
                       <FontAwesomeIcon icon={faSquare} className={styles.SidebarIconBtnS} />
+                      <div className={styles.toolBtnHint}>Drag to Add Shape</div>
                   </div>
 
                 <div className={styles.toolBtns}
                 // className="dndnode input" 
                 onDragStart={(event) => onDragStart(event, 'circleNode')} draggable>
                     <FontAwesomeIcon icon={faCircle} className={styles.SidebarIconBtnS} />
+                    <div className={styles.toolBtnHint}>Drag to Add Shape</div>
                 </div>
 
               {/* <div className={styles.toolBtns}>喔喔</div> */}
@@ -630,22 +651,35 @@ useEffect(() => {
               <div className={styles.toolBtns}
                 onDragStart={(event) => onDragStart(event, 'CertificateNode')} draggable>
                     <FontAwesomeIcon icon={faCertificate} className={styles.SidebarIconBtnS} />
+                    <div className={styles.toolBtnHint}>Drag to Add Shape</div>
               </div>
               <div className={styles.toolBtns}
                 onDragStart={(event) => onDragStart(event, 'Diamond')} draggable>
                     <FontAwesomeIcon icon={faDiamond} className={styles.SidebarIconBtnS} />
+                    <div className={styles.toolBtnHint}>Drag to Add Shape</div>
               </div>
               <div className={styles.toolBtns}
                 onDragStart={(event) => onDragStart(event, 'Star')} draggable>
                     <FontAwesomeIcon icon={faStar} className={styles.SidebarIconBtnS} />
+                    <div className={styles.toolBtnHint}>Drag to Add Shape</div>
               </div>
 
               <div className={styles.toolBtns}
                 onDragStart={(event) => onDragStart(event, 'Heart')} draggable>
                     <FontAwesomeIcon icon={faHeart} className={styles.SidebarIconBtnS} />
+                    <div className={styles.toolBtnHint}>Drag to Add Shape</div>
+              </div>
+
+
+              <div className={styles.toolBtns}
+                onDragStart={(event) => onDragStart(event, 'Heart')} draggable>
+                <FontAwesomeIcon icon={faT} className={styles.SidebarIconBtnS}/>
+                <div className={styles.toolBtnHint}>Drag to Add Text</div>
               </div>
               
-              <div className={styles.toolBtns}> <ImageUpload onAdd={onAdd}/></div>
+              <div className={styles.toolBtns}> <ImageUpload onAdd={onAdd}/>
+                <div className={styles.toolBtnHint}>Image Upload</div>
+              </div>
 
 
 

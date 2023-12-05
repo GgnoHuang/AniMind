@@ -10,33 +10,39 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  line-height: 80%;
-  border-radius: 10px;
 
+  color: rgb(255, 255, 255) ;
+  border-radius: 80px;
   cursor: pointer;
-  width: 65px;
-  border-radius: 70px;
-
-
+  width: 68px;
   font-size: 17px;
-  border: #00ffcc9e  1px solid;
+
   transition: all 0.1s ease;
   color:#7628f3;
   background-color: #00ffccab ;
+
 }
 
 .dwBtn:hover{
-
-  color: rgb(255, 255, 255);
-
-
-  cursor: pointer;
-  background-color: #00ffcc9e ;
-  /* background-color: aquamarine ; */
   background-color: #ffffff ;
-  border: #ffffff 1.5px solid;
-  color:#00ffccab;
 
+  color:#00ffccab;
+  .NavBtnHint{
+    opacity: 1; 
+    visibility: visible; 
+
+  }
 }
 
 
+.NavBtnHint{
+  position: absolute;
+  top:55px;
+  font-size: 10px;
+  padding: 3px 12px;
+  color: #ffffff;
+  background-color: #191919;
+
+  opacity: 0; 
+  visibility: hidden;
+}
