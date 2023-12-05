@@ -497,7 +497,7 @@ useEffect(() => {
 
           <p className={styles.welcome}
                   style={{zIndex:'1999'}}>
-                    Welcome!
+                    Welcome！
                   <span 
                   style={{zIndex:'1999'}}
                   >

@@ -14,29 +14,43 @@
 }
 .logoutbtn{
   line-height: 80%;
-  color: rgb(255, 255, 255) ;
-  border-radius: 90px;
+  cursor: pointer;
+  border-radius: 80px;
   height: 100%;
   cursor: pointer;
-  background-color:  #6a6a6aa7;
-  width: 70px;
+  background-color: #00ffccab ;
+  color:#7628f3;
 
-  font-size: 13px;
-  border: #00ffcc9e  1.5px solid;
-  /* border: #7fffd4  1.5px solid; */
-  /* border: #ffdf7f  1.5px solid; */
+  width: 68px;
+  font-size: 17px;
+
+  position: relative;
 }
 
 .logoutbtn:hover{
 
-  color: rgb(255, 255, 255);
+  background-color: #ffffff ;
+  color:#00ffccab;
+  .logoutBtnHint{
+    opacity: 1; 
+    visibility: visible; 
+  }
+}
 
 
-  cursor: pointer;
-  background-color: #00ffccab ;
-  /* background-color: #7fffd4 ; */
-  /* background-color: #ffdf7f ; */
 
-  font-size: 13px;
-  border: rgb(255, 255, 255) 1px solid;
+
+.logoutBtnHint{
+  top:40px;
+  font-size: 10px;
+  padding: 3px 12px;
+  color: #ffffff;
+  background-color: #000000;
+  position: absolute;
+  left: 50%; /* 水平居中 */
+  transform: translateX(-50%); /* 校正由于 left: 50% 导致的偏移 */
+  white-space: nowrap; /* 防止換行 */
+
+  opacity: 0; 
+  visibility: hidden; 
 }

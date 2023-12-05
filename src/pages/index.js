@@ -209,12 +209,12 @@ const reDirect =(query) => {
             {userAuth !== null && (
               <div className={styles.savePointContainerwWapper}>
               <div className={styles.savePointContainer}>
+                
                 <div className={styles.addbtn}>
-                <button className={styles.addbtnn} onClick={onSave}>
-                  
-                    <FontAwesomeIcon icon={faFileCirclePlus} style={{marginRight:'6px'}}/>
-                      Add File
-                </button>
+                    <button className={styles.addbtnn} onClick={onSave}>
+                        <FontAwesomeIcon icon={faFileCirclePlus} style={{marginRight:'6px' ,fontSize:'22px'}}/>
+                          New File
+                    </button>
                 </div>
 
       
