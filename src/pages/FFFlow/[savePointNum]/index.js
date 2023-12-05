@@ -485,7 +485,7 @@ useEffect(() => {
           >add node</button> */}
             <button 
             className={styles.dwBtn}>
-            <Link href="/">
+            <Link href="/" style={{display:'flex',}}>
             <FontAwesomeIcon icon={faFolderOpen} className={styles.awesomeNavIconBtnS}/>
               </Link>
               <div className={styles.NavBtnHint}>Folder</div>
@@ -628,7 +628,6 @@ useEffect(() => {
                 <FontAwesomeIcon icon={faCircleChevronRight} className={styles.iconShowToggle}/>
 
 
-
               </div>
 
 
@@ -637,12 +636,14 @@ useEffect(() => {
                      // className="dndnode" 
                   onDragStart={(event) => onDragStart(event, 'textUpdater')} draggable>
                       <FontAwesomeIcon icon={faSquare} className={styles.SidebarIconBtnS} />
+                      <div className={styles.toolBtnHint}>Drag to Add Shape</div>
                   </div>
 
                 <div className={styles.toolBtns}
                 // className="dndnode input" 
                 onDragStart={(event) => onDragStart(event, 'circleNode')} draggable>
                     <FontAwesomeIcon icon={faCircle} className={styles.SidebarIconBtnS} />
+                    <div className={styles.toolBtnHint}>Drag to Add Shape</div>
                 </div>
 
               {/* <div className={styles.toolBtns}>喔喔</div> */}
@@ -650,28 +651,35 @@ useEffect(() => {
               <div className={styles.toolBtns}
                 onDragStart={(event) => onDragStart(event, 'CertificateNode')} draggable>
                     <FontAwesomeIcon icon={faCertificate} className={styles.SidebarIconBtnS} />
+                    <div className={styles.toolBtnHint}>Drag to Add Shape</div>
               </div>
               <div className={styles.toolBtns}
                 onDragStart={(event) => onDragStart(event, 'Diamond')} draggable>
                     <FontAwesomeIcon icon={faDiamond} className={styles.SidebarIconBtnS} />
+                    <div className={styles.toolBtnHint}>Drag to Add Shape</div>
               </div>
               <div className={styles.toolBtns}
                 onDragStart={(event) => onDragStart(event, 'Star')} draggable>
                     <FontAwesomeIcon icon={faStar} className={styles.SidebarIconBtnS} />
+                    <div className={styles.toolBtnHint}>Drag to Add Shape</div>
               </div>
 
               <div className={styles.toolBtns}
                 onDragStart={(event) => onDragStart(event, 'Heart')} draggable>
                     <FontAwesomeIcon icon={faHeart} className={styles.SidebarIconBtnS} />
+                    <div className={styles.toolBtnHint}>Drag to Add Shape</div>
               </div>
 
 
               <div className={styles.toolBtns}
                 onDragStart={(event) => onDragStart(event, 'Heart')} draggable>
                 <FontAwesomeIcon icon={faT} className={styles.SidebarIconBtnS}/>
+                <div className={styles.toolBtnHint}>Drag to Add Text</div>
               </div>
               
-              <div className={styles.toolBtns}> <ImageUpload onAdd={onAdd}/></div>
+              <div className={styles.toolBtns}> <ImageUpload onAdd={onAdd}/>
+                <div className={styles.toolBtnHint}>Image Upload</div>
+              </div>
 
 
 

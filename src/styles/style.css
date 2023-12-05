@@ -7,7 +7,6 @@
   font-family: Helvetica, sans-serif;
 font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
   box-sizing: border-box;
 }
 
@@ -19,7 +18,14 @@ font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 /* ======================== */
 /* ======================== */
 
-
+input[type="color"] {
+  border: 12px solid #ffffff00;  /* 边框颜色 */
+  border-radius: 224px;      /* 圆角 */
+  height: 50px;            /* 高度 */
+  width: 50px;   
+     /* 宽度 */
+  /* 更多样式 */
+}
 
 /* ======================== */
 /* ======================== */
@@ -103,10 +109,8 @@ svg {
   opacity: 0; 
   visibility: hidden;
 
-
-  font-size: 14px;
-  /* border: 1px red solid; */
-  padding: 5px 18px;
+  font-size: 10px;
+  padding: 3px 12px;
   background-color: #ffffff;
   background-color: #000000;
 
