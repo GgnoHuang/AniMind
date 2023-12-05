@@ -20,6 +20,7 @@
 
 
   border-bottom: 3px #00ffcc9e solid;
+  border-bottom: 2px #00ffcc9e solid;
   /* border-bottom: 3px #7fffd4 solid; */
   display: flex;
   justify-content: space-between;
@@ -36,7 +37,7 @@
 
   /* border:1px red solid; */
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 
    /* background-image:url('../../../public/logo.png'); */
 z-index: 9999;
@@ -47,8 +48,10 @@ z-index: 9999;
   margin-right: 7px;
 }
 .logospan{
+   color: #00ffccbf;
   color: #00ffccbf;
-  font-size: 20px;
+  color:white;
+  font-size: 22px;
 }
 .logo:hover{
   scale:calc(108%)

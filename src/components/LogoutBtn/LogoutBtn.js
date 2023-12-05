@@ -1,3 +1,8 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+  faRightFromBracket
+  } from '@fortawesome/free-solid-svg-icons';
+
 import React, { useState } from "react"
 import { auth } from "../../config"
 import { signOut } from "firebase/auth"
@@ -52,9 +57,10 @@ const handleToggleFormClick = () => {
       {/* <div className=" flex items-center flex items-center justify-center"> */}
         <button 
           onClick={handleSignout}
-          className={styles.logoutbtn}
-        >
-          Logout
+          className={styles.logoutbtn}>
+          <FontAwesomeIcon icon={faRightFromBracket} />
+          <div className={styles.logoutBtnHint}>Log Out</div>
+
         </button>
       {/* </div> */}
     </div>

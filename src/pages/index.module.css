@@ -87,41 +87,54 @@ justify-content: center;
 
 .addbtn{
   /* background-image:url('../../public/ggs.png'); */
-  background-size: 210%;
+  /* background-size: 210%;
   background-repeat: no-repeat;
-  background-position: 35% -63px;
+  background-position: 35% -63px; */
   /* background-size: cover; */
   /* border: rgb(255, 255, 255) 3px solid; */
-
   width: 227.2px;
   height: 100px;
-
   align-self: center;
   position: relative;
   padding: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 .addbtnn{
-  color: rgb(255, 255, 255);
-  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  transition: all 0.1s ease;
+  font-size: 14px;
+  font-weight: 600;
+
+  /* color: #00ffcceb; */
+  border-radius: 100px;
   cursor: pointer;
-  background-color:  #00ffccb7;
+
   width: 130px;
   height:60px;
   border: rgb(255, 255, 255) 2px solid;
+  /* border: #00ffcceb 2px solid; */
+  background-color: #5e0fde ;
+  color:  #00ffccd7 ;
 }
 
 .addbtnn:hover{
-  scale:105%;
-  transition: all 0.2s ease;
   z-index: 999;
   /* border: #00ffcd 2px solid; */
   color: aliceblue;
-  background-color:   #00ffcc;
+  color: #5e0fde ;
+  /* color: #5e0fdec7;; */
+  background-color:  #ffffffeb;
+
+  /* color: #00ffcceb; */
+  transform: scale(1.1);
+
   }
 
 
@@ -152,7 +165,7 @@ opacity: 0.8;
 
 .savePoint:hover{
 scale:105%;
-transition: all 0.2s ease;
+transition: all 0.1s ease;
 z-index: 999;
 border: #00ffcd 2px solid;
 
@@ -170,7 +183,7 @@ border: #00ffcd 2px solid;
   top: -10px;
   right: -6px;
   border-radius: 10px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
   /* border: 3px solid salmon; */
 
 }

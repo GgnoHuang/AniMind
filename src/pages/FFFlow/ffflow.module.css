@@ -33,6 +33,7 @@
   border-radius:10px;
   background-color: #666666 !important;
   background-color: #5e0fde !important;
+
 }
 .TBlayoutBtnsW{
   cursor: pointer;
@@ -129,9 +130,9 @@
   justify-content: space-between;
 
   background-color: #5a5a5ad6;
-  /* border-bottom: 2px #00ffcc9e solid; */
+  border-bottom: 2px #00ffcc9e solid;
   /* border-bottom: 2.5px #7628f3 solid; */
-  border-bottom: 1px #5e0fde solid;
+  /* border-bottom: 1px #5e0fde solid; */
 
 
   align-items: center;
@@ -154,7 +155,7 @@
   /* border:1px red solid; */
    /* background-image:url('../../../public/logo.png'); */
   z-index: 9999;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 
 }
 .logopng{
