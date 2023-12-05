@@ -122,6 +122,10 @@ const nodeTypes = {
 };
 
 function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {}) {
+
+  const [localUserData, setLocalUserData] = useState(null)
+
+
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
 
 
@@ -423,10 +427,7 @@ useEffect(() => {
   }
 }, [layoutUpdated, reactFlowInstance]);
 
-
-
 // ⚪️
-
 // ⚪️
 // ⚪️
 
@@ -482,12 +483,21 @@ useEffect(() => {
               </Link>
           </button>
           <DownloadBtn initBgColor={initBgColor}/>
-
-
+          <p className={styles.welcome}
+                  style={{zIndex:'1999'}}>
+                    Welcome!
+                  <span 
+                  style={{zIndex:'1999'}}
+                  >
+                    {localUserData != null && (localUserData.username)}
+ 
+                  </span>
+                </p>
+           
         </div>
       </div>
-        
-    <AuthCheck/>
+
+      <AuthCheck setLocalUserData={setLocalUserData}/>
     {/* <Sidebar 
       onRestore={onRestore}
       saveStation ={saveStation} 

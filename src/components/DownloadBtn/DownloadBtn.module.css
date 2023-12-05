@@ -11,16 +11,18 @@
   justify-content: center;
   align-items: center;
   line-height: 80%;
-  color: rgb(255, 255, 255) ;
   border-radius: 10px;
 
   cursor: pointer;
-  background-color:  #6a6a6aa7;
   width: 65px;
   border-radius: 70px;
 
-  font-size: 13px;
-  border: #00ffcc9e  1.5px solid;
+
+  font-size: 17px;
+  border: #00ffcc9e  1px solid;
+  transition: all 0.1s ease;
+  color:#7628f3;
+  background-color: #00ffccab ;
 }
 
 .dwBtn:hover{
@@ -31,9 +33,10 @@
   cursor: pointer;
   background-color: #00ffcc9e ;
   /* background-color: aquamarine ; */
+  background-color: #ffffff ;
+  border: #ffffff 1.5px solid;
+  color:#00ffccab;
 
-  font-size: 13px;
-  border: rgb(255, 255, 255) 1px solid;
 }
 
 
