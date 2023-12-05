@@ -1,16 +1,117 @@
+.patternStylePanel{
+  display: flex;
+  position: absolute!important;;
+  /* left: -2.5px !important; */
+  /* left: -2px !important; */
+  right:200px !important;;
+  bottom: -2px  !important;
+  height: 39px  !important;
+  border: 1px rgba(255, 255, 255, 0.671) solid;
+  border: 1px white solid;
+
+  width: fit-content;
+  border-radius:10px;
+  background-color: #666666 !important;
+}
+
+
+
+.layoutPanel{
+  display: flex;
+  position: absolute!important;;
+  /* left: -2.5px !important; */
+  left: -2px !important;
+  bottom: -2px  !important;
+  height: 39px  !important;
+  border: 1px rgba(255, 255, 255, 0.671) solid;
+  border: 1px white solid;
+
+  width: fit-content;
+  border-radius:10px;
+  background-color: #666666 !important;
+  background-color: #5e0fde !important;
+
+  
+}
+.TBlayoutBtnsW{
+  cursor: pointer;
+    /* opacity: 0.6; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: aliceblue !important;
+
+  width: 50px !important;
+  transition: all 0.1s linear;
+  border-radius: 10px 0px 0px 10px;
+}
+.LRlayoutBtnsW{
+  border-left: 1px #00ffccab solid;
+  border-left: 1px white solid;
+  cursor: pointer;
+    /* opacity: 0.6; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: aliceblue !important;
+
+  width: 50px !important;
+  transition: all 0.1s linear;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.layoutBtns{
+  color:  #00ffccd7 ;
+
+
+  transform: scale(1.2);
+  position: relative;
+  right: -1px;
+
+   /* 分别是左上、右上、右下、左下 */
+  /* border: 1px red solid; */
+
+}
+.sitemapRotate{
+  transform: rotate(-90deg)scale(1.1);
+  position: relative;
+  left: -1.5px;
+  /* border-radius: 0px 110px 110px 0px  !important; */
+}
+
+.LRlayoutBtnsW:hover,.TBlayoutBtnsW:hover{
+  background-color:#ffffff  !important;
+  .layoutBtns{
+    color:  #5e0fde ;
+  }
+}
+
+
+
+
+
 .navbody{
   font-family:'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   position: absolute;
   z-index: 9999;
   width: 100%;
-  height: 60px;
+  height: 62px;
   display: flex;
   /* border:5px rgb(34, 0, 255) solid; */
   /* background-image:url('../../../public//oos.jpg'); */
   justify-content: space-between;
 
   background-color: #5a5a5ad6;
-  border-bottom: 2.5px #00ffcc9e solid;
+  border-bottom: 2px #00ffcc9e solid;
+  border-bottom: 2.5px #7628f3 solid;
+  border-bottom: 1.5px #7628f3 solid;
+
+
+  /* border-bottom: 4px #6200bde6 solid; */
+
+
+  
+
   align-items: center;
   padding: 0px 20px;
 }
@@ -40,6 +141,9 @@ transition: all 0.3s ease;
 }
 .logospan{
   color: #00ffccbf;
+  color: #00ffccbf;
+  color:white;
+  
   font-size: 20px;
 }
 .logo:hover{
@@ -48,17 +152,18 @@ transition: all 0.3s ease;
 
 
 
-.sitemapRotate{
-  transform: rotate(-90deg);
-}
 
 
+/* ------------------------------ */
 .toolbarBody{
   position: absolute;
   z-index: 9999;
   width: 50px;
-  height: 280px;
+  height: 400px;
+
+  background-color: green;
   background-color: rgb(102, 102, 102);
+  /* border: 1px #7f0fcf solid; */
   /* border: 1px #00ffcc9e solid; */
   transform: translate(-50%, -50%);
   top: 50%;
@@ -69,7 +174,7 @@ transition: all 0.3s ease;
   flex-direction: column;
   align-items: center;
   padding: 15px 0px;
-  gap: 4px;
+  gap: 1px;
 }
 .toolBtns{
   cursor:grab;
@@ -83,7 +188,7 @@ transition: all 0.3s ease;
 }
 
 .SidebarIconBtnS{
-  color: aliceblue;
+  color: rgb(255, 255, 255);
   /* border: 2px white solid; */
   transition: all 0.1s ease;
   transform: scale(1.1);
@@ -93,8 +198,6 @@ transition: all 0.3s ease;
   transform: scale(1.3);
 
 }
-
-
 
 .toolbarBodyHidden{
   /* 縮小狀態會跑出箭頭，然後直線消失 */
@@ -179,17 +282,6 @@ transition: all 0.3s ease;
 /* .dog{
   color:red;
 } */
-.custom-controls {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-}
-
-.custom-minimap {
-  position: absolute;
-  bottom: 60px; /* 調整為 Controls 的高度加上一些間距 */
-  left: 10px;
-}
 
 
 
@@ -199,7 +291,7 @@ transition: all 0.3s ease;
 
 /* 🟥🟥🟥按鈕們🟥🟥🟥🟥🟥🟥🟥🟥🟥*/
 .dwBtn{
-  margin-right: 8px;
+  margin-right: 12px;
   height: 32px;
   /* border: 1px red solid; */
   display: flex;
@@ -210,15 +302,43 @@ transition: all 0.3s ease;
   border-radius: 80px;
   cursor: pointer;
   background-color:  #6a6a6aa7;
-  width: 65px;
-  font-size: 15px;
-  border: #00ffcc9e  1.5px solid;
-  transition: all 0.5s ease;
+  background-color:  #6a6a6aa7;
+  width: 68px;
+  font-size: 17px;
+  border: #00ffcc9e  1px solid;
+  transition: all 0.1s ease;
+  color:#7628f3;
+  background-color: #00ffccab ;
 
 }
 .dwBtn:hover{
-  color: rgb(255, 255, 255);
-  background-color: #00ffccab ;
+
+
+  background-color: #ffffff ;
   border: rgb(255, 255, 255) 1.5px solid;
+  color:#00ffccab;
+
 }
 /* 🟥🟥🟥按鈕們🟥🟥🟥🟥🟥🟥🟥🟥🟥*/
+
+
+
+
+.welcome{
+  border-radius: 9px;
+
+  /* height: 38px; */
+  padding: 0px 11px;
+  /* border: 1px red solid; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px #7628f3 solid;
+color:#7628f3;
+color:#ffffff;
+/* background-color: #00ffccab ; */
+
+  /* color: white ; */
+
+  margin-left: 15px;
+}

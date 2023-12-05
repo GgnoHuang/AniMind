@@ -77,6 +77,7 @@ import { ref, set ,get} from "firebase/database"
 
 import ReactFlow, { ReactFlowProvider,useReactFlow,
   Panel,Controls,Background ,MiniMap,
+  ControlButton,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import styles from "../ffflow.module.css";
@@ -121,6 +122,10 @@ const nodeTypes = {
 };
 
 function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {}) {
+
+  const [localUserData, setLocalUserData] = useState(null)
+
+
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
 
 
@@ -138,6 +143,7 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
 
 
   const [initBgColor,setInitBgColor]= useState( '#373737')
+  // const [initBgColor,setInitBgColor]= useState( '#373737')
   function handleBgColorChange(event) {
     const newBgColor = event.target.value;
     setInitBgColor(newBgColor);
@@ -421,10 +427,7 @@ useEffect(() => {
   }
 }, [layoutUpdated, reactFlowInstance]);
 
-
-
 // ⚪️
-
 // ⚪️
 // ⚪️
 
@@ -451,33 +454,10 @@ useEffect(() => {
 
         {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
         {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
-          <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
-          onClick={() => setVariant('lines')}>格紋</button>
-          <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
-          onClick={() => setVariant('cross')}>十字</button>
-          <button className="bg-yellow-400 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-500 ml-1 mr-1"
-          onClick={() => setVariant('dots')}>點狀</button>
-          <input className="nodrag" type="color"
-          onChange={handleBgColorChange}
-          />
-            {/* defaultValue= */}
+  
         {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
         {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
-        <div onClick={() => handleLayoutChangeV('TB')}  className={styles.dwBtn}>
-           <FontAwesomeIcon icon={faSitemap} className={styles.awesomeNavIconBtnS}/>
-           </div>
 
-            <div onClick={() => handleLayoutChangeH('LR')} className={styles.dwBtn}>
-                <FontAwesomeIcon icon={faSitemap} className=
-                {
-                  `${ styles.awesomeNavIconBtnS} ${ styles.sitemapRotate}`
-
-                }
-                
-
-                />
-            
-            </div>
 
 
 
@@ -503,12 +483,21 @@ useEffect(() => {
               </Link>
           </button>
           <DownloadBtn initBgColor={initBgColor}/>
-
-
+          <p className={styles.welcome}
+                  style={{zIndex:'1999'}}>
+                    Welcome!
+                  <span 
+                  style={{zIndex:'1999'}}
+                  >
+                    {localUserData != null && (localUserData.username)}
+ 
+                  </span>
+                </p>
+           
         </div>
       </div>
-        
-    <AuthCheck/>
+
+      <AuthCheck setLocalUserData={setLocalUserData}/>
     {/* <Sidebar 
       onRestore={onRestore}
       saveStation ={saveStation} 
@@ -543,14 +532,52 @@ useEffect(() => {
     >
       
     <Background variant={variant} />
-    <Controls 
-      className="custom-controls"
+
+
+    <Controls className={styles.myCustomControls} 
       fitViewOptions={{
-        duration: 100,padding: 1
+        duration: 100,padding: 0.3
       }} // 传递自定义的 FitViewOptions
+      // position={'bottom-right'}
       position={'bottom-left'}
-    
     />
+
+        <Panel  className={styles.layoutPanel} position={'bottom-left'}>
+            <div onClick={() => handleLayoutChangeV('TB')}  className={styles.TBlayoutBtnsW}>
+                <FontAwesomeIcon icon={faSitemap} className={styles.layoutBtns}/>
+              </div>
+              <div onClick={() => handleLayoutChangeH('LR')} className={styles.LRlayoutBtnsW}>
+                <FontAwesomeIcon icon={faSitemap} className=
+                {`${ styles.layoutBtns}  ${ styles.sitemapRotate}`}/>
+                {/* {`${ styles.awesomeNavIconBtnS} ${ styles.sitemapRotate}`}/> */}
+              </div>
+        </Panel>
+
+        <Panel  className={styles.patternStylePanel} position={'bottom-right'}>
+        <button 
+          onClick={() => setVariant('lines')}>格紋</button>
+          <button 
+          onClick={() => setVariant('cross')}>十字</button>
+          <button 
+          onClick={() => setVariant('dots')}>點狀</button>
+          <input
+          className="nodrag" 
+          type="color"
+          onChange={handleBgColorChange}
+          />
+            {/* defaultValue= */}
+        </Panel>
+
+
+{/* 
+<Controls>
+  <ControlButton
+    className="my-custom-control-button"
+    onClick={() => alert('Something magical just happened. ✨')}
+  >
+  </ControlButton>
+</Controls> */}
+
 
  
 
@@ -559,14 +586,14 @@ useEffect(() => {
   pannable={true}
   style={{ cursor: 'move',}}
   position={'bottom-right'}
+  // nodeColor='#373737'
+  // nodeStrokeColor="#00ffccab"
+  // nodeStrokeWidth={1}
+  maskColor='#666666'
+  nodeColor='#00ffccab'
 
-  // nodeColor='yellowgreen'
-  // nodeStrokeColor="green"
 
-  nodeBorderRadius={10}
-  // nodeStrokeWidth={30}
-  maskColor='#5a5a5ad6'
-  // maskStrokeColor="blue"
+
 
 />
 
@@ -619,6 +646,27 @@ useEffect(() => {
               </div>
               
               <div className={styles.toolBtns}> <ImageUpload onAdd={onAdd}/></div>
+
+
+
+              {/* 
+              <div className={styles.toolBtns} onClick={() => handleLayoutChangeV('TB')} >
+                <FontAwesomeIcon icon={faSitemap} className={styles.SidebarIconBtnS}/>
+              </div>
+
+              <div className={styles.toolBtns} onClick={() => handleLayoutChangeH('LR')} >
+              <FontAwesomeIcon icon={faSitemap} className=
+                {`${ styles.awesomeNavIconBtnS} ${ styles.sitemapRotate}`}/>
+              </div> */}
+
+              {/* <div onClick={() => handleLayoutChangeV('TB')}  className={styles.dwBtn}>
+                <FontAwesomeIcon icon={faSitemap} className={styles.awesomeNavIconBtnS}/>
+              </div> */}
+              {/* <div onClick={() => handleLayoutChangeH('LR')} className={styles.dwBtn}>
+                <FontAwesomeIcon icon={faSitemap} className=
+                {`${ styles.awesomeNavIconBtnS} ${ styles.sitemapRotate}`}/>
+              </div> */}
+
         </div>
 
 

@@ -135,15 +135,19 @@ export default function StarNode({id, data,isConnectable,selected }) {
 // 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
       height: '100%'}}>
           <NodeResizer handleStyle={{
-          width:'10px',height:'10px',
-          backgroundColor:'red',
+          width:'13px',height:'13px',
+          backgroundColor:'#7e0fe5',
+
             borderRadius:'2px'
         }}
         lineStyle={{borderWidth: '2px',  // 設置邊界線寬度
           borderStyle: 'dashed', // 設置邊界線樣式
           borderStyle: 'solid', // 設置邊界線樣式
           animation: 'blink 1.2s ease infinite', // 這會讓邊界線閃爍
-          borderColor: 'white	',
+          borderColor: '#00ffccd8',
+
+
+
         }}
       isVisible={selected} minWidth={100} minHeight={100} />
       <div ref={rotateControlRef} style={{display: 'block'}} className='nodrag rotateHandle'/>
