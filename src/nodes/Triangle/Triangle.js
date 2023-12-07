@@ -6,10 +6,9 @@ import {
   faFont,faMinus,faPlus
 } from '@fortawesome/free-solid-svg-icons';
 
-
 import useStore from '../../store';
 
-import styles from './Heart.module.css';
+import styles from './Triangle.module.css';
 import Image from 'next/image'
 import React, { useEffect, useState, useRef } from 'react';
 import { Handle, NodeProps,Position,
@@ -31,7 +30,9 @@ export default function StarNode({id, data,isConnectable,selected }) {
 
   const [selectedColor, setSelectedColor] = useState(data.backgroundColor||'#ffffff'); // 默认颜色
 
+
   const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'black'); // 默认颜色
+
   const [selectFontSize, setSelectFontSize] = useState(data.fontSize ||'25px');
   const [isPointerEventsActive, setIsPointerEventsActive] = useState(false);
 
@@ -44,6 +45,9 @@ export default function StarNode({id, data,isConnectable,selected }) {
   } = useStore(state => ({
     updateNodeData: state.updateNodeData,
     updateNodeColor: state.updateNodeColor,
+    // isAnyNodeSelected: state.isAnyNodeSelected,
+    // selectNode: state.selectNode,
+
   }));
 
   const [blockquoteContent, setBlockquoteContent] = useState(data.userMemoContent || '點擊');
@@ -95,9 +99,7 @@ export default function StarNode({id, data,isConnectable,selected }) {
 
   const onChangeTextAlign = (align) => {
     updateNodeData(id, { ...data, textalign: align });
-  };
-
-
+  }
 
 
   // 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
@@ -120,7 +122,6 @@ export default function StarNode({id, data,isConnectable,selected }) {
       setRotation(180 - deg);
       // updateNodeInternals(id);
     });
-
     selection.call(dragHandler);
   }, [
     
@@ -128,29 +129,39 @@ export default function StarNode({id, data,isConnectable,selected }) {
 // 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
 // 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
 
+
+
+
+  
   return (
     <div style={{
 // 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
       transform: `rotate(${rotation}deg)`,
 // 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
-      height: '100%'}}>
-          <NodeResizer handleStyle={{
-          width:'15px',height:'15px',
-          backgroundColor:'#7e0fe5',
-            borderRadius:'2px'
-        }}
-        lineStyle={{borderWidth: '2px',  // 設置邊界線寬度
-          borderStyle: 'dashed', // 設置邊界線樣式
-          borderStyle: 'solid', // 設置邊界線樣式
-          animation: 'blink 1.2s ease infinite', // 這會讓邊界線閃爍
-          borderColor: '#00ffccd8',
+      height: '100%',
 
-        }}
-      isVisible={selected} minWidth={100} minHeight={100} />
+      }}
+      // className='node'
+      >
+        <NodeResizer 
+          handleStyle={{
+            width:'15px',height:'15px',
+            backgroundColor:'#7e0fe5',
+            borderRadius:'2px'
+          }}
+          lineStyle={{borderWidth: '2px',  // 設置邊界線寬度
+            borderStyle: 'dashed', // 設置邊界線樣式
+            borderStyle: 'solid', // 設置邊界線樣式
+            animation: 'blink 1.2s ease infinite', // 這會讓邊界線閃爍
+            borderColor: '#00ffccd8',
+          }}
+          isVisible={selected} minWidth={100} minHeight={100} 
+        />
       <div ref={rotateControlRef} style={{display: 'block'}} className='nodrag rotateHandle'/>
 
 
       <NodeToolbar >
+
 
       </NodeToolbar>
       
@@ -178,6 +189,7 @@ export default function StarNode({id, data,isConnectable,selected }) {
 
             <button onClick={increaseFontSizeTen}
                   className={styles.tetxToolsBig}>
+
                           <FontAwesomeIcon icon={faFont}
                     className={
                       `${styles.Aicon} ${styles.ok}`
@@ -212,7 +224,10 @@ export default function StarNode({id, data,isConnectable,selected }) {
             </button>
 
             <input value={selectedColor}
+                // 這邊value就是input顯示在畫面上的顏色，就是data.backgroundColor
                 type="color"
+                // defaultValue={data.color}
+                  // className="nodrag"
                 onChange={onSelectColor}
             />
             
@@ -224,15 +239,24 @@ export default function StarNode({id, data,isConnectable,selected }) {
 
 
       <div 
+      
       onClick={handleDoubleClick}
         className={styles.starMask}
         style={{ 
           padding:'30px', // 🟪 🟪 🟪 🟪 🟪 🟪 🟪 🟪 🟪 🟪 🟪 🟪 🟪 🟪
+
         backgroundColor: data.backgroundColor ||  '#ffffff', // 使用data中的背景颜色，如果没有则使用默认颜色
         border: '2px solid gray',
         overflow:'hidden',
+
       }}>
         
+
+
+ 
+
+
+
 
 <blockquote 
         contentEditable="true"
@@ -241,10 +265,9 @@ export default function StarNode({id, data,isConnectable,selected }) {
             pointerEvents: isPointerEventsActive ? 'auto' : 'none',
             cursor: 'text',
             color: data.fontColor || 'black',
-
             fontSize:data.fontSize||'25px',
             textAlign: data.textalign ||'center',
-
+              
           }}
           onInput={onEditText}
           spellCheck="false"
@@ -252,10 +275,11 @@ export default function StarNode({id, data,isConnectable,selected }) {
           className='nodrag userRestoreInput' >
     
         </blockquote>
-</div>
+      </div>
 
 
-<Handle
+
+      <Handle
             position={Position.Top} id="a"  type="target"
             className={`${styles.handleStyle} ${styles.handleStyleTop} `}
             isConnectable={isConnectable} />
@@ -270,7 +294,6 @@ export default function StarNode({id, data,isConnectable,selected }) {
         <Handle  position={Position.Right} id="d" type="source"
             className={`${styles.handleStyle} ${styles.handleStyleRight} `}
             isConnectable={isConnectable} />
-
 
 
 

@@ -72,12 +72,8 @@
  
   transform: scale(0.7);
  }
- .tetxToolsBig{
- 
- }
- .ok{
-  /* font-size: 34px; */
- }
+
+
 
 
 
@@ -87,8 +83,8 @@
 .handleStyle {
   position:absolute;
   border:1px rgb(255, 255, 255) solid;
-  height: 10px;
-  width: 10px;  
+  height: 7px;
+  width: 7px;  
 }
 .handleStyle:hover{
   background-color: white !important ;
@@ -112,6 +108,6 @@
   background-color: #00ffcc9e ;
   bottom: -12px;
 }
+/* ================================ */
+/* ================================ */
 
-/* ================================ */
-/* ================================ */

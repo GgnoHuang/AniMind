@@ -5,8 +5,6 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
 
 
-
-
 import React, { useState, useEffect } from "react"
 import Link from "next/link"
 
@@ -213,7 +211,7 @@ const reDirect =(query) => {
                 <div className={styles.addbtn}>
                     <button className={styles.addbtnn} onClick={onSave}>
                         <FontAwesomeIcon icon={faFileCirclePlus} style={{marginRight:'6px' ,fontSize:'22px'}}/>
-                          New File
+                          New
                     </button>
                 </div>
 

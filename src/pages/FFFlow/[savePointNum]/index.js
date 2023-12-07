@@ -66,7 +66,7 @@ import { faWindowMinimize,
         faCertificate ,
         faHeart,
 
-
+        faPlay,
 
         faT
         
@@ -87,18 +87,22 @@ import ReactFlow, { ReactFlowProvider,useReactFlow,
 import 'reactflow/dist/style.css';
 import styles from "../ffflow.module.css";
 
+
+// node👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻
 // node👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻
 import TextUpdaterNode from '../../../nodes/TextUpdaterNode/TextUpdaterNode.js'
+
+import ImgNode from '../../../nodes/ImgNode/ImgNode.js'
+
 import CircleNode from '../../../nodes/CircleNode/CircleNode.js'
 import CertificateNode from '../../../nodes/CertificateNode/CertificateNode.js'
-// import OmgNode from '../../../nodes/OmgNode'
-import ImgNode2 from '../../../nodes/ImgNode2.js'
-// import proCircleNode from '../../../nodes/沒用到circleNode.js'
-
-import shapeNode from '../../../nodes/shapeNode.js'
 import Diamond from '../../../nodes/Diamond/Diamond.js'
 import Heart from '../../../nodes/Heart/Heart.js'
 import Star from '../../../nodes/Star/Star.js'
+import PureText from '../../../nodes/PureText/PureText.js'
+import Triangle from '../../../nodes/Triangle/Triangle.js'
+import Cute from '../../../nodes/Cute/Cute.js'
+// node👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻
 // node👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻
 
 import AuthCheck from "../AuthCheck.js"
@@ -111,6 +115,7 @@ const proOptions = { account: 'paid-pro', hideAttribution: true };
 
 import { shallow } from 'zustand/shallow';
 import useStore from '../../../store.js';
+import { index } from 'd3';
 
 const nodeTypes = { 
   textUpdater: TextUpdaterNode,
@@ -119,11 +124,15 @@ const nodeTypes = {
   circleNode: CircleNode,
   // proCircleNode:proCircleNode,
 
-  ImgNode2: ImgNode2,
-  shapeNode:shapeNode,
+  ImgNode: ImgNode,
+
   Diamond:Diamond,
   Heart:Heart,
   Star:Star,
+  PureText:PureText,
+  Triangle:Triangle,
+  Cute:Cute,
+
 };
 
 function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {}) {
@@ -361,7 +370,7 @@ const onAdd = (imageUrl) => {
   
   const newNode = {
     id: getNodeId(),
-    type: 'ImgNode2',
+    type: 'ImgNode',
     data:{
       pokemonpng:imageUrl
       // pokemonpng:'/gg.jpg'
@@ -444,6 +453,9 @@ useEffect(() => {
 
       }}>
 
+
+
+
       <div className={styles.navbody}>
           <Link href="/">
               <div className={styles.logo}   style={{zIndex:'1999'}}>
@@ -520,9 +532,12 @@ useEffect(() => {
         
     <ReactFlow
       proOptions={proOptions}
-
       style={{ background: initBgColor }}
       zoomOnDoubleClick={false}
+
+      // connectionMode="loose"  
+      // 或 "strict"
+      connectionMode="loose"  // 或 "strict"
 
       ref={reactFlowWrapper}
       nodes={nodes}
@@ -531,6 +546,7 @@ useEffect(() => {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       nodeTypes={nodeTypes}
+      // edgeTypes={edgeTypes}
       fitView={false}// 沒有設定的話會重新載入就fitView導致變很大
       // onEdgeClick={onEdgeClick}
       // onNodeClick={onNodeClick}
@@ -574,18 +590,53 @@ useEffect(() => {
         </Panel>
 
         <Panel  className={styles.patternStylePanel} position={'bottom-right'}>
-        <button 
-          onClick={() => setVariant('lines')}>格紋</button>
-          <button 
-          onClick={() => setVariant('cross')}>十字</button>
-          <button 
-          onClick={() => setVariant('dots')}>點狀</button>
-          <input
-          className="nodrag" 
-          type="color"
-          onChange={handleBgColorChange}
-          />
-            {/* defaultValue= */}
+
+            <div 
+               style={{  
+                width: '30px',  height: '30px',
+                borderRadius:'777px',
+                overflow:'hidden',
+                cursor:'pointer'
+                }}
+                onClick={() => setVariant('lines')}>
+                  <img src='/格.png' alt="Picture"
+
+                  /> 
+            </div>
+
+            <div            
+              style={{  
+                width: '30px',  height: '30px',
+                borderRadius:'777px',
+                overflow:'hidden',          cursor:'pointer'
+                }}
+            onClick={() => setVariant('cross')}>
+                  <img
+                    src='/格.png'
+                    alt="Picture"
+
+                  /> 
+            </div>
+
+
+              <div onClick={() => setVariant('dots')}
+              
+              style={{  
+                width: '30px',  height: '30px',
+                borderRadius:'777px',
+                overflow:'hidden',          cursor:'pointer'
+                }}>
+                  <img
+                    src='/dotbtn.png'
+                    alt="Picture"
+                  /> 
+              </div>
+            <input
+            className="nodrag" 
+            type="color"
+            onChange={handleBgColorChange}
+            />
+              {/* defaultValue= */}
         </Panel>
 
 
@@ -653,9 +704,26 @@ useEffect(() => {
                     <FontAwesomeIcon icon={faCertificate} className={styles.SidebarIconBtnS} />
                     <div className={styles.toolBtnHint}>Drag to Add Shape</div>
               </div>
+
+              <div className={styles.toolBtns}
+                onDragStart={(event) => onDragStart(event, 'Triangle')} draggable>
+                    <FontAwesomeIcon icon={faPlay} 
+                    className={styles.SidebarIconBtnStriangle}/>
+                    <div className={styles.toolBtnHint}>Drag to Add Shape</div>
+              </div>
+
+              <div className={`${styles.toolBtns} ${styles.toolBtnsCute}`}
+                  onDragStart={(event) => onDragStart(event, 'Cute')} draggable>
+                  <img src='/cutelogo.png' alt="Picture" className={styles.SidebarIconBtnScute} />
+
+                  <div className={styles.toolBtnHint}>Drag to Add Shape</div>
+              </div>
+         
+
               <div className={styles.toolBtns}
                 onDragStart={(event) => onDragStart(event, 'Diamond')} draggable>
-                    <FontAwesomeIcon icon={faDiamond} className={styles.SidebarIconBtnS} />
+                    <FontAwesomeIcon icon={faDiamond}
+                     className={styles.SidebarIconBtnS} />
                     <div className={styles.toolBtnHint}>Drag to Add Shape</div>
               </div>
               <div className={styles.toolBtns}
@@ -672,7 +740,7 @@ useEffect(() => {
 
 
               <div className={styles.toolBtns}
-                onDragStart={(event) => onDragStart(event, 'Heart')} draggable>
+                onDragStart={(event) => onDragStart(event, 'PureText')} draggable>
                 <FontAwesomeIcon icon={faT} className={styles.SidebarIconBtnS}/>
                 <div className={styles.toolBtnHint}>Drag to Add Text</div>
               </div>

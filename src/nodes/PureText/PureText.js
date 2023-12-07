@@ -1,30 +1,42 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+  faAlignRight,
+  faAlignJustify,
+  faAlignLeft,
+  faFont,faMinus,faPlus
+} from '@fortawesome/free-solid-svg-icons';
 
-
-import { faDiamond } from '@fortawesome/free-solid-svg-icons';
 
 
 import { Handle, NodeProps,Position, NodeResizer} from 'reactflow';
 import { useCallback, useState,useEffect ,useRef} from 'react';
-import useStore from '../store';
+import useStore from '../../store';
 
+import styles from './PureText.module.css';
 
 // const handleStyle = { left: 15 };
 
 // import useStore, { NodeData } from '..//pages/FFFlow/store';
 
 function TextUpdaterNode({id, data,isConnectable,selected }) {
-  const [selectedColor, setSelectedColor] = useState(data.backgroundColor||'#ffffff'); // 默认颜色
+  const [selectedColor, setSelectedColor] = useState(data.backgroundColor||'blue'); 
+  
+  // 默认颜色
   // data.backgroundColor||'#ffffff'
   // 這個||很重要，這樣重新整理連input上面那個圖也可以顯示成我們背景顏色
+  // const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'#00ffcc');
+
+
   const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'#ffffff'); // 默认颜色
+
+
   const [selectFontSize, setSelectFontSize] = useState(data.fontSize ||'25px');
   // const [minSize, setMinSize] = useState({ minWidth: 100, minHeight: 100 });
 
   const [isPointerEventsActive, setIsPointerEventsActive] = useState(false);
 
   const handleDoubleClick = () => {
-    console.log('hi')
+    // console.log('hi')
     setIsPointerEventsActive(prev => !prev);
   };
 
@@ -36,7 +48,7 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
 
   }));
 
-  const [blockquoteContent, setBlockquoteContent] = useState(data.userMemoContent || '點擊輸入');
+  const [blockquoteContent, setBlockquoteContent] = useState(data.userMemoContent || 'Type here...');
 
   // const onInpupu = (event) => {
   //   console.log('當前輸入：', event.target.value);
@@ -105,9 +117,19 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
   return (
     <>
         <NodeResizer
-          handleStyle={{width:'15px',height:'15px',backgroundColor:'red'}}
-          lineStyle={{borderWidth: '5px', borderStyle: 'dashed', borderColor: '#FF00FF	',
-            animation: 'blink 1s linear infinite', }}
+
+          handleStyle={{
+            width:'15px',height:'15px',
+            backgroundColor:'#7e0fe5',
+            borderRadius:'2px'
+          }}
+          lineStyle={{borderWidth: '2px',  // 設置邊界線寬度
+            borderStyle: 'dashed', // 設置邊界線樣式
+            borderStyle: 'solid', // 設置邊界線樣式
+            animation: 'blink 1.2s ease infinite', // 這會讓邊界線閃爍
+            borderColor: '#00ffccd8',
+          }}
+
             isVisible={selected}
             minWidth={100}
             minHeight={50}/>
@@ -118,8 +140,10 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
       // 出bug再把text-updater-node ，我現在不知道他是做啥用的
       className=""
       style={{ 
-        backgroundColor: data.backgroundColor || '#FF00FF', // 使用data中的背景颜色，如果没有则使用默认颜色
-        border: '2px solid gray',
+        // backgroundColor: data.backgroundColor || '#FF00FF',
+         // 使用data中的背景颜色，如果没有则使用默认颜色
+        backgroundColor:'transparent',
+
         overflow:'hidden',
         // padding:'10px',
               // height:'fit-content',
@@ -129,7 +153,7 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
         alignItems: 'center',
         borderRadius:'8px',
       }}>  
-      <FontAwesomeIcon icon={faDiamond}  />
+
 
 
           {/* <div style={{ height: '100%',
@@ -147,55 +171,78 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
             height:'40px', 
             width:'240px',}} 
           className="nodrag p-1 rounded" /> */}
-        <button    
-            className="adjustButton"
-          style={{ 
-          fontSize:'24px',
-          width: '500px',
-          position:'absolute',
-          top:'-80px',
-          left: '50%', // 將元素左邊緣對齊父元素的中心
-          transform: 'translateX(-50%)', // 然後向左移動自身寬度的50%，以實現完全居中
-          display: data.isSelected ? 'block' : 'none'
-          // display: isAnyNodeSelected ? 'block' : 'none'
-        }}>
 
-          <span  style={{fontSize:' 35px',borderWidth:'1px'}}>⠿</span>
-          <button onClick={()=>onChangeTextAlign('left')}
-          style={{borderColor:' red',borderWidth:'1px'}}>靠左</button>
-          <button onClick={()=>onChangeTextAlign('center')}
-          style={{borderColor:' red',borderWidth:'1px'}}>靠中</button>
-          <button onClick={()=>onChangeTextAlign('right')}
-          style={{borderColor:' red',borderWidth:'1px'}}>靠右</button>
+      <div  className={styles.TetxtoolBar}
+            style={{ display: data.isSelected ? 'flex' : 'none'
+          }}>
+            <div onClick={()=>onChangeTextAlign('left')}
+              className={styles.tetxTools}>
+                  <FontAwesomeIcon icon={faAlignLeft}
+                  className={styles.awesomeNavIconBtnS}/>
+            </div>
 
-          {/* <input
-            type="range"
-            className='nodrag'
-            min="10" // 最小字体大小
-            max="100" // 最大字体大小
-            // value='25'
-            onChange={onFontSizeChange}
-          /> */}
-          {/* <span>{selectFontSize}</span> */}
-          <button onClick={increaseFontSizeTen} style={{ padding:'0px 5px',borderColor:' red',borderWidth:'1px' ,fontSize:'40px'}}>＋</button>
-          <button onClick={increaseFontSize} style={{ padding:'0px 5px',borderColor:' red',borderWidth:'1px' }}>+</button>
-          <button onClick={decreaseFontSize} style={{  padding:'0px 5px',borderColor:' red',borderWidth:'1px' }}>-</button>
-          <button onClick={decreaseFontSizeTen} style={{  padding:'0px 5px',borderColor:' red',borderWidth:'1px'  ,fontSize:'40px'}}>-</button>
+            <div onClick={()=>onChangeTextAlign('center')}
+                  className={styles.tetxTools}>
+                  <FontAwesomeIcon icon={faAlignJustify}
+                  className={styles.awesomeNavIconBtnS}/>
+            </div>
 
-      <input value={selectedColor}
-          // 這邊value就是input顯示在畫面上的顏色，就是data.backgroundColor
-          type="color"
-          // defaultValue={data.color}
-            // className="nodrag"
-          onChange={onSelectColor}/>
-          <input value={selectedFontColor}
-          type="color"
-          onChange={onSelectFontColor}
-        />    </button>
+            <div onClick={()=>onChangeTextAlign('right')}
+                  className={styles.tetxTools}>
+                  <FontAwesomeIcon icon={faAlignRight}
+                  className={styles.awesomeNavIconBtnS}/>
+            </div>
+{/* ============================================================ */}
 
+            <div onClick={increaseFontSizeTen}
+                  className={styles.tetxToolsBig}>
+                  {/* <FontAwesomeIcon icon={faFont} 
+                    className={styles.Aicon}/>
+                  <FontAwesomeIcon icon={faMinus} 
+                    className={styles.minusIcon}/> */}
 
+                          <FontAwesomeIcon icon={faFont}
+                    className={
+                      `${styles.Aicon} ${styles.ok}`
+                      } />
+                  <FontAwesomeIcon icon={faPlus}
+                    className={styles.BigPlusIcon} />
+            </div>
 
+            <div onClick={increaseFontSize} 
+                    className={styles.tetxTools}>   
+                  <FontAwesomeIcon icon={faFont}
+                    className={styles.Aicon} />
+                  <FontAwesomeIcon icon={faPlus}
+                    className={styles.plusIcon} />
+            </div>
 
+            <div onClick={decreaseFontSize} 
+              className={styles.tetxTools}>   
+                  {/* <FontAwesomeIcon icon={faFont}
+                    className={styles.Aicon} />
+                  <FontAwesomeIcon icon={faPlus}
+                    className={styles.BigminusIcon} /> */}
+                  <FontAwesomeIcon icon={faFont} 
+                    className={styles.Aicon}/>
+                  <FontAwesomeIcon icon={faMinus} 
+                    className={styles.minusIcon}/>
+            </div>
+
+            <div onClick={decreaseFontSizeTen} className={styles.tetxToolsBig}>  
+                  <FontAwesomeIcon icon={faFont}
+                    className={
+                    `${styles.Aicon} ${styles.ok}`
+                    } />
+                  <FontAwesomeIcon icon={faMinus}
+                    className={styles.BigminusIcon} />
+            </div>
+            
+            <input value={selectedFontColor}
+                type="color"
+                onChange={onSelectFontColor}
+            />    
+        </div>
 
 
 
@@ -204,7 +251,7 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
         suppressContentEditableWarning
             style={{pointerEvents: isPointerEventsActive ? 'auto' : 'none',
             cursor: 'text',
-            color: data.fontColor || 'black',
+            color: data.fontColor || 'white',
             // fontSize: selectFontSize+'px' ,
             fontSize:data.fontSize||'25px',
             textAlign: data.textalign ||'center',}}
@@ -215,35 +262,26 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
           className='nodrag userRestoreInput' >
         </blockquote>
 
-
-
-
-
-
-
-
-
-
-
-
-        <Handle type="target" position={Position.Left} id="b" 
-            style={{ backgroundColor: '#00ffcc9e' ,width: '10px',
-            transform:' translate(-8px, -50%)',
-            // 调整宽度
-            border:'none',
-            height: '10px', }} // 更改背景颜色为蓝色
-            isConnectable={isConnectable} 
-        />
-        <Handle type="source" position={Position.Right} 
-          style={{ backgroundColor: '#00ffcc9e' ,width: '10px',  // 调整宽度
-          transform:' translate(8px, -50%)',
-          border:'none',
-          height: '10px', }} 
-          isConnectable={isConnectable} 
-        />
-        
-
     </div>
+
+
+
+    <Handle
+            position={Position.Top} id="a"  type="target"
+            className={`${styles.handleStyle} ${styles.handleStyleTop} `}
+            isConnectable={isConnectable} />
+        <Handle  position={Position.Left} id="b" type="target"
+            className={`${styles.handleStyle} ${styles.handleStyleLeft} `}
+            isConnectable={isConnectable} />
+
+        <Handle  position={Position.Bottom} id="c" type="source"
+            className={`${styles.handleStyle} ${styles.handleStyleBottom} `}
+            isConnectable={isConnectable} />
+
+        <Handle  position={Position.Right} id="d" type="source"
+            className={`${styles.handleStyle} ${styles.handleStyleRight} `}
+            isConnectable={isConnectable} />
+
     </>
   );
 }
