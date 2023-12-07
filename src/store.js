@@ -203,11 +203,21 @@ selectNode: (nodeId) => {
   onConnect: (connection) => {
     const newEdge = {
       ...connection,
-      type:'default',
-      animated: true, // 動畫
-      selectable: true, // ？
+// type:'step',
+// type:'smoothstep',
+
+      animated: true, 
+      selectable: true, 
       // 可以設定更多 Edge 屬性
-      style: { strokeWidth: 5,stroke: 'yellowgreen' }, 
+
+          // markerStart: 'myCustomSvgMarker',
+          // markerEnd: { type: 'arrow', color: '#00ffcc' },
+      arrowHeadType: 'arrow', // 设置箭头类型为 "arrow"
+        
+
+
+    // style: { strokeWidth: 3,stroke: '#00ffccda' }, 
+    style: { strokeWidth: 3,stroke: '#00ffccab' }, 
 
     };
     set((state) => ({

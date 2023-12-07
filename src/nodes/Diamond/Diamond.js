@@ -31,7 +31,9 @@ export default function StarNode({id, data,isConnectable,selected }) {
 
   const [selectedColor, setSelectedColor] = useState(data.backgroundColor||'#ffffff'); // 默认颜色
 
-  const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'#ffffff'); // 默认颜色
+
+  const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'black'); // 默认颜色
+
   const [selectFontSize, setSelectFontSize] = useState(data.fontSize ||'25px');
   const [isPointerEventsActive, setIsPointerEventsActive] = useState(false);
 
@@ -134,17 +136,20 @@ export default function StarNode({id, data,isConnectable,selected }) {
       transform: `rotate(${rotation}deg)`,
 // 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
       height: '100%'}}>
-          <NodeResizer handleStyle={{
-          width:'10px',height:'10px',
-          backgroundColor:'red',
-            borderRadius:'2px'
-        }}
-        lineStyle={{borderWidth: '2px',  // 設置邊界線寬度
-          borderStyle: 'dashed', // 設置邊界線樣式
-          borderStyle: 'solid', // 設置邊界線樣式
-          animation: 'blink 1.2s ease infinite', // 這會讓邊界線閃爍
-          borderColor: 'white	',
-        }}
+          <NodeResizer 
+    handleStyle={{
+      width:'15px',height:'15px',
+      backgroundColor:'#7e0fe5',
+      backgroundColor:'#7e0fe5',
+      borderRadius:'2px'
+    }}
+    lineStyle={{borderWidth: '2px',  // 設置邊界線寬度
+      borderStyle: 'dashed', // 設置邊界線樣式
+      borderStyle: 'solid', // 設置邊界線樣式
+      animation: 'blink 1.2s ease infinite', // 這會讓邊界線閃爍
+      borderColor: '#00ffccd8',
+      // borderColor: '#fffffff',
+    }}
       isVisible={selected} minWidth={100} minHeight={100} />
       <div ref={rotateControlRef} style={{display: 'block'}} className='nodrag rotateHandle'/>
 
@@ -240,7 +245,6 @@ export default function StarNode({id, data,isConnectable,selected }) {
             pointerEvents: isPointerEventsActive ? 'auto' : 'none',
             cursor: 'text',
             color: data.fontColor || 'black',
-
             fontSize:data.fontSize||'25px',
             textAlign: data.textalign ||'center',
 
@@ -252,7 +256,25 @@ export default function StarNode({id, data,isConnectable,selected }) {
     
         </blockquote>
 
-</div>
+    </div>
+    
+
+    <Handle
+            position={Position.Top} id="a"  type="target"
+            className={`${styles.handleStyle} ${styles.handleStyleTop} `}
+            isConnectable={isConnectable} />
+        <Handle  position={Position.Left} id="b" type="target"
+            className={`${styles.handleStyle} ${styles.handleStyleLeft} `}
+            isConnectable={isConnectable} />
+
+        <Handle  position={Position.Bottom} id="c" type="source"
+            className={`${styles.handleStyle} ${styles.handleStyleBottom} `}
+            isConnectable={isConnectable} />
+
+        <Handle  position={Position.Right} id="d" type="source"
+            className={`${styles.handleStyle} ${styles.handleStyleRight} `}
+            isConnectable={isConnectable} />
+
     </div>
   );
 }

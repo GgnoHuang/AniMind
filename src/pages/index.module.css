@@ -109,7 +109,7 @@ justify-content: center;
   align-items: center;
 
   transition: all 0.1s ease;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
 
   /* color: #00ffcceb; */
@@ -118,10 +118,15 @@ justify-content: center;
 
   width: 130px;
   height:60px;
+  width: 110px;
+  height:55px;
   border: rgb(255, 255, 255) 2px solid;
   /* border: #00ffcceb 2px solid; */
   background-color: #5e0fde ;
   color:  #00ffccd7 ;
+
+  color: #00ffccda;
+
 }
 
 .addbtnn:hover{
@@ -133,7 +138,7 @@ justify-content: center;
   background-color:  #ffffffeb;
 
   /* color: #00ffcceb; */
-  transform: scale(1.1);
+  transform: scale(1.2);
 
   }
 

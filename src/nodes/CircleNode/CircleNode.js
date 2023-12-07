@@ -21,7 +21,9 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
   const [selectedColor, setSelectedColor] = useState(data.backgroundColor||'#ffffff'); // 默认颜色
   // data.backgroundColor||'#ffffff'
   // 這個||很重要，這樣重新整理連input上面那個圖也可以顯示成我們背景顏色
-  const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'#ffffff'); // 默认颜色
+
+  const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'black'); // 默认颜色
+
   const [selectFontSize, setSelectFontSize] = useState(data.fontSize ||'25px');
   // const [minSize, setMinSize] = useState({ minWidth: 100, minHeight: 100 });
 
@@ -143,9 +145,18 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
       }}>  
 
         <NodeResizer
-          handleStyle={{width:'15px',height:'15px',backgroundColor:'red'}}
-          lineStyle={{borderWidth: '5px', borderStyle: 'dashed', borderColor: '#FF00FF	',
-            animation: 'blink 1s linear infinite', }}
+           handleStyle={{
+            width:'15px',height:'15px',
+            backgroundColor:'#7e0fe5',
+            borderRadius:'2px'
+          }}
+          lineStyle={{borderWidth: '2px',  // 設置邊界線寬度
+            borderStyle: 'dashed', // 設置邊界線樣式
+            borderStyle: 'solid', // 設置邊界線樣式
+            animation: 'blink 1.2s ease infinite', // 這會讓邊界線閃爍
+            borderColor: '#00ffccd8',
+          }}
+
             isVisible={selected}
             minWidth={100}
             minHeight={50}
@@ -280,16 +291,24 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
             {/* <p>Edit this content to add your own quote</p> */}
     
         </blockquote>
-        <Handle type="source" position={Position.Bottom} id="b" 
-            style={{ backgroundColor: 'blue' ,width: '13px',  // 调整宽度
-            height: '13px', }} // 更改背景颜色为蓝色
-            isConnectable={isConnectable} 
-        />
-        <Handle type="target" position={Position.Top} 
-          style={{ backgroundColor: 'blue' ,width: '13px',  // 调整宽度
-          height: '13px', }} 
-          isConnectable={isConnectable} 
-        />
+
+
+ 
+        <Handle
+            position={Position.Top} id="a"  type="target"
+            className={`${styles.handleStyle} ${styles.handleStyleTop} `}
+            isConnectable={isConnectable} />
+        <Handle  position={Position.Left} id="b" type="target"
+            className={`${styles.handleStyle} ${styles.handleStyleLeft} `}
+            isConnectable={isConnectable} />
+
+        <Handle  position={Position.Bottom} id="c" type="source"
+            className={`${styles.handleStyle} ${styles.handleStyleBottom} `}
+            isConnectable={isConnectable} />
+
+        <Handle  position={Position.Right} id="d" type="source"
+            className={`${styles.handleStyle} ${styles.handleStyleRight} `}
+            isConnectable={isConnectable} />
 
     </div>
 

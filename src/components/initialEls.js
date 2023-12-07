@@ -2,17 +2,18 @@
 // import { MarkerType, Position } from 'reactflow';
 
 export const nodes = [
-  {
-    id: 'node-1',
-    type: 'textUpdater',
-    position: { x: 150, y: 0 },
-    data: {
-      inpupu: '.',
-      imgsrc: './fan.jpeg',
-      placeholder: '預設',
-      backgroundColor: '#f0f0f0' 
-    },
-  },
+  // {
+  //   id: 'node-1',
+  //   type: 'textUpdater',
+  //   position: { x: 150, y: 0 },
+  //   data: {
+  //     inpupu: '.',
+  //     imgsrc: './fan.jpeg',
+  //     placeholder: '預設',
+  //     backgroundColor: '#f0f0f0' 
+  //   },
+  // },
+
   // {
   //   id: 'ok333',
   //   type: '',

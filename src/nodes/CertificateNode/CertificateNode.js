@@ -33,7 +33,9 @@ export default function StarNode({id, data,isConnectable,selected }) {
 
   const [selectedColor, setSelectedColor] = useState(data.backgroundColor||'#ffffff'); // 默认颜色
 
-  const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'#ffffff'); // 默认颜色
+
+  const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'black'); // 默认颜色
+
   const [selectFontSize, setSelectFontSize] = useState(data.fontSize ||'25px');
   const [isPointerEventsActive, setIsPointerEventsActive] = useState(false);
 
@@ -163,19 +165,18 @@ export default function StarNode({id, data,isConnectable,selected }) {
       }}
       // className='node'
       >
-          <NodeResizer handleStyle={{
-          width:'10px',height:'10px',
-          backgroundColor:'red',
-            borderRadius:'2px'
-        }}
-        lineStyle={{borderWidth: '2px',  // 設置邊界線寬度
-          borderStyle: 'dashed', // 設置邊界線樣式
-          borderStyle: 'solid', // 設置邊界線樣式
-          // borderStyle: 'dotted', // 設置邊界線樣式
-
-          animation: 'blink 1.2s ease infinite', // 這會讓邊界線閃爍
-          borderColor: 'white	',
-        }}
+          <NodeResizer 
+              handleStyle={{
+                width:'15px',height:'15px',
+                backgroundColor:'#7e0fe5',
+                borderRadius:'2px'
+              }}
+              lineStyle={{borderWidth: '2px',  // 設置邊界線寬度
+                borderStyle: 'dashed', // 設置邊界線樣式
+                borderStyle: 'solid', // 設置邊界線樣式
+                animation: 'blink 1.2s ease infinite', // 這會讓邊界線閃爍
+                borderColor: '#00ffccd8',
+              }}
       isVisible={selected} minWidth={100} minHeight={100} />
       <div ref={rotateControlRef} style={{display: 'block'}} className='nodrag rotateHandle'/>
 
@@ -341,52 +342,25 @@ export default function StarNode({id, data,isConnectable,selected }) {
     
         </blockquote>
 
+        </div>
+
+    <Handle
+            position={Position.Top} id="a"  type="target"
+            className={`${styles.handleStyle} ${styles.handleStyleTop} `}
+            isConnectable={isConnectable} />
+        <Handle  position={Position.Left} id="b" type="target"
+            className={`${styles.handleStyle} ${styles.handleStyleLeft} `}
+            isConnectable={isConnectable} />
+
+        <Handle  position={Position.Bottom} id="c" type="source"
+            className={`${styles.handleStyle} ${styles.handleStyleBottom} `}
+            isConnectable={isConnectable} />
+
+        <Handle  position={Position.Right} id="d" type="source"
+            className={`${styles.handleStyle} ${styles.handleStyleRight} `}
+            isConnectable={isConnectable} />
 
 
-
-
-
-      
-</div>
-
-
-
-
-
-      {/* <div 
-       style={{ 
-
-        height:'100%'}}
-      >
-      <svg 
-      width="100%" 
-      height="100%"
-       viewBox="0 0 100 100">
-        <polygon points="50,0 100,100 0,100" fill="blue" />
-      </svg>
-
-      </div> */}
-
-
-
-      {/* <Handle
-        type="target"
-        position={Position.Top}
-        className=" !bg-teal-400"
-        style={{
-          width: '18px',  // 调整宽度
-          height: '18px', 
-        }} 
-      /> */}
-      {/* <Handle
-        type="source"
-        position={Position.Bottom}
-        className=" !bg-teal-400"
-        style={{
-        width: '18px',  // 调整宽度
-        height: '18px', 
-      }} 
-      /> */}
     </div>
   );
 }

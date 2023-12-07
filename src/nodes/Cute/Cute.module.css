@@ -4,8 +4,8 @@
  height: 100%;  
  /* -webkit-mask: url('path/to/your/star-shaped-mask.png') no-repeat center / contain; */
  /* mask: url('path/to/your/star-shaped-mask.png') no-repeat center / contain; */
- -webkit-mask: url('/diamond.png') no-repeat center/100% 100%;
- mask: url('/diamond.png') no-repeat center/100% 100%;
+ -webkit-mask: url('/cute.png') no-repeat center/100% 100%;
+ mask: url('/cute.png') no-repeat center/100% 100%;
  /* background-color: rgb(188, 188, 255); */
  display: flex;
  justify-content: center;

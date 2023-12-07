@@ -99,20 +99,21 @@ function ImageUpload( {onAdd}) {
 
 
 
+        <div className={styles.toolBtns}>
         <div className={styles.uploadBtnContainer}>
           <input type="file" 
             className={styles.uploadfileInput}
             onChange={handleChange} />
-          <label htmlFor="fileInput">
+                <label htmlFor="fileInput">
             <FontAwesomeIcon icon={faImage} 
               className={styles.AwesomeIconBtn}
 
             />
           </label>
-          <p
-      className={styles.progress}
-      >
-      Progress: {uploadProgress}%</p>
+          {/* <p className={styles.progress}>
+            Progress: {uploadProgress}%
+          </p> */}
+        </div>
         </div>
 
     {/* <button onClick={handleUpload}>上傳圖片</button> */}
