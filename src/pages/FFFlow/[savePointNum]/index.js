@@ -745,7 +745,10 @@ useEffect(() => {
                 <div className={styles.toolBtnHint}>Drag to Add Text</div>
               </div>
               
-              <div className={styles.toolBtns}> <ImageUpload onAdd={onAdd}/>
+              {/* <div className={styles.toolBtns}>  */}
+              <div className={`${styles.toolBtns} ${styles.toolBtnsPurple}`}> 
+              
+              <ImageUpload onAdd={onAdd}/>
                 <div className={styles.toolBtnHint}>Image Upload</div>
               </div>
 

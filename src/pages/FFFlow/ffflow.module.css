@@ -206,9 +206,6 @@
 
 }
 
-
-
-
 .toolBtns{
   cursor:grab;
   display: flex;
@@ -232,6 +229,7 @@
 }
 /* 👍🏻 */
 
+
 .toolBtns:hover{
       background-color: #ffffff;
 
@@ -251,6 +249,9 @@
         opacity: 1; 
         visibility: visible;
       }
+}
+.toolBtnsPurple:hover{
+      background-color: #7628f3 !important;
 }
 
 .SidebarIconBtnS{
@@ -402,6 +403,8 @@
   background-color: #ffffff ;
   /* border-bottom: #00ffccab 2px solid; */
   color:#00ffccab;
+
+
 
 
   .NavBtnHint{
