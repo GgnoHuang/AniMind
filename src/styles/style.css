@@ -23,7 +23,7 @@ font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 
 /* ================================ */
-/* ================================ */
+/* =======這些無法生效，還未搞清楚為何全局無效============== */
 .handleStyle {
   position:absolute;
   border:1px rgb(255, 255, 255) solid;
@@ -70,13 +70,19 @@ font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 /* ======================== */
 /* ======================== */
 
-input[type="color"] {
-  border: 12px solid #ffffff00;  /* 边框颜色 */
-  border-radius: 224px;      /* 圆角 */
-  height: 50px;            /* 高度 */
-  width: 50px;   
-     /* 宽度 */
-  /* 更多样式 */
+
+input[type="color"]{
+  border: 9px solid #ff222200; 
+  border-radius: 224px;    
+  height: 52px;         
+  width: 52px;   
+}
+input[type="color"].canvasBackgroundColor{
+  border: 3px solid #ff222200; 
+  border-radius: 224px;    
+  height:24px;   
+  width: 23px;   
+  cursor: pointer;
 }
 
 /* ======================== */

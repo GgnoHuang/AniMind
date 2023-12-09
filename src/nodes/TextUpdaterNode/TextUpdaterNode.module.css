@@ -1,3 +1,26 @@
+.copy{
+ /* border: 2px white solid; */
+ border-radius:164px;
+ background-color: rgb(255, 255, 255);
+ font-size:15px;
+ position:absolute;
+  right: -80px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.copydown{
+  cursor: pointer;
+  /* border: 2px white solid; */
+  border-radius:164px;
+  background-color: rgb(255, 255, 255);
+  font-size:15px;
+  position:absolute;
+   bottom: -80px;
+   padding: 10px;
+ }
+
+
 
 
 

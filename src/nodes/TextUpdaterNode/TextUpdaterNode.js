@@ -7,7 +7,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 
-
 import { Handle, NodeProps,Position, NodeResizer} from 'reactflow';
 import { useCallback, useState,useEffect ,useRef} from 'react';
 import useStore from '../../store';
@@ -33,11 +32,17 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
     setIsPointerEventsActive(prev => !prev);
   };
 
-  const { updateNodeData,updateNodeColor,isAnyNodeSelected,selectNode} = useStore(state => ({
+  const { updateNodeData,updateNodeColor,isAnyNodeSelected,selectNode,
+    currenClicktNode,setCurrenClicktNode,setNodes,nodes
+  } = useStore(state => ({
     updateNodeData: state.updateNodeData,
     updateNodeColor: state.updateNodeColor,
     isAnyNodeSelected: state.isAnyNodeSelected,
     selectNode: state.selectNode,
+    currenClicktNode: state.currenClicktNode,
+    setCurrenClicktNode: state.setCurrenClicktNode,
+    setNodes: state.setNodes,
+    nodes: state.nodes,
 
   }));
 
@@ -146,6 +151,13 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
       }}>  
 
 
+      <div  className={styles.copy}
+            style={{ display: data.isSelected ? 'flex' : 'none'}}
+            onClick={()=>{  setNodes([...nodes, currenClicktNode])}}>copy</div>
+
+      <div  className={styles.copydown}
+            style={{ display: data.isSelected ? 'flex' : 'none'}}
+            onClick={()=>{  setNodes([...nodes, currenClicktNode])}}>copy</div>
 
           {/* <div style={{ height: '100%',
                   // paddingBottom:'55px '
@@ -165,6 +177,7 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
 
       <div  className={styles.TetxtoolBar}
             style={{ display: data.isSelected ? 'flex' : 'none'
+
           }}>
             <div onClick={()=>onChangeTextAlign('left')}
               className={styles.tetxTools}>
@@ -230,18 +243,17 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
             </div>
 
             <input 
-                value={selectedColor}
+                value={selectedColor} type="color"
+                className='nodeToolColor'
                 // 這邊value就是input顯示在畫面上的顏色，就是data.backgroundColor
-                type="color"
                 // defaultValue={data.color}
                   // className="nodrag"
-                onChange={onSelectColor}
-            />
-            
-            <input value={selectedFontColor}
-                type="color"
-                onChange={onSelectFontColor}
-            />    
+                onChange={onSelectColor}/>
+            <input value={selectedFontColor} 
+              // className={styles.nodeToolColor}
+              className='nodeToolColor'
+            type="color" 
+            onChange={onSelectFontColor}/>    
         </div>
 
 
