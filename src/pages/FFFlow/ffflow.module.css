@@ -415,24 +415,27 @@
 
 
 .welcome{
-  border-radius: 9px;
+  border-radius: 12px;
 
   /* height: 38px; */
-  padding: 0px 11px;
+  padding: 3px 15px;
   /* border: 1px red solid; */
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px #7628f3 solid;
-color:#7628f3;
-color:#ffffff;
+  border: 1.5px #00ffccab solid;
+  border: 1.5px gray solid;
+  color:#7628f3;
+  color:#ffffff;
 /* background-color: #00ffccab ; */
-
   /* color: white ; */
 
   margin-left: 15px;
 }
-
+.usericon{
+  margin-right: 6px;
+}
 
 
 
@@ -452,6 +455,8 @@ color:#ffffff;
   width: fit-content;
   border-radius:200px;
   background-color: #666666 !important;
+
+
 }
 
 .canvasBgBar{
@@ -460,6 +465,7 @@ color:#ffffff;
   align-items: center;
   padding: 0px 12px;
   gap: 12px;
+
 }
 
 
@@ -476,9 +482,14 @@ color:#ffffff;
 .faPaletteicon{
   position: absolute;
   left: 0px;
-  cursor: pointer;
+  /* cursor: pointer; */
   pointer-events: none;
 }
 /*  */
 /*  */
 
+/*  */
+/*  */
+
+/*  */
+/*  */

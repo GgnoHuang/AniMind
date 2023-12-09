@@ -1,28 +1,41 @@
 .copy{
- /* border: 2px white solid; */
- border-radius:164px;
- background-color: rgb(255, 255, 255);
- font-size:15px;
- position:absolute;
-  right: -80px;
+  /* border: 1px gray solid; */
+  /* border: 3px #00ffccab solid; */
+  border: 2px #8400ff30 solid;
+  border-radius:164px;
+  color: rgba(206, 206, 206, 0.637);
+  /* background-color: rgb(255, 255, 255); */
+  font-size:33px;
+  position:absolute;
   cursor: pointer;
-  padding: 10px;
+  transition: all 0.1s ease;
+  /* color: #00ffcce1; */
+}
+.copy:hover{
+  transform: scale(1.3);
+  color: #00ffcce5;
+}
+.copyleft{
+  left: -65px;
+}
+.copybottom{
+  bottom:-65px;
 }
 
-.copydown{
-  cursor: pointer;
-  /* border: 2px white solid; */
-  border-radius:164px;
-  background-color: rgb(255, 255, 255);
-  font-size:15px;
-  position:absolute;
-   bottom: -80px;
-   padding: 10px;
- }
+.copytop{
+  top:-65px;
+}
+.copyright{
+  right: -65px;
+}
 
-
-
-
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
 
 .TetxtoolBar{
 
@@ -35,7 +48,7 @@
  background-color: rgb(102, 102, 102);
  font-size:24px;
  position:absolute;
- top:-95px;
+ top:-160px;
  left:50%;
  transform: translateX(-50%);
  gap:14px;

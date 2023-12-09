@@ -14,8 +14,10 @@ export const useStore = create((set, get) => ({
 // 複製
 // 複製
 // 複製
-currenClicktNode: null,
-setCurrenClicktNode: (node) => set({ currenClicktNode: node }),
+
+
+cloneNode: null,
+setCloneNode: (value) => set({ cloneNode: value }),
 
 // 複製
 // 複製
@@ -112,6 +114,14 @@ setCurrenClicktNode: (node) => set({ currenClicktNode: node }),
 onNodesChange: (changes) => {
   set((state) => {
     const newNodes = state.nodes.map((node) => {
+      // 👇🏻👇🏻👇🏻👇🏻👇🏻複製node功能新增的程式碼👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻
+      if(node){
+        if(node.data.isSelected){
+          // console.log('haha',node)
+          set({ cloneNode: node });
+        }
+      }
+      // 👆🏻👆🏻👆🏻👆🏻 複製node功能新增的程式碼👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻
       const change = changes.find((c) => c.id === node.id);
       if (change && change.type === 'select') {
         return {
@@ -124,9 +134,6 @@ onNodesChange: (changes) => {
     });
     return { nodes: applyNodeChanges(changes, newNodes) };
   });
-  setTimeout(() => {
-    console.log('hello');
-  }, 2000);
 },
 
 selectNode: (nodeId) => {

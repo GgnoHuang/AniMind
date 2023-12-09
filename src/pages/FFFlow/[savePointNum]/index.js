@@ -67,7 +67,7 @@ import { faWindowMinimize,
         faHeart,
         faPalette,
         faPlay,
-
+        faUser,
         faT
         
   } from '@fortawesome/free-solid-svg-icons';
@@ -123,9 +123,7 @@ const nodeTypes = {
   CertificateNode:CertificateNode,
   circleNode: CircleNode,
   // proCircleNode:proCircleNode,
-
   ImgNode: ImgNode,
-
   Diamond:Diamond,
   Heart:Heart,
   Star:Star,
@@ -177,7 +175,7 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
     ,setEdges,howManyNodes ,
     updateEdgeStyle,
     hideToolbar,toggleToolbar,
-    currenClicktNode,setCurrenClicktNode,
+
   } = useStore(state => ({
     nodes: state.nodes,
     edges: state.edges,
@@ -191,8 +189,7 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
     updateEdgeStyle: state.updateEdgeStyle,
     toggleToolbar: state.toggleToolbar,
     hideToolbar: state.hideToolbar,
-    currenClicktNode: state.currenClicktNode,
-    setCurrenClicktNode: state.setCurrenClicktNode,
+
   }));
 //為了等等使用useeffect偵測node數量變化
 
@@ -203,18 +200,21 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
 
 const onNodeClick = (event, node) => {
   console.log('click node', node);
-  const newNode = {
-    ...node, // 复制 node 的所有属性
-    position: { // 创建 position 的一个新副本
-      x: node.position.x +node.width+50,
-      y: node.position.y ,
-      // + node.height,
-    },
-    id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
-  };
-  setCurrenClicktNode(newNode)
-  // setNodes([...nodes, newNode]);
+  // const newNode = {
+  //   ...node, // 复制 node 的所有属性
+  //   position: { // 创建 position 的一个新副本
+  //     x: node.position.x +node.width+50,
+  //     y: node.position.y ,
+  //     // + node.height,
+  //   },
+  //   id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
+  // };
 }
+const onEdgeClick = ( edge) => {
+  console.log('click node', edge);
+
+}
+
 
 
 // const onNodeClick = useCallback((event, node) => {
@@ -267,17 +267,13 @@ const onNodeClick = (event, node) => {
           type,
           position,
           data: {
-            
-            inpupu: 'hello',
-            imgsrc: './fan.jpeg',
+            // inpupu: 'hello',
+            // imgsrc: './fan.jpeg',
             placeholder: '請輸入...',
             backgroundColor: selectedColor, // 使用所选颜色
-      
-            label: `${type} node` },
+            // label: `${type} node` 
+          },
         };
-        console.log(1)
-        // const currentNodes = useStore.getState().nodes;
-
         setNodes([...nodes, newNode]);
         setUpdateTrigger(trigger => !trigger);  // 觸發 useEffect
       }
@@ -304,6 +300,7 @@ const onNodeClick = (event, node) => {
           const localUUID = localStorage.getItem("userUUID")
         if (localUUID) {
               const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${query}`);
+              console.log(flow)
               set(databaseRef, JSON.stringify(flow))
               .then(() => {
 
@@ -545,7 +542,9 @@ useEffect(() => {
 
           <p className={styles.welcome}
                   style={{zIndex:'1999'}}>
-                    Welcome！
+              <FontAwesomeIcon icon={faUser} className={styles.usericon}/>
+
+                    {/* Welcome！ */}
                   <span 
                   style={{zIndex:'1999'}}
                   >
@@ -586,6 +585,7 @@ useEffect(() => {
       fitView={false}// 沒有設定的話會重新載入就fitView導致變很大
       // onEdgeClick={onEdgeClick}
       onNodeClick={onNodeClick}
+      onEdgeClick={onEdgeClick}
       minZoom={0.1}
       maxZoom={7}
       // style={{ background: bgColor }}
@@ -629,15 +629,15 @@ useEffect(() => {
 
         <div className={styles.canvasBgBar}>
             <div 
-               style={{  
-                width: '20px',  height: '20px',
+              style={{  
+                width: '19px',  height: '19px',
                 borderRadius:'777px',overflow:'hidden',cursor:'pointer'}}
                 onClick={() => setVariant('lines')}>
                   <img src='/格.png' alt="Picture"/> 
             </div>
 
             <div  style={{ 
-               width: '20px',  height: '20px',
+                width: '19px',  height: '19px',
                 borderRadius:'777px',overflow:'hidden',
                   cursor:'pointer'}}
                   onClick={() => setVariant('cross')}>
@@ -645,7 +645,7 @@ useEffect(() => {
             </div>
               <div onClick={() => setVariant('dots')}
                 style={{ 
-                  width: '20px',  height: '20px',
+                  width: '19px',  height: '19px',
                   borderRadius:'777px',overflow:'hidden', cursor:'pointer'}}>
                   <img src='/dotbtn.png'alt="Picture"/> 
               </div>

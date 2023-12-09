@@ -76,7 +76,9 @@ input[type="color"]{
   border-radius: 224px;    
   height: 52px;         
   width: 52px;   
+  cursor: pointer;
 }
+
 input[type="color"].canvasBackgroundColor{
   border: 3px solid #ff222200; 
   border-radius: 224px;    
