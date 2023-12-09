@@ -8,6 +8,20 @@ import { nodes as initialNodes, edges as initialEdges } from './components/initi
 
 export const useStore = create((set, get) => ({
 
+
+
+
+// 複製
+// 複製
+// 複製
+currenClicktNode: null,
+setCurrenClicktNode: (node) => set({ currenClicktNode: node }),
+
+// 複製
+// 複製
+// 複製
+
+
   showRegisterForm: true, // 初始状态为 true，表示显示登录表单
   toggleForm: () => set((state) => ({ showRegisterForm: !state.showRegisterForm })),
 
@@ -96,7 +110,6 @@ export const useStore = create((set, get) => ({
 
     // 🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞🔮🥶🦋👗🧤🐸😐🎃😡💞
 onNodesChange: (changes) => {
-  // console.log(changes)
   set((state) => {
     const newNodes = state.nodes.map((node) => {
       const change = changes.find((c) => c.id === node.id);
@@ -111,6 +124,9 @@ onNodesChange: (changes) => {
     });
     return { nodes: applyNodeChanges(changes, newNodes) };
   });
+  setTimeout(() => {
+    console.log('hello');
+  }, 2000);
 },
 
 selectNode: (nodeId) => {
@@ -199,67 +215,39 @@ selectNode: (nodeId) => {
   //   }));
   // },
 
-
   onConnect: (connection) => {
     const newEdge = {
       ...connection,
-// type:'step',
-// type:'smoothstep',
-
+      // type:'step',
+      // type:'smoothstep',
       animated: true, 
       selectable: true, 
-      // 可以設定更多 Edge 屬性
-
-          // markerStart: 'myCustomSvgMarker',
-          // markerEnd: { type: 'arrow', color: '#00ffcc' },
+      // markerStart: 'myCustomSvgMarker',
+      // markerEnd: { type: 'arrow', color: '#00ffcc' },
       arrowHeadType: 'arrow', // 设置箭头类型为 "arrow"
-        
-
-
-    // style: { strokeWidth: 3,stroke: '#00ffccda' }, 
-    style: { strokeWidth: 3,stroke: '#00ffccab' }, 
-
+     // style: { strokeWidth: 3,stroke: '#00ffccda' }, 
+      style: { strokeWidth: 3,stroke: '#00ffccab' }, 
     };
     set((state) => ({
       edges: addEdge(newEdge, state.edges),
     }));
   },
 
-// 收合功能
-  // toggleNodeExpansion: (nodeId) => {
-  //   console.log(1)
-  //   set((state) => ({
-  //     nodes: state.nodes.map((node) =>
-  //       node.id === nodeId
-  //         ? { ...node, data: { ...node.data, expanded: !node.data.expanded } }
-  //         : node
-  //     ),
-  //   }));
-  // },
-  
+
   toggleNodeExpansion: (nodeId) => {
     set((state) => {
-    console.log(1)
-    console.log(nodeId)
-
+    // console.log(nodeId)
       const node = state.nodes.find((n) => n.id === nodeId);
-  
       // 如果找到節點，打印它的詳細資訊
       if (node) {
-        console.log('Toggling expansion for node:', node);
+        // console.log('Toggling expansion for node:', node);
       }
-  
-      // 更新節點的狀態
-      return {
+      return {      // 更新節點的狀態
         nodes: state.nodes.map((n) =>
           n.id === nodeId
             ? { ...n, data: { ...n.data, expanded: !n.data.expanded } }
             : n
-        ),
-      };
-    });
-  }
-  
+        ),};});}
 }));
 
 export default useStore;

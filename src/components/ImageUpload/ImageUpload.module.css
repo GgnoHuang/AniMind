@@ -14,7 +14,6 @@
 
     /* color: #ffffffab; */
     color: #ffffff;
-    cursor: pointer;
     transform: scale(1.3);
   }
 }
@@ -26,20 +25,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 
 }
 
 .uploadfileInput{
   width: 20px;
   height: 20px;
-
   opacity: 0;
   cursor: pointer;
 }
-
-
-
 
 
 
@@ -69,5 +63,5 @@
   top: 50%;
   right: -155px;
   color: #00ffccab;
-  
+  display: none;
 }

@@ -65,7 +65,7 @@ import { faWindowMinimize,
         faDiamond,
         faCertificate ,
         faHeart,
-
+        faPalette,
         faPlay,
 
         faT
@@ -137,6 +137,8 @@ const nodeTypes = {
 
 function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {}) {
 
+
+
   const [localUserData, setLocalUserData] = useState(null)
 
 
@@ -174,7 +176,8 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
   const { nodes, edges, onNodesChange,onEdgesChange, onConnect,setNodes
     ,setEdges,howManyNodes ,
     updateEdgeStyle,
-    hideToolbar,toggleToolbar
+    hideToolbar,toggleToolbar,
+    currenClicktNode,setCurrenClicktNode,
   } = useStore(state => ({
     nodes: state.nodes,
     edges: state.edges,
@@ -188,8 +191,42 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
     updateEdgeStyle: state.updateEdgeStyle,
     toggleToolbar: state.toggleToolbar,
     hideToolbar: state.hideToolbar,
+    currenClicktNode: state.currenClicktNode,
+    setCurrenClicktNode: state.setCurrenClicktNode,
   }));
 //為了等等使用useeffect偵測node數量變化
+
+
+// =================================
+// ==========🌕複製功能=======================
+
+
+const onNodeClick = (event, node) => {
+  console.log('click node', node);
+  const newNode = {
+    ...node, // 复制 node 的所有属性
+    position: { // 创建 position 的一个新副本
+      x: node.position.x +node.width+50,
+      y: node.position.y ,
+      // + node.height,
+    },
+    id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
+  };
+  setCurrenClicktNode(newNode)
+  // setNodes([...nodes, newNode]);
+}
+
+
+// const onNodeClick = useCallback((event, node) => {
+//   console.log('click node', node);
+// }, []);
+// =================================
+// =================================
+
+
+
+
+
 
 
 
@@ -383,7 +420,6 @@ const onAdd = (imageUrl) => {
   //   data: { shape: 'parallelogram', width: 150, height: 70, label: 'Parallelogram', color: '#668de3' },
   // }
   // addNewNode(newNode);
-
   setNodes([...nodes, newNode]);
 
   //🥴🥴🥴🥴🥴 這邊好像可以用看看async await
@@ -549,7 +585,7 @@ useEffect(() => {
       // edgeTypes={edgeTypes}
       fitView={false}// 沒有設定的話會重新載入就fitView導致變很大
       // onEdgeClick={onEdgeClick}
-      // onNodeClick={onNodeClick}
+      onNodeClick={onNodeClick}
       minZoom={0.1}
       maxZoom={7}
       // style={{ background: bgColor }}
@@ -591,53 +627,46 @@ useEffect(() => {
 
         <Panel  className={styles.patternStylePanel} position={'bottom-right'}>
 
+        <div className={styles.canvasBgBar}>
             <div 
                style={{  
-                width: '30px',  height: '30px',
-                borderRadius:'777px',
-                overflow:'hidden',
-                cursor:'pointer'
-                }}
+                width: '20px',  height: '20px',
+                borderRadius:'777px',overflow:'hidden',cursor:'pointer'}}
                 onClick={() => setVariant('lines')}>
-                  <img src='/格.png' alt="Picture"
-
-                  /> 
+                  <img src='/格.png' alt="Picture"/> 
             </div>
 
-            <div            
-              style={{  
-                width: '30px',  height: '30px',
-                borderRadius:'777px',
-                overflow:'hidden',          cursor:'pointer'
-                }}
-            onClick={() => setVariant('cross')}>
-                  <img
-                    src='/格.png'
-                    alt="Picture"
-
-                  /> 
+            <div  style={{ 
+               width: '20px',  height: '20px',
+                borderRadius:'777px',overflow:'hidden',
+                  cursor:'pointer'}}
+                  onClick={() => setVariant('cross')}>
+                  <img  src='/cross.png'alt="Picture"/> 
             </div>
-
-
               <div onClick={() => setVariant('dots')}
-              
-              style={{  
-                width: '30px',  height: '30px',
-                borderRadius:'777px',
-                overflow:'hidden',          cursor:'pointer'
-                }}>
-                  <img
-                    src='/dotbtn.png'
-                    alt="Picture"
-                  /> 
+                style={{ 
+                  width: '20px',  height: '20px',
+                  borderRadius:'777px',overflow:'hidden', cursor:'pointer'}}>
+                  <img src='/dotbtn.png'alt="Picture"/> 
               </div>
-            <input
-            className="nodrag" 
-            type="color"
-            onChange={handleBgColorChange}
-            />
+            <div className={styles.wper}>
+              <input 
+              className={`nodrag canvasBackgroundColor ${styles.inputPalette}`}
+                type="color" onChange={handleBgColorChange}/>
+              <FontAwesomeIcon icon={faPalette}  
+                className={styles.faPaletteicon}
+                style={{ color:'white',fontSize:'20px'}}/>
+            </div>
+          
+        </div>
               {/* defaultValue= */}
         </Panel>
+
+
+
+
+
+
 
 
 {/* 
@@ -671,7 +700,9 @@ useEffect(() => {
 
           {/* 這邊是dnd🔥 */}
 
-        <div className={`${styles.toolbarBody}  ${hideToolbar ? styles.toolbarBodyHidden : ''}`}>
+        <div className={`${styles.toolbarBody}  ${hideToolbar ? styles.toolbarBodyHidden : ''}`}
+        
+        >
             {/* <div className={styles.toolbarBody}> */}
               <div className={styles.toggleBtn} onClick={toggleToolbar}>
                 <FontAwesomeIcon icon={faCircleChevronLeft} className={styles.iconToggle} />

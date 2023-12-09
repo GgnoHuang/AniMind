@@ -1,23 +1,5 @@
 
 
-
-.patternStylePanel{
-  display: flex;
-  position: absolute!important;;
-  /* left: -2.5px !important; */
-  /* left: -2px !important; */
-  right:200px !important;;
-  bottom: -2px  !important;
-  height: 39px  !important;
-  border: 1px rgba(255, 255, 255, 0.671) solid;
-  border: 1px white solid;
-
-  width: fit-content;
-  border-radius:10px;
-  background-color: #666666 !important;
-}
-
-
 /* 🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪 */
 /* 🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪 */
 .layoutPanel{
@@ -452,4 +434,51 @@ color:#ffffff;
 }
 
 
+
+
+/*  */
+/*  */
+
+
+.patternStylePanel{
+  display: flex;
+  position: absolute!important;;
+  right:210px !important;;
+  bottom: -2px  !important;
+  height: 39px  !important;
+  border: 0px rgba(255, 255, 255, 0.671) solid;
+  border: 0px white solid;
+
+  width: fit-content;
+  border-radius:200px;
+  background-color: #666666 !important;
+}
+
+.canvasBgBar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 12px;
+  gap: 12px;
+}
+
+
+
+.wper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.inputPalette{
+  opacity: 0;
+}
+.faPaletteicon{
+  position: absolute;
+  left: 0px;
+  cursor: pointer;
+  pointer-events: none;
+}
+/*  */
+/*  */
 
