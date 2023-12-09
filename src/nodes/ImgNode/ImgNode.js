@@ -1,8 +1,12 @@
 
 /* eslint-disable react/jsx-no-undef */
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+faCirclePlus
+} from '@fortawesome/free-solid-svg-icons';
 
 import styles from './ImgNode.module.css';
-
+import useStore from '../../store';
 import Image from 'next/image'
 
 import React, { useEffect, useState, useRef } from 'react';
@@ -33,15 +37,24 @@ import { Handle, NodeProps,Position,
 
 
 
-export default function CustomNode({ data,selected,isConnectable }) {
+export default function CustomNode({ id, data,selected,isConnectable }) {
 
   // 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
 // 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
   const rotateControlRef = useRef(null);
   const updateNodeInternals = useUpdateNodeInternals();
   const [rotation, setRotation] = useState(0);
-  // const [resizable, setResizable] = useState(!!data.resizable);
-  // const [rotatable, setRotatable] = useState(!!data.rotatable);
+
+  const { updateNodeData,updateNodeColor,setNodes,nodes,edges,setEdges,
+    cloneNode} = useStore(state => ({
+      updateNodeData: state.updateNodeData,
+      updateNodeColor: state.updateNodeColor,
+      setNodes: state.setNodes,
+      nodes: state.nodes,
+      cloneNode: state.cloneNode,
+      edges: state.edges,
+      setEdges: state.setEdges,
+  }));
 
   useEffect(() => {
     if (!rotateControlRef.current) {
@@ -115,6 +128,172 @@ export default function CustomNode({ data,selected,isConnectable }) {
 
 
 
+{/* 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
+{/* 😈😈😈😈😈😈😈😈  C O P Y 功 能   😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
+{/* 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
+<div  className={`${styles.copytop} ${styles.copy}`}
+            style={{ display: data.isSelected ? 'flex' : 'none'}}
+            onClick={()=>{ 
+              const newNode = {
+                  ...cloneNode, // 复制 node 的所有属性
+                  position: { // 创建 position 的一个新副本
+                    x: cloneNode.position.x ,
+                    y: cloneNode.position.y  -cloneNode.height-50,
+                    // + node.height,
+                  },
+                  selected: null,
+                  data:{isSelected:null,        
+
+                  },
+                  id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
+                };
+                const newEdge = {
+                  id: `edge_${cloneNode.id}_${newNode.id}`,
+
+                  source: newNode.id,
+                  target: cloneNode.id,
+                  sourceHandle:'c',
+                  targetHandle:'a',
+                  animated: true, 
+                  selectable: true, 
+                  arrowHeadType: 'arrow', 
+                  style: { strokeWidth: 3,stroke: '#00ffccab' }, 
+                };
+              
+                  setNodes([...nodes, newNode]);
+                  setEdges([...edges, newEdge]);
+              }
+            }>
+              <FontAwesomeIcon icon={faCirclePlus} />
+            </div>
+      <div  className={`${styles.copybottom} ${styles.copy}`}
+            style={{ display: data.isSelected ? 'flex' : 'none'}}
+            onClick={()=>{ 
+                const newNode = {
+                  ...cloneNode, // 复制 node 的所有属性
+                  position: { // 创建 position 的一个新副本
+                    x: cloneNode.position.x ,
+                    y: cloneNode.position.y  +cloneNode.height+50,
+                  },
+                  selected: null,
+                  data:{isSelected:null,        
+
+                  },
+                  id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
+                };
+                const newEdge = {
+                  id: `edge_${cloneNode.id}_${newNode.id}`,
+                  source: cloneNode.id,
+                  target: newNode.id,
+                  sourceHandle:'c',
+                  targetHandle:'a',
+
+
+                  animated: true, 
+                  selectable: true, 
+                  arrowHeadType: 'arrow', 
+                  style: { strokeWidth: 3,stroke: '#00ffccab' }, 
+                };
+         
+                setNodes([...nodes, newNode]);
+                setEdges([...edges, newEdge]);
+            }
+      }>
+              <FontAwesomeIcon icon={faCirclePlus} />
+      </div>
+
+      <div  className={`${styles.copyright} ${styles.copy}`}
+            style={{ display: data.isSelected ? 'flex' : 'none'}}
+            onClick={()=>{ 
+              const newNode = {
+                ...cloneNode, // 复制 node 的所有属性
+                position: { // 创建 position 的一个新副本
+                  x: cloneNode.position.x +cloneNode.width+50,
+                  y: cloneNode.position.y ,
+                },
+                selected: null,
+                data:{isSelected:null,        
+                  
+                },
+                id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
+              };
+              const newEdge = {
+                id: `edge_${cloneNode.id}_${newNode.id}`,
+                source: cloneNode.id,
+                target: newNode.id,
+                sourceHandle:'d',
+                targetHandle:'b',
+                animated: true, 
+                selectable: true, 
+                arrowHeadType: 'arrow', 
+                style: { strokeWidth: 3,stroke: '#00ffccab' }, 
+              };
+   
+              setNodes([...nodes, newNode])
+              setEdges([...edges, newEdge]);
+            }}>
+              <FontAwesomeIcon icon={faCirclePlus} />
+            </div>
+      <div  className={`${styles.copyleft} ${styles.copy}`}
+            style={{ display: data.isSelected ? 'flex' : 'none'}}
+            onClick={()=>{  
+              const newNode = {
+                ...cloneNode, // 复制 node 的所有属性
+                position: { // 创建 position 的一个新副本
+                  x: cloneNode.position.x  -cloneNode.width-50,
+                  y: cloneNode.position.y ,
+                  // + node.height,
+                },
+                selected: null,
+                data:{isSelected:null,        
+                },
+                id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
+              };
+              const newEdge = {
+                id: `edge_${cloneNode.id}_${newNode.id}`,
+                target: cloneNode.id,
+                source: newNode.id,
+                sourceHandle:'d',
+                targetHandle:'b',
+                animated: true, 
+                selectable: true, 
+                arrowHeadType: 'arrow', 
+                style: { strokeWidth: 3,stroke: '#00ffccab' }, 
+              };
+        
+              setNodes([...nodes, newNode])
+              setEdges([...edges, newEdge]);
+              
+              }}>
+              <FontAwesomeIcon 
+              icon={faCirclePlus} />
+            </div>
+{/* 😈😈😈😈😈😈😈😈  C O P Y 功 能   😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
+{/* 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
       <NodeResizer
@@ -130,37 +309,6 @@ export default function CustomNode({ data,selected,isConnectable }) {
               borderColor: '#00ffccd8',
             }}
       isVisible={selected} minWidth={100} minHeight={100} />
-
-  
-{/* 
-<img src={data.pokemonpng }   style={{
-          width: '100%',  
-          height: '100%', 
-        }} 
-        alt="Picture"
-        width={100}
-        height={100}
-        /> */}
-
-
-
-{/* <Image
-        // src={data.pokemonpng ? data.pokemonpng : '/gg.jpg'}
-        src={data.pokemonpng }
-
-        width={100}
-        height={100}
-        alt="Picture"
-        style={{
-          width: '100%',  
-          height: '100%', 
-        }} 
-      />  */}
-
-
-  
-
-
 
 
     <img

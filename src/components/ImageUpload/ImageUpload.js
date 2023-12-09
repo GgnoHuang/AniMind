@@ -101,15 +101,13 @@ function ImageUpload( {onAdd}) {
           <div className={styles.uploadBtnContainer}>
             <input type="file" 
               className={styles.uploadfileInput}
-              
               onChange={handleChange} />
-              <FontAwesomeIcon icon={faImage} 
-                  className={styles.AwesomeIconBtn}
-              />
+            <FontAwesomeIcon icon={faImage} 
+                  className={styles.AwesomeIconBtn}/>
 
-            <p className={styles.progress}>
+            {/* <p className={styles.progress}>
               Progress: {uploadProgress}%
-            </p>
+            </p> */}
           </div>
         </div>
 
