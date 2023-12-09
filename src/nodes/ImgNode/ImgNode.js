@@ -89,49 +89,26 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
 // 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
       transform: `rotate(${rotation}deg)`,
 // 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
-
-
-      height: '100%'
-      }}
+      height: '100%',
+      width:'100%',
+      display:'flex',
+    }}
       className='node'
-
-    // className="px-4 py-2 shadow-md rounded-md bg-white border-2 border-stone-400"
     >
-    <div ref={rotateControlRef} style={{display: 'block'}} className='nodrag rotateHandle'/>
-    <div>
-          {/* {data?.label} */}
-          {/* <div>
-            <label>
-              <input
-                type="checkbox"
-                checked={resizable}
-                onChange={(evt) => setResizable(evt.target.checked)}
-              />
-              resizable
-            </label>
-          </div> */}
-          {/* <div>
-            <label>
-              <input
-                type="checkbox"
-                checked={rotatable}
-                onChange={(evt) => setRotatable(evt.target.checked)}
-              />
-              rotatable
-            </label>
-          </div> */}
-        </div>
+          <div ref={rotateControlRef} style={{display: 'block'}} className='nodrag rotateHandle'/>
 
 
-
-
-
-
-
-{/* 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
-{/* 😈😈😈😈😈😈😈😈  C O P Y 功 能   😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
-{/* 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
-<div  className={`${styles.copytop} ${styles.copy}`}
+  {/* 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
+  {/* 😈😈😈😈😈😈😈😈  C O P Y 功 能   😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
+  {/* 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
+  <div style={{
+    height:'100%',width:'100%',
+    position:'absolute',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }}>
+    <div className={`${styles.copytop} ${styles.copy}`}
             style={{ display: data.isSelected ? 'flex' : 'none'}}
             onClick={()=>{ 
               const newNode = {
@@ -143,7 +120,7 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
                   },
                   selected: null,
                   data:{isSelected:null,        
-
+                    pokemonpng:data.pokemonpng
                   },
                   id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
                 };
@@ -176,8 +153,8 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
                     y: cloneNode.position.y  +cloneNode.height+50,
                   },
                   selected: null,
-                  data:{isSelected:null,        
-
+                  data:{isSelected:null,  
+                    pokemonpng:data.pokemonpng   
                   },
                   id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
                 };
@@ -194,7 +171,7 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
                   arrowHeadType: 'arrow', 
                   style: { strokeWidth: 3,stroke: '#00ffccab' }, 
                 };
-         
+        
                 setNodes([...nodes, newNode]);
                 setEdges([...edges, newEdge]);
             }
@@ -213,7 +190,7 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
                 },
                 selected: null,
                 data:{isSelected:null,        
-                  
+                  pokemonpng:data.pokemonpng
                 },
                 id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
               };
@@ -228,7 +205,7 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
                 arrowHeadType: 'arrow', 
                 style: { strokeWidth: 3,stroke: '#00ffccab' }, 
               };
-   
+  
               setNodes([...nodes, newNode])
               setEdges([...edges, newEdge]);
             }}>
@@ -246,6 +223,7 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
                 },
                 selected: null,
                 data:{isSelected:null,        
+                  pokemonpng:data.pokemonpng
                 },
                 id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
               };
@@ -268,8 +246,10 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
               <FontAwesomeIcon 
               icon={faCirclePlus} />
             </div>
-{/* 😈😈😈😈😈😈😈😈  C O P Y 功 能   😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
-{/* 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
+  </div>
+
+  {/* 😈😈😈😈😈😈😈😈  C O P Y 功 能   😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
+  {/* 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
 
 
 
@@ -284,6 +264,10 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
 
 
 
+
+
+
+  
 
 
 
@@ -297,7 +281,7 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
 
 
       <NodeResizer
-             handleStyle={{
+            handleStyle={{
               width:'15px',height:'15px',
               backgroundColor:'#7e0fe5',
               borderRadius:'2px'
@@ -309,6 +293,61 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
               borderColor: '#00ffccd8',
             }}
       isVisible={selected} minWidth={100} minHeight={100} />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <img
@@ -324,44 +363,52 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
 
 
 
-      {/* <div 
-       style={{ 
 
-        height:'100%'}}
-      >
-      <svg 
-      width="100%" 
-      height="100%"
-       viewBox="0 0 100 100">
-        <polygon points="50,0 100,100 0,100" fill="blue" />
-      </svg>
 
-      </div> */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <NodeToolbar >
-        <button>
-
-        </button>
-
-      </NodeToolbar>
-      {/* <Handle
-        type="target"
-        position={Position.Top}
-        className=" !bg-teal-400"
-        style={{
-          width: '18px',  // 调整宽度
-          height: '18px', 
-        }} 
-      /> */}
-      {/* <Handle
-        type="source"
-        position={Position.Bottom}
-        className=" !bg-teal-400"
-        style={{
-        width: '18px',  // 调整宽度
-        height: '18px', 
-      }} 
-      /> */}
+    </NodeToolbar>
       <Handle
             position={Position.Top} id="a"  type="target"
             className={`${styles.handleStyle} ${styles.handleStyleTop} `}
@@ -377,8 +424,6 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
         <Handle  position={Position.Right} id="d" type="source"
             className={`${styles.handleStyle} ${styles.handleStyleRight} `}
             isConnectable={isConnectable} />
-
-
     </div>
   );
 }
