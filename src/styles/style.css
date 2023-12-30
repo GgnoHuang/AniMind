@@ -90,18 +90,19 @@ input[type="color"].canvasBackgroundColor{
 /* ======================== */
 /* ======================== */
 
-.custom-minimap{
 
-
-}
 .custom-minimap svg{
-
   background-color: #a8a6a6;
   background-color: #373737;
   position: absolute!important;
   right: -2px !important;
   bottom: -2px  !important;
   border-radius: 10px  !important;
+}
+@media (max-width: 580px) {
+  .custom-minimap{
+    display: none;
+  }
 }
 
 
@@ -115,7 +116,6 @@ input[type="color"].canvasBackgroundColor{
 }
 .react-flow__controls-button {
   position: relative; /* 确保 button 为相对定位 */
-
   /* box-shadow: 0 0 2px 1px greenyellow; */
   box-shadow:none!important;
   border-bottom: 0px solid #ff000000!important; /* 消除本來預設的 */
@@ -133,7 +133,11 @@ input[type="color"].canvasBackgroundColor{
   /* padding: 0px 12px ; */
   /* opacity: 0; */
 }
-
+@media (max-width: 614px) {
+  .react-flow__controls-button{
+    width: 30px !important;
+  }
+}
 .react-flow__controls-button:hover{
   /* box-shadow: 0 0 2px 1px greenyellow; */
   background-color:#00ffccab  !important;

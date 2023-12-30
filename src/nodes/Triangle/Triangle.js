@@ -29,16 +29,19 @@ import { Handle, NodeProps,Position,
 
 export default function StarNode({id, data,isConnectable,selected }) {
 
+
+
+
   const [selectedColor, setSelectedColor] = useState(data.backgroundColor||'#ffffff'); // 默认颜色
 
 
-  const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'black'); // 默认颜色
+  const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'#000000'); // 默认颜色
 
   const [selectFontSize, setSelectFontSize] = useState(data.fontSize ||'25px');
   const [isPointerEventsActive, setIsPointerEventsActive] = useState(false);
 
   const handleDoubleClick = () => {
-    console.log('node js 執行setIsPointerEventsActive(prev => !prev)')
+    // console.log('node js 執行setIsPointerEventsActive(prev => !prev)')
     setIsPointerEventsActive(prev => !prev);
   };
   const { updateNodeData,updateNodeColor,
@@ -56,7 +59,18 @@ export default function StarNode({id, data,isConnectable,selected }) {
 
   }));
 
-  const [blockquoteContent, setBlockquoteContent] = useState(data.userMemoContent || '點擊');
+
+
+
+  // const onChangeDefault = (e) => {
+  //   updateNodeData(id, { ...data, userMemoContent: e.currentTarget.innerHTML });
+  // };
+
+
+
+
+  const [blockquoteContent, setBlockquoteContent] = useState(data.userMemoContent || '點擊輸入');
+  // const [blockquoteContent, setBlockquoteContent] = useState(data.userMemoContent || '');
 
   const increaseFontSize = () => {
     const newSize = parseInt(data.fontSize || 22, 10) + 5;
@@ -92,7 +106,7 @@ export default function StarNode({id, data,isConnectable,selected }) {
   const onFontSizeChange = (event) => {
     setSelectFontSize(`${event.target.value}px`);
     // setSelectFontSize(`${event.target.value}px`);
-    console.log(`${event.target.value}px`);
+    // console.log(`${event.target.value}px`);
     updateNodeData(id, { ...data, fontSize: `${event.target.value}px` });
   };
 
@@ -102,6 +116,9 @@ export default function StarNode({id, data,isConnectable,selected }) {
     updateNodeData(id, { ...data, userMemoContent: e.currentTarget.innerHTML });
     // setBlockquoteContent( e.currentTarget.innerHTML); 這邊用set打字又開始有問題
   };
+
+
+ 
 
   const onChangeTextAlign = (align) => {
     updateNodeData(id, { ...data, textalign: align });
@@ -147,7 +164,6 @@ export default function StarNode({id, data,isConnectable,selected }) {
       height: '100%',
 
       }}
-      // className='node'
       >
         <NodeResizer 
           handleStyle={{
@@ -258,7 +274,7 @@ export default function StarNode({id, data,isConnectable,selected }) {
   display:'flex',
   alignItems:'center',
   justifyContent:'center',
-  position:'absolute'
+  position:'absolute',
       }}>
 <div  className={`${styles.copytop} ${styles.copy}`}
             style={{ display: data.isSelected ? 'flex' : 'none'}}
@@ -439,11 +455,12 @@ export default function StarNode({id, data,isConnectable,selected }) {
             style={{
             pointerEvents: isPointerEventsActive ? 'auto' : 'none',
             cursor: 'text',
-            color: data.fontColor || 'black',
+            color: data.fontColor || '#000000',
             fontSize:data.fontSize||'25px',
             textAlign: data.textalign ||'center',
-              
+            margin:'35px 5px 0px 5px',
           }}
+
           onInput={onEditText}
           spellCheck="false"
           dangerouslySetInnerHTML={{ __html: blockquoteContent }}

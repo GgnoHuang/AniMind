@@ -4,7 +4,10 @@ import useStore from '../../store';
  // 👗👗👗👗👗👗zustand
 
 import { createUserWithEmailAndPassword, signOut } from "firebase/auth"
-import { db,auth } from "../../config"
+
+// import { db,auth } from "../../config"
+import { auth,db,signInWithGoogle } from "../../config"
+
 import { getDatabase, ref, set ,get} from "firebase/database"
 // import { auth } from "../../config" 
 
@@ -16,12 +19,18 @@ function Register() {
 
   // 👗👗👗👗👗👗👗👗👗👗👗zustand👗👗👗👗👗👗👗👗👗👗
   const { showRegisterForm,toggleForm
-    ,showCollage,toggleCollage
+    ,showCollage,toggleCollage,
+    errMsg,setErrMsg,successMsg,setSuccessMsg,
+
   } = useStore(state => ({
       toggleForm: state.toggleForm,
       showRegisterForm: state.showRegisterForm,
       showCollage: state.showCollage,
       toggleCollage: state.toggleCollage,
+      errMsg: state.errMsg,
+      setErrMsg: state.setErrMsg,
+      setSuccessMsg: state.setSuccessMsg,
+      successMsg: state.successMsg,
  }));
 
 //  useEffect(() => {
@@ -59,9 +68,9 @@ function Register() {
         password
       )
 
-      console.log(firebaseRES.user)
+      // console.log(firebaseRES.user)
       if (firebaseRES.user) {
-        console.log(firebaseRES.user.uid)
+        // console.log(firebaseRES.user.uid)
         set(ref(db, `users/${firebaseRES.user.uid}`), {
           username: username,
           email: email,
@@ -77,6 +86,24 @@ function Register() {
       alert("註冊失敗")
     }
   }
+
+
+  const handleGoogleLogin=async()=>{
+    setSuccessMsg(false)
+    setErrMsg(false)
+    try{
+      await signInWithGoogle();
+      console.log("登入成功");
+      setSuccessMsg(true)
+    
+    }catch (error){
+      setErrMsg(true)
+      console.log("登入失敗", error);
+    }
+
+  }
+
+
 
   return (
     // <div className={showRegisterForm ? 'visible' : 'hidden'}>
@@ -153,7 +180,12 @@ or
 </p>
 
             <div className=" flex items-center flex items-center justify-center">
-              <button type="button" className={styles.registerbtn} onClick={()=>{}}>
+              <button type="button" className={styles.registerbtn} 
+              onClick={handleGoogleLogin}
+              >
+                  <img src="/google.webp" 
+            style={{ height:'17px',width:'17px',marginRight:'7px'}}
+            />
               Continue with Google</button>
             </div>
 

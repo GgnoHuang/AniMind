@@ -18,7 +18,7 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
   const [isPointerEventsActive, setIsPointerEventsActive] = useState(false);
 
   const handleDoubleClick = () => {
-    console.log('hi')
+
     setIsPointerEventsActive(prev => !prev);
   };
 
@@ -79,7 +79,7 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
   const onFontSizeChange = (event) => {
     setSelectFontSize(`${event.target.value}px`);
     // setSelectFontSize(`${event.target.value}px`);
-    console.log(`${event.target.value}px`);
+
     updateNodeData(id, { ...data, fontSize: `${event.target.value}px` });
   };
 

@@ -1,6 +1,10 @@
 // ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
 // ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️   layout  ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
 // ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
+import Head from 'next/head';
+
+
+
 
 import dagre from 'dagre';
 const dagreGraph = new dagre.graphlib.Graph();
@@ -199,7 +203,7 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
 
 
 const onNodeClick = (event, node) => {
-  console.log('click node', node);
+  // console.log('click node', node);
   // const newNode = {
   //   ...node, // 复制 node 的所有属性
   //   position: { // 创建 position 的一个新副本
@@ -210,8 +214,8 @@ const onNodeClick = (event, node) => {
   //   id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
   // };
 }
-const onEdgeClick = ( edge) => {
-  console.log('click node', edge);
+const onEdgeClick = (event, edge) => {
+  // console.log('click node', edge);
 
 }
 
@@ -281,9 +285,7 @@ const onEdgeClick = ( edge) => {
 
 
 
-  useEffect(() => { 
-    console.log(selectedColor)
-  }, [selectedColor]); 
+
 
   // ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨
   // const [rfInstance, setRfInstance] = useState(null);
@@ -294,13 +296,13 @@ const onEdgeClick = ( edge) => {
   // ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨
   const onSave =(query) => {
     if (reactFlowInstance) {
-          console.log(reactFlowInstance.toObject())
+          // console.log(reactFlowInstance.toObject())
           const flow = reactFlowInstance.toObject();
           // localStorage.setItem(flowKey, JSON.stringify(flow));
           const localUUID = localStorage.getItem("userUUID")
         if (localUUID) {
               const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${query}`);
-              console.log(flow)
+              // console.log(flow)
               set(databaseRef, JSON.stringify(flow))
               .then(() => {
 
@@ -313,7 +315,7 @@ const onEdgeClick = ( edge) => {
           console.log('沒抓到localstorage的會員id')
         }
     }else{
-      console.log('')
+      // console.log('')
     }
 }
 
@@ -328,10 +330,10 @@ const onRestore = (query) => {
         if (snapshot.exists()){
         // if (false) {
           const data = snapshot.val();
-          console.log(3333)
-          console.log('成功從資料庫抓到的：');
-          // console.log(JSON.parse(data));
-          console.log(JSON.parse(data).nodes);
+          // console.log(3333)
+          // console.log('成功從資料庫抓到的：');
+
+          // console.log(JSON.parse(data).nodes);
 
           const parsedData = JSON.parse(data);
           if (parsedData) {
@@ -346,8 +348,8 @@ const onRestore = (query) => {
             // 如果沒有從儲存中找到節點數據，保持為空數組[]
           }
         }else{
-          console.log(query)
-          console.log('無存檔')
+          // console.log(query)
+          // console.log('無存檔')
 
           setNodes([]);
           setEdges([]);
@@ -423,12 +425,7 @@ const onAdd = (imageUrl) => {
   // setAddCount(count => count + 1);  // 增加计数
   setUpdateTrigger(trigger => !trigger);  // 触发 useEffect
 };
-useEffect(() => {
-    console.log(nodes);
-    console.log('數量：',howManyNodes);
 
-// eslint-disable-next-line react-hooks/exhaustive-deps
-}, [howManyNodes]);
 
 // ⚪️
 // ⚪️
@@ -483,8 +480,13 @@ useEffect(() => {
       style={{ 
         height: "100vh",
         width: "100%",
+}}>
+ <Head>
+        <title>𝑨𝒏𝒊𝑴𝒊𝒏𝒅</title>
+        <link rel="icon" href="/logo.png" />
 
-      }}>
+      </Head>
+
 
 
 
@@ -493,7 +495,7 @@ useEffect(() => {
           <Link href="/">
               <div className={styles.logo}   style={{zIndex:'1999'}}>
                   <img src="/oklogo.png" className={styles.logopng}/>
-                  <span className={styles.logospan}>Organic</span>
+                  <span className={styles.logospan}>Ani-M-ind</span>
               </div>
           </Link>
 
@@ -629,24 +631,19 @@ useEffect(() => {
 
         <div className={styles.canvasBgBar}>
             <div 
-              style={{  
-                width: '19px',  height: '19px',
-                borderRadius:'777px',overflow:'hidden',cursor:'pointer'}}
+            className={styles.canvasBgBtns}
+
                 onClick={() => setVariant('lines')}>
                   <img src='/格.png' alt="Picture"/> 
             </div>
 
-            <div  style={{ 
-                width: '19px',  height: '19px',
-                borderRadius:'777px',overflow:'hidden',
-                  cursor:'pointer'}}
+            <div  className={styles.canvasBgBtns}
                   onClick={() => setVariant('cross')}>
                   <img  src='/cross.png'alt="Picture"/> 
             </div>
               <div onClick={() => setVariant('dots')}
-                style={{ 
-                  width: '19px',  height: '19px',
-                  borderRadius:'777px',overflow:'hidden', cursor:'pointer'}}>
+            className={styles.canvasBgBtns}
+                  >
                   <img src='/dotbtn.png'alt="Picture"/> 
               </div>
             <div className={styles.wper}>
@@ -691,9 +688,6 @@ useEffect(() => {
   // nodeStrokeWidth={1}
   maskColor='#666666'
   nodeColor='#00ffccab'
-
-
-
 
 />
 

@@ -22,7 +22,7 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
   const [selectedColor, setSelectedColor] = useState(data.backgroundColor||'#ffffff'); // 默认颜色
   // data.backgroundColor||'#ffffff'
   // 這個||很重要，這樣重新整理連input上面那個圖也可以顯示成我們背景顏色
-  const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'black'); // 默认颜色
+  const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'#000000'); // 默认颜色
   const [selectFontSize, setSelectFontSize] = useState(data.fontSize ||'25px');
   // const [minSize, setMinSize] = useState({ minWidth: 100, minHeight: 100 });
 
@@ -51,7 +51,7 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
 
   }));
 
-  const [blockquoteContent, setBlockquoteContent] = useState(data.userMemoContent || 'Type here...');
+  const [blockquoteContent, setBlockquoteContent] = useState(data.userMemoContent || '點擊輸入');
 
   // const onInpupu = (event) => {
   //   console.log('當前輸入：', event.target.value);
@@ -100,7 +100,7 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
   const onFontSizeChange = (event) => {
     setSelectFontSize(`${event.target.value}px`);
     // setSelectFontSize(`${event.target.value}px`);
-    console.log(`${event.target.value}px`);
+    // console.log(`${event.target.value}px`);
     updateNodeData(id, { ...data, fontSize: `${event.target.value}px` });
   };
 
@@ -450,10 +450,12 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
         suppressContentEditableWarning
             style={{pointerEvents: isPointerEventsActive ? 'auto' : 'none',
             cursor: 'text',
-            color: data.fontColor || 'black',
+            color: data.fontColor || '#000000',
             // fontSize: selectFontSize+'px' ,
             fontSize:data.fontSize||'25px',
-            textAlign: data.textalign ||'center',}}
+            textAlign: data.textalign ||'center',
+            margin:'25px 20px'
+          }}
           // onClick={handleBlockQuoteClick} 
           onInput={onEditText} 
           spellCheck="false"

@@ -57,7 +57,7 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
 
   }));
 
-  const [blockquoteContent, setBlockquoteContent] = useState(data.userMemoContent || 'Type here...');
+  const [blockquoteContent, setBlockquoteContent] = useState(data.userMemoContent || '點擊輸入');
 
   // const onInpupu = (event) => {
   //   console.log('當前輸入：', event.target.value);
@@ -106,7 +106,7 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
   const onFontSizeChange = (event) => {
     setSelectFontSize(`${event.target.value}px`);
     // setSelectFontSize(`${event.target.value}px`);
-    console.log(`${event.target.value}px`);
+    // console.log(`${event.target.value}px`);
     updateNodeData(id, { ...data, fontSize: `${event.target.value}px` });
   };
 

@@ -84,13 +84,13 @@
 background-color: #00ffcc; 
 }
 
-.awesomeNavIconBtnS:hover{
+/* .awesomeNavIconBtnS:hover{
  color: #00ffcc;
 }
 
 .Aicon:hover{
  color: #00ffcc;
-}
+} */
 
 .Aicon:hover ~ .plusIcon,
 .Aicon:hover ~ .minusIcon {
@@ -101,7 +101,7 @@ background-color: #00ffcc;
  position: absolute;
  top: 10px;
  right: 4px;
- transform: scale(0.5)  scaleY(1);
+ transform: scale(0.4)  scaleY(1);
 }
 
 
@@ -110,7 +110,7 @@ background-color: #00ffcc;
  top: 10px;
  right: 2px;
 
- transform: scale(0.7);
+ transform: scale(0.75);
 }
 .tetxToolsBig{
 

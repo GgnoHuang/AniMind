@@ -9,16 +9,20 @@ import { nodes as initialNodes, edges as initialEdges } from './components/initi
 export const useStore = create((set, get) => ({
 
 
+// 🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅
+  errMsg: false,
+  setErrMsg: (message) => set({ errMsg: message }),
+
+  successMsg: false,
+  setSuccessMsg: (message) => set({ successMsg: message }),
+// 🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅🌅
 
 
 // 複製
 // 複製
 // 複製
-
-
-cloneNode: null,
-setCloneNode: (value) => set({ cloneNode: value }),
-
+  cloneNode: null,
+  setCloneNode: (value) => set({ cloneNode: value }),
 // 複製
 // 複製
 // 複製
@@ -233,7 +237,7 @@ selectNode: (nodeId) => {
       // markerEnd: { type: 'arrow', color: '#00ffcc' },
       arrowHeadType: 'arrow', // 设置箭头类型为 "arrow"
      // style: { strokeWidth: 3,stroke: '#00ffccda' }, 
-      style: { strokeWidth: 3,stroke: '#00ffccab' }, 
+      style: { strokeWidth: 5,stroke: '#00ffccab' }, 
     };
     set((state) => ({
       edges: addEdge(newEdge, state.edges),
