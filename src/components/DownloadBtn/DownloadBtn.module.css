@@ -20,7 +20,11 @@
   transition: all 0.1s ease;
   color:#7628f3;
   background-color: #00ffccab ;
-
+}
+@media (max-width: 500px) {
+  .dwBtn{
+      width: 38px;
+  }
 }
 
 .dwBtn:hover{

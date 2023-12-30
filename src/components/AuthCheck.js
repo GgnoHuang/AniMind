@@ -15,7 +15,7 @@ const AuthAndUserData = ({ auth,
         if (savedUserData) {
           const parsedData = JSON.parse(savedUserData)
           setLocalUserData(parsedData)
-          console.log('抓資料')
+          // console.log('抓資料')
         }
       } else {
         setUserAuth(null)

@@ -10,20 +10,21 @@ import useStore from '../../store';
 import styles from "./LogoutBtn.module.css";
 
 function LogoutBtn({setUserAuth,setLocalUserData,
-  errMsg,setErrMsg, setSuccessMsg, successMsg
-  ,setKeysCount,setBtnsArr
+  // setErrMsg, setSuccessMsg
+  setKeysCount,setBtnsArr
 }) {
 
-
+ 
 
 // 👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗
   const { 
-  toggleCollage,
+  toggleCollage,setErrMsg,setSuccessMsg,
   } = useStore(state => ({
     toggleCollage: state.toggleCollage,
+    setErrMsg: state.setErrMsg,
+    setSuccessMsg: state.setSuccessMsg,
 }));
-const handleToggleFormClick = () => {
-};
+
 // 👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗
 
   

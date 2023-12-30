@@ -3,14 +3,20 @@ import Link from "next/link"
 
 import styles from "./HomeNav.module.css";
 
-import LogoutBtn from "../LogoutBtn/LogoutBtn"
+import LogoutBtn from "../LogoutBtn/LogoutBtn";
+
+
 
 export default function HomeNav({localUserData,
-  setErrMsg,setSuccessMsg,
+  // setErrMsg,setSuccessMsg,
   setUserAuth,setLocalUserData
   ,setKeysCount
   ,setBtnsArr
 }) {
+
+
+
+
 
   return (
     <div >
@@ -23,7 +29,7 @@ export default function HomeNav({localUserData,
               <p className={styles.logo}
                 style={{zIndex:'1999'}}>
                 <img src="/oklogo.png" className={styles.logopng}/>
-                <span className={styles.logospan}>Organic</span>
+                <span className={styles.logospan}>Ani-M-ind</span>
               </p>
               {localUserData != null && (
               <div className={styles.btnswrapper}
@@ -42,7 +48,9 @@ export default function HomeNav({localUserData,
                   className={styles.usernametext}>{localUserData.username}</span>
                 </p>
 
-                <LogoutBtn  setErrMsg={setErrMsg} setSuccessMsg={setSuccessMsg} 
+                <LogoutBtn  
+                // setErrMsg={setErrMsg} setSuccessMsg={setSuccessMsg} 
+
                   setUserAuth={setUserAuth}
                   setLocalUserData={setLocalUserData}
                   setKeysCount={setKeysCount}

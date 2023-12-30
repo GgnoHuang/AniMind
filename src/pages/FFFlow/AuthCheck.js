@@ -8,7 +8,7 @@ const AuthCheck = ({setLocalUserData}) => {
     const unsubscribe = onAuthStateChanged(auth, (authUser) => {
       if (authUser) {
 
-        console.log("--有登入--")
+        // console.log("--有登入--")
 
         const localUUID = localStorage.getItem("userUUID")
         const savedUserData = localStorage.getItem("userData")
@@ -17,12 +17,12 @@ const AuthCheck = ({setLocalUserData}) => {
           const parsedData = JSON.parse(savedUserData)
           // setLocalUserData(parsedData)
           setLocalUserData(parsedData)
-          console.log(parsedData)
+          // console.log(parsedData)
 
         }
       } else {
 
-        console.log("沒登入")
+        // console.log("沒登入")
       }
     })
     return () => unsubscribe()

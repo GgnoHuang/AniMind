@@ -21,7 +21,7 @@ export default function DownloadBtn({initBgColor}) {
   const { getNodes } = useReactFlow();
 
   const onClick = () => {
-    console.log(getNodes())
+    // console.log(getNodes())
     const nodesBounds = getRectOfNodes(getNodes());
     // getNodes返回一個陣列，就是你平常印出的那個一堆nodes的那個
     //  然後用getRectOfNodes去得到這些nodes的邊界

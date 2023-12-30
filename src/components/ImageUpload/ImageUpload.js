@@ -68,7 +68,7 @@ function ImageUpload( {onAdd}) {
         () => {// 上傳完成後的操作
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             setImageUrl(downloadURL);
-            console.log(downloadURL);
+            // console.log(downloadURL);
             onAdd(downloadURL);
           });});}}, [image]);
   

@@ -4,6 +4,7 @@ import { faFileCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
 
+import Head from 'next/head';
 
 import React, { useState, useEffect } from "react"
 import Link from "next/link"
@@ -40,8 +41,13 @@ export default function HomePage() {
   // 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
 
   
-  const { toggleCollageToTrue,} = useStore(state => ({
+  const { toggleCollageToTrue,
+
+    successMsg,
+
+  } = useStore(state => ({
     toggleCollageToTrue: state.toggleCollageToTrue,
+    successMsg: state.successMsg,
 }));
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -58,8 +64,8 @@ export default function HomePage() {
 
   const [localUserData, setLocalUserData] = useState(null)
   const [userAuth, setUserAuth] = useState(null)
-  const [successMsg, setSuccessMsg] = useState(false)
-  const [errMsg, setErrMsg] = useState(false)
+  // const [successMsg, setSuccessMsg] = useState(false)
+  // const [errMsg, setErrMsg] = useState(false)
 
 
     // 🐳🐳🐳🐳 取得存檔數量 🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳
@@ -71,28 +77,22 @@ export default function HomePage() {
 
     const countFFFlowData = async () => {
       // 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
-
   // 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
       // const databaseRef = ref(db, 'FFFlow');
       const localUUID = localStorage.getItem("userUUID");
       const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/`);
       try {
-        console.log(3)
         const snapshot = await get(databaseRef);
         if (snapshot.exists()) {
-          console.log(4)
           const data = snapshot.val();
-          console.log('所有資料的key⬇️⬇️⬇️⬇️⬇️⬇️')
-          console.log(Object.keys(data))
-          console.log('所有資料的key⬆️⬆️⬆️⬆️⬆️⬆️')
+          // console.log('所有資料的key⬇️⬇️⬇️⬇️⬇️⬇️')
+          // console.log(Object.keys(data))
+          // console.log('所有資料的key⬆️⬆️⬆️⬆️⬆️⬆️')
           setKeysCount(Object.keys(data).length) 
-
 
           const snapshotDataKeys = Object.keys(data);
           const sortedDataKeys = snapshotDataKeys.sort((a, b) => b - a);
           setBtnsArr(sortedDataKeys);
-
-
           // setBtnsArr(Object.keys(data));
 
           return ;
@@ -109,8 +109,8 @@ export default function HomePage() {
     };
     useEffect(() => {
       if(localStorage.getItem("userUUID")){    
-        console.log('有執行countFFFlowData')
-        console.log(1)
+        // console.log('有執行countFFFlowData')
+
         countFFFlowData();
         }
     }, [successMsg]);
@@ -131,7 +131,7 @@ export default function HomePage() {
   const onSave =() => {
           const localUUID = localStorage.getItem("userUUID")
         if (localUUID) {
-            const timestamp = Date.now(); // 获取当前时间的时间戳
+            const timestamp = Date.now(); //獲取當前時間
 
               const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/${timestamp}`);
               const flowDataName = ref(db, `users/${localUUID}/reactflow/flowDataName/${timestamp}`);
@@ -148,7 +148,7 @@ export default function HomePage() {
               });
 
         }else{
-          console.log('沒抓到localstorage的會員id')
+          console.log('從localstorage獲取會員id失敗')
         }
 }
 
@@ -164,10 +164,10 @@ const onDelete = (timestamp) => {
         countFFFlowData()
       })
       .catch((error) => {
-        console.error("删除发生错误：", error);
+        console.error("刪除發生錯誤：", error);
       });
   } else {
-    console.log('缺少必要的用户ID或时间戳');
+    console.log('缺少用户ID');
   }
 };
 
@@ -192,10 +192,18 @@ const reDirect =(query) => {
               setUserAuth={setUserAuth}
               successMsg={successMsg}
             />
-      
+
+<Head>
+        <title>𝑨𝒏𝒊𝑴𝒊𝒏𝒅</title>
+        <link rel="icon" href="/logo.png" />
+
+      </Head>
+
             <HomeNav localUserData={localUserData}
-              setErrMsg={setErrMsg} 
-              setSuccessMsg={setSuccessMsg} 
+
+              // setErrMsg={setErrMsg} 
+              // setSuccessMsg={setSuccessMsg} 
+
               setUserAuth={setUserAuth} 
               setLocalUserData={setLocalUserData}
               setKeysCount={setKeysCount}
@@ -248,7 +256,7 @@ const reDirect =(query) => {
             {userAuth == null && (
               <div className={styles.formContainer}>
                 <RegisterForm />
-                <LoginForm  errMsg={errMsg} setErrMsg={setErrMsg} setSuccessMsg={setSuccessMsg} successMsg={successMsg} />
+                <LoginForm />
               </div>
             )}
       

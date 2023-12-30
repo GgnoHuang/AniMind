@@ -32,13 +32,13 @@ export default function StarNode({id, data,isConnectable,selected }) {
   const [selectedColor, setSelectedColor] = useState(data.backgroundColor||'#ffffff'); // 默认颜色
 
 
-  const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'black'); // 默认颜色
+  const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'#000000'); // 默认颜色
 
   const [selectFontSize, setSelectFontSize] = useState(data.fontSize ||'25px');
   const [isPointerEventsActive, setIsPointerEventsActive] = useState(false);
 
   const handleDoubleClick = () => {
-    console.log('node js 執行setIsPointerEventsActive(prev => !prev)')
+    // console.log('node js 執行setIsPointerEventsActive(prev => !prev)')
     setIsPointerEventsActive(prev => !prev);
   };
   const { updateNodeData,updateNodeColor,
@@ -58,7 +58,7 @@ export default function StarNode({id, data,isConnectable,selected }) {
 
   }));
 
-  const [blockquoteContent, setBlockquoteContent] = useState(data.userMemoContent || '點擊');
+  const [blockquoteContent, setBlockquoteContent] = useState(data.userMemoContent || '點擊輸入');
 
   const increaseFontSize = () => {
     const newSize = parseInt(data.fontSize || 22, 10) + 5;
@@ -94,7 +94,7 @@ export default function StarNode({id, data,isConnectable,selected }) {
   const onFontSizeChange = (event) => {
     setSelectFontSize(`${event.target.value}px`);
     // setSelectFontSize(`${event.target.value}px`);
-    console.log(`${event.target.value}px`);
+    // console.log(`${event.target.value}px`);
     updateNodeData(id, { ...data, fontSize: `${event.target.value}px` });
   };
 
@@ -420,9 +420,10 @@ export default function StarNode({id, data,isConnectable,selected }) {
             style={{
             pointerEvents: isPointerEventsActive ? 'auto' : 'none',
             cursor: 'text',
-            color: data.fontColor || 'black',
+            color: data.fontColor || '#000000',
             fontSize:data.fontSize||'25px',
             textAlign: data.textalign ||'center',
+            margin:'35px 10px 30px 10px'
               
           }}
           onInput={onEditText}

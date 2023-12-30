@@ -361,7 +361,6 @@
 .dwBtn{
   margin-right: 12px;
   height: 32px;
-  /* border: 1px red solid; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -370,25 +369,18 @@
   cursor: pointer;
   width: 68px;
   font-size: 17px;
-  /* border-bottom: white 2px solid; */
   transition: all 0.1s ease;
   color:#7628f3;
   background-color: #00ffccab ;
-
-  /* background-color: #00ffccd7 ; */
-  /* 亮色 */
-
-  /* box-sizing:content-box; */
-
+}
+@media (max-width: 500px) {
+  .dwBtn{
+    width: 38px;
+}
 }
 .dwBtn:hover{
   background-color: #ffffff ;
-  /* border-bottom: #00ffccab 2px solid; */
   color:#00ffccab;
-
-
-
-
   .NavBtnHint{
     opacity: 1; 
     visibility: visible;
@@ -396,28 +388,21 @@
 }
 
 .NavBtnHint{
-  /* line-height: 151%; */
   position: absolute;
   top:55px;
   font-size: 10px;
   padding: 3px 12px;
   color: #ffffff;
   background-color: #000000;
-
   opacity: 0; 
   visibility: hidden;
-
 }
-
 /* 🟥🟥🟥按鈕們🟥🟥🟥🟥🟥🟥🟥🟥🟥*/
-
 
 
 
 .welcome{
   border-radius: 12px;
-
-  /* height: 38px; */
   padding: 3px 15px;
   /* border: 1px red solid; */
   display: flex;
@@ -428,13 +413,15 @@
   border: 1.5px gray solid;
   color:#7628f3;
   color:#ffffff;
-/* background-color: #00ffccab ; */
-  /* color: white ; */
-
   margin-left: 15px;
 }
 .usericon{
   margin-right: 6px;
+}
+@media (max-width: 620px) {
+    .welcome{
+      display: none;
+  }
 }
 
 
@@ -451,12 +438,20 @@
   height: 39px  !important;
   border: 0px rgba(255, 255, 255, 0.671) solid;
   border: 0px white solid;
-
   width: fit-content;
   border-radius:200px;
   background-color: #666666 !important;
-
-
+}
+@media (max-width: 744px) {
+  .patternStylePanel{
+    right:-0px !important;;
+    bottom: 155px  !important;
+  }
+}
+@media (max-width: 580px) {
+  .patternStylePanel{
+    display: none;
+  }
 }
 
 .canvasBgBar{
@@ -466,6 +461,13 @@
   padding: 0px 12px;
   gap: 12px;
 
+}
+.canvasBgBtns{
+  width: 19px; 
+  height: 19px;
+  border-radius:777px;
+  overflow:hidden;
+  cursor:pointer;
 }
 
 
