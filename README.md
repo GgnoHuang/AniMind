@@ -1,4 +1,6 @@
-![这是一个示例GIF](https://github.com/username/repository/blob/main/public/readmeGifs/clone.gif)
+
+![Create or Delete File](https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/clone.gif?raw=true)
+
 
 
 
