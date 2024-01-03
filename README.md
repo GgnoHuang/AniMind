@@ -1,5 +1,6 @@
 
 ![Create or Delete File](https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/clone.gif?raw=true)
+![Create or Delete File](https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/clone.gif)
 
 
 
