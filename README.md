@@ -1,4 +1,23 @@
-# Features
+## Ani-M-ind
+
+>Ani-M-ind is a mind mapping website, and it transforms your ideas into visual masterpieces, enabling effortless organization and creative exploration.
+
+
+## Use the App
+
+Link: [Ani-M-ind](https://ani-mind.vercel.app/)
+
+🔑 Demo account and password
+
+| Account          | Password |
+| ---------------- | -------- |
+| `test@test.com` | `123456` |
+
+
+
+
+
+## Features and Technical Introduction
 
 
 ### 🔷 **1. Login Feature**
