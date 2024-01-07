@@ -12,6 +12,8 @@
 
 ### **2. Drag-and-Drop Node Addition Feature**
 
+<img src="https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/add.gif?raw=true" width="450" height="260">
+
 In this project, I developed a feature enabling users to add new nodes via drag-and-drop. Each node is a unique React component with its own shape and functionality, defined as different node types using React Flow's **`nodeTypes`**. This feature leverages HTML's drag-and-drop API, specifically using **`onDragStart`**, **`onDrop`**, and **`onDragOver`** events to manage dragging actions and node placement. When a user drags a node to a position on the flowchart, these events are triggered. Additionally, I created a **`setNodes`** function in the state management tool provided by **`Zustand`**, which updates the node collection in the flow, including their count and data, whenever a new node is added, ensuring data consistency and real-time updates.
 ***
 
