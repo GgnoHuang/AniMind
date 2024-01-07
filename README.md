@@ -1,3 +1,7 @@
+<img src="https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/login.gif?raw=true" width="400" height="300">
+
+
+
 
 ![Create or Delete File](https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/login.gif?raw=true)
 ![Create or Delete File](https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/nodetool.gif?raw=true)
