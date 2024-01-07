@@ -1,18 +1,10 @@
 <img src="https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/login.gif?raw=true" width="450" height="260">
+<img src="https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/nodetool.gif?raw=true" width="450" height="260">
+<img src="https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/upload.gif?raw=true" width="450" height="260">
+<img src="https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/layout.gif?raw=true" width="450" height="260">
+<img src="https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/clone.gif?raw=true" width="450" height="260">
+<img src="https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/download.gif?raw=true" width="450" height="260">
 
-
-
-
-![Create or Delete File](https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/login.gif?raw=true)
-![Create or Delete File](https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/nodetool.gif?raw=true)
-
-![Create or Delete File](https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/upload.gif?raw=true)
-
-![Create or Delete File](https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/layout.gif?raw=true)
-
-![Create or Delete File](https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/clone.gif?raw=true)
-
-![Create or Delete File](https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/download.gif?raw=true)
 
 
 
