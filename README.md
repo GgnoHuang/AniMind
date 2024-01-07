@@ -3,6 +3,14 @@
 > Ani-M-ind is a mind mapping website, and it transforms your ideas into visual masterpieces, enabling effortless organization and creative exploration.
 
 
+- Extensive personalization options, such as node colors and sizes, node shapes, background colors, font colors and sizes, and more.
+- Utilizes **`Firebase`** for database functionality and authentication, along with Firebase Storage for image uploading capabilities.
+- Employs the state management tool **`Zustand`** for handling a multitude of variables and functions.
+- Integrates various third-party libraries like **`React Flow`**, **`Dagre`**, **`D3`**, and **`html-to-image`** to facilitate features like canvas, node arrangement, export, and more.
+- Utilized **`Next.js`** dynamic routing in conjunction with Firebase Realtime Database to implement a multi-save feature.
+
+
+
 ---
 ## 🟠 Try it!
 
