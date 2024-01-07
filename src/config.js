@@ -64,9 +64,10 @@ const firebaseConfig = {
 // console.log('🚀執行config.js')
 
 
-  // 🚀
+  // 🚀storage
 import { getStorage } from "firebase/storage";
-  // 🚀
+  // 🚀storage
+  
 const app = initializeApp(firebaseConfig)
 const db = getDatabase(app)
 const auth = getAuth()

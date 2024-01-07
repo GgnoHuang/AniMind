@@ -5,10 +5,11 @@ import Head from 'next/head';
 
 
 
-
 import dagre from 'dagre';
 const dagreGraph = new dagre.graphlib.Graph();
 dagreGraph.setDefaultEdgeLabel(() => ({}));
+// 為圖形中的所有邊設定預設標籤。在此，標籤被設定為一個空對象。
+
 // const nodeWidth = 232;
 // const nodeHeight = 76;
 // const getLayoutedElements = (w,h,nodes, edges, direction = 'TB') => {
@@ -236,10 +237,15 @@ const onEdgeClick = (event, edge) => {
 
 
 // ~~~~~~~~~~~~dnd的部分
+
+// 這是 onDragStart 函數的定義，
+// 它接收兩個參數：event（拖曳事件對象）和 nodeType（被拖曳的節點類型）。
   const onDragStart = (event, nodeType) => {
     event.dataTransfer.setData('application/reactflow', nodeType);
     event.dataTransfer.effectAllowed = 'move';
   }
+
+
   // －－－－－
   const reactFlowWrapper = useRef(null);
   // const [reactFlowInstance, setReactFlowInstance] = useState(null);
@@ -743,12 +749,12 @@ useEffect(() => {
 
                   <div className={styles.toolBtnHint}>Drag to Add Shape</div>
               </div>
-         
+
 
               <div className={styles.toolBtns}
                 onDragStart={(event) => onDragStart(event, 'Diamond')} draggable>
                     <FontAwesomeIcon icon={faDiamond}
-                     className={styles.SidebarIconBtnS} />
+                    className={styles.SidebarIconBtnS} />
                     <div className={styles.toolBtnHint}>Drag to Add Shape</div>
               </div>
               <div className={styles.toolBtns}
