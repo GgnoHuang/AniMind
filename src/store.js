@@ -4,7 +4,7 @@ import { addEdge, applyNodeChanges, applyEdgeChanges } from 'reactflow';
 // import initialNodes from './pages/FFFlow/initialNodes';
 // import initialEdges from './pages/FFFlow/initialEdges';
 
-import { nodes as initialNodes, edges as initialEdges } from './components/initialEls';
+import { nodes as initialNodes, edges as initialEdges } from './components/initialEls.js';
 
 export const useStore = create((set, get) => ({
 
