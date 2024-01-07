@@ -23,29 +23,3 @@ Nodes in this project support zooming and scaling, as well as the ability to enl
 ***
 
 ### **4. Image Upload and Rotation Feature**
-
-<img src="https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/upload.gif?raw=true" width="450" height="260">
-
-In this project, I utilized Firebase's Storage feature to store images. These images are saved in Storage in the form of URLs. To enhance user experience, I implemented an image rotation feature using the **`d3`** library. Whenever a user uploads an image, the system identifies it by comparing a unique ID, and then assigns the corresponding image URL to the relevant node. This approach simplifies image management and ensures each node displays the correct image.
-***
-
-### **5. Auto Layout Feature**
-
-<img src="https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/layout.gif?raw=true" width="450" height="260">
-
-This project offers two automatic node layout options: vertical and horizontal, realized through the integration of React Flow with the **`dagre`** library. By customizing the **`getLayoutedElements`** function, I set the direction of the dagre graph and configured relevant attributes for each node and edge. The dagre library is responsible for computing the layout and determining node positions. This approach enables nodes to automatically align based on predefined rules, streamlining the process of creating flowcharts. Additionally, by using the **`source`** and **`target`** attributes of the connections (corresponding to the **`green`** and **`purple`** handles), the correct hierarchical order of the mind map is maintained.
-***
-
-### **6. Node Copying Feature**
-
-<img src="https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/clone.gif?raw=true" width="450" height="260">
-
-Users have the option to copy nodes in four different directions, and the copied nodes automatically establish connections with the original nodes. This functionality is achieved by capturing the IDs of the nodes and their connection points (**`handles`**), which allows the system to automatically set up connections between the new nodes. This feature enhances the efficiency of flowchart editing.
-***
-
-### **7. Download Feature**
-
-<img src="https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/download.gif?raw=true" width="450" height="260">
-
-The feature of the output screen is that I use the **`html-to-image`** library to capture the mind map created with **`React Flow`** as a JPEG image. I utilize the **`getRectOfNodes`** function of React Flow to calculate the width and height of the screen, thus determining the size of the image. Then, it captures the content within the React Flow view, including the specified background color, and presents it to the user as an image.
-***
