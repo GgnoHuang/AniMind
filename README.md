@@ -68,4 +68,8 @@ Users have the option to copy nodes in four different directions, and the copied
 <img src="https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/download.gif?raw=true" width="450" height="260">
 
 The feature of the output screen is that I use the **`html-to-image`** library to capture the mind map created with **`React Flow`** as a JPEG image. I utilize the **`getRectOfNodes`** function of React Flow to calculate the width and height of the screen, thus determining the size of the image. Then, it captures the content within the React Flow view, including the specified background color, and presents it to the user as an image.
+
 ***
+## Contact
+Name: 黃駿宏 Jyun-Hung Huang
+Email: Lshapeddesk@icloud.com
