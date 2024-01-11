@@ -60,13 +60,13 @@ Nodes in this project support zooming and scaling, as well as the ability to enl
 
 <img src="https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/upload.gif?raw=true" width="60%">
 
-In this project, I utilized Firebase's Storage feature to store images. These images are saved in Storage in the form of URLs. To enhance user experience, I implemented an image rotation feature using the **`d3`** library. Whenever a user uploads an image, the system identifies it by comparing a unique ID, and then assigns the corresponding image URL to the relevant node. This approach simplifies image management and ensures each node displays the correct image.
+In this project, I utilized Firebase's Storage feature to **`store images`**. These images are saved in Storage in the form of **`URLs`**. To enhance user experience, I implemented an image rotation feature using the **`D3`** library. Whenever a user uploads an image, the system identifies it by comparing a unique ID, and then assigns the corresponding image URL to the relevant node. This approach simplifies image management and ensures each node displays the correct image.
 #
 ### **🔸 Auto Layout Feature**
 
 <img src="https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/layout.gif?raw=true"  width="60%">
 
-This project offers two automatic node layout options: vertical and horizontal, realized through the integration of React Flow with the **`dagre`** library. By customizing the **`getLayoutedElements`** function, I set the direction of the dagre graph and configured relevant attributes for each node and edge. The dagre library is responsible for computing the layout and determining node positions. This approach enables nodes to automatically align based on predefined rules, streamlining the process of creating flowcharts. Additionally, by using the **`source`** and **`target`** attributes of the connections (corresponding to the **`green`** and **`purple`** handles), the correct hierarchical order of the mind map is maintained.
+This project offers two automatic node layout options: **`vertical and horizontal`**, realized through the integration of React Flow with the **`dagre`** library. By customizing the **`getLayoutedElements`** function, I set the direction of the dagre graph and configured relevant attributes for each node and edge. The dagre library is responsible for computing the layout and determining node positions. This approach enables nodes to automatically align based on predefined rules, streamlining the process of creating flowcharts. Additionally, by using the **`source`** and **`target`** attributes of the connections (corresponding to the **`green`** and **`purple`** handles), the correct hierarchical order of the mind map is maintained.
 #
 ### **🔸 Node Copying Feature**
 
