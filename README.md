@@ -23,7 +23,7 @@ Link: [Ani-M-ind](https://ani-mind.vercel.app/)
 
 
 ---
-## 🟠 Features and Technical Introduction
+## 🟠 Features and Technical Intro (Gif圖較多，謝謝你耐心等待😊)
 
 ### **🔸 Login Feature**
 
