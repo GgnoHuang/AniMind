@@ -16,8 +16,6 @@ export default function HomeNav({localUserData,
 
 
 
-
-
   return (
     <div >
       <div className={styles.navbody}>

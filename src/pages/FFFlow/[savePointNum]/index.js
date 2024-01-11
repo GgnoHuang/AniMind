@@ -3,27 +3,19 @@
 // ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
 import Head from 'next/head';
 
-
-
 import dagre from 'dagre';
 const dagreGraph = new dagre.graphlib.Graph();
 dagreGraph.setDefaultEdgeLabel(() => ({}));
 // 為圖形中的所有邊設定預設標籤。在此，標籤被設定為一個空對象。
 
-// const nodeWidth = 232;
-// const nodeHeight = 76;
-// const getLayoutedElements = (w,h,nodes, edges, direction = 'TB') => {
 const getLayoutedElements = (nodes, edges, direction = 'TB') => {
   const isHorizontal = direction === 'LR';
   dagreGraph.setGraph({ rankdir: direction });
 
   nodes.forEach((node) => {
-    // dagreGraph.setNode(node.id, { width: w, height: h });
-    // 🤣🤣🤣🤣🤣🤣🤣🤣結果用node.width這樣就解決了是怎樣 = =a
-    // 🤣🤣🤣🤣🤣🤣🤣🤣結果用node.width這樣就解決了是怎樣 = =a
+    // 👇🏻用node.width解決了
     dagreGraph.setNode(node.id, { width: node.width, height: node.height });
-    // 🤣🤣🤣🤣🤣🤣🤣🤣結果用node.width這樣就解決了是怎樣 = =a
-    // 🤣🤣🤣🤣🤣🤣🤣🤣結果用node.width這樣就解決了是怎樣 = =a
+    // 👆🏻用node.width解決了
   });
 
   edges.forEach((edge) => {
@@ -40,8 +32,6 @@ const getLayoutedElements = (nodes, edges, direction = 'TB') => {
     // We are shifting the dagre node position (anchor=center center) to the top left
     // so it matches the React Flow node anchor point (top left).
     node.position = {
-      // x: nodeWithPosition.x - nodeWidth / 2,
-      // y: nodeWithPosition.y - nodeHeight / 2,
       x: nodeWithPosition.x - node.width / 2,
       y: nodeWithPosition.y - node.height / 2,
     };
@@ -51,10 +41,7 @@ const getLayoutedElements = (nodes, edges, direction = 'TB') => {
 
   return { nodes, edges };
 };
-// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
 // ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️   layout  ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
-// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
-
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWindowMinimize,
@@ -77,13 +64,11 @@ import { faWindowMinimize,
         
   } from '@fortawesome/free-solid-svg-icons';
 
-
 import Link from "next/link"
 import { useRouter } from 'next/router';
 import { useCallback, useState,useEffect,useRef } from 'react';
 import { db } from "../../../config" 
 import { ref, set ,get} from "firebase/database"
-
 
 import ReactFlow, { ReactFlowProvider,useReactFlow,
   Panel,Controls,Background ,MiniMap,
@@ -93,12 +78,9 @@ import 'reactflow/dist/style.css';
 import styles from "../ffflow.module.css";
 
 
-// node👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻
-// node👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻
+// node👇🏻
 import TextUpdaterNode from '../../../nodes/TextUpdaterNode/TextUpdaterNode.js'
-
 import ImgNode from '../../../nodes/ImgNode/ImgNode.js'
-
 import CircleNode from '../../../nodes/CircleNode/CircleNode.js'
 import CertificateNode from '../../../nodes/CertificateNode/CertificateNode.js'
 import Diamond from '../../../nodes/Diamond/Diamond.js'
@@ -107,12 +89,10 @@ import Star from '../../../nodes/Star/Star.js'
 import PureText from '../../../nodes/PureText/PureText.js'
 import Triangle from '../../../nodes/Triangle/Triangle.js'
 import Cute from '../../../nodes/Cute/Cute.js'
-// node👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻
-// node👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻
+// node👆🏻
 
 import AuthCheck from "../AuthCheck.js"
 
-// import Nav from "../../../components/Nav可刪.js"
 import DownloadBtn from '../../../components/DownloadBtn/DownloadBtn.js'; 
 import ImageUpload from '../../../components/ImageUpload/ImageUpload.js'; 
 
@@ -171,7 +151,6 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
 
 
   const [selectedColor, setSelectedColor] = useState('#ffffff'); 
-
   const [updateTrigger, setUpdateTrigger] = useState(false);
 
   const getNodeId = () => `randomnode_${+new Date()}`;
@@ -204,47 +183,20 @@ function Flow({ treeWidth = 230, treeHeight = 120, animationDuration = 200 } = {
 
 
 const onNodeClick = (event, node) => {
-  // console.log('click node', node);
-  // const newNode = {
-  //   ...node, // 复制 node 的所有属性
-  //   position: { // 创建 position 的一个新副本
-  //     x: node.position.x +node.width+50,
-  //     y: node.position.y ,
-  //     // + node.height,
-  //   },
-  //   id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
-  // };
 }
 const onEdgeClick = (event, edge) => {
-  // console.log('click node', edge);
 
 }
 
 
 
-// const onNodeClick = useCallback((event, node) => {
-//   console.log('click node', node);
-// }, []);
-// =================================
-// =================================
-
-
-
-
-
-
-
-
-
-// ~~~~~~~~~~~~dnd的部分
-
+//👇🏻dnd的部分
 // 這是 onDragStart 函數的定義，
 // 它接收兩個參數：event（拖曳事件對象）和 nodeType（被拖曳的節點類型）。
   const onDragStart = (event, nodeType) => {
     event.dataTransfer.setData('application/reactflow', nodeType);
     event.dataTransfer.effectAllowed = 'move';
   }
-
 
   // －－－－－
   const reactFlowWrapper = useRef(null);
@@ -263,7 +215,6 @@ const onEdgeClick = (event, edge) => {
         const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
         const type = event.dataTransfer.getData('application/reactflow');
   
-        // check if the dropped element is valid
         if (typeof type === 'undefined' || !type) {
           return;
         }
@@ -277,20 +228,15 @@ const onEdgeClick = (event, edge) => {
           type,
           position,
           data: {
-            // inpupu: 'hello',
-            // imgsrc: './fan.jpeg',
             placeholder: '請輸入...',
-            backgroundColor: selectedColor, // 使用所选颜色
+            backgroundColor: selectedColor, 
             // label: `${type} node` 
           },
         };
         setNodes([...nodes, newNode]);
         setUpdateTrigger(trigger => !trigger);  // 觸發 useEffect
       }
-// ~~~~~~~~~~~~dnd的部分
-
-
-
+// dnd的部分
 
 
   // ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨  ✨
@@ -321,7 +267,6 @@ const onEdgeClick = (event, edge) => {
           console.log('沒抓到localstorage的會員id')
         }
     }else{
-      // console.log('')
     }
 }
 
@@ -334,13 +279,7 @@ const onRestore = (query) => {
       try {
         const snapshot = await get(databaseRef);
         if (snapshot.exists()){
-        // if (false) {
           const data = snapshot.val();
-          // console.log(3333)
-          // console.log('成功從資料庫抓到的：');
-
-          // console.log(JSON.parse(data).nodes);
-
           const parsedData = JSON.parse(data);
           if (parsedData) {
             // const { x = 0, y = 0, zoom = 1 } = parsedData.viewport;
@@ -349,14 +288,10 @@ const onRestore = (query) => {
 
             setAlreadyRestore(true)
             // setViewport({ x, y, zoom });
-
            // setNodes(flow.nodes || []) 用於更新節點狀態，flow.nodes
             // 如果沒有從儲存中找到節點數據，保持為空數組[]
           }
         }else{
-          // console.log(query)
-          // console.log('無存檔')
-
           setNodes([]);
           setEdges([]);
           setViewport({ x: 0, y: 0, zoom: 1 });
@@ -392,8 +327,6 @@ useEffect(() => {
 }, [alreadyRestore]);
 
 
-
-
 // const [addCount, setAddCount] = useState(0);
 // const addNewNode = useStore((state) => state.addNewNode);
 const onAdd = (imageUrl) => {
@@ -408,35 +341,25 @@ const onAdd = (imageUrl) => {
     x: centerX - reactFlowBounds.left,
     y: centerY - reactFlowBounds.top,
   });
-  // const { x, y, zoom } = reactFlowInstance.getViewport();
   
   const newNode = {
     id: getNodeId(),
     type: 'ImgNode',
     data:{
       pokemonpng:imageUrl
-      // pokemonpng:'/gg.jpg'
     },position: canvasPosition,
   };
-  // const newNode =  {
-  //   id: '9',
-  //   type: 'shapeNode',
-  //   position: { x: 200, y: 390 },
-  //   data: { shape: 'parallelogram', width: 150, height: 70, label: 'Parallelogram', color: '#668de3' },
-  // }
-  // addNewNode(newNode);
+
   setNodes([...nodes, newNode]);
 
-  //🥴🥴🥴🥴🥴 這邊好像可以用看看async await
-  // setAddCount(count => count + 1);  // 增加计数
-  setUpdateTrigger(trigger => !trigger);  // 触发 useEffect
+  //這邊好像可以試試async await
+
+  setUpdateTrigger(trigger => !trigger);  
 };
 
-
 // ⚪️
 // ⚪️
 // ⚪️
-
 
 const [layoutUpdated, setLayoutUpdated] = useState(false);
 
@@ -450,7 +373,6 @@ const handleLayoutChangeV = useCallback((direction) => {
     setNodes([...layoutedNodes]);//會馬上更新，因為這邊已經是一個新的arr，就算內容一樣
     setEdges([...layoutedEdges]);
     setLayoutUpdated(true)
-    // setViewport({ x: 150, y: 150, zoom: 0.7 });
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [nodes, edges, setEdges, getLayoutedElements]);
 
@@ -473,28 +395,23 @@ useEffect(() => {
     reactFlowInstance.fitView({
       padding: 1
     });
-    setLayoutUpdated(false); // 重置标志
+    setLayoutUpdated(false); 
   }
 }, [layoutUpdated, reactFlowInstance]);
 
 // ⚪️
-// ⚪️
-// ⚪️
+
 
   return (
     <div className='bg-teal-100'
       style={{ 
         height: "100vh",
         width: "100%",
-}}>
- <Head>
+      }}>
+      <Head>
         <title>𝑨𝒏𝒊𝑴𝒊𝒏𝒅</title>
         <link rel="icon" href="/logo.png" />
-
       </Head>
-
-
-
 
 
       <div className={styles.navbody}>
@@ -507,17 +424,7 @@ useEffect(() => {
 
         <div className={styles.nav}>
 
-  
-        {/* <FontAwesomeIcon icon={faCircleRight} style={{ color: 'red',height:'200px',width:'200px' }} /> */}
-
         {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
-        {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
-  
-        {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
-        {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
-
-
-
 
           <button 
             onClick={()=>{onSave(queryNum)}}
@@ -551,11 +458,9 @@ useEffect(() => {
           <p className={styles.welcome}
                   style={{zIndex:'1999'}}>
               <FontAwesomeIcon icon={faUser} className={styles.usericon}/>
-
                     {/* Welcome！ */}
                   <span 
-                  style={{zIndex:'1999'}}
-                  >
+                  style={{zIndex:'1999'}}>
                     {localUserData != null && (localUserData.username)}
  
                   </span>
@@ -664,24 +569,6 @@ useEffect(() => {
         </div>
               {/* defaultValue= */}
         </Panel>
-
-
-
-
-
-
-
-
-{/* 
-<Controls>
-  <ControlButton
-    className="my-custom-control-button"
-    onClick={() => alert('Something magical just happened. ✨')}
-  >
-  </ControlButton>
-</Controls> */}
-
-
  
 
 <MiniMap
@@ -708,11 +595,7 @@ useEffect(() => {
                 <FontAwesomeIcon icon={faCircleChevronLeft} className={styles.iconToggle} />
                 <FontAwesomeIcon icon={faWindowMinimize} className={styles.iconLine}/>
                 <FontAwesomeIcon icon={faCircleChevronRight} className={styles.iconShowToggle}/>
-
-
               </div>
-
-
 
                   <div className={styles.toolBtns}
                      // className="dndnode" 
@@ -807,22 +690,6 @@ useEffect(() => {
 
 
 
-
-        {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
-        {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
-        {/* <Panel 
-        className=
-        "bg-red-100  font-semibold py-2 px-4 rounded "
-          style={{ width: '80px', height: '100％'
-          , position: 'absolute', bottom: '40px',right:'0px'}}>
-                <input type="color"
-                    value={selectedColor}
-                    onChange={(e) => setSelectedColor(e.target.value)}
-                    className="color-picker"/>
-            
-        </Panel> */}
-                {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
-        {/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */}
       </ReactFlow>
     </div>
   );

@@ -1,46 +1,28 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faFileCirclePlus } from '@fortawesome/free-solid-svg-icons';
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
-
 
 import Head from 'next/head';
-
 import React, { useState, useEffect } from "react"
-import Link from "next/link"
-
 import { useRouter } from 'next/router';
-
 import "firebase/auth"
 import { auth,db } from "../config"
 import { getDatabase, ref, set ,get,remove} from "firebase/database"
-
 import styles from "./index.module.css";
-
-import Image from 'next/image'
 
 import LoginForm from "../components/LoginForm/LoginForm"
 import RegisterForm from "../components/RegisterForm/RegisterForm"
 
-import LogoutBtn from "../components/LogoutBtn/LogoutBtn"
 import AuthCheck from "../components/AuthCheck"
 
 import HomeNav from "../components/HomeNav/HomeNav"
-import { Background } from "reactflow"
 
 import useStore from '../store';
 
 
-
 export default function HomePage() {
 
-
-  // 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
-  const [isLoading, setIsLoading] = useState(true); // 初始时设置为 true
-
-  // 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
-
-  
+  const [isLoading, setIsLoading] = useState(true);  
   const { toggleCollageToTrue,
 
     successMsg,
@@ -64,11 +46,8 @@ export default function HomePage() {
 
   const [localUserData, setLocalUserData] = useState(null)
   const [userAuth, setUserAuth] = useState(null)
-  // const [successMsg, setSuccessMsg] = useState(false)
-  // const [errMsg, setErrMsg] = useState(false)
 
-
-    // 🐳🐳🐳🐳 取得存檔數量 🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳
+    // 🐳🐳🐳 取得存檔數量
     const [keysCount, setKeysCount] = useState(0); 
     const [btnsArr, setBtnsArr] = useState([]); 
 
@@ -76,8 +55,7 @@ export default function HomePage() {
 //不要用上面這個用for就好
 
     const countFFFlowData = async () => {
-      // 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
-  // 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
+      // 🍀🍀🍀
       // const databaseRef = ref(db, 'FFFlow');
       const localUUID = localStorage.getItem("userUUID");
       const databaseRef = ref(db, `users/${localUUID}/reactflow/FFFlow/`);
@@ -85,9 +63,9 @@ export default function HomePage() {
         const snapshot = await get(databaseRef);
         if (snapshot.exists()) {
           const data = snapshot.val();
-          // console.log('所有資料的key⬇️⬇️⬇️⬇️⬇️⬇️')
+          // console.log('所有資料的key⬇️')
           // console.log(Object.keys(data))
-          // console.log('所有資料的key⬆️⬆️⬆️⬆️⬆️⬆️')
+          // console.log('所有資料的key⬆️')
           setKeysCount(Object.keys(data).length) 
 
           const snapshotDataKeys = Object.keys(data);
