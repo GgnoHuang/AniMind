@@ -9,27 +9,16 @@ import {  ref as ref_storage, uploadBytes,getDownloadURL,uploadBytesResumable } 
 import styles from "./ImageUpload.module.css";
 
 
-
-
-// 🚦🚦🚦🚦🚦🚦🚦🚦🚦取名
-// import {getDatabase, ref as ref_database, set} from "firebase/database";
-// import {getStorage, ref as ref_storage} from "firebase/storage";
-// 🚦🚦🚦🚦🚦🚦🚦🚦🚦取名
-
-
 function ImageUpload( {onAdd}) {
   const [image, setImage] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [imageUrl, setImageUrl] = useState(null); 
 
 
-
   const handleChange = (e) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
-  
     }
-
   };
 
 
@@ -46,7 +35,6 @@ function ImageUpload( {onAdd}) {
   //     });
   //   }
   // }, [image]);
-
 
 
   useEffect(() => {
@@ -73,8 +61,7 @@ function ImageUpload( {onAdd}) {
           });});}}, [image]);
   
 
-
-  // 🟧這段直接融入到上面了 🟧
+  // 🟧這段融入到上面了 🟧
 // const handleUpload = () => {
 //   if (image) {
 //     const storageRef = ref_storage(storage, 'images/' + image.name);
@@ -88,9 +75,6 @@ function ImageUpload( {onAdd}) {
 //     });
 //   }
 // };
-
-
-
 
 
   return (

@@ -1,7 +1,5 @@
 import React, { useState,useEffect } from "react"
- // 👗👗👗👗👗👗zustand
 import useStore from '../../store';
- // 👗👗👗👗👗👗zustand
 
 import { createUserWithEmailAndPassword, signOut } from "firebase/auth"
 
@@ -15,9 +13,6 @@ import styles from "./RegisterForm.module.css";
 
 function Register() {
 
-
-
-  // 👗👗👗👗👗👗👗👗👗👗👗zustand👗👗👗👗👗👗👗👗👗👗
   const { showRegisterForm,toggleForm
     ,showCollage,toggleCollage,
     errMsg,setErrMsg,successMsg,setSuccessMsg,
@@ -33,23 +28,12 @@ function Register() {
       successMsg: state.successMsg,
  }));
 
-//  useEffect(() => {
-//   const timer = setTimeout(() => {
-//       toggleCollage();
-//   }, 100);
-
-//   return () => clearTimeout(timer); 
-// }, []);
 
 
  const handleToggleFormClick = () => {
   toggleForm();
   toggleCollage();
 };
-
-
- // 👗👗👗👗👗👗👗👗👗zustand👗👗👗👗👗👗👗👗👗👗👗👗
-
 
   const [err, setErr] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -68,9 +52,7 @@ function Register() {
         password
       )
 
-      // console.log(firebaseRES.user)
       if (firebaseRES.user) {
-        // console.log(firebaseRES.user.uid)
         set(ref(db, `users/${firebaseRES.user.uid}`), {
           username: username,
           email: email,
@@ -87,7 +69,6 @@ function Register() {
     }
   }
 
-
   const handleGoogleLogin=async()=>{
     setSuccessMsg(false)
     setErrMsg(false)
@@ -100,16 +81,11 @@ function Register() {
       setErrMsg(true)
       console.log("登入失敗", error);
     }
-
   }
-
-
 
   return (
     // <div className={showRegisterForm ? 'visible' : 'hidden'}>
-
     // <div className={styles.formwrapper}>
-
     <div className={showRegisterForm ? styles.hiddenFormwrapper : styles.visibleFormwrapper}>
 
 
