@@ -8,7 +8,8 @@
 - Integrates various third-party libraries like **`React Flow`**, **`Dagre`**, **`D3`**, and **`html-to-image`** to facilitate features like canvas, node arrangement, export, and more.
 - Utilized **`Next.js`** dynamic routing in conjunction with Firebase Realtime Database to implement a multi-save feature.
 
-<img src="https://github.com/GgnoHuang/AniMind/blob/main/public/tech.png?raw=true" width="1000">
+
+<img width="1000" alt="截圖 2024-01-14 下午6 50 05" src="https://github.com/GgnoHuang/AniMind/assets/132812902/8c666bbe-0c30-4c33-a376-54258cea5e7d">
 <img width="400" alt="截圖 2024-01-11 下午6 02 20" src="https://github.com/GgnoHuang/AniMind/assets/132812902/4d3cd64a-a443-4506-b902-9e457dbd5d02">
 <img width="1280" alt="截圖 2024-01-15 上午12 10 29" src="https://github.com/GgnoHuang/AniMind/assets/132812902/a780a905-d96a-4251-b6e8-c97671b509cf">
 
