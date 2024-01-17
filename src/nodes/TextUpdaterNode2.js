@@ -3,15 +3,11 @@ import { useCallback, useState,useEffect ,useRef} from 'react';
 import useStore from '../store';
 
 
-// const handleStyle = { left: 15 };
-
-// import useStore, { NodeData } from '..//pages/FFFlow/store';
-
 function TextUpdaterNode({id, data,isConnectable,selected }) {
-  const [selectedColor, setSelectedColor] = useState(data.backgroundColor||'#ffffff'); // 默认颜色
+  const [selectedColor, setSelectedColor] = useState(data.backgroundColor||'#ffffff');
   // data.backgroundColor||'#ffffff'
   // 這個||很重要，這樣重新整理連input上面那個圖也可以顯示成我們背景顏色
-  const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'#ffffff'); // 默认颜色
+  const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'#ffffff'); 
   const [selectFontSize, setSelectFontSize] = useState(data.fontSize ||'25px');
   // const [minSize, setMinSize] = useState({ minWidth: 100, minHeight: 100 });
 
@@ -125,29 +121,7 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
         // width:'100%',
       }}>  
 
-  
 
-          {/* 
-                  <div style={{ height: '100%',
-                  // paddingBottom:'55px '
-                  display:'flex',
-                  flexDirection:'column',
-                  gap:'3px'
-                  }}>  */}
-
-          {/* <label htmlFor="text" className="block text-gray-700 text-sm">Text:</label> */}
-
-          {/* <input className=" p-1 rounded"></input>
-           */}
-
-          {/* <textarea id="text" name="text" placeholder={data.placeholder}
-            onChange={onInpupu}
-            style={{ 
-              resize:'none', 
-            height:'40px', 
-            width:'240px',}} 
-          className="nodrag p-1 rounded" /> */}
-         
         
         <button    
             className="adjustButton"
@@ -170,15 +144,6 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
           <button onClick={()=>onChangeTextAlign('right')}
           style={{borderColor:' red',borderWidth:'1px'}}>靠右</button>
 
-          {/* <input
-            type="range"
-            className='nodrag'
-            min="10" // 最小字体大小
-            max="100" // 最大字体大小
-            // value='25'
-            onChange={onFontSizeChange}
-          /> */}
-          {/* <span>{selectFontSize}</span> */}
           <button onClick={increaseFontSizeTen} style={{ padding:'0px 5px',borderColor:' red',borderWidth:'1px' ,fontSize:'40px'}}>＋</button>
           <button onClick={increaseFontSize} style={{ padding:'0px 5px',borderColor:' red',borderWidth:'1px' }}>+</button>
           <button onClick={decreaseFontSize} style={{  padding:'0px 5px',borderColor:' red',borderWidth:'1px' }}>-</button>
@@ -225,12 +190,12 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
     
         </blockquote>
         <Handle type="source" position={Position.Bottom} id="b" 
-            style={{ backgroundColor: 'blue' ,width: '13px',  // 调整宽度
-            height: '13px', }} // 更改背景颜色为蓝色
+            style={{ backgroundColor: 'blue' ,width: '13px', 
+            height: '13px', }} 
             isConnectable={isConnectable} 
         />
         <Handle type="target" position={Position.Top} 
-          style={{ backgroundColor: 'blue' ,width: '13px',  // 调整宽度
+          style={{ backgroundColor: 'blue' ,width: '13px', 
           height: '13px', }} 
           isConnectable={isConnectable} 
         />

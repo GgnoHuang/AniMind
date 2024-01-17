@@ -17,25 +17,25 @@ import Image from 'next/image'
 import React, { useEffect, useState, useRef } from 'react';
 import { Handle, NodeProps,Position,
 
-// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉  
+// 🥎旋轉  
   useUpdateNodeInternals,
-// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
+// 🥎旋轉
 
   NodeResizer,NodeToolbar} from 'reactflow';
 
-  // 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
+  // 🥎旋轉
   import { drag } from 'd3-drag';
   import { select } from 'd3-selection';
-// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
+// 🥎旋轉
 
 
 
 export default function StarNode({id, data,isConnectable,selected }) {
 
-  const [selectedColor, setSelectedColor] = useState(data.backgroundColor||'#ffffff'); // 默认颜色
+  const [selectedColor, setSelectedColor] = useState(data.backgroundColor||'#ffffff'); 
 
 
-  const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'#000000'); // 默认颜色
+  const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'#000000'); 
 
   const [selectFontSize, setSelectFontSize] = useState(data.fontSize ||'25px');
   const [isPointerEventsActive, setIsPointerEventsActive] = useState(false);
@@ -112,24 +112,7 @@ export default function StarNode({id, data,isConnectable,selected }) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
-// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
+  // 🥎旋轉
   const rotateControlRef = useRef(null);
   const updateNodeInternals = useUpdateNodeInternals();
   const [rotation, setRotation] = useState(0);
@@ -153,18 +136,15 @@ export default function StarNode({id, data,isConnectable,selected }) {
   }, [
     
     updateNodeInternals]);
-// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
-// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
-
-
+// 🥎旋轉
 
 
   
   return (
     <div style={{
-// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
+// 🥎旋轉
       transform: `rotate(${rotation}deg)`,
-// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
+// 🥎旋轉
       height: '100%',
 
       }}
@@ -188,38 +168,7 @@ export default function StarNode({id, data,isConnectable,selected }) {
 
       <NodeToolbar >
 
-      {/* <div    
-            className="adjustButton"
-          style={{ fontSize:'24px',
-          width: '500px',position:'absolute',top:'-80px',
-          left: '50%', // 將元素左邊緣對齊父元素的中心
-          transform: 'translateX(-50%)', // 然後向左移動自身寬度的50%，以實現完全居中
-          display: data.isSelected ? 'block' : 'none'
-          // display: isAnyNodeSelected ? 'block' : 'none'
-        }}>
-
-          <button onClick={()=>onChangeTextAlign('left')}
-          style={{borderColor:' red',borderWidth:'1px'}}>靠左</button>
-          <button onClick={()=>onChangeTextAlign('center')}
-          style={{borderColor:' red',borderWidth:'1px'}}>靠中</button>
-          <button onClick={()=>onChangeTextAlign('right')}
-          style={{borderColor:' red',borderWidth:'1px'}}>靠右</button>
-
-          <button onClick={increaseFontSizeTen} style={{ padding:'0px 5px',borderColor:' red',borderWidth:'1px' ,fontSize:'40px'}}>＋</button>
-          <button onClick={increaseFontSize} style={{ padding:'0px 5px',borderColor:' red',borderWidth:'1px' }}>+</button>
-          <button onClick={decreaseFontSize} style={{  padding:'0px 5px',borderColor:' red',borderWidth:'1px' }}>-</button>
-          <button onClick={decreaseFontSizeTen} style={{  padding:'0px 5px',borderColor:' red',borderWidth:'1px'  ,fontSize:'40px'}}>-</button>
-
-      <input value={selectedColor}
-          // 這邊value就是input顯示在畫面上的顏色，就是data.backgroundColor
-          type="color"
-          // defaultValue={data.color}
-            // className="nodrag"
-          onChange={onSelectColor}/>
-          <input value={selectedFontColor}
-          type="color"
-          onChange={onSelectFontColor}
-        />    </div> */}
+    
 
       </NodeToolbar>
       
@@ -304,16 +253,7 @@ export default function StarNode({id, data,isConnectable,selected }) {
         </div>
 
 
-
-
-
-
-
-
-
-        {/* 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
-{/* 😈😈😈😈😈😈😈😈  C O P Y 功 能   😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
-{/* 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
+{/* 😈 C O P Y 功 能  😈 */}
 <div   style={{ 
   height:'100%',
   width:'100%',
@@ -426,15 +366,15 @@ export default function StarNode({id, data,isConnectable,selected }) {
             style={{ display: data.isSelected ? 'flex' : 'none'}}
             onClick={()=>{  
               const newNode = {
-                ...cloneNode, // 复制 node 的所有属性
-                position: { // 创建 position 的一个新副本
+                ...cloneNode, //複製 node 的所有属性
+                position: { // 建立position 的一個新副本
                   x: cloneNode.position.x  -cloneNode.width-50,
                   y: cloneNode.position.y ,
                   // + node.height,
                 },
                 selected: null,
                 data:{isSelected:null,        
-                  backgroundColor: selectedColor, // 使用所选颜色
+                  backgroundColor: selectedColor, // 使用所選顏色
                 },
                 id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
               };
@@ -460,29 +400,16 @@ export default function StarNode({id, data,isConnectable,selected }) {
       </div>
 
 
-
-
-
-
-
-
-
-
       <div 
       
       onClick={handleDoubleClick}
         className={styles.starMask}
         style={{ 
-          padding:'30px', // 🟪 🟪 🟪 🟪 🟪 🟪 🟪 🟪 🟪 🟪 🟪 🟪 🟪 🟪
-        backgroundColor: data.backgroundColor ||  '#ffffff', // 使用data中的背景颜色，如果没有则使用默认颜色
+          padding:'30px', 
+        backgroundColor: data.backgroundColor ||  '#ffffff', // 使用data中的背景颜色，沒有就默認
         border: '2px solid gray',
         overflow:'hidden',
       }}>
-
-        
-
- 
-
 
 
 

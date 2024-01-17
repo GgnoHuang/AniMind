@@ -8,39 +8,27 @@ faCirclePlus
 import styles from './ImgNode.module.css';
 import useStore from '../../store';
 import Image from 'next/image'
-
 import React, { useEffect, useState, useRef } from 'react';
-
 import { Handle, NodeProps,Position,
 
 
 
-// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉  
+// 旋轉
   useUpdateNodeInternals,
-// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
-
+// 旋轉
 
   NodeResizer,NodeToolbar} from 'reactflow';
 
-
-  // 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
+// 旋轉
   import { drag } from 'd3-drag';
   import { select } from 'd3-selection';
-// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
-
-
-
-
-
-
-
+// 旋轉
 
 
 
 export default function CustomNode({ id, data,selected,isConnectable }) {
 
-  // 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
-// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
+// 旋轉
   const rotateControlRef = useRef(null);
   const updateNodeInternals = useUpdateNodeInternals();
   const [rotation, setRotation] = useState(0);
@@ -77,8 +65,7 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
     // id,
     
     updateNodeInternals]);
-// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
-// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
+// 旋轉
 
 
 
@@ -86,9 +73,9 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
   
   return (
     <div style={{
-// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
+// 旋轉
       transform: `rotate(${rotation}deg)`,
-// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
+//旋轉
       height: '100%',
       width:'100%',
       display:'flex',
@@ -98,9 +85,8 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
           <div ref={rotateControlRef} style={{display: 'block'}} className='nodrag rotateHandle'/>
 
 
-  {/* 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
-  {/* 😈😈😈😈😈😈😈😈  C O P Y 功 能   😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
-  {/* 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
+
+  {/*  C O P Y 功 能   */}
   <div style={{
     height:'100%',width:'100%',
     position:'absolute',
@@ -112,8 +98,8 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
             style={{ display: data.isSelected ? 'flex' : 'none'}}
             onClick={()=>{ 
               const newNode = {
-                  ...cloneNode, // 复制 node 的所有属性
-                  position: { // 创建 position 的一个新副本
+                  ...cloneNode, 
+                  position: { 
                     x: cloneNode.position.x ,
                     y: cloneNode.position.y  -cloneNode.height-50,
                     // + node.height,
@@ -122,7 +108,7 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
                   data:{isSelected:null,        
                     pokemonpng:data.pokemonpng
                   },
-                  id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
+                  id: `duplicate_${Math.random()}` 
                 };
                 const newEdge = {
                   id: `edge_${cloneNode.id}_${newNode.id}`,
@@ -147,8 +133,8 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
             style={{ display: data.isSelected ? 'flex' : 'none'}}
             onClick={()=>{ 
                 const newNode = {
-                  ...cloneNode, // 复制 node 的所有属性
-                  position: { // 创建 position 的一个新副本
+                  ...cloneNode, 
+                  position: { 
                     x: cloneNode.position.x ,
                     y: cloneNode.position.y  +cloneNode.height+50,
                   },
@@ -156,7 +142,7 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
                   data:{isSelected:null,  
                     pokemonpng:data.pokemonpng   
                   },
-                  id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
+                  id: `duplicate_${Math.random()}` 
                 };
                 const newEdge = {
                   id: `edge_${cloneNode.id}_${newNode.id}`,
@@ -183,8 +169,8 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
             style={{ display: data.isSelected ? 'flex' : 'none'}}
             onClick={()=>{ 
               const newNode = {
-                ...cloneNode, // 复制 node 的所有属性
-                position: { // 创建 position 的一个新副本
+                ...cloneNode, 
+                position: { 
                   x: cloneNode.position.x +cloneNode.width+50,
                   y: cloneNode.position.y ,
                 },
@@ -192,7 +178,7 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
                 data:{isSelected:null,        
                   pokemonpng:data.pokemonpng
                 },
-                id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
+                id: `duplicate_${Math.random()}` 
               };
               const newEdge = {
                 id: `edge_${cloneNode.id}_${newNode.id}`,
@@ -215,8 +201,8 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
             style={{ display: data.isSelected ? 'flex' : 'none'}}
             onClick={()=>{  
               const newNode = {
-                ...cloneNode, // 复制 node 的所有属性
-                position: { // 创建 position 的一个新副本
+                ...cloneNode, 
+                position: { 
                   x: cloneNode.position.x  -cloneNode.width-50,
                   y: cloneNode.position.y ,
                   // + node.height,
@@ -225,7 +211,7 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
                 data:{isSelected:null,        
                   pokemonpng:data.pokemonpng
                 },
-                id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
+                id: `duplicate_${Math.random()}` 
               };
               const newEdge = {
                 id: `edge_${cloneNode.id}_${newNode.id}`,
@@ -247,38 +233,7 @@ export default function CustomNode({ id, data,selected,isConnectable }) {
               icon={faCirclePlus} />
             </div>
   </div>
-
-  {/* 😈😈😈😈😈😈😈😈  C O P Y 功 能   😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
-  {/* 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
+  {/*  C O P Y 功 能  */}
 
       <NodeResizer
             handleStyle={{

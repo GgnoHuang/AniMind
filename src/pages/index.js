@@ -96,7 +96,7 @@ export default function HomePage() {
     useEffect(() => {
       if(btnsArr.length!==0){
         setIsLoading(false);
-        console.log('▶️🟨載入完畢')
+        // console.log('▶️🟨載入完畢')
       }
     }, [btnsArr]);
 

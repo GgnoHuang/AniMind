@@ -14,16 +14,13 @@ import useStore from '../../store';
 
 import styles from './CircleNode.module.css';
 
-// const handleStyle = { left: 15 };
-
-// import useStore, { NodeData } from '..//pages/FFFlow/store';
 
 function TextUpdaterNode({id, data,isConnectable,selected }) {
-  const [selectedColor, setSelectedColor] = useState(data.backgroundColor||'#ffffff'); // 默认颜色
+  const [selectedColor, setSelectedColor] = useState(data.backgroundColor||'#ffffff');
   // data.backgroundColor||'#ffffff'
   // 這個||很重要，這樣重新整理連input上面那個圖也可以顯示成我們背景顏色
 
-  const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'#000000'); // 默认颜色
+  const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'#000000'); 
 
   const [selectFontSize, setSelectFontSize] = useState(data.fontSize ||'25px');
   // const [minSize, setMinSize] = useState({ minWidth: 100, minHeight: 100 });
@@ -49,8 +46,6 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
     cloneNode: state.cloneNode,
     edges: state.edges,
     setEdges: state.setEdges,
-
-
   }));
 
   const [blockquoteContent, setBlockquoteContent] = useState(data.userMemoContent || '點擊輸入');
@@ -125,11 +120,9 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
     <div 
       onClick={handleDoubleClick}
     // className="text-updater-node border border-gray-300 p-2 rounded"
-      // 出bug再把text-updater-node ，我現在不知道他是做啥用的
       className=""
       style={{ 
-        backgroundColor: data.backgroundColor || '#FF00FF', // 使用data中的背景颜色，如果没有则使用默认颜色
-        // backgroundColor: 'red', // 使用data中的背景颜色，如果没有则使用默认颜色
+        backgroundColor: data.backgroundColor || '#FF00FF', 
         border: '2px solid gray',
         overflow:'hidden',
         padding:'10px',
@@ -144,24 +137,22 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
       }}>  
 
 
-{/* 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
-{/* 😈😈😈😈😈😈😈😈  C O P Y 功 能   😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
-{/* 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
+{/*  C O P Y 功 能   */}
 <div  className={`${styles.copytop} ${styles.copy}`}
             style={{ display: data.isSelected ? 'flex' : 'none'}}
             onClick={()=>{ 
               const newNode = {
-                  ...cloneNode, // 复制 node 的所有属性
-                  position: { // 创建 position 的一个新副本
+                  ...cloneNode, 
+                  position: { 
                     x: cloneNode.position.x ,
                     y: cloneNode.position.y  -cloneNode.height-50,
                     // + node.height,
                   },
                   selected: null,
                   data:{isSelected:null,        
-                    backgroundColor: selectedColor, // 使用所选颜色
+                    backgroundColor: selectedColor, 
                   },
-                  id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
+                  id: `duplicate_${Math.random()}` 
                 };
                 const newEdge = {
                   id: `edge_${cloneNode.id}_${newNode.id}`,
@@ -186,16 +177,16 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
             style={{ display: data.isSelected ? 'flex' : 'none'}}
             onClick={()=>{ 
                 const newNode = {
-                  ...cloneNode, // 复制 node 的所有属性
-                  position: { // 创建 position 的一个新副本
+                  ...cloneNode, 
+                  position: {
                     x: cloneNode.position.x ,
                     y: cloneNode.position.y  +cloneNode.height+50,
                   },
                   selected: null,
                   data:{isSelected:null,        
-                    backgroundColor: selectedColor, // 使用所选颜色
+                    backgroundColor: selectedColor, 
                   },
-                  id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
+                  id: `duplicate_${Math.random()}` 
                 };
                 const newEdge = {
                   id: `edge_${cloneNode.id}_${newNode.id}`,
@@ -221,16 +212,16 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
             style={{ display: data.isSelected ? 'flex' : 'none'}}
             onClick={()=>{ 
               const newNode = {
-                ...cloneNode, // 复制 node 的所有属性
-                position: { // 创建 position 的一个新副本
+                ...cloneNode, 
+                position: { 
                   x: cloneNode.position.x +cloneNode.width+50,
                   y: cloneNode.position.y ,
                 },
                 selected: null,
                 data:{isSelected:null,        
-                  backgroundColor: selectedColor, // 使用所选颜色
+                  backgroundColor: selectedColor, 
                 },
-                id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
+                id: `duplicate_${Math.random()}` 
               };
               const newEdge = {
                 id: `edge_${cloneNode.id}_${newNode.id}`,
@@ -253,17 +244,17 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
             style={{ display: data.isSelected ? 'flex' : 'none'}}
             onClick={()=>{  
               const newNode = {
-                ...cloneNode, // 复制 node 的所有属性
-                position: { // 创建 position 的一个新副本
+                ...cloneNode, 
+                position: { 
                   x: cloneNode.position.x  -cloneNode.width-50,
                   y: cloneNode.position.y ,
                   // + node.height,
                 },
                 selected: null,
                 data:{isSelected:null,        
-                  backgroundColor: selectedColor, // 使用所选颜色
+                  backgroundColor: selectedColor, 
                 },
-                id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
+                id: `duplicate_${Math.random()}` 
               };
               const newEdge = {
                 id: `edge_${cloneNode.id}_${newNode.id}`,
@@ -284,9 +275,7 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
               <FontAwesomeIcon 
               icon={faCirclePlus} />
             </div>
-{/* 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
-{/* 😈😈😈😈😈😈😈😈  C O P Y 功 能   😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
-{/* 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
+{/*  C O P Y 功 能   */}
 
 
 
@@ -308,32 +297,9 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
             isVisible={selected}
             minWidth={100}
             minHeight={50}
-
             />
 
-          {/* 
-                  <div style={{ height: '100%',
-                  // paddingBottom:'55px '
-                  display:'flex',
-                  flexDirection:'column',
-                  gap:'3px'
-                  }}>  */}
-
-          {/* <label htmlFor="text" className="block text-gray-700 text-sm">Text:</label> */}
-
-          {/* <input className=" p-1 rounded"></input>
-           */}
-
-          {/* <textarea id="text" name="text" placeholder={data.placeholder}
-            onChange={onInpupu}
-            style={{ 
-              resize:'none', 
-            height:'40px', 
-            width:'240px',}} 
-          className="nodrag p-1 rounded" /> */}
-
-         {/* ====✌️💚💚💚💚💚💚💚💚💚💚💚💚💚======= */}
-         {/* ====✌️💚💚💚💚💚💚💚💚💚💚💚💚💚======= */}
+         {/* =========== */}
          <div  className={styles.TetxtoolBar}
             style={{ display: data.isSelected ? 'flex' : 'none'
           }}>
@@ -408,9 +374,8 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
                 type="color"
                 onChange={onSelectFontColor}/>    
         </div>
-         {/* ====✌️💚💚💚💚💚💚💚💚💚💚💚💚💚======= */}
-         {/* ====✌️💚💚💚💚💚💚💚💚💚💚💚💚💚======= */}
-         {/* ====✌️💚💚💚💚💚💚💚💚💚💚💚💚💚======= */}
+         {/* =========== */}
+
 
 
 
@@ -465,9 +430,3 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
 }
 
 export default TextUpdaterNode;
-
-
-
-
-// {"nodes":[{"width":331,"height":328,"id":"randomnode_1700359526243","type":"circleNode","position":{"x":-1291.5837035902596,"y":1352.8684256449887},"data":{"inpupu":"hello","imgsrc":"./fan.jpeg","placeholder":"請輸入...","backgroundColor":"#f29797","label":"circleNode node","isSelected":false},"selected":false,"dragging":false,"style":{"width":331,"height":328},"resizing":false,"positionAbsolute":{"x":-1291.5837035902596,"y":1352.8684256449887}},{"width":107,"height":100,"id":"randomnode_1700359521759","type":"circleNode","position":{"x":-1342.6267861688327,"y":1391.505286144796},"data":{"inpupu":"hello","imgsrc":"./fan.jpeg","placeholder":"請輸入...","backgroundColor":"#ffffff","label":"circleNode node","isSelected":false},"selected":false,"positionAbsolute":{"x":-1342.6267861688327,"y":1391.505286144796},"dragging":false,"style":{"width":107,"height":100},"resizing":false}],"edges":[],"viewport":{"x":1593.9590620058552,"y":-1134.8209721681478,"zoom":1.042086939519286}}
-// {"nodes":[{"width":107,"height":100,"id":"randomnode_1700359521759","type":"circleNode","position":{"x":-1342.6267861688327,"y":1391.505286144796},"data":{"inpupu":"hello","imgsrc":"./fan.jpeg","placeholder":"請輸入...","backgroundColor":"#ffffff","label":"circleNode node","isSelected":false},"selected":false,"positionAbsolute":{"x":-1342.6267861688327,"y":1391.505286144796},"dragging":false,"style":{"width":107,"height":100},"resizing":false},{"width":331,"height":328,"id":"randomnode_1700359526243","type":"circleNode","position":{"x":-1291.5837035902596,"y":1352.8684256449887},"data":{"inpupu":"hello","imgsrc":"./fan.jpeg","placeholder":"請輸入...","backgroundColor":"#f29797","label":"circleNode node","isSelected":false},"selected":false,"dragging":false,"style":{"width":331,"height":328},"resizing":false,"positionAbsolute":{"x":-1291.5837035902596,"y":1352.8684256449887}}],"edges":[],"viewport":{"x":1593.9590620058552,"y":-1134.8209721681478,"zoom":1.042086939519286}}

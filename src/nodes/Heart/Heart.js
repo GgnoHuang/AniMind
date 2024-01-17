@@ -15,24 +15,24 @@ import Image from 'next/image'
 import React, { useEffect, useState, useRef } from 'react';
 import { Handle, NodeProps,Position,
 
-// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉  
+// 旋轉
   useUpdateNodeInternals,
-// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
+// 旋轉
 
   NodeResizer,NodeToolbar} from 'reactflow';
 
-  // 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
+// 旋轉
   import { drag } from 'd3-drag';
   import { select } from 'd3-selection';
-// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
+// 旋轉
 
 
 
 export default function StarNode({id, data,isConnectable,selected }) {
 
-  const [selectedColor, setSelectedColor] = useState(data.backgroundColor||'#ffffff'); // 默认颜色
+  const [selectedColor, setSelectedColor] = useState(data.backgroundColor||'#ffffff'); 
 
-  const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'#000000'); // 默认颜色
+  const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'#000000'); 
   const [selectFontSize, setSelectFontSize] = useState(data.fontSize ||'25px');
   const [isPointerEventsActive, setIsPointerEventsActive] = useState(false);
 
@@ -108,8 +108,7 @@ export default function StarNode({id, data,isConnectable,selected }) {
 
 
 
-  // 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
-// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
+// 旋轉
   const rotateControlRef = useRef(null);
   const updateNodeInternals = useUpdateNodeInternals();
   const [rotation, setRotation] = useState(0);
@@ -133,14 +132,13 @@ export default function StarNode({id, data,isConnectable,selected }) {
   }, [
     
     updateNodeInternals]);
-// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
-// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
+// 旋轉
 
   return (
     <div style={{
-// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
+// 旋轉
       transform: `rotate(${rotation}deg)`,
-// 🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎旋轉
+// 旋轉
       height: '100%'}}>
           <NodeResizer handleStyle={{
           width:'15px',height:'15px',
@@ -234,9 +232,8 @@ export default function StarNode({id, data,isConnectable,selected }) {
 
 
 
-        {/* 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
-{/* 😈😈😈😈😈😈😈😈  C O P Y 功 能   😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
-{/* 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
+
+{/*  C O P Y 功 能   */}
 <div   style={{ 
   height:'100%',
   width:'100%',
@@ -249,17 +246,17 @@ export default function StarNode({id, data,isConnectable,selected }) {
             style={{ display: data.isSelected ? 'flex' : 'none'}}
             onClick={()=>{ 
               const newNode = {
-                  ...cloneNode, // 复制 node 的所有属性
-                  position: { // 创建 position 的一个新副本
+                  ...cloneNode, 
+                  position: { 
                     x: cloneNode.position.x ,
                     y: cloneNode.position.y  -cloneNode.height-50,
                     // + node.height,
                   },
                   selected: null,
                   data:{isSelected:null,        
-                    backgroundColor: selectedColor, // 使用所选颜色
+                    backgroundColor: selectedColor, 
                   },
-                  id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
+                  id: `duplicate_${Math.random()}` 
                 };
                 const newEdge = {
                   id: `edge_${cloneNode.id}_${newNode.id}`,
@@ -284,16 +281,16 @@ export default function StarNode({id, data,isConnectable,selected }) {
             style={{ display: data.isSelected ? 'flex' : 'none'}}
             onClick={()=>{ 
                 const newNode = {
-                  ...cloneNode, // 复制 node 的所有属性
-                  position: { // 创建 position 的一个新副本
+                  ...cloneNode, 
+                  position: { 
                     x: cloneNode.position.x ,
                     y: cloneNode.position.y  +cloneNode.height+50,
                   },
                   selected: null,
                   data:{isSelected:null,        
-                    backgroundColor: selectedColor, // 使用所选颜色
+                    backgroundColor: selectedColor,
                   },
-                  id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
+                  id: `duplicate_${Math.random()}` 
                 };
                 const newEdge = {
                   id: `edge_${cloneNode.id}_${newNode.id}`,
@@ -317,16 +314,16 @@ export default function StarNode({id, data,isConnectable,selected }) {
             style={{ display: data.isSelected ? 'flex' : 'none'}}
             onClick={()=>{ 
               const newNode = {
-                ...cloneNode, // 复制 node 的所有属性
-                position: { // 创建 position 的一个新副本
+                ...cloneNode, 
+                position: { 
                   x: cloneNode.position.x +cloneNode.width+50,
                   y: cloneNode.position.y ,
                 },
                 selected: null,
                 data:{isSelected:null,        
-                  backgroundColor: selectedColor, // 使用所选颜色
+                  backgroundColor: selectedColor, 
                 },
-                id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
+                id: `duplicate_${Math.random()}`
               };
               const newEdge = {
                 id: `edge_${cloneNode.id}_${newNode.id}`,
@@ -349,17 +346,17 @@ export default function StarNode({id, data,isConnectable,selected }) {
             style={{ display: data.isSelected ? 'flex' : 'none'}}
             onClick={()=>{  
               const newNode = {
-                ...cloneNode, // 复制 node 的所有属性
-                position: { // 创建 position 的一个新副本
+                ...cloneNode, 
+                position: { 
                   x: cloneNode.position.x  -cloneNode.width-50,
                   y: cloneNode.position.y ,
                   // + node.height,
                 },
                 selected: null,
                 data:{isSelected:null,        
-                  backgroundColor: selectedColor, // 使用所选颜色
+                  backgroundColor: selectedColor,
                 },
-                id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
+                id: `duplicate_${Math.random()}` 
               };
               const newEdge = {
                 id: `edge_${cloneNode.id}_${newNode.id}`,
@@ -390,8 +387,8 @@ export default function StarNode({id, data,isConnectable,selected }) {
       onClick={handleDoubleClick}
         className={styles.starMask}
         style={{ 
-          padding:'30px', // 🟪 🟪 🟪 🟪 🟪 🟪 🟪 🟪 🟪 🟪 🟪 🟪 🟪 🟪
-        backgroundColor: data.backgroundColor ||  '#ffffff', // 使用data中的背景颜色，如果没有则使用默认颜色
+          padding:'30px', 
+        backgroundColor: data.backgroundColor ||  '#ffffff', 
         border: '2px solid gray',
         overflow:'hidden',
       }}>
