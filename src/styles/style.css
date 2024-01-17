@@ -222,13 +222,7 @@ body {
   /* font-family: '小濑字体'; */
   backdrop-filter: blur(2px);
 
-  background-image:url('../../public/讚嘿.jpg');
-  /* background-image:url('../../public/ddark.jpg'); */
-  /* background-image:url('../../public/ddd.jpg'); */
-  /* background-image:url('../../public/aacc.jpg'); */
-  /* background-image:url('../../public/bbaaa.jpg'); */
-  /* background-image:url('../../public/ppc.jpg'); */
-  /* background-color: #54545b; */
+  background-image:url('../../public/mainBG.jpg');
 
   background-repeat:no-repeat;
   background-size:cover;

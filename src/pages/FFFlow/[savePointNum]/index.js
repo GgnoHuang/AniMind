@@ -1,6 +1,4 @@
-// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
-// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️   layout  ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
-// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
+//⚪️   layout 
 import Head from 'next/head';
 
 import dagre from 'dagre';
@@ -41,7 +39,7 @@ const getLayoutedElements = (nodes, edges, direction = 'TB') => {
 
   return { nodes, edges };
 };
-// ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️   layout  ⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️
+// ⚪️ layout 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWindowMinimize,
@@ -358,8 +356,7 @@ const onAdd = (imageUrl) => {
 };
 
 // ⚪️
-// ⚪️
-// ⚪️
+
 
 const [layoutUpdated, setLayoutUpdated] = useState(false);
 
@@ -667,16 +664,6 @@ useEffect(() => {
               </div>
 
 
-
-              {/* 
-              <div className={styles.toolBtns} onClick={() => handleLayoutChangeV('TB')} >
-                <FontAwesomeIcon icon={faSitemap} className={styles.SidebarIconBtnS}/>
-              </div>
-
-              <div className={styles.toolBtns} onClick={() => handleLayoutChangeH('LR')} >
-              <FontAwesomeIcon icon={faSitemap} className=
-                {`${ styles.awesomeNavIconBtnS} ${ styles.sitemapRotate}`}/>
-              </div> */}
 
               {/* <div onClick={() => handleLayoutChangeV('TB')}  className={styles.dwBtn}>
                 <FontAwesomeIcon icon={faSitemap} className={styles.awesomeNavIconBtnS}/>

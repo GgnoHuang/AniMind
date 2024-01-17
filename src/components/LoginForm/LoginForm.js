@@ -1,13 +1,6 @@
-
-// ~🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 import React, { useState,useEffect } from "react"
-// import { auth } from "../../config"
 import { auth,db,signInWithGoogle } from "../../config"
-
-
 import useStore from '../../store';
-
-
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { getDatabase, ref, get } from "firebase/database"
 
@@ -15,9 +8,8 @@ import styles from "./LoginForm.module.css";
 import Image from 'next/image';
 
 
-
 function Login({ }) {
-  // 👗👗👗👗👗👗👗👗👗👗👗zustand👗👗👗👗👗👗👗👗👗👗
+  // 👗zustand
   const { showRegisterForm,toggleForm,
     showCollage,toggleCollage,
     errMsg,setErrMsg,successMsg,setSuccessMsg,
@@ -35,9 +27,9 @@ const handleToggleFormClick = () => {
   toggleForm();
   toggleCollage();
 };
-// 👗👗👗👗👗👗👗👗👗zustand👗👗👗👗👗👗👗👗👗👗👗👗
+// 👗zustand
 
-  
+
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -96,8 +88,6 @@ const handleToggleFormClick = () => {
 
 
   return (
-
-
     <div className={showRegisterForm ? styles.visibleFormwrapper : styles.hiddenFormwrapper}>
       {/* <div className="p-1 flex items-center flex items-center justify-center">
         <p className=" text-white p-2 rounded ">登入</p>

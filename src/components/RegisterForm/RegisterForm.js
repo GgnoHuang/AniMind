@@ -1,14 +1,8 @@
 import React, { useState,useEffect } from "react"
 import useStore from '../../store';
-
 import { createUserWithEmailAndPassword, signOut } from "firebase/auth"
-
-// import { db,auth } from "../../config"
 import { auth,db,signInWithGoogle } from "../../config"
-
 import { getDatabase, ref, set ,get} from "firebase/database"
-// import { auth } from "../../config" 
-
 import styles from "./RegisterForm.module.css";
 
 function Register() {
@@ -87,11 +81,6 @@ function Register() {
     // <div className={showRegisterForm ? 'visible' : 'hidden'}>
     // <div className={styles.formwrapper}>
     <div className={showRegisterForm ? styles.hiddenFormwrapper : styles.visibleFormwrapper}>
-
-
-
-    
-
       <form onSubmit={handleSubmit}>
       <div className="input-container-wrapper">
         <div className="input-container">

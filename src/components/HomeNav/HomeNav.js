@@ -14,15 +14,12 @@ export default function HomeNav({localUserData,
   ,setBtnsArr
 }) {
 
-
-
   return (
     <div >
       <div className={styles.navbody}>
       {/* <img src="/nav.png" className={styles.navpng}/> */}
 
           <div className={styles.nav}>
-
 
               <p className={styles.logo}
                 style={{zIndex:'1999'}}>

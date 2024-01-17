@@ -22,22 +22,19 @@ import styles from './PureText.module.css';
 function TextUpdaterNode({id, data,isConnectable,selected }) {
   const [selectedColor, setSelectedColor] = useState(data.backgroundColor||'blue'); 
   
-  // 默认颜色
+  // 默認颜色
   // data.backgroundColor||'#ffffff'
   // 這個||很重要，這樣重新整理連input上面那個圖也可以顯示成我們背景顏色
   // const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'#00ffcc');
-
 
   const [selectedFontColor, setSelectedFontColor] = useState(data.fontColor ||'#ffffff'); // 默认颜色
 
 
   const [selectFontSize, setSelectFontSize] = useState(data.fontSize ||'25px');
-  // const [minSize, setMinSize] = useState({ minWidth: 100, minHeight: 100 });
 
   const [isPointerEventsActive, setIsPointerEventsActive] = useState(false);
 
   const handleDoubleClick = () => {
-    // console.log('hi')
     setIsPointerEventsActive(prev => !prev);
   };
 
@@ -146,34 +143,34 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
     <div 
       onClick={handleDoubleClick}
     // className="text-updater-node border border-gray-300 p-2 rounded"
-      // 出bug再把text-updater-node ，我現在不知道他是做啥用的
+
       className=""
       style={{ 
         // backgroundColor: data.backgroundColor || '#FF00FF',
-         // 使用data中的背景颜色，如果没有则使用默认颜色
+         // 使用data中的背景颜色，如果沒有就使用默認顏色
         backgroundColor:'transparent',overflow:'hidden',
         height:'100%',display: 'flex',
         justifyContent: 'center',alignItems: 'center',
         borderRadius:'8px',
       }}>  
-{/* 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
-{/* 😈😈😈😈😈😈😈😈  C O P Y 功 能   😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
-{/* 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
+
+{/*  C O P Y 功 能    */}
+
 <div  className={`${styles.copytop} ${styles.copy}`}
             style={{ display: data.isSelected ? 'flex' : 'none'}}
             onClick={()=>{ 
               const newNode = {
-                  ...cloneNode, // 复制 node 的所有属性
-                  position: { // 创建 position 的一个新副本
+                  ...cloneNode,
+                  position: { 
                     x: cloneNode.position.x ,
                     y: cloneNode.position.y  -cloneNode.height-50,
                     // + node.height,
                   },
                   selected: null,
                   data:{isSelected:null,        
-                    backgroundColor: selectedColor, // 使用所选颜色
+                    backgroundColor: selectedColor, 
                   },
-                  id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
+                  id: `duplicate_${Math.random()}` 
                 };
                 const newEdge = {
                   id: `edge_${cloneNode.id}_${newNode.id}`,
@@ -198,16 +195,16 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
             style={{ display: data.isSelected ? 'flex' : 'none'}}
             onClick={()=>{ 
                 const newNode = {
-                  ...cloneNode, // 复制 node 的所有属性
-                  position: { // 创建 position 的一个新副本
+                  ...cloneNode, 
+                  position: { 
                     x: cloneNode.position.x ,
                     y: cloneNode.position.y  +cloneNode.height+50,
                   },
                   selected: null,
                   data:{isSelected:null,        
-                    backgroundColor: selectedColor, // 使用所选颜色
+                    backgroundColor: selectedColor, 
                   },
-                  id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
+                  id: `duplicate_${Math.random()}` 
                 };
                 const newEdge = {
                   id: `edge_${cloneNode.id}_${newNode.id}`,
@@ -234,16 +231,16 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
             style={{ display: data.isSelected ? 'flex' : 'none'}}
             onClick={()=>{ 
               const newNode = {
-                ...cloneNode, // 复制 node 的所有属性
-                position: { // 创建 position 的一个新副本
+                ...cloneNode, 
+                position: { 
                   x: cloneNode.position.x +cloneNode.width+50,
                   y: cloneNode.position.y ,
                 },
                 selected: null,
                 data:{isSelected:null,        
-                  backgroundColor: selectedColor, // 使用所选颜色
+                  backgroundColor: selectedColor, 
                 },
-                id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
+                id: `duplicate_${Math.random()}` 
               };
               const newEdge = {
                 id: `edge_${cloneNode.id}_${newNode.id}`,
@@ -266,17 +263,17 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
             style={{ display: data.isSelected ? 'flex' : 'none'}}
             onClick={()=>{  
               const newNode = {
-                ...cloneNode, // 复制 node 的所有属性
-                position: { // 创建 position 的一个新副本
+                ...cloneNode, 
+                position: { 
                   x: cloneNode.position.x  -cloneNode.width-50,
                   y: cloneNode.position.y ,
                   // + node.height,
                 },
                 selected: null,
                 data:{isSelected:null,        
-                  backgroundColor: selectedColor, // 使用所选颜色
+                  backgroundColor: selectedColor, 
                 },
-                id: `duplicate_${Math.random()}` // 指定一个新的唯一 ID
+                id: `duplicate_${Math.random()}` 
               };
               const newEdge = {
                 id: `edge_${cloneNode.id}_${newNode.id}`,
@@ -297,26 +294,10 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
               <FontAwesomeIcon 
               icon={faCirclePlus} />
             </div>
-{/* 😈😈😈😈😈😈😈😈  C O P Y 功 能   😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
-{/* 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈 */}
+{/*  C O P Y 功 能    */}
 
 
 
-          {/* <div style={{ height: '100%',
-                  // paddingBottom:'55px '
-                  display:'flex',
-                  flexDirection:'column',
-                  gap:'3px'
-                  }}>  */}
-          {/* <label htmlFor="text" className="block text-gray-700 text-sm">Text:</label> */}
-          {/* <input className=" p-1 rounded"></input>           */}
-          {/* <textarea id="text" name="text" placeholder={data.placeholder}
-            onChange={onInpupu}
-            style={{ 
-              resize:'none', 
-            height:'40px', 
-            width:'240px',}} 
-          className="nodrag p-1 rounded" /> */}
 
       <div  className={styles.TetxtoolBar}
             style={{ display: data.isSelected ? 'flex' : 'none'
@@ -365,10 +346,7 @@ function TextUpdaterNode({id, data,isConnectable,selected }) {
 
             <div onClick={decreaseFontSize} 
               className={styles.tetxTools}>   
-                  {/* <FontAwesomeIcon icon={faFont}
-                    className={styles.Aicon} />
-                  <FontAwesomeIcon icon={faPlus}
-                    className={styles.BigminusIcon} /> */}
+        
                   <FontAwesomeIcon icon={faFont} 
                     className={styles.Aicon}/>
                   <FontAwesomeIcon icon={faMinus} 

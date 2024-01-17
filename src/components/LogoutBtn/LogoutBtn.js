@@ -14,9 +14,8 @@ function LogoutBtn({setUserAuth,setLocalUserData,
   setKeysCount,setBtnsArr
 }) {
 
- 
 
-// 👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗
+// 👗
   const { 
   toggleCollage,setErrMsg,setSuccessMsg,
   } = useStore(state => ({
@@ -24,8 +23,7 @@ function LogoutBtn({setUserAuth,setLocalUserData,
     setErrMsg: state.setErrMsg,
     setSuccessMsg: state.setSuccessMsg,
 }));
-
-// 👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗👗
+// 👗
 
   
   function handleSignout() {
@@ -39,8 +37,6 @@ function LogoutBtn({setUserAuth,setLocalUserData,
         setErrMsg(false)
         setKeysCount(0)
         setBtnsArr([])
-
-
 
         console.log("登出成功")
         alert("登出成功")

@@ -21,22 +21,6 @@ function ImageUpload( {onAdd}) {
     }
   };
 
-
-  // useEffect(() => {
-  //   if (image) {
-  //     const storageRef = ref_storage(storage, 'images/' + image.name);
-  //     uploadBytes(storageRef, image).then((snapshot) => {
-  //       // 上傳成功後，獲取並更新圖片的 URL
-  //       getDownloadURL(snapshot.ref).then((downloadURL) => {
-  //         setImageUrl(downloadURL); 
-  //         console.log(downloadURL)
-  //         onAdd(downloadURL); 
-  //       });
-  //     });
-  //   }
-  // }, [image]);
-
-
   useEffect(() => {
     if (image) {
       const storageRef = ref_storage(storage, 'images/' + image.name);
@@ -61,7 +45,7 @@ function ImageUpload( {onAdd}) {
           });});}}, [image]);
   
 
-  // 🟧這段融入到上面了 🟧
+  // 🟧這段融入到上面了 
 // const handleUpload = () => {
 //   if (image) {
 //     const storageRef = ref_storage(storage, 'images/' + image.name);
