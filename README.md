@@ -28,6 +28,20 @@ Link: [Ani-M-ind](https://ani-mind.vercel.app/)
 ---
 ## 🟠 Features and Technical Intro (Gif載入中，謝謝你耐心等待😊)
 
+### **🔸 節點輸入欄位設計概念**
+
+<img src="https://github.com/GgnoHuang/AniMind/assets/132812902/8f1c5adb-cd36-4322-b57b-6b05bc0f33f1" width="700">
+
+- **為了使用戶在輸入時**
+    - **節點視覺大小能夠響應文本內容而變化**
+    - **使所有文本內容可以完整顯示於畫面上**
+
+於是在輸入欄位上我使用div元素搭配contenteditable="true"的屬性實現，而不是使用input或者textarea，因input或textarea寬高受限於CSS設置，
+並在輸入時換行會使文字內容被隱藏，導致需要透過scrollbar滾動才能瀏覽所有內容。
+
+在我使用contenteditable="true"後，點擊元素將可以使元素變為可編輯。
+而在用戶輸入時，每當回車（在輸入時換行）會在父元素（節點元素）中新增新的element，父元素的寬高也會因此延展，達到視覺上的響應式效果。
+#
 ### **🔸 Login Feature**
 
 <img src="https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/login.gif?raw=true" width="700">
@@ -46,12 +60,6 @@ Link: [Ani-M-ind](https://ani-mind.vercel.app/)
 - Event Triggering: When a user drags a node to a position on the flowchart, these specific events are triggered.
 - State Management: Created a **`setNodes`** function within the state management tool provided by **`Zustand`**.
 - Data Consistency and Real-Time Updates: This function updates the node collection in the flow, including their count and data, whenever a new node is added, ensuring data consistency and real-time updates.
-
-
-
-
-
-
 #
 ### **🔸 Node Customization and Interactivity Feature**
 
