@@ -28,19 +28,17 @@ Link: [Ani-M-ind](https://ani-mind.vercel.app/)
 ---
 ## 🟠 Features and Technical Intro (Gif載入中，謝謝你耐心等待😊)
 
-### **🔸 節點輸入欄位設計概念**
+### **🔸 Concept of Node Input Field Design**
 
 <img src="https://github.com/GgnoHuang/AniMind/assets/132812902/8f1c5adb-cd36-4322-b57b-6b05bc0f33f1" width="700">
 
-- **為了使用戶在輸入時**
-    - **節點視覺大小能夠響應文本內容而變化**
-    - **使所有文本內容可以完整顯示於畫面上**
+- **To enhance user experience during input:**
+    - **The visual size of nodes dynamically adjusts to the text content.**
+    - **This ensures all text content is fully displayed on the screen.**
 
-於是在輸入欄位上我使用div元素搭配contenteditable="true"的屬性實現，而不是使用input或者textarea，因input或textarea寬高受限於CSS設置，
-並在輸入時換行會使文字內容被隱藏，導致需要透過scrollbar滾動才能瀏覽所有內容。
+For this purpose, I've implemented a solution using a div element with the attribute **`contenteditable="true"`** instead of using input or textarea. This is because input or textarea dimensions are constrained by CSS settings, and when entering text, line breaks can cause content to be hidden, necessitating scrolling to view all content.
 
-在我使用contenteditable="true"後，點擊元素將可以使元素變為可編輯。
-而在用戶輸入時，每當回車（在輸入時換行）會在父元素（節點元素）中新增新的element，父元素的寬高也會因此延展，達到視覺上的響應式效果。
+After implementing contenteditable="true", clicking on the element enables it to become editable. During user input, each time they hit enter (to create a new line), a new element is added within the parent (node element). Consequently, the width and height of the parent element expand, achieving a responsive visual effect.
 #
 ### **🔸 Login Feature**
 
