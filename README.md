@@ -8,10 +8,9 @@
 - Integrates various third-party libraries like **`React Flow`**, **`Dagre`**, **`D3`**, and **`html-to-image`** to facilitate features like canvas, node arrangement, export, and more.
 - Utilized **`Next.js`** dynamic routing in conjunction with Firebase Realtime Database to implement a multi-save feature.
 
-
-<img width="800" alt="截圖 2024-01-14 下午6 50 05" src="https://github.com/GgnoHuang/AniMind/assets/132812902/8c666bbe-0c30-4c33-a376-54258cea5e7d">
 <img width="400" alt="截圖 2024-01-11 下午6 02 20" src="https://github.com/GgnoHuang/AniMind/assets/132812902/4d3cd64a-a443-4506-b902-9e457dbd5d02">
-<img width="800" alt="截圖 2024-01-15 上午12 10 29" src="https://github.com/GgnoHuang/AniMind/assets/132812902/a780a905-d96a-4251-b6e8-c97671b509cf">
+<img width="800" alt="截圖 2024-01-14 下午6 50 05" src="https://github.com/GgnoHuang/AniMind/assets/132812902/8c666bbe-0c30-4c33-a376-54258cea5e7d">
+<img width="800" alt="截圖 2024-01-25 上午11 18 29" src="https://github.com/GgnoHuang/AniMind/assets/132812902/bdf990c9-7110-4c1a-8425-892bbdbe5760">
 
 ---
 ## 🟠 Try it!
@@ -30,7 +29,7 @@ Link: [Ani-M-ind](https://ani-mind.vercel.app/)
 
 ### **🔸 Concept of Node Input Field Design**
 
-<img src="https://github.com/GgnoHuang/AniMind/assets/132812902/8f1c5adb-cd36-4322-b57b-6b05bc0f33f1" width="700">
+<img src="https://github.com/GgnoHuang/AniMind/assets/132812902/10d5c380-5903-497c-9ce7-3902e0e24d24" width="700">
 
 - **To enhance user experience during input:**
     - **The visual size of nodes dynamically adjusts to the text content.**
