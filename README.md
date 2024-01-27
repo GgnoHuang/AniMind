@@ -33,7 +33,7 @@ Link: [Ani-M-ind](https://ani-mind.vercel.app/)
 
 > Users can simply use clicks to toggle between input functionality and node selection functionality.
 
-<img src="https://github.com/GgnoHuang/AniMind/assets/132812902/0563d0dc-8c1a-41a5-937c-494033758d4f" width="1000">
+<img src="https://github.com/GgnoHuang/AniMind/assets/132812902/31963a74-5ae1-43ca-8f2e-6d7ce323ef5f" width="1000">
 
 - **How was this feature created?**
     - The feature was created with a **`two-layer structure`** within the node's element. The top layer is an **`input field`**, and the bottom layer is the **`node itself`**.
