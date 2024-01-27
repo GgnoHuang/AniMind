@@ -91,7 +91,7 @@ In this project, I utilized Firebase's Storage feature to **`store images`**. Th
 #
 ### **🔸 Auto Layout Feature**
 
-<img src="https://github.com/GgnoHuang/AniMind/blob/main/public/readmeGifs/layout.gif?raw=true" width="700">
+<img src="https://github.com/GgnoHuang/AniMind/assets/132812902/6af96911-c85f-4d95-9ab4-29a628143124" width="700">
 
 This project offers two automatic node layout options: **`vertical and horizontal`**, realized through the integration of React Flow with the **`dagre`** library. By customizing the **`getLayoutedElements`** function, I set the direction of the dagre graph and configured relevant attributes for each node and edge. The dagre library is responsible for computing the layout and determining node positions. This approach enables nodes to automatically align based on predefined rules, streamlining the process of creating flowcharts. Additionally, by using the **`source`** and **`target`** attributes of the connections (corresponding to the **`green`** and **`purple`** handles), the correct hierarchical order of the mind map is maintained.
 #
