@@ -9,8 +9,8 @@
 - Utilized **`Next.js`** dynamic routing in conjunction with Firebase Realtime Database to implement a multi-save feature.
 
 <img width="400" alt="截圖 2024-01-11 下午6 02 20" src="https://github.com/GgnoHuang/AniMind/assets/132812902/4d3cd64a-a443-4506-b902-9e457dbd5d02">
-<img width="800" alt="截圖 2024-01-14 下午6 50 05" src="https://github.com/GgnoHuang/AniMind/assets/132812902/8c666bbe-0c30-4c33-a376-54258cea5e7d">
-<img width="800" alt="截圖 2024-01-25 上午11 18 29" src="https://github.com/GgnoHuang/AniMind/assets/132812902/bdf990c9-7110-4c1a-8425-892bbdbe5760">
+<img width="1000" alt="截圖 2024-01-14 下午6 50 05" src="https://github.com/GgnoHuang/AniMind/assets/132812902/8c666bbe-0c30-4c33-a376-54258cea5e7d">
+<img width="1000" alt="截圖 2024-01-25 上午11 18 29" src="https://github.com/GgnoHuang/AniMind/assets/132812902/bdf990c9-7110-4c1a-8425-892bbdbe5760">
 
 ---
 ## 🟠 Try it!
@@ -29,7 +29,7 @@ Link: [Ani-M-ind](https://ani-mind.vercel.app/)
 
 ### **🔸 Concept of switching between input functionality ＆ node selection functionality**
 
-<img src="https://github.com/GgnoHuang/AniMind/assets/132812902/a030a862-93bd-49f0-8357-86f7688f327a" width="800">
+<img src="https://github.com/GgnoHuang/AniMind/assets/132812902/a030a862-93bd-49f0-8357-86f7688f327a" width="700">
 
 > Users can simply use clicks to toggle between input functionality and node selection functionality.
 
