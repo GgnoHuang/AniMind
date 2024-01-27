@@ -57,7 +57,7 @@ Link: [Ani-M-ind](https://ani-mind.vercel.app/)
 
 For this purpose, I've implemented a solution using a div element with the attribute **`contenteditable="true"`** instead of using input or textarea. This is because input or textarea dimensions are constrained by CSS settings, and when entering text, line breaks can cause content to be hidden, necessitating scrolling to view all content.
 
-After implementing contenteditable="true", clicking on the element enables it to become editable. During user input, each time they hit enter (to create a new line), a new element is added within the parent (node element). Consequently, the width and height of the parent element expand, achieving a responsive visual effect.
+After implementing **`contenteditable="true"`**, clicking on the element enables it to become **`editable`**. During user input, each time they hit enter (to create a new line), a new element is added within the parent (node element). Consequently, the width and height of the parent element expand, achieving a **`responsive visual effect`**.
 #
 ### **🔸 Login Feature**
 
