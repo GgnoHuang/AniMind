@@ -27,9 +27,19 @@ Link: [Ani-M-ind](https://ani-mind.vercel.app/)
 ---
 ## 🟠 Features and Technical Intro (Gif載入中，謝謝你耐心等待😊)
 
-### **🔸 Concept of Node Input Field Design**
+### **🔸 Concept of switching between input functionality ＆ node selection functionality**
 
-<img src="https://github.com/GgnoHuang/AniMind/assets/132812902/10d5c380-5903-497c-9ce7-3902e0e24d24" width="700">
+<img src="https://github.com/GgnoHuang/AniMind/assets/132812902/0563d0dc-8c1a-41a5-937c-494033758d4f" width="800">
+
+- **To :**
+    - **content.**
+    - **een.**
+
+For this purpose, I'veg a responsive visual effect.
+#
+### **🔸 Concept of Node Text Field Design**
+
+<img src="https://github.com/GgnoHuang/AniMind/assets/132812902/10d5c380-5903-497c-9ce7-3902e0e24d24" width="800">
 
 - **To enhance user experience during input:**
     - **The visual size of nodes dynamically adjusts to the text content.**
