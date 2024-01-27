@@ -29,13 +29,17 @@ Link: [Ani-M-ind](https://ani-mind.vercel.app/)
 
 ### **🔸 Concept of switching between input functionality ＆ node selection functionality**
 
+<img src="https://github.com/GgnoHuang/AniMind/assets/132812902/a030a862-93bd-49f0-8357-86f7688f327a" width="800">
+
+- 用戶只需要使用點擊，就能在輸入功能及節點選取功能之間切換
+
 <img src="https://github.com/GgnoHuang/AniMind/assets/132812902/0563d0dc-8c1a-41a5-937c-494033758d4f" width="800">
 
-- **To :**
-    - **content.**
-    - **een.**
-
-For this purpose, I'veg a responsive visual effect.
+- **我是怎麼製作這個功能的？**
+    - **節點的element有兩層結構，上層是輸入欄位，下層是節點本身。**
+    - **上層元素(輸入欄)設置了pointer-events的屬性，當此屬性的值為auto，上層元素(輸入欄)將可以被操作。若屬性質為none時這個元素將無法被操作，也就導致點擊時所操作的會是下層元素(節點本身)**
+    - **上層元素(輸入欄)的pointer-events的屬性，是由某個變數的boolean決定其值為auto或是none**
+    - **上層元素和下層元素都各設置了一個toggle，這些toggle在點擊後可以反轉此變數的boolean，所以重複點擊時，會導致pointerevents的值在auto和none之間切換，也就實現了功能切換**
 #
 ### **🔸 Concept of Node Text Field Design**
 
