@@ -40,11 +40,6 @@ Link: [Ani-M-ind](https://ani-mind.vercel.app/)
     - The state of the 'pointer-events' property for the upper element (input field) is determined by a **`boolean variable`**, toggling between **`'auto' and 'none'`**.
     - Both the top and bottom layers have their **`own toggle mechanism`**. When clicked, these toggles invert the boolean variable, causing the 'pointer-events' property to alternate between 'auto' and 'none'. This results in the functionality **`switching between being active and inactive upon each click`**.
 
-- **我是怎麼製作這個功能的？**
-    - 節點的element為 **`雙層結構`**，上層是輸入欄位，下層是節點本身。
-    - 上層元素(輸入欄)設置了 **`pointer-events`** 的屬性，此屬性會導致，當此屬性的值為 **`'auto'`**，上層元素(輸入欄)將可以被操作。若值為 **`'none'`** 時這個元素將無法被操作，也就導致點擊時所操作的會是下層元素(節點本身)。
-    - 上層元素(輸入欄)的pointer-events的屬性，**`是由一個變數的boolean決定其值為'auto'或是'none'`**。
-    - 上層元素和下層元素都各設置了一個 **`toggle`**，這些toggle在點擊後可以反轉此變數的boolean，所以重複點擊時，**`會導致pointerevents的值在auto和none之間切換`**，也就實現了功能切換。
 #
 ### **🔸 Concept of Node Text Field Design**
 
