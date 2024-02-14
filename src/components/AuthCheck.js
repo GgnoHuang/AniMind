@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react"
 import { onAuthStateChanged } from "firebase/auth"
 
-const AuthAndUserData = ({ auth,
-  setLocalUserData,setUserAuth
-  ,successMsg
+const AuthAndUserData = ({
+  auth,
+  setLocalUserData,
+  setUserAuth,
+  successMsg,
 }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (authUser) => {
@@ -23,11 +25,11 @@ const AuthAndUserData = ({ auth,
       }
     })
     return () => unsubscribe()
-    
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [successMsg])
-// 如果successMsg的值改變了就再執行一次，這樣登入成功就可以馬上setLocalUserData
-  return null; // 此處不返回任何HTML
+  // 如果successMsg的值改變了就再執行一次，這樣登入成功就可以馬上setLocalUserData
+  return null // 此處不返回任何HTML
 }
 
 export default AuthAndUserData

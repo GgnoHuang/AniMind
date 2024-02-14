@@ -1,39 +1,37 @@
-.letsstart{
+.letsstart {
   position: absolute;
   /* top:90px;
   left: 30px; */
   width: 200px;
-  transform:translate(-45%, -125%);
+  transform: translate(-45%, -125%);
   transition: all 1.5s ease-in-out;
 }
-.hiddenletsstart{
+.hiddenletsstart {
   position: absolute;
   width: 200px;
   /* transform:translate(-125%, 15%); */
-  transform:translate(-165%, -35%);
+  transform: translate(-165%, -35%);
   /* transition: all 1.5s ease; */
 }
 
-.visibleFormwrapper{
+.visibleFormwrapper {
   transition: all 0.5s ease;
-position: absolute; 
-left: 50%;
-top: 40%;
-transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
 }
-.hiddenFormwrapper{
+.hiddenFormwrapper {
   transition: all 0.5s ease;
-position: absolute; 
-left: 50%;
-top: 40%;
-transform: translate(-50%, -300%);
-
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -300%);
 }
 
-
-.inputcontainer{
+.inputcontainer {
   position: relative;
-  top:74px;
+  top: 74px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,15 +39,15 @@ transform: translate(-50%, -300%);
   height: 600px;
   width: 550px;
   /* border: 2px rgb(239, 239, 239) solid; */
-  background-image:url('../../../public//未命.png');
+  background-image: url("../../../public/registerForm.png");
 
   /* background-position:  -13px -13px;  */
-  background-position:  -10px -122px; 
+  background-position: -10px -122px;
   background-size: 105%;
   background-repeat: no-repeat;
 }
 
-.signintext{
+.signintext {
   color: #ffffff;
   font-weight: 300;
   height: 35px;
@@ -58,62 +56,53 @@ transform: translate(-50%, -300%);
   top: -28px;
 }
 
-
-
-
-.registerbtn{
+.registerbtn {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 35px;
-  width:200px;
+  width: 200px;
   background-color: rgb(111, 111, 111);
 
   color: #ffffff;
   border-radius: 50px;
   border: #00ffcd 1px solid;
 
-
   /* border: 2px solid #00ffcd; */
   margin-bottom: 8px;
-
 }
-.registerbtn:hover{
-background-color: #00ffcd;
-/* background-color: aquamarine; */
-/* background-color: #ffdf7f; */
+.registerbtn:hover {
+  background-color: #00ffcd;
+  /* background-color: aquamarine; */
+  /* background-color: #ffdf7f; */
 
   color: rgb(255, 255, 255);
 }
 
-
-.nameinput{
+.nameinput {
   margin-bottom: 8px;
   font-weight: 200;
 }
-.mailinput{
+.mailinput {
   margin-bottom: 8px;
   font-weight: 200;
 }
-.passwordinput{
+.passwordinput {
   margin-bottom: 13px;
   font-weight: 200;
 }
-.alreadyhaveaccount{
+.alreadyhaveaccount {
   margin-bottom: 8px;
   color: #ffffff; /* 字体颜色 */
   font-weight: 300;
   cursor: pointer;
 }
 
-.alreadyhaveaccount:hover{
+.alreadyhaveaccount:hover {
   color: #00ffcd;
   /* color: #7fffd4; */
   /* color: #ffdf7f; */
-  
-  }
-
-
+}
 
 .or {
   margin-bottom: 8px;
@@ -129,7 +118,7 @@ background-color: #00ffcd;
 
 .or::before,
 .or::after {
-  content: '';
+  content: "";
   background-color: #ffffff; /* 橫線的顏色 */
   background-color: #dddddd; /* 字体颜色 */
   height: 1px;
@@ -147,7 +136,3 @@ background-color: #00ffcd;
   left: 100%;
   margin-left: 15px; /* 橫線與文字的間距 */
 }
-
-
-
-

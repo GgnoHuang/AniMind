@@ -1,3 +1,4 @@
+/* ============================== */
 .copy {
   border: 3px #ffffff solid;
   border-radius: 164px;
@@ -23,14 +24,15 @@
 .copyright {
   right: -75px;
 }
+/* ============================== */
 
 .starMask {
   /* width: 100%;  */
   height: 100%;
   /* -webkit-mask: url('path/to/your/star-shaped-mask.png') no-repeat center / contain; */
   /* mask: url('path/to/your/star-shaped-mask.png') no-repeat center / contain; */
-  -webkit-mask: url("/certificateNode.png") no-repeat center/100% 100%;
-  mask: url("/certificateNode.png") no-repeat center/100% 100%;
+  -webkit-mask: url("/cloudNode.png") no-repeat center/100% 100%;
+  mask: url("/cloudNode.png") no-repeat center/100% 100%;
   /* background-color: rgb(188, 188, 255); */
   display: flex;
   justify-content: center;
@@ -75,11 +77,11 @@
 }
 
 /* .awesomeNavIconBtnS:hover{
-  color: #00ffcc;
+ color: #00ffcc;
 }
 
 .Aicon:hover{
-  color: #00ffcc;
+ color: #00ffcc;
 } */
 
 .Aicon:hover ~ .plusIcon,
@@ -102,6 +104,11 @@
   right: 2px;
 
   transform: scale(0.75);
+}
+.tetxToolsBig {
+}
+.ok {
+  /* font-size: 34px; */
 }
 
 /* ================================ */

@@ -1,25 +1,19 @@
-
-
-/* 🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪 */
-/* 🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪 */
-.layoutPanel{
+.layoutPanel {
   display: flex;
-  position: absolute!important;;
+  position: absolute !important;
   /* left: -2.5px !important; */
   left: -2px !important;
-  bottom: -2px  !important;
-  height: 39px  !important;
-
+  bottom: -2px !important;
+  height: 39px !important;
   border: 1.5px white solid;
   width: fit-content;
-  border-radius:10px;
+  border-radius: 10px;
   background-color: #666666 !important;
   background-color: #5e0fde !important;
-
 }
-.TBlayoutBtnsW{
+.TBlayoutBtnsW {
   cursor: pointer;
-    /* opacity: 0.6; */
+  /* opacity: 0.6; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,11 +24,11 @@
   border-radius: 9px 0px 0px 9px;
   border-right: 1px white solid;
 }
-.LRlayoutBtnsW{
+.LRlayoutBtnsW {
   border-left: 2px #00ffccab solid;
   border-left: 1px white solid;
   cursor: pointer;
-    /* opacity: 0.6; */
+  /* opacity: 0.6; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,45 +39,44 @@
   border-radius: 0px 9px 9px 0px;
 }
 
-.layoutBtns{
-  color:  #00ffccd7 ;
+.layoutBtns {
+  color: #00ffccd7;
   /* color:  #00ffccda ; */
-  
+
   transform: scale(1.2);
   position: relative;
   right: -1px;
   transition: all 0.1s linear;
 
-   /* 分别是左上、右上、右下、左下 */
+  /* 分别是左上、右上、右下、左下 */
   /* border: 1px red solid; */
-
 }
-.sitemapRotate{
-  transform: rotate(-90deg)scale(1.1);
+.sitemapRotate {
+  transform: rotate(-90deg) scale(1.1);
   position: relative;
   left: -1.5px;
   /* border-radius: 0px 110px 110px 0px  !important; */
 }
 
-.LRlayoutBtnsW:hover,.TBlayoutBtnsW:hover{
-  background-color:#ffffff  !important;
-  .layoutBtns{
-    color:  #5e0fde ;
+.LRlayoutBtnsW:hover,
+.TBlayoutBtnsW:hover {
+  background-color: #ffffff !important;
+  .layoutBtns {
+    color: #5e0fde;
     transform: scale(1.5);
   }
-  .sitemapRotate{
-    transform: rotate(-90deg)scale(1.5);
+  .sitemapRotate {
+    transform: rotate(-90deg) scale(1.5);
   }
-  .layoutBtnHint{
-    opacity: 1; 
-    visibility: visible; 
+  .layoutBtnHint {
+    opacity: 1;
+    visibility: visible;
   }
 }
 
-
-.layoutBtnHint{
+.layoutBtnHint {
   position: absolute;
-  bottom:130%;
+  bottom: 130%;
 
   left: 0px;
 
@@ -92,25 +85,20 @@
 
   font-size: 10px;
   padding: 3px 12px;
-  opacity: 0; 
+  opacity: 0;
   visibility: hidden;
   white-space: nowrap;
 }
 
-/* 🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪 */
-/* 🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪 */
-
-
-
-.navbody{
-  font-family:'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.navbody {
+  font-family: "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   position: absolute;
   z-index: 9999;
   width: 100%;
   height: 62px;
   display: flex;
   /* border:5px rgb(34, 0, 255) solid; */
-  /* background-image:url('../../../public//oos.jpg'); */
+
   justify-content: space-between;
 
   background-color: #5a5a5ad6;
@@ -118,52 +106,42 @@
   /* border-bottom: 2.5px #7628f3 solid; */
   /* border-bottom: 1px #5e0fde solid; */
 
-
   align-items: center;
   padding: 0px 20px;
 }
-.nav{
-    /* background-image:url('../../../public/ddd.jpg'); */
+.nav {
   height: 100%;
   /* border:2px rgb(255, 0, 0) solid; */
   display: flex;
-  align-items:center;
+  align-items: center;
 }
 
-.logo{
+.logo {
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 40px;
-  /* border:1px red solid; */
-   /* background-image:url('../../../public/logo.png'); */
+
   z-index: 9999;
   transition: all 0.2s ease;
-
 }
-.logopng{
+.logopng {
   height: 40px;
   width: 40px;
   margin-right: 7px;
 }
-.logospan{
+.logospan {
   color: #00ffccbf;
   color: #00ffccbf;
-  color:white;
+  color: white;
   font-size: 22px;
 }
-.logo:hover{
-  scale:calc(108%)
+.logo:hover {
+  scale: calc(108%);
 }
 
-
-
-
-
-/* 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥 */
-/* 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥 */
-.toolbarBody{
+.toolbarBody {
   position: absolute;
   z-index: 9999;
   width: 50px;
@@ -184,12 +162,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
-
 }
 
-.toolBtns{
-  cursor:grab;
+.toolBtns {
+  cursor: grab;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -200,83 +176,77 @@
   /* border: 1px #00ffcc9e  solid; */
 }
 /* 👍🏻 */
-.toolBtnsCute{
+.toolBtnsCute {
   width: 95%;
   padding: 0px;
   /* border: 1px red solid; */
 }
-.SidebarIconBtnScute{
+.SidebarIconBtnScute {
   transition: all 0.1s ease;
-  transform: scale(0.4) ;
+  transform: scale(0.4);
 }
 /* 👍🏻 */
 
+.toolBtns:hover {
+  background-color: #ffffff;
 
-.toolBtns:hover{
-      background-color: #ffffff;
+  background-color: #00ffccab;
+  /* background-color: #7628f3 ; */
 
-      background-color: #00ffccab ;
-      /* background-color: #7628f3 ; */
-
-      .SidebarIconBtnS{
-        transform: scale(1.8) ;
-      }
-      .SidebarIconBtnStriangle{
-        transform:rotate(-90deg) scale(1.9) translateX(0px);
-      }
-      .SidebarIconBtnScute{
-        transform: scale(0.65) ;
-      }
-      .toolBtnHint{
-        opacity: 1; 
-        visibility: visible;
-      }
+  .SidebarIconBtnS {
+    transform: scale(1.8);
+  }
+  .SidebarIconBtnStriangle {
+    transform: rotate(-90deg) scale(1.9) translateX(0px);
+  }
+  .SidebarIconBtnScute {
+    transform: scale(0.65);
+  }
+  .toolBtnHint {
+    opacity: 1;
+    visibility: visible;
+  }
 }
-.toolBtnsPurple:hover{
-      background-color: #7628f3 !important;
+.toolBtnsPurple:hover {
+  background-color: #7628f3 !important;
 }
 
-.SidebarIconBtnS{
+.SidebarIconBtnS {
   color: rgb(255, 255, 255);
   transition: all 0.1s ease;
   transform: scale(1.1);
 }
-.SidebarIconBtnStriangle{
+.SidebarIconBtnStriangle {
   color: rgb(255, 255, 255);
   transition: all 0.1s ease;
-  transform:rotate(-90deg) scale(1.2) ;
+  transform: rotate(-90deg) scale(1.2);
 }
 
-.toolBtnHint{
+.toolBtnHint {
   position: absolute;
 
-  left:58px;
+  left: 58px;
   color: #ffffff;
   background-color: #000000;
   font-size: 10px;
   padding: 3px 12px;
-  opacity: 0; 
+  opacity: 0;
   visibility: hidden;
   white-space: nowrap;
-
 }
-/* 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥 */
-/* 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥 */
 
-
-
-.toolbarBodyHidden{
+.toolbarBodyHidden {
   /* 縮小狀態會跑出箭頭，然後直線消失 */
-    left:-26px;
-    .iconShowToggle{
-      display: block;
-    }
-    .iconLine{
-      display: none;
-    }
+  left: -26px;
+  .iconShowToggle {
+    display: block;
+  }
+  .iconLine {
+    display: none;
+  }
 }
 
-.toggleBtn{
+.toggleBtn {
   width: 35px;
   height: 54px;
   border-radius: 40px;
@@ -291,34 +261,31 @@
   justify-content: center;
   align-items: center;
 }
-.toggleBtn:hover{
+.toggleBtn:hover {
   /* border: 2px rgb(215, 215, 215) solid; */
 
-  .iconToggle{
+  .iconToggle {
     font-size: 22px;
     color: #00ffccab;
-    display: block; 
+    display: block;
   }
-  .iconLine{
+  .iconLine {
     display: none;
   }
-
-  
 }
-.iconToggle{
-  display: none; 
+.iconToggle {
+  display: none;
   color: rgb(185, 185, 185);
 }
-.iconLine{
+.iconLine {
   position: absolute;
   right: 13px;
   transform: rotate(90deg) translateY(-39%);
   font-size: 22px;
   color: rgba(136, 136, 136, 0.621);
   color: #00ffccab;
-  
 }
-.iconShowToggle{
+.iconShowToggle {
   transition: all 0.3s linear;
   display: none;
   font-size: 22px;
@@ -326,82 +293,63 @@
   color: rgb(185, 185, 185);
 }
 
-
-/* 🟧 這段很猛🟧 */
-/* 🟧 這段很猛🟧 */
-.toolbarBodyHidden:hover{
-  .toggleBtn:hover{
-    .iconToggle{
+/* important */
+.toolbarBodyHidden:hover {
+  .toggleBtn:hover {
+    .iconToggle {
       display: none;
     }
-    .iconShowToggle{
+    .iconShowToggle {
       display: block;
       color: #00ffccab;
     }
   }
 }
-/* 🟧 這段很猛🟧 */
-/* 🟧 這段很猛🟧 */
+/*important*/
 
-
-
-
-
-/* .dog{
-  color:red;
-} */
-
-
-
-
-
-
-
-/* 🟥🟥🟥按鈕們🟥🟥🟥🟥🟥🟥🟥🟥🟥*/
-.dwBtn{
+/* btns*/
+.dwBtn {
   margin-right: 12px;
   height: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgb(255, 255, 255) ;
+  color: rgb(255, 255, 255);
   border-radius: 80px;
   cursor: pointer;
   width: 68px;
   font-size: 17px;
   transition: all 0.1s ease;
-  color:#7628f3;
-  background-color: #00ffccab ;
+  color: #7628f3;
+  background-color: #00ffccab;
 }
 @media (max-width: 500px) {
-  .dwBtn{
+  .dwBtn {
     width: 38px;
+  }
 }
-}
-.dwBtn:hover{
-  background-color: #ffffff ;
-  color:#00ffccab;
-  .NavBtnHint{
-    opacity: 1; 
+.dwBtn:hover {
+  background-color: #ffffff;
+  color: #00ffccab;
+  .NavBtnHint {
+    opacity: 1;
     visibility: visible;
   }
 }
 
-.NavBtnHint{
+.NavBtnHint {
   position: absolute;
-  top:55px;
+  top: 55px;
   font-size: 10px;
   padding: 3px 12px;
   color: #ffffff;
   background-color: #000000;
-  opacity: 0; 
+  opacity: 0;
   visibility: hidden;
 }
-/* 🟥🟥🟥按鈕們🟥🟥🟥🟥🟥🟥🟥🟥🟥*/
+/* btns*/
 
-
-
-.welcome{
+.welcome {
   border-radius: 12px;
   padding: 3px 15px;
   /* border: 1px red solid; */
@@ -411,87 +359,70 @@
   border: 1px #7628f3 solid;
   border: 1.5px #00ffccab solid;
   border: 1.5px gray solid;
-  color:#7628f3;
-  color:#ffffff;
+  color: #7628f3;
+  color: #ffffff;
   margin-left: 15px;
 }
-.usericon{
+.usericon {
   margin-right: 6px;
 }
 @media (max-width: 620px) {
-    .welcome{
-      display: none;
-  }
-}
-
-
-
-/*  */
-/*  */
-
-
-.patternStylePanel{
-  display: flex;
-  position: absolute!important;;
-  right:210px !important;;
-  bottom: -2px  !important;
-  height: 39px  !important;
-  border: 0px rgba(255, 255, 255, 0.671) solid;
-  border: 0px white solid;
-  width: fit-content;
-  border-radius:200px;
-  background-color: #666666 !important;
-}
-@media (max-width: 744px) {
-  .patternStylePanel{
-    right:-0px !important;;
-    bottom: 155px  !important;
-  }
-}
-@media (max-width: 580px) {
-  .patternStylePanel{
+  .welcome {
     display: none;
   }
 }
 
-.canvasBgBar{
+.patternStylePanel {
+  display: flex;
+  position: absolute !important;
+  right: 210px !important;
+  bottom: -2px !important;
+  height: 39px !important;
+  border: 0px rgba(255, 255, 255, 0.671) solid;
+  border: 0px white solid;
+  width: fit-content;
+  border-radius: 200px;
+  background-color: #666666 !important;
+}
+@media (max-width: 744px) {
+  .patternStylePanel {
+    right: -0px !important;
+    bottom: 155px !important;
+  }
+}
+@media (max-width: 580px) {
+  .patternStylePanel {
+    display: none;
+  }
+}
+
+.canvasBgBar {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0px 12px;
   gap: 12px;
-
 }
-.canvasBgBtns{
-  width: 19px; 
+.canvasBgBtns {
+  width: 19px;
   height: 19px;
-  border-radius:777px;
-  overflow:hidden;
-  cursor:pointer;
+  border-radius: 777px;
+  overflow: hidden;
+  cursor: pointer;
 }
 
-
-
-.wper{
+.wper {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
 }
-.inputPalette{
+.inputPalette {
   opacity: 0;
 }
-.faPaletteicon{
+.faPaletteicon {
   position: absolute;
   left: 0px;
   /* cursor: pointer; */
   pointer-events: none;
 }
-/*  */
-/*  */
-
-/*  */
-/*  */
-
-/*  */
-/*  */
