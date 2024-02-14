@@ -2,87 +2,54 @@
   background-color: rgb(255, 78, 78);
 }
 
-
-
-
-
 .homepagebody {
-
-  /* background-image:url('../../public/dan.jpg'); */
-
-  /* background-color: black; */
-  /* background-position: -320px -220px;  */
-    /* background-size:cover; */
-  /* background-size: 2320px 1080px;  */
   height: 100vh;
   width: 100%;
-  /* border: 2px yellowgreen solid; */
-  
 }
 
-
-
-
-.newnavimg{
+.newnavimg {
   border: 4px rgb(6, 250, 47) solid;
   max-width: none;
   /* transform: translateY(-500px); */
   transform: translateX(-400px);
   position: absolute;
-  top:-180px;
-  width:2000px;
+  top: -180px;
+  width: 2000px;
   /* transform: rotate(0deg); */
 }
-.newnavimg2{
+.newnavimg2 {
   max-width: none;
   /* transform: translateY(-500px); */
   position: absolute;
-  top:-180px;
-  width:1600px;
+  top: -180px;
+  width: 1600px;
 
   transform: rotate(7deg) translateX(500px);
-
 }
 
-
-  /* height: 80vh; */
-  /* width: 100%; */
-  /* border: 2px rgb(255, 2, 2) solid; */
-  /* background-image:url('../../public/png_flower.png'); */
-  /* background-size:cover; */
-  /* background-position: 50% 50%;  */
-  /* background-size: 500px 500px;  */
-  /* background-repeat: no-repeat; */
-
-.formContainer{
-/* border: red 3px solid; */
-display: flex;
-justify-content: center;
+.formContainer {
+  /* border: red 3px solid; */
+  display: flex;
+  justify-content: center;
 }
 
-
-
-.savePointContainerwWapper{
+.savePointContainerwWapper {
   margin-top: 50px;
   display: flex;
   justify-content: center;
-
 }
 
-.savePointContainer{
-
+.savePointContainer {
   width: 1200px;
   /* border: rgb(0, 21, 255) 1px solid; */
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* 定義五個等寬的列 */
 
   height: fit-content;
-  gap: 16px; 
+  gap: 16px;
+}
 
-  }
-
-
-.addbtn{
+.addbtn {
   /* background-image:url('../../public/ggs.png'); */
   /* background-size: 210%;
   background-repeat: no-repeat;
@@ -99,10 +66,9 @@ justify-content: center;
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
-.addbtnn{
+.addbtnn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -116,42 +82,35 @@ justify-content: center;
   cursor: pointer;
 
   width: 130px;
-  height:60px;
+  height: 60px;
   width: 110px;
-  height:55px;
+  height: 55px;
   border: rgb(255, 255, 255) 2px solid;
   /* border: #00ffcceb 2px solid; */
-  background-color: #5e0fde ;
-  color:  #00ffccd7 ;
+  background-color: #5e0fde;
+  color: #00ffccd7;
 
   color: #00ffccda;
-
 }
 
-.addbtnn:hover{
+.addbtnn:hover {
   z-index: 999;
   /* border: #00ffcd 2px solid; */
   color: aliceblue;
-  color: #5e0fde ;
+  color: #5e0fde;
   /* color: #5e0fdec7;; */
-  background-color:  #ffffffeb;
+  background-color: #ffffffeb;
 
   /* color: #00ffcceb; */
   transform: scale(1.2);
+}
 
-  }
-
-
-
-
-.savePoint{
-
-    background-image:url('../../public/aacc.jpg');
-background-size: 300%;
-background-repeat: no-repeat;
-opacity: 0.8;
-/* background-size: contain; */
-
+.savePoint {
+  background-image: url("../../public/savePointBG.jpg");
+  background-size: 300%;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  /* background-size: contain; */
 
   border-radius: 10px;
   border: rgba(255, 255, 255, 0.747) 2px solid;
@@ -159,8 +118,6 @@ opacity: 0.8;
   cursor: pointer;
   width: 227.2px;
   width: 100%;
-
-
 
   color: rgb(255, 255, 255);
 
@@ -175,40 +132,32 @@ opacity: 0.8;
   .savePoint {
     /* width: 33%; */
   }
-  .addbtn{
+  .addbtn {
     /* width: 33%; */
   }
-  .savePointContainer{
+  .savePointContainer {
     padding: 0px 20px;
     /* width: 1200px; */
     grid-template-columns: repeat(4, 1fr); /* 定義五個等寬的列 */
-
-    }
+  }
 }
 @media (max-width: 767px) {
-  .savePointContainer{
+  .savePointContainer {
     padding: 0px 20px;
     /* width: 1200px; */
     grid-template-columns: repeat(3, 1fr); /* 定義五個等寬的列 */
   }
 }
 
-
-
-
-.savePoint:hover{
-scale:105%;
-transition: all 0.1s ease;
-z-index: 999;
-border: #00ffcd 2px solid;
-
-
+.savePoint:hover {
+  scale: 105%;
+  transition: all 0.1s ease;
+  z-index: 999;
+  border: #00ffcd 2px solid;
 }
 
-
-.deletebtn{
-
-  height:25px;
+.deletebtn {
+  height: 25px;
   width: 25px;
   padding: 5px;
   background-color: rgb(255, 255, 255);
@@ -217,12 +166,8 @@ border: #00ffcd 2px solid;
   right: -6px;
   border-radius: 10px;
   transition: all 0.1s ease;
-
-
 }
-.deletebtn:hover{
+.deletebtn:hover {
   scale: 120%;
   background-color: rgb(255, 87, 87);
-
 }
-

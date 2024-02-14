@@ -11,8 +11,7 @@ import {
 
 import useStore from "../../store"
 
-import styles from "./CertificateNode.module.css"
-import Image from "next/image"
+import styles from "./CloudNode.module.css"
 import React, { useEffect, useState, useRef } from "react"
 import {
   Handle,
@@ -44,8 +43,10 @@ export default function StarNode({ id, data, isConnectable, selected }) {
   const [isPointerEventsActive, setIsPointerEventsActive] = useState(false)
 
   const handleDoubleClick = () => {
+    // console.log('node js 執行setIsPointerEventsActive(prev => !prev)')
     setIsPointerEventsActive((prev) => !prev)
   }
+
   const {
     updateNodeData,
     updateNodeColor,
@@ -102,7 +103,7 @@ export default function StarNode({ id, data, isConnectable, selected }) {
   const onFontSizeChange = (event) => {
     setSelectFontSize(`${event.target.value}px`)
     // setSelectFontSize(`${event.target.value}px`);
-
+    // console.log(`${event.target.value}px`);
     updateNodeData(id, { ...data, fontSize: `${event.target.value}px` })
   }
 
@@ -117,7 +118,7 @@ export default function StarNode({ id, data, isConnectable, selected }) {
     updateNodeData(id, { ...data, textalign: align })
   }
 
-  // 🥎旋轉
+  // 旋轉
   const rotateControlRef = useRef(null)
   const updateNodeInternals = useUpdateNodeInternals()
   const [rotation, setRotation] = useState(0)
@@ -139,22 +140,22 @@ export default function StarNode({ id, data, isConnectable, selected }) {
 
     selection.call(dragHandler)
   }, [updateNodeInternals])
-  // 🥎旋轉
+  // 旋轉
 
   return (
     <div
       style={{
-        // 🥎旋轉
+        // 旋轉
         transform: `rotate(${rotation}deg)`,
-        // 🥎旋轉
+        // 旋轉
         height: "100%",
       }}
-      // className='node'
     >
       <NodeResizer
         handleStyle={{
           width: "15px",
           height: "15px",
+          backgroundColor: "#7e0fe5",
           backgroundColor: "#7e0fe5",
           borderRadius: "2px",
         }}
@@ -164,6 +165,7 @@ export default function StarNode({ id, data, isConnectable, selected }) {
           borderStyle: "solid", // 設置邊界線樣式
           animation: "blink 1.2s ease infinite", // 這會讓邊界線閃爍
           borderColor: "#00ffccd8",
+          // borderColor: '#fffffff',
         }}
         isVisible={selected}
         minWidth={100}
@@ -213,11 +215,6 @@ export default function StarNode({ id, data, isConnectable, selected }) {
         {/* ============================================================ */}
 
         <button onClick={increaseFontSizeTen} className={styles.tetxToolsBig}>
-          {/* <FontAwesomeIcon icon={faFont} 
-                    className={styles.Aicon}/>
-                  <FontAwesomeIcon icon={faMinus} 
-                    className={styles.minusIcon}/> */}
-
           <FontAwesomeIcon
             icon={faFont}
             className={`${styles.Aicon} ${styles.ok}`}
@@ -231,10 +228,6 @@ export default function StarNode({ id, data, isConnectable, selected }) {
         </button>
 
         <button onClick={decreaseFontSize} className={styles.tetxTools}>
-          {/* <FontAwesomeIcon icon={faFont}
-                    className={styles.Aicon} />
-                  <FontAwesomeIcon icon={faPlus}
-                    className={styles.BigminusIcon} /> */}
           <FontAwesomeIcon icon={faFont} className={styles.Aicon} />
           <FontAwesomeIcon icon={faMinus} className={styles.minusIcon} />
         </button>
@@ -247,14 +240,7 @@ export default function StarNode({ id, data, isConnectable, selected }) {
           <FontAwesomeIcon icon={faMinus} className={styles.BigminusIcon} />
         </button>
 
-        <input
-          value={selectedColor}
-          // 這邊value就是input顯示在畫面上的顏色，就是data.backgroundColor
-          type="color"
-          // defaultValue={data.color}
-          // className="nodrag"
-          onChange={onSelectColor}
-        />
+        <input value={selectedColor} type="color" onChange={onSelectColor} />
 
         <input
           value={selectedFontColor}
@@ -263,7 +249,7 @@ export default function StarNode({ id, data, isConnectable, selected }) {
         />
       </div>
 
-      {/* 😈 C O P Y 功 能  😈 */}
+      {/*  C O P Y 功 能   */}
       <div
         style={{
           height: "100%",
@@ -279,19 +265,15 @@ export default function StarNode({ id, data, isConnectable, selected }) {
           style={{ display: data.isSelected ? "flex" : "none" }}
           onClick={() => {
             const newNode = {
-              ...cloneNode, // 复制 node 的所有属性
+              ...cloneNode,
               position: {
-                // 创建 position 的一个新副本
                 x: cloneNode.position.x,
                 y: cloneNode.position.y - cloneNode.height - 50,
                 // + node.height,
               },
               selected: null,
-              data: {
-                isSelected: null,
-                backgroundColor: selectedColor, // 使用所选颜色
-              },
-              id: `duplicate_${Math.random()}`, // 指定一个新的唯一 ID
+              data: { isSelected: null, backgroundColor: selectedColor },
+              id: `duplicate_${Math.random()}`,
             }
             const newEdge = {
               id: `edge_${cloneNode.id}_${newNode.id}`,
@@ -317,18 +299,14 @@ export default function StarNode({ id, data, isConnectable, selected }) {
           style={{ display: data.isSelected ? "flex" : "none" }}
           onClick={() => {
             const newNode = {
-              ...cloneNode, // 复制 node 的所有属性
+              ...cloneNode,
               position: {
-                // 创建 position 的一个新副本
                 x: cloneNode.position.x,
                 y: cloneNode.position.y + cloneNode.height + 50,
               },
               selected: null,
-              data: {
-                isSelected: null,
-                backgroundColor: selectedColor, // 使用所选颜色
-              },
-              id: `duplicate_${Math.random()}`, // 指定一个新的唯一 ID
+              data: { isSelected: null, backgroundColor: selectedColor },
+              id: `duplicate_${Math.random()}`,
             }
             const newEdge = {
               id: `edge_${cloneNode.id}_${newNode.id}`,
@@ -353,18 +331,14 @@ export default function StarNode({ id, data, isConnectable, selected }) {
           style={{ display: data.isSelected ? "flex" : "none" }}
           onClick={() => {
             const newNode = {
-              ...cloneNode, // 复制 node 的所有属性
+              ...cloneNode,
               position: {
-                // 创建 position 的一个新副本
                 x: cloneNode.position.x + cloneNode.width + 50,
                 y: cloneNode.position.y,
               },
               selected: null,
-              data: {
-                isSelected: null,
-                backgroundColor: selectedColor, // 使用所选颜色
-              },
-              id: `duplicate_${Math.random()}`, // 指定一个新的唯一 ID
+              data: { isSelected: null, backgroundColor: selectedColor },
+              id: `duplicate_${Math.random()}`,
             }
             const newEdge = {
               id: `edge_${cloneNode.id}_${newNode.id}`,
@@ -389,18 +363,14 @@ export default function StarNode({ id, data, isConnectable, selected }) {
           style={{ display: data.isSelected ? "flex" : "none" }}
           onClick={() => {
             const newNode = {
-              ...cloneNode, //複製 node 的所有属性
+              ...cloneNode,
               position: {
-                // 建立position 的一個新副本
                 x: cloneNode.position.x - cloneNode.width - 50,
                 y: cloneNode.position.y,
                 // + node.height,
               },
               selected: null,
-              data: {
-                isSelected: null,
-                backgroundColor: selectedColor, // 使用所選顏色
-              },
+              data: { isSelected: null, backgroundColor: selectedColor },
               id: `duplicate_${Math.random()}`, // 指定一个新的唯一 ID
             }
             const newEdge = {
@@ -427,8 +397,8 @@ export default function StarNode({ id, data, isConnectable, selected }) {
         onClick={handleDoubleClick}
         className={styles.starMask}
         style={{
-          padding: "30px",
-          backgroundColor: data.backgroundColor || "#ffffff", // 使用data中的背景颜色，沒有就默認
+          padding: "30px", // 🟪
+          backgroundColor: data.backgroundColor || "#ffffff",
           border: "2px solid gray",
           overflow: "hidden",
         }}
@@ -440,10 +410,9 @@ export default function StarNode({ id, data, isConnectable, selected }) {
             pointerEvents: isPointerEventsActive ? "auto" : "none",
             cursor: "text",
             color: data.fontColor || "#000000",
-
             fontSize: data.fontSize || "25px",
             textAlign: data.textalign || "center",
-            margin: "35px 15px",
+            margin: "45px 20px",
           }}
           onInput={onEditText}
           spellCheck="false"

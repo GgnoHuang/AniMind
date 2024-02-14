@@ -1,23 +1,15 @@
-
-
-.navbody{
+.navbody {
   height: 60px;
-  /* background-color: rgba(214, 214, 214, 0); */
-  /* background-image: ; */
-  /* background-image:url('../../../public//oos.jpg'); */
-
 }
 
-.nav{
+.nav {
   padding: 0px 20px;
-    /* background-image:url('../../../public/ddd.jpg'); */
+
   background-color: #5a5a5ad6;
-    /* background-color: #00ffcc60; */
+  /* background-color: #00ffcc60; */
 
   height: 100%;
   /* border:2px rgba(255, 0, 0, 0.941) solid; */
-
-
 
   border-bottom: 3px #00ffcc9e solid;
   border-bottom: 2px #00ffcc9e solid;
@@ -25,11 +17,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-
 }
 
-.logo{
+.logo {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,40 +29,34 @@
   cursor: pointer;
   transition: all 0.2s ease;
 
-   /* background-image:url('../../../public/logo.png'); */
-z-index: 9999;
+  z-index: 9999;
 }
-.logopng{
+.logopng {
   height: 40px;
   width: 40px;
   margin-right: 7px;
 }
-.logospan{
-   color: #00ffccbf;
+.logospan {
   color: #00ffccbf;
-  color:white;
+  color: #00ffccbf;
+  color: white;
   font-size: 22px;
 }
-.logo:hover{
-  scale:calc(108%)
+.logo:hover {
+  scale: calc(108%);
 }
 
-
-
-
-.usernametext{
+.usernametext {
   margin-right: 15px;
 }
 
-.welcome{
+.welcome {
   color: rgb(255, 255, 255);
   align-self: center;
 }
 
-.btnswrapper{
+.btnswrapper {
   height: 32px;
-/* border: 1px red solid; */
+  /* border: 1px red solid; */
   display: flex;
-
 }
-

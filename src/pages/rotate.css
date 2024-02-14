@@ -1,14 +1,4 @@
-
-/* ~~~~~~~~~~~~~旋轉 */
-.node {
-
-  /* border: 1px solid #000; */
-  /* background-color: #ffffff00; */
-
-
-}
-
-
+/* 旋轉 */
 
 .rotateHandle {
   position: absolute;
@@ -23,7 +13,7 @@
 }
 
 .rotateHandle:after {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   width: 1px;
@@ -33,5 +23,4 @@
   top: 5px;
 }
 
-/* ~~~~~~~~~~~~~旋轉 */
-/* ~~~~~~~~~~~~~旋轉 */
+/* ~旋轉 */

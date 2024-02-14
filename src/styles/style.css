@@ -2,236 +2,183 @@
 @tailwind components;
 @tailwind utilities;
 
-
-*{
+* {
   font-family: Helvetica, sans-serif;
-font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   box-sizing: border-box;
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-
-
-
-
-
-
-
-/* ================================ */
-/* =======這些無法生效，還未搞清楚為何全局無效============== */
-.handleStyle {
-  position:absolute;
-  border:1px rgb(255, 255, 255) solid;
-  height: 10px;
-  width: 10px;  
-}
-.handleStyle:hover{
-  background-color: white !important ;
-}
-
-.handleStyleLeft{
-  cursor:not-allowed !important;
-  background-color: #8400ff9e ;
-  left: -12px;
-}
-.handleStyleTop{ 
-  cursor:not-allowed !important;
-  background-color: #8400ff9e ;
-  top:  -12px;
-}
-.handleStyleRight{
-  background-color: #00ffcc9e ;
-  right:  -12px;
-}
-.handleStyleBottom{
-  background-color: #00ffcc9e ;
-  bottom: -12px;
-}
-/* ================================ */
-/* ================================ */
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ======================== */
-/* ======================== */
-
-
-input[type="color"]{
-  border: 9px solid #ff222200; 
-  border-radius: 224px;    
-  height: 52px;         
-  width: 52px;   
-  cursor: pointer;
-}
-
-input[type="color"].canvasBackgroundColor{
-  border: 3px solid #ff222200; 
-  border-radius: 224px;    
-  height:24px;   
-  width: 23px;   
-  cursor: pointer;
-}
-
-/* ======================== */
-/* ======================== */
-
-
-.custom-minimap svg{
-  background-color: #a8a6a6;
-  background-color: #373737;
-  position: absolute!important;
-  right: -2px !important;
-  bottom: -2px  !important;
-  border-radius: 10px  !important;
-}
-@media (max-width: 580px) {
-  .custom-minimap{
-    display: none;
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
   }
 }
 
+/* 這些無法生效，全局無效的原因正在調查 */
+.handleStyle {
+  position: absolute;
+  border: 1px rgb(255, 255, 255) solid;
+  height: 10px;
+  width: 10px;
+}
+.handleStyle:hover {
+  background-color: white !important ;
+}
+
+.handleStyleLeft {
+  cursor: not-allowed !important;
+  background-color: #8400ff9e;
+  left: -12px;
+}
+.handleStyleTop {
+  cursor: not-allowed !important;
+  background-color: #8400ff9e;
+  top: -12px;
+}
+.handleStyleRight {
+  background-color: #00ffcc9e;
+  right: -12px;
+}
+.handleStyleBottom {
+  background-color: #00ffcc9e;
+  bottom: -12px;
+}
+
+input[type="color"] {
+  border: 9px solid #ff222200;
+  border-radius: 224px;
+  height: 52px;
+  width: 52px;
+  cursor: pointer;
+}
+
+input[type="color"].canvasBackgroundColor {
+  border: 3px solid #ff222200;
+  border-radius: 224px;
+  height: 24px;
+  width: 23px;
+  cursor: pointer;
+}
+
+/* ⭕️此處使用!important是為了蓋過套件原先設置⭕️*/
+.custom-minimap svg {
+  background-color: #a8a6a6;
+  background-color: #373737;
+  position: absolute !important;
+  right: -2px !important;
+  bottom: -2px !important;
+  border-radius: 10px !important;
+}
+@media (max-width: 580px) {
+  .custom-minimap {
+    display: none;
+  }
+}
 
 .react-flow__controls {
   display: flex;
   /* background-color: #c5c5c5b7; */
   border-radius: 10px;
-  position: absolute!important;
+  position: absolute !important;
   left: 119px !important;
-  bottom: 1px  !important;
+  bottom: 1px !important;
 }
 .react-flow__controls-button {
-  position: relative; /* 确保 button 为相对定位 */
-  /* box-shadow: 0 0 2px 1px greenyellow; */
-  box-shadow:none!important;
-  border-bottom: 0px solid #ff000000!important; /* 消除本來預設的 */
+  position: relative;
+
+  box-shadow: none !important;
+  border-bottom: 0px solid #ff000000 !important; /* 消除本來預設的 */
 
   color: aliceblue !important;
   border-radius: 22px;
-  margin-right: 8px; 
-  /* background-color: #5a5a5ad6 !important; */
+  margin-right: 8px;
+
   background-color: #666666 !important;
-  /* background-color: #7e0fe5 !important; */
+
   box-sizing: border-box !important;
-  height: 29px  !important;
+  height: 29px !important;
   width: 50px !important;
   transition: all 0.1s linear;
-  /* padding: 0px 12px ; */
-  /* opacity: 0; */
 }
 @media (max-width: 614px) {
-  .react-flow__controls-button{
+  .react-flow__controls-button {
     width: 30px !important;
   }
 }
-.react-flow__controls-button:hover{
-  /* box-shadow: 0 0 2px 1px greenyellow; */
-  background-color:#00ffccab  !important;
+.react-flow__controls-button:hover {
+  background-color: #00ffccab !important;
   /* transform: scale(1.1); */
 }
 
-.react-flow__controls-button path{
+.react-flow__controls-button path {
   fill: rgb(255, 255, 255) !important;
 }
-.react-flow__controls-button svg{
-  /* transform: scale(1.2); */
-}
+
 .react-flow__controls-button:last-child {
   margin-right: 0;
 }
-svg {
 
-}
-
-
-
-/* 💜💜💜💜💜💜💜💜💜💜💜💜💜💜💜💜💜💜💜 */
+/* 🔻 */
 .react-flow__controls-button::before {
   position: absolute;
   bottom: 120%; /* 定位到按钮的上方 */
   left: 50%; /* 水平居中 */
-  transform: translateX(-50%); /* 校正由于 left: 50% 导致的偏移 */
+  transform: translateX(-50%); /* 校正因為 left: 50% 導致的偏移 */
   white-space: nowrap; /* 防止換行 */
 
-  color: rgb(255, 255, 255); 
+  color: rgb(255, 255, 255);
 
-
-  opacity: 0; 
+  opacity: 0;
   visibility: hidden;
 
   font-size: 10px;
   padding: 3px 12px;
   background-color: #ffffff;
   background-color: #000000;
-
 }
 .react-flow__controls-button:hover::before {
-  opacity: 1; 
-  visibility: visible; 
+  opacity: 1;
+  visibility: visible;
 }
 .react-flow__controls-zoomin::before {
-  content: 'Zoom In'; /* 使用 data-hint 属性作为内容 */
+  content: "Zoom In";
 }
 .react-flow__controls-zoomout::before {
-  content: 'Zoom Out'; /* 使用 data-hint 属性作为内容 */
+  content: "Zoom Out";
 }
 .react-flow__controls-fitview::before {
-  content: 'Zoom to Content'; /* 使用 data-hint 属性作为内容 */
+  content: "Zoom to Content";
 }
 .react-flow__controls-interactive::before {
-  content: 'Lock'; /* 使用 data-hint 属性作为内容 */
+  content: "Lock";
 }
-/* 💜💜💜💜💜💜💜💜💜💜💜💜💜💜💜💜💜💜💜 */
+/* 🔺 */
 
-
-
-
-/* ============================================================ */
-
-
-/* ============================================================ */
-/* ============================================================ */
-/* ============================================================ */
-/* ============================================================ */
-/* ============================================================ */
-/* ============================================================ */
-
-body, html {
+body,
+html {
   overflow-x: hidden;
 }
 @font-face {
-  
-  font-family: '小濑字体';
-  src: url('../NaikaiFont-Regular.ttf') format('truetype');
+  font-family: "小濑字体";
+  src: url("../NaikaiFont-Regular.ttf") format("truetype");
 }
 body {
   /* font-family: '小濑字体'; */
   backdrop-filter: blur(2px);
 
-  background-image:url('../../public/mainBG.jpg');
+  background-image: url("../../public/mainBG.jpg");
 
-  background-repeat:no-repeat;
-  background-size:cover;
-  
-  background-position: 10% 1%; 
+  background-repeat: no-repeat;
+  background-size: cover;
 
+  background-position: 10% 1%;
 }
 /* flow的一些 預設樣式 */
-
 
 .react-flow__node-selectorNode {
   background: #eee;
@@ -240,20 +187,13 @@ body {
   text-align: center;
 }
 
-/* ==================== */
-
-html, body, #root {
-  /* width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0; */
+html,
+body,
+#root {
   box-sizing: border-box;
 }
 
-
-
-/* ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨ */
-
+/* - */
 
 .customNodeBody {
   width: 150px;
@@ -268,7 +208,7 @@ html, body, #root {
   font-weight: bold;
 }
 .customNode:before {
-  content: '';
+  content: "";
   position: absolute;
   top: -10px;
   left: 50%;
@@ -296,8 +236,3 @@ div.customHandle {
   border: none;
   opacity: 0;
 }
-
-
-
-
-
